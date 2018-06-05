@@ -1,0 +1,54 @@
+<div class="card col-sm-5" >
+  <h5 class="card-header">Menu</h5>
+  <div class="card-body">
+    <button class="btn btn-primary pull-right" type="button" (click)="open(content); modalTitle='Add Menu'" ><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Link</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let menu of menuList; let i = index ">
+          <td>{{menu.title}}</td>
+          <td>{{menu.link}}</td>
+          <td><button class="text_btn"   (click)="editMenu(i , content);modalTitle='Edit Menu'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
+          <td><button class="text_btn" (click)="deleteMenu(i)"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button></td>
+        </tr> 
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--Add New Menu Item Panel-->
+
+
+<!--- Modal -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{modalTitle}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card-body">
+      <form #f="ngForm" >
+          <div class="form-group">
+            <label for="menutitle">Enter menu title:</label>
+            <input type="text" class="form-control" name="menuTittle" [(ngModel)]="menuTittle"  id="menutitle" aria-describedby="menutitle"  required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Select the page:</label>
+            <select class="form-control" name="menuLink" [(ngModel)]="menuLink" required>
+              <option *ngFor="let page of pageList">{{page.title}}</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary pull-right" (click)="addToMenuList(f)" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+      </form>
+    </div>
+  </div>
+</ng-template>

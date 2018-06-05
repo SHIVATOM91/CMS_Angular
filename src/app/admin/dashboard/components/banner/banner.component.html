@@ -1,0 +1,100 @@
+<div class="row">
+    <div class="col-md-12">
+        <ngb-tabset>
+            <ngb-tab title="List All">
+                <ng-template ngbTabContent>
+                    <button class="btn btn-secondary pull-right" (click)="addBanner(content); bannerModaltitle='New Banner'"><i class="fa fa-plus" aria-hidden="true"></i> Add new</button>
+                    <table class="table table-bordered">
+                        <thead>
+                         <tr>
+                           <th>Title</th>
+                           <th>Description</th>
+                           <th>Banner Image</th>
+                         </tr>
+                        </thead>
+                        <tbody>
+                         <tr *ngFor="let image of bannerContent;let i = index">
+                           <td>
+                                {{image.title}}
+                           </td>
+                           <td>
+                                {{image.description}}
+                           </td>
+                           <td>
+                                <div class="thumbnail-image-tb"  [ngStyle]="{'background': 'url('+imgUrl+'/'+image.bannerimg+')no-repeat scroll center center' ,  'height':'30px' , 'transform':'scale(0.8);',  'background-size': 'cover' }" ></div>
+                           </td>
+                           <td class="text-center">
+                                <button type="button" class="text_btn" (click)="editBanner(image, content) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+                           </td>
+                           <td class="text-center">
+                                <button type="button" class="text_btn" (click)="deleteBanner(image)" ><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>                           
+                             </td>
+                         </tr>
+                        </tbody>
+                       <!-- <ngb-pagination [collectionSize]="70" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>      -->    
+                       </table>  
+                </ng-template>
+            </ngb-tab>
+            
+            <ngb-tab>
+                <ng-template ngbTabTitle>Preview Banner</ng-template>
+                <ng-template ngbTabContent>
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <owl-carousel
+                                [options]="{items: 1, dots: true, navigation: true}"
+                                [items]="bannerContent"
+                                [carouselClasses]="['owl-theme', 'row', 'sliding']">
+                                <div class="item" *ngFor="let image of bannerContent;let i = index">
+                                    <div class="thumbnail-image"  [ngStyle]="{'background': 'url('+imgUrl+'/'+image.bannerimg+')no-repeat scroll center center' ,  'height':'350px' , 'background-size': 'cover' }" >
+                                        <h1 class="bannerTitle">{{image.title}}</h1>
+                                        <h4 class="bannerDescription">{{image.description}}</h4>
+                                    </div>
+                                </div>
+                            </owl-carousel>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </ng-template>
+            </ngb-tab>
+        </ngb-tabset>
+    </div>
+</div>
+<!---Ng Bootstrap Modal -->
+<ng-template #content let-c="close" let-d="dismiss" >
+    <div class="modal-header">
+      <h4 class="modal-title">{{bannerModaltitle}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form role="form" id="banner" #bannerForm="ngForm" (keyup)="errorMsg=''" novalidate>
+            <div  class="alert" *ngIf="errorMsgShow" [ngClass]="{'alert-danger':errorMsgType=='fail' , 'alert-success':errorMsgType=='success'}">
+            
+                <ng-container *ngIf="errorMsgType=='success'">Thank you for getting in touch!.</ng-container>
+                <ng-container *ngIf="errorMsgType=='fail'">Failed to send Your message!</ng-container>
+            </div>
+            <fieldset class="form-group">
+                <label>Title</label>
+                <input class="form-control" name="title" [(ngModel)]="bannerModal.title"  #title="ngModel"  placeholder="Enter title" id="log-title" required>
+                <small class="small text-danger" *ngIf="title.invalid && title.touched">Please enter title </small>
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Description</label>
+                <input class="form-control" name="description" [(ngModel)]="bannerModal.description"  #description="ngModel"  placeholder="Enter description" id="log-description" required>
+                <small class="small text-danger" *ngIf="description.invalid && description.touched">Please enter Description </small>
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Banner image</label>
+                <input class="form-control" name="bannerimg" [(ngModel)]="bannerModal.bannerimg"  #bannerimg="ngModel"   type="file" (change)="handleFileInput($event)"  placeholder="Enter description"  required>
+                <small class="small text-danger" *ngIf="bannerimg.invalid && bannerimg.touched">Please select the image </small>
+            </fieldset>
+            <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary" (click)="uploadBanner(bannerForm);"  >Submit</button>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+    </div>
+  </ng-template>

@@ -1,0 +1,25 @@
+
+.main-container {
+    margin-top: 56px;
+    margin-left: 235px;
+    padding: 15px;
+    -ms-overflow-x: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Titillium Web', sans-serif;
+}
+.Dashboard-title {
+    background-color: #f7f7f7;
+    font-size: 20px;
+    font-weight: normal;
+    padding: 10px;
+}
+
+
+@media screen and (max-width: 992px) {
+    .main-container {
+        margin-left: 0px !important;
+    }
+}
