@@ -3,6 +3,7 @@
         <ngb-tabset>
             <ngb-tab title="List All">
                 <ng-template ngbTabContent>
+                   
                     <button class="btn btn-secondary pull-right" (click)="addBanner(content); bannerModaltitle='New Banner'"><i class="fa fa-plus" aria-hidden="true"></i> Add new</button>
                     <table class="table table-bordered">
                         <thead>
@@ -13,6 +14,9 @@
                          </tr>
                         </thead>
                         <tbody>
+                        <tr *ngIf="bannerContent== ''">
+                            <td colspan="3" class="text-center">No Banner to display</td>
+                        </tr>
                          <tr *ngFor="let image of bannerContent;let i = index">
                            <td>
                                 {{image.title}}
@@ -42,6 +46,7 @@
                     <div class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
+                            <div  class="text-center m-1">No Banner to display</div>
                             <owl-carousel
                                 [options]="{items: 1, dots: true, navigation: true}"
                                 [items]="bannerContent"

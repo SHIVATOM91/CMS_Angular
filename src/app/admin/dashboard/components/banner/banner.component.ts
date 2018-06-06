@@ -29,17 +29,17 @@ export class BannerComponent implements OnInit {
       "bannerimg":"",
   }
   constructor(private _bannerServ:BannerService , private modalService: NgbModal) { 
-   // _bannerServ.getAllBanner().subscribe(banner=>{
-    //  this.bannerContent=banner;
-   // })
+   _bannerServ.getAllBanner().subscribe(banner=>{
+     this.bannerContent=banner;
+   })
 
-   this.bannerContent=[
-     { "title":"banner 1" , "description":"banner 1 description" ,"bannerimg":""},
-     { "title":"banner 2" , "description":"banner 2 description" ,"bannerimg":""},
-     { "title":"banner 3" , "description":"banner 3 description" ,"bannerimg":""},
-     { "title":"banner 4" , "description":"banner 4 description" ,"bannerimg":""},
-     { "title":"banner 5" , "description":"banner 5 description" ,"bannerimg":""}
-   ]
+    //  this.bannerContent=[
+    //    { "title":"banner 1" , "description":"banner 1 description" ,"bannerimg":""},
+    //    { "title":"banner 2" , "description":"banner 2 description" ,"bannerimg":""},
+    //    { "title":"banner 3" , "description":"banner 3 description" ,"bannerimg":""},
+    //    { "title":"banner 4" , "description":"banner 4 description" ,"bannerimg":""},
+    //    { "title":"banner 5" , "description":"banner 5 description" ,"bannerimg":""}
+    //  ]
   }
 
   ngOnInit() {
