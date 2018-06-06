@@ -1,4 +1,4 @@
-<form role="form" id="banner" #bannerForm="ngForm" (keyup)="errorMsg=''" novalidate>
+<form role="form" id="banner" #pageForm="ngForm" (keyup)="errorMsg=''" novalidate>
 <div class="row justify-content-between">
   <div class="col-md-8">
      
@@ -13,19 +13,14 @@
           </fieldset>
           <fieldset class="form-group">
               <label>Description</label>
-              <input class="form-control" name="description" [(ngModel)]="pageModal.description"  #description="ngModel"  placeholder="Enter description" id="log-description" required>
+              <input class="form-control" name="description" [(ngModel)]="pageModal.description"  #description="ngModel"  placeholder="Enter description" id="log-description" >
               <small class="small text-danger" *ngIf="description.invalid && description.touched">Please enter Description </small>
           </fieldset>
-          <fieldset class="form-group">
-              <label>Banner image</label>
-              <input class="form-control" name="bannerimg" [(ngModel)]="pageModal.bannerimg"  #bannerimg="ngModel"   type="file" (change)="handleFileInput($event)"  placeholder="Enter description"  required>
-              <small class="small text-danger" *ngIf="bannerimg.invalid && bannerimg.touched">Please select the image </small>
-          </fieldset>
-      
+         
       <ck-editor name="editor1" [(ngModel)]="editorValue" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>   
   </div>
   <div class="col-md-3" >
-      <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary float-right "  (click)="uploadBanner(bannerForm);"  ><i class="fa fa-floppy-o" aria-hidden="true"></i> Publish</button>
+      <button type="submit" [disabled]="!pageForm.valid" class="btn btn-primary float-right "  (click)="publishPage(pageForm.value);"  ><i class="fa fa-floppy-o" aria-hidden="true"></i> Publish</button>
       <div class="card clerfix">
           <div class="card-header">
             Properties

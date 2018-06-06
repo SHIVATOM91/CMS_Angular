@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageService } from '../../../../../services/page.service';
 
 @Component({
   selector: 'app-new-pages',
@@ -20,7 +21,7 @@ export class NewPagesComponent implements OnInit {
     {"type":"contactform"},
   ]
 
-  constructor() { }
+  constructor(private _page:PageService) { }
 
   ngOnInit() {
       
@@ -33,6 +34,13 @@ export class NewPagesComponent implements OnInit {
     if(Properties=='section'){
       this.pageProperties.push( {"type":"section" })
     }
+  }
+
+  publishPage(pageForm){
+   console.log(pageForm);
+    this._page.createPage(pageForm).subscribe(result=>{
+      console.log(result)
+    })
   }
 
 }

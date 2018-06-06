@@ -16,6 +16,7 @@ import { PagesComponent } from './components/pages/pages.component';
 import { NewPagesComponent } from './components/pages/new-pages/new-pages.component';
 import { CKEditorModule } from 'ngx-ckeditor';
 import { SectionComponent } from './templates/section/section.component';
+import { PageService } from '../../services/page.service';
 @NgModule({
   
   declarations: [DashboardComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent, SectionComponent],
@@ -28,7 +29,7 @@ import { SectionComponent } from './templates/section/section.component';
     CKEditorModule,
     NgbDropdownModule.forRoot()
   ]
-  ,providers:[NgbTabsetConfig,NgbModalStack]
+  ,providers:[NgbTabsetConfig,NgbModalStack , PageService]
  
 })
 export class DashboardModule { }

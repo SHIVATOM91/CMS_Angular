@@ -24,4 +24,5 @@ export class PagesComponent implements OnInit {
     this.router.navigate(['admin/dashboard/page/newpage'])
   }
 
+ 
 }

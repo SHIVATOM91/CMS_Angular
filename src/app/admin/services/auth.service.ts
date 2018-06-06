@@ -30,7 +30,9 @@ export class AuthService {
       }
     }
   }
-
+  public static getToken() {
+      return localStorage.getItem('token');
+  }
 
   login(credentials) { 
     // get users from api
@@ -57,8 +59,8 @@ export class AuthService {
  
 logout()
 {
-    localStorage.removeItem('token');
-    this.router.navigate(['admin/login']);
+  localStorage.removeItem('token');
+  this.router.navigate(['admin/login']);
 }
 
 }

@@ -21,7 +21,7 @@ export class BannerComponent implements OnInit {
   imgUrl= environment.imgUrl;
   page = 4;
   closeResult;
-
+  bannerEditMode=false;
   //modal variable
   bannerModal={
       "title":"",
@@ -29,9 +29,9 @@ export class BannerComponent implements OnInit {
       "bannerimg":"",
   }
   constructor(private _bannerServ:BannerService , private modalService: NgbModal) { 
-   _bannerServ.getAllBanner().subscribe(banner=>{
-     this.bannerContent=banner;
-   })
+    _bannerServ.getAllBanner().subscribe(banner=>{
+    this.bannerContent=banner;
+  })
 
     //  this.bannerContent=[
     //    { "title":"banner 1" , "description":"banner 1 description" ,"bannerimg":""},
@@ -43,7 +43,7 @@ export class BannerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.errorMsgShow=true;
+    this.errorMsgShow=false;
     this.bannerForm=new FormGroup({
       title:new FormControl(Validators.required),
       description:new FormControl(Validators.required)
@@ -55,6 +55,8 @@ export class BannerComponent implements OnInit {
   }
 
   addBanner(content){
+    this.bannerEditMode=false;
+    this.errorMsgShow=false;
     this.bannerModal.title="";
     this.bannerModal.description="";
     this.bannerModal.bannerimg="";
@@ -62,9 +64,12 @@ export class BannerComponent implements OnInit {
   }
 
   editBanner(item,content){
+    this.bannerEditMode=true;
     this.bannerModal.title=item.title;
     this.bannerModal.description=item.description;
-    this.bannerModal.bannerimg=item.bannerimg;
+
+    //this.bannerModal.bannerimg=this.imgUrl+'/'+item.bannerimg;
+    console.log(this.bannerModal.bannerimg)
     this.modalService.open(content)
   }
 
@@ -80,9 +85,11 @@ export class BannerComponent implements OnInit {
     let frmData=new FormData();
     frmData.append('title' ,bannerForm.controls.title.value);
     frmData.append('description' ,bannerForm.controls.description.value);
+    frmData.append('banner_types_id' ,"1");
     frmData.append('bannerimg' ,this.image);
     this._bannerServ.postBanner(frmData).subscribe(result=>{
-      this.errorMsgShow=true;
+    this.errorMsgShow=true;
+      console.log(result)
       if(result.success){
           this.errorMsgType="success";
           this.bannerContent.push({"title":bannerForm.controls.title.value , "description":bannerForm.controls.description.value , "bannerimg":result.img_url})
@@ -93,15 +100,36 @@ export class BannerComponent implements OnInit {
     })
   }
 
+  updateBanner(bannerForm){
+    let frmData=new FormData();
+    frmData.append('title' ,bannerForm.controls.title.value);
+    frmData.append('description' ,bannerForm.controls.description.value);
+    frmData.append('banner_types_id' ,"1");
+    frmData.append('bannerimg' ,this.image);
+    this._bannerServ.updateBanner(frmData).subscribe(result=>{
+    this.errorMsgShow=true;
+      if(result.success){
+          this.errorMsgType="success";
+          this.bannerContent.push({"title":bannerForm.controls.title.value , "description":bannerForm.controls.description.value , "bannerimg":result.img_url})
+      }
+      else{
+        this.errorMsgMessage="fail";
+      }
+    })
+  }
   open(content) {
+    
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
+    
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
   private getDismissReason(reason: any): string {
+    
+   
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
