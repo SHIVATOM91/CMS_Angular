@@ -8,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class NewPagesComponent implements OnInit {
    //modal variable
   image
-  bannerModal={
+  pageModal={
     "title":"",
     "description":"",
     "bannerimg":"",
   }
+  
   constructor() { }
 
   ngOnInit() {
@@ -21,5 +22,9 @@ export class NewPagesComponent implements OnInit {
   handleFileInput(event){
     this.image=event.target.files[0];
   }
-  
+
+  addProperties(Properties){
+    console.log()
+  }
+
 }

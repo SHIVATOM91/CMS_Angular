@@ -49,36 +49,39 @@ export class BannerComponent implements OnInit {
       description:new FormControl(Validators.required)
      }) 
   }
+  
   handleFileInput(event){
     this.image=event.target.files[0];
   }
+
   addBanner(content){
     this.bannerModal.title="";
     this.bannerModal.description="";
     this.bannerModal.bannerimg="";
     this.modalService.open(content)
   }
+
   editBanner(item,content){
     this.bannerModal.title=item.title;
     this.bannerModal.description=item.description;
     this.bannerModal.bannerimg=item.bannerimg;
     this.modalService.open(content)
   }
+
   deleteBanner(item){
     let success=confirm("Are you sure want to delete this item");
     if(success){
       this.bannerContent.splice(item,1)
     }
   }
+
   uploadBanner(bannerForm)
   {
-  
     let frmData=new FormData();
     frmData.append('title' ,bannerForm.controls.title.value);
     frmData.append('description' ,bannerForm.controls.description.value);
     frmData.append('bannerimg' ,this.image);
     this._bannerServ.postBanner(frmData).subscribe(result=>{
-     
       this.errorMsgShow=true;
       if(result.success){
           this.errorMsgType="success";
@@ -89,6 +92,7 @@ export class BannerComponent implements OnInit {
       }
     })
   }
+
   open(content) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -106,5 +110,4 @@ export class BannerComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
- 
 }

@@ -15,9 +15,10 @@ import { NgbModalStack } from '@ng-bootstrap/ng-bootstrap/modal/modal-stack';
 import { PagesComponent } from './components/pages/pages.component';
 import { NewPagesComponent } from './components/pages/new-pages/new-pages.component';
 import { CKEditorModule } from 'ngx-ckeditor';
+import { SectionComponent } from './templates/section/section.component';
 @NgModule({
   
-  declarations: [DashboardComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent],
+  declarations: [DashboardComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent, SectionComponent],
   imports: [
     CommonModule,
     FormsModule,
