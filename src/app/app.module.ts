@@ -7,16 +7,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
+import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    Angular2FontawesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

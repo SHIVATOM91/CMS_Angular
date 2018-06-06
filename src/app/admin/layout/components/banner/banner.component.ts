@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DataModalService } from '../../../shared/data-modal.service';
-import { BannerService } from '../../../../services/banner.service';
+import { BannerService } from '../../../../shared/services/banner.service';
 import { environment } from '../../../../../environments/environment';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 

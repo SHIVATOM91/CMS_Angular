@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './layout/dashboard.component';
-import { LoginComponent } from './login/login.component';
-
+import { LoginComponent } from './components/login/login.component';
 const routes: Routes = [
   {
     path:'login',
@@ -10,7 +8,7 @@ const routes: Routes = [
   },
   {
     path:'dashboard',
-    loadChildren: '../../app/admin/layout/dashboard.module#DashboardModule'
+    loadChildren: '../../app/admin/layout/layout.module#LayoutModule'
     
   }
 ];

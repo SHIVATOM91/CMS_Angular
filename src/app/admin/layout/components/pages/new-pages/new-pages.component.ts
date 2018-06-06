@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PageService } from '../../../../../services/page.service';
+import { PageService } from '../../../../../shared/services/page.service';
 
 @Component({
   selector: 'app-new-pages',

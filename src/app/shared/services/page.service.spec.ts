@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { PageService } from './page.service';
+import { PageService } from '../shared/services/page.service';
 
 describe('PageService', () => {
   beforeEach(() => {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
-import { DataModalService } from '../shared/data-modal.service';
+import { AuthService } from '../../services/auth.service';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginFrom:any;
   errorMsg;
-  constructor(private authService:AuthService , private router:Router, private service:DataModalService) { }
+  constructor(private authService:AuthService , private router:Router) { }
   ngOnInit() {
      if(this.authService.isloggedin()){
       this.router.navigate(['admin/dashboard'])
