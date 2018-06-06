@@ -32,11 +32,11 @@
           </div>
           <div class="card-body">
             <p class="card-text">Select the new properties to the content.</p>
-
             <select class="form-control" name="Properties"  [(ngModel)]="Properties" >
                 <option>Select</option>
                 <option value="contactform" >Contact Form</option>
                 <option value="banner" >Banner</option>
+                <option value="section" >Section</option>
             </select>
             <button type="button" class="btn btn-primary " (click)="addProperties(Properties)">Add to page</button>
           </div>
@@ -44,9 +44,9 @@
   </div>
 </div>
 
-
-<app-section *ngIf=""> </app-section>
-
+<ng-container *ngFor="let properties of pageProperties">
+    <app-section *ngIf="properties.type=='section'"> </app-section>
+</ng-container>
 
 
 </form>

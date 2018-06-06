@@ -13,18 +13,26 @@ export class NewPagesComponent implements OnInit {
     "description":"",
     "bannerimg":"",
   }
-  
+
+  pageProperties=[
+    {"type":"section" },
+    {"type":"banner"},
+    {"type":"contactform"},
+  ]
+
   constructor() { }
 
   ngOnInit() {
-
+      
   }
   handleFileInput(event){
     this.image=event.target.files[0];
   }
 
   addProperties(Properties){
-    console.log()
+    if(Properties=='section'){
+      this.pageProperties.push( {"type":"section" })
+    }
   }
 
 }

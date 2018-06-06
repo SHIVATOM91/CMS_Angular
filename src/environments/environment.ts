@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  apiUrl:"http://127.0.0.1:8000/api/",
+  apiUrl:"http://bix.cms.com/api/",
   imgUrl:"http://127.0.0.1:8000/uploads"
 };
