@@ -9,7 +9,6 @@ const routes: Routes = [
   {
     path:'dashboard',
     loadChildren: '../../app/admin/layout/layout.module#LayoutModule'
-    
   }
 ];
 
