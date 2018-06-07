@@ -18,12 +18,12 @@ export class LoginComponent implements OnInit {
      if(this.authService.isloggedin()){
       this.router.navigate(['admin/dashboard'])
      }
-    
+
 
      this.loginFrom=new FormGroup({
       email:new FormControl(Validators.required),
       password:new FormControl(Validators.required)
-     }) 
+     })
   }
 
   login(form){
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['admin/dashboard'])
         }else{
           this.errorMsg="Invalid Username and Password"
-        
+
         }
     })
   }

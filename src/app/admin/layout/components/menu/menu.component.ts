@@ -2,6 +2,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MenuService } from './../../../../shared/services/menu.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { isArray } from 'util';
 
 @Component({
   selector: 'app-menu',
@@ -75,6 +76,7 @@ export class MenuComponent implements OnInit {
       this._menuServe.create(this.form.value).subscribe(response=>{
         if(response.success == true){
           this.menuList.push(response.data);
+          this.getAllMenu();
           this.form.reset();
         }else{
           console.log(response);
@@ -88,13 +90,20 @@ export class MenuComponent implements OnInit {
       this._menuServe.update(this.menuList[this.editIndex].id, this.form.value).subscribe(response=>{
         this.menuList[this.editIndex]=response.data;
         this.editIndex=null;
+        this.getAllMenu();
         this.form.reset();
       })
     }
   }
 
   deleteMenu(index){
-    let status= confirm("Are you sure want to delete menu");
+    let msg="Are you sure want to delete menu";
+    if(isArray(this.menuList[index].children)){
+      if(this.menuList[index].children.length > 0){
+        msg="This menu has sub menu. Are you sure, you want to delete?";
+      }
+    }
+    let status= confirm(msg);
     if(status){
       this._menuServe.delete(this.menuList[index].id).subscribe(response=>{
         this.menuList.splice(index,1);
