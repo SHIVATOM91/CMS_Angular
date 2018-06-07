@@ -1,3 +1,5 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MenuService } from './../../../../shared/services/menu.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
@@ -7,50 +9,101 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-
+  form: FormGroup;
   closeResult: string;
-  menuList=[
-    { "title" :"Menu 1" , "link":"page 1"},
-    { "title" :"Menu 2" , "link":"page 2"},
-    { "title" :"Menu 3" , "link":"page 3"},
-    { "title" :"Menu 4" , "link":"page 4"},
- 
-  ];
-  pageList=[
-    { "title" :"page 1"},
-    { "title" :"page 2"},
-    { "title" :"page 3"},
-    { "title" :"page 4"},
-    { "title" :"page 5"},
-    { "title" :"page 6"},
-    { "title" :"page 7"},
-    { "title" :"page 8"},
-    { "title" :"page 9"}
-  ];
-  menuTittle="";
-  menuLink="";
-  constructor( private modalService: NgbModal ) { }
+  menuList;
+  pageList;
 
-  ngOnInit() {
+  editIndex;
+  constructor( private modalService: NgbModal, private _menuServe: MenuService, private fb: FormBuilder) {
+
+    this.form = this.fb.group({
+      title: ['', [Validators.minLength(2), Validators.required]],
+      linkType: ['custom'],
+      customLink: [''],
+      pageSlug: [''],
+      menuType: ['primary'],
+      parent_id: ['']
+    });
   }
 
- 
+  ngOnInit() {
+    this.editIndex=null;
+    this.getAllMenu();
+    this.getAllPages();
 
-  addToMenuList(formdata){
-    this.menuList.push({ "title" :this.menuTittle , "link":this.menuLink});
-    //
+  }
+
+  getAllMenu(){
+    this._menuServe.get().subscribe(response=>{
+       this.menuList = response;
+    })
+  }
+
+  getAllPages(){
+    this._menuServe.getPages().subscribe(response=>{
+       this.pageList = response;
+
+    })
+  }
+
+  openModal(content,index = null){
+    if(this.editIndex == null){
+      if(index == null){
+        this.editIndex=null;
+        this.form.reset();
+      }else{
+        this.editIndex=index;
+        let obj=this.menuList[index];
+        let editObj: Object;
+        editObj={
+          title: obj.title,
+          linkType: obj.linkType,
+          customLink: obj.customLink,
+          pageSlug: obj.pageSlug,
+          menuType: obj.menuType,
+          parent_id: obj.parent_id,
+        };
+        this.form.setValue(editObj);
+      }
+      this.open(content);
+    }
+  }
+
+  addNewMenu(){
+    if(!(this.form.invalid)){
+      this._menuServe.create(this.form.value).subscribe(response=>{
+        if(response.success == true){
+          this.menuList.push(response.data);
+          this.form.reset();
+        }else{
+          console.log(response);
+        }
+      })
+    }
+  }
+
+  editMenu(){
+    if(!(this.form.invalid)){
+      this._menuServe.update(this.menuList[this.editIndex].id, this.form.value).subscribe(response=>{
+        this.menuList[this.editIndex]=response.data;
+        this.editIndex=null;
+        this.form.reset();
+      })
+    }
   }
 
   deleteMenu(index){
     let status= confirm("Are you sure want to delete menu");
-    if(status){this.menuList.splice(index,1); return false}
-    else return false;
-  }
+    if(status){
+      this._menuServe.delete(this.menuList[index].id).subscribe(response=>{
+        this.menuList.splice(index,1);
+      })
 
-  editMenu(index ,content){
-    this.menuTittle= this.menuList[index].title;
-    this.menuLink=this.menuList[index].link;
-    this.open(content);
+      return false
+    }
+    else
+      return false;
   }
 
 

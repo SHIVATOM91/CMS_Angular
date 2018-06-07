@@ -13,10 +13,10 @@ const httpOptions = {
 @Injectable()
 
 export class BannerService {
-  
+
   apiUrl:String =environment.apiUrl;
   constructor(private http:HttpClient) {
-  
+
   }
 
   getAllBanner(){
@@ -26,14 +26,14 @@ export class BannerService {
     //return this.http.post<Banner>(this.apiUrl+"/banner", bannerData, httpOptions)
     return this.http.post<Banner>(this.apiUrl+"banner", bannerData)
     .pipe(
-      
+
     );
   }
   updateBanner(bannerData){
     //return this.http.post<Banner>(this.apiUrl+"/banner", bannerData, httpOptions)
     return this.http.put<Banner>(this.apiUrl+"banner", bannerData)
     .pipe(
-      
+
     );
   }
 }

@@ -1,23 +1,35 @@
-<div class="card col-sm-5" >
+<div class="card col-sm-12" >
   <h5 class="card-header">Menu</h5>
   <div class="card-body">
-    <button class="btn btn-primary pull-right" type="button" (click)="open(content); modalTitle='Add Menu'" ><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+    <button class="btn btn-primary pull-right" type="button" (click)="openModal(content); modalTitle='Add Menu'" ><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
     <table class="table">
       <thead>
         <tr>
           <th>Title</th>
+          <th>Parent</th>
           <th>Link</th>
-          <th></th>
-          <th></th>
+          <th class="text-center">Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let menu of menuList; let i = index ">
           <td>{{menu.title}}</td>
-          <td>{{menu.link}}</td>
-          <td><button class="text_btn"   (click)="editMenu(i , content);modalTitle='Edit Menu'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
-          <td><button class="text_btn" (click)="deleteMenu(i)"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button></td>
-        </tr> 
+          <td>
+            <p *ngIf="menu.parent">{{menu.parent.title}}</p>
+          </td>
+          <td>
+            <p *ngIf="menu.linkType == 'custom'">
+                {{menu.customLink}}<small class="text-muted"> (custom)</small>
+            </p>
+            <p *ngIf="menu.linkType == 'page'">
+                {{menu.pageSlug}}<small class="text-muted"> (page)</small>
+            </p>
+          </td>
+          <td class="text-center">
+            <button class="text_btn"   (click)="openModal(content, i);modalTitle='Edit Menu'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+            <button class="text_btn" (click)="deleteMenu(i)"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -36,18 +48,63 @@
   </div>
   <div class="modal-body">
     <div class="card-body">
-      <form #f="ngForm" >
+      <form [formGroup]="form" >
           <div class="form-group">
             <label for="menutitle">Enter menu title:</label>
-            <input type="text" class="form-control" name="menuTittle" [(ngModel)]="menuTittle"  id="menutitle" aria-describedby="menutitle"  required>
+            <input type="text" class="form-control" name="menuTittle" formControlName="title"  id="menutitle" aria-describedby="menutitle"  required>
+            <div class="form-control-feedback text-danger" *ngIf="form.get('title').errors && (form.get('title').dirty || form.get('title').touched)">
+              <p *ngIf="form.get('title').errors.required">Title is required</p>
+              <p *ngIf="form.get('title').errors.minlength">Title must be {{ form.get('title').errors.minlength.requiredLength }} characters long</p>
+            </div>
           </div>
+
           <div class="form-group">
-            <label for="exampleInputPassword1">Select the page:</label>
-            <select class="form-control" name="menuLink" [(ngModel)]="menuLink" required>
-              <option *ngFor="let page of pageList">{{page.title}}</option>
+            <label for="menutitle">Select Link Type:</label>
+            <select class="form-control" formControlName="linkType">
+              <option value="custsom">Custom Link</option>
+              <option value="page">Page Link</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-primary pull-right" (click)="addToMenuList(f)" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+          <div class="form-group" [hidden]="!(form.get('linkType').value == 'custom')">
+            <label for="menutitle">Enter custom link:</label>
+            <input type="text" class="form-control" name="menuTittle"  [required]="form.get('linkType').value == 'custom'" formControlName="customLink"  id="menutitle" aria-describedby="menutitle"  required>
+            <div class="form-control-feedback text-danger" *ngIf="form.get('customLink').errors && (form.get('customLink').dirty || form.get('customLink').touched)">
+              <p *ngIf="form.get('customLink').errors.required">Custom link is required</p>
+            </div>
+          </div>
+          <div class="form-group" [hidden]="!(form.get('linkType').value == 'page')">
+            <label for="menutitle">Select the page:</label>
+            <select  formControlName="pageSlug" class="form-control" [required]="form.get('linkType').value == 'page'">
+              <option value="">Select a page</option>
+              <option *ngFor="let page of pageList" [value]="page.slug">{{ page.title }}</option>
+            </select>
+            <div class="form-control-feedback text-danger" *ngIf="form.get('pageSlug').errors && (form.get('pageSlug').dirty || form.get('pageSlug').touched)">
+              <p *ngIf="form.get('pageSlug').errors.required">Page slug is required</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="menutitle">Select Menu Type:</label>
+            <select class="form-control" formControlName="menuType">
+              <option value="primary">Primary Menu</option>
+              <option value="secondary">Secondary Menu</option>
+              <option value="sidebasr1">Sidebar 1</option>
+              <option value="sidebar2">Sidebar 2</option>
+              <option value="footer1">Footer 1</option>
+              <option value="footer2">Footer 2</option>
+              <option value="footer3">Footer 3</option>
+              <option value="footer4">Footer 4</option>
+              <option value="social">Social Menu</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="menutitle">Parent Menu</label>
+            <select  formControlName="parent_id" class="form-control">
+              <option value="">None</option>
+              <option *ngFor="let menu of menuList" [value]="menu.id">{{ menu.title }}</option>
+            </select>
+          </div>
+          <button *ngIf="modalTitle == 'Add Menu'" [disabled]="form.invalid" type="submit" class="btn btn-primary pull-right" (click)="addNewMenu()" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+          <button *ngIf="modalTitle == 'Edit Menu'" [disabled]="form.invalid" type="submit" class="btn btn-primary pull-right" (click)="editMenu()" ><i class="fa fa-plus" aria-hidden="true"></i> Update</button>
       </form>
     </div>
   </div>

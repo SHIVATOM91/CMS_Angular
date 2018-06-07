@@ -27,7 +27,7 @@ export class BannerComponent implements OnInit {
       "description":"",
       "bannerimg":"",
   }
-  constructor(private _bannerServ:BannerService , private modalService: NgbModal) { 
+  constructor(private _bannerServ:BannerService , private modalService: NgbModal) {
     _bannerServ.getAllBanner().subscribe(banner=>{
     this.bannerContent=banner;
   })
@@ -46,9 +46,9 @@ export class BannerComponent implements OnInit {
     this.bannerForm=new FormGroup({
       title:new FormControl(Validators.required),
       description:new FormControl(Validators.required)
-     }) 
+     })
   }
-  
+
   handleFileInput(event){
     this.image=event.target.files[0];
   }
@@ -88,7 +88,7 @@ export class BannerComponent implements OnInit {
     frmData.append('bannerimg' ,this.image);
     this._bannerServ.postBanner(frmData).subscribe(result=>{
     this.errorMsgShow=true;
-      console.log(result)
+
       if(result.success){
           this.errorMsgType="success";
           this.bannerContent.push({"title":bannerForm.controls.title.value , "description":bannerForm.controls.description.value , "bannerimg":result.img_url})
@@ -117,18 +117,18 @@ export class BannerComponent implements OnInit {
     })
   }
   open(content) {
-    
+
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
-    
+
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
   private getDismissReason(reason: any): string {
-    
-   
+
+
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
