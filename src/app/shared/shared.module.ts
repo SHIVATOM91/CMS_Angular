@@ -7,6 +7,7 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 import { PageService } from './services/page.service';
 import { BannerService } from './services/banner.service';
 import { OwlModule } from 'ngx-owl-carousel';
+import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   imports: [
     CommonModule
@@ -19,6 +20,6 @@ import { OwlModule } from 'ngx-owl-carousel';
     HttpClientModule,
     Angular2FontawesomeModule
   ],
-  providers: [  BannerService ,PageService]
+  providers: [  BannerService ,PageService ,NgbAccordionConfig]
 })
 export class SharedModule { }

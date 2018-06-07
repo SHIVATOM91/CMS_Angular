@@ -12,6 +12,8 @@ import { PageService } from '../../../../../shared/services/page.service';
 export class NewPagesComponent implements OnInit {
    //modal variable
   image
+
+  
   pageModal={
     "title":"",
     "description":"",
@@ -23,16 +25,13 @@ export class NewPagesComponent implements OnInit {
     'show': false,
     'msg':''
   };
-  pageProperties=[
-    {"type":"section" },
-    {"type":"banner"},
-    {"type":"contactform"},
-  ]
+  pagePropertiesData={
 
-  
+  }
+  pagePropertiesList
   constructor(private _page:PageService) { 
     _page.getProperties().subscribe(result=>{
-      console.log(result)
+      this.pagePropertiesList=result;
     })
   }
 
@@ -42,22 +41,16 @@ export class NewPagesComponent implements OnInit {
   handleFileInput(event){
     this.image=event.target.files[0];
   }
-
   addProperties(Properties){
     if(Properties=='section'){
-      this.pageProperties.push( {"type":"section" })
+      this.pagePropertiesList.push( {"type":"section" })
     }
   }
-
   publishPage(pageForm){
-  
     this._page.createPage(pageForm).subscribe(result=>{
       this.ErrorObject.show=true;
-      console.log(result)
       if(result.success){
-        
         this.ErrorObject.type='success';
-        console.log(this.ErrorObject.show)
       }else{
         this.ErrorObject.type='fail';
         this.ErrorObject.msg =result.title.toString();
