@@ -77,7 +77,6 @@
     <div class="modal-body">
         <form role="form" id="banner" #bannerForm="ngForm" (keyup)="errorMsg=''" novalidate>
             <div  class="alert" *ngIf="errorMsgShow" [ngClass]="{'alert-danger':errorMsgType=='fail' , 'alert-success':errorMsgType=='success'}">
-            
                 <ng-container *ngIf="errorMsgType=='success'">Thank you for getting in touch!.</ng-container>
                 <ng-container *ngIf="errorMsgType=='fail'">Failed to send Your message!</ng-container>
             </div>

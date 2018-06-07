@@ -9,18 +9,24 @@ import { AuthService } from '../../admin/services/auth.service';
 export class PageService {
 
   apiUrl:String =environment.apiUrl;
-  
+  header={ headers: new HttpHeaders({'Authorization': 'Bearer ' + AuthService.getToken()})};
   constructor(private http:HttpClient) { }
 
   createPage(formData){
-    return this.http.post<Page>(this.apiUrl+"page", formData , { headers: new HttpHeaders({'Authorization': 'Bearer ' + AuthService.getToken()})})
-    .pipe(
-      
-    );
+    return this.http.post<Page>(this.apiUrl+"page", this.header)
+  }
+
+  getAll(){
+    return this.http.get(this.apiUrl+"page", this.header)
+  }
+
+  getProperties(){
+    return this.http.get(this.apiUrl+"page-property", this.header)
   }
 }
 export interface Page{
   success:boolean,
-  img_url
+  img_url,
+  title:String
 }
 

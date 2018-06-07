@@ -1,11 +1,12 @@
 <div class="row">
   <div class="col-md-12">
+     
       <button class="btn btn-primary pull-right" (click)="addNewPage(); bannerModaltitle='New Banner'"><i class="fa fa-plus" aria-hidden="true"></i> Add new</button>
       <table class="table table-bordered">
           <thead>
            <tr>
              <th>Page title</th>
-             <th>Description</th>
+             <th>Date</th>
              <th></th>
              <th></th>
              <th></th>
@@ -17,7 +18,7 @@
                   {{image.title}}
              </td>
              <td>
-                  {{image.description}}
+                <small>Published on <b>{{image.updated_at | date }}</b></small>
              </td>
              <td>
                 <i class="fa fa-eye" aria-hidden="true"></i>

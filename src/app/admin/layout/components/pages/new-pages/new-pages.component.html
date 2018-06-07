@@ -1,23 +1,19 @@
-<form role="form" id="banner" #pageForm="ngForm" (keyup)="errorMsg=''" novalidate>
+<form role="form" id="banner" #pageForm="ngForm"  novalidate>
 <div class="row justify-content-between">
   <div class="col-md-8">
-     
-          <div  class="alert" *ngIf="errorMsgShow" [ngClass]="{'alert-danger':errorMsgType=='fail' , 'alert-success':errorMsgType=='success'}">
-              <ng-container *ngIf="errorMsgType=='success'">Thank you for getting in touch!.</ng-container>
-              <ng-container *ngIf="errorMsgType=='fail'">Failed to send Your message!</ng-container>
-          </div>
-          <fieldset class="form-group">
-              <label>Title</label>
-              <input class="form-control" name="title" [(ngModel)]="pageModal.title"  #title="ngModel"  placeholder="Enter title" id="log-title" required>
-              <small class="small text-danger" *ngIf="title.invalid && title.touched">Please enter title </small>
-          </fieldset>
-          <fieldset class="form-group">
-              <label>Description</label>
-              <input class="form-control" name="description" [(ngModel)]="pageModal.description"  #description="ngModel"  placeholder="Enter description" id="log-description" >
-              <small class="small text-danger" *ngIf="description.invalid && description.touched">Please enter Description </small>
-          </fieldset>
-         
-      <ck-editor name="editor1" [(ngModel)]="editorValue" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>   
+        <div  class="alert" *ngIf="ErrorObject.show==true" [ngClass]="{'alert-danger':ErrorObject.type=='fail' , 'alert-success':ErrorObject.type=='success'}">
+            <ng-container *ngIf="ErrorObject.type=='success'">Page has published successfully! </ng-container>
+            <ng-container *ngIf="ErrorObject.type=='fail'">{{ErrorObject.msg}}</ng-container>
+        </div>
+        <fieldset class="form-group">
+            <label>Title</label>
+            <input class="form-control" name="title" [(ngModel)]="pageModal.title"  #title="ngModel"  placeholder="Enter title" id="log-title" required>
+            <small class="small text-danger" *ngIf="title.invalid && title.touched">Please enter title </small>
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Description</label>
+        </fieldset>
+        <ck-editor name="editor1" [(ngModel)]="pageModal.description"  #description="ngModel" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>   
   </div>
   <div class="col-md-3" >
       <button type="submit" [disabled]="!pageForm.valid" class="btn btn-primary float-right "  (click)="publishPage(pageForm.value);"  ><i class="fa fa-floppy-o" aria-hidden="true"></i> Publish</button>

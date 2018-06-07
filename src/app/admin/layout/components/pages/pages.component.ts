@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PageService } from '../../../../shared/services/page.service';
 
 @Component({
   selector: 'app-pages',
@@ -9,20 +10,15 @@ import { Router } from '@angular/router';
 export class PagesComponent implements OnInit {
 
   pageContent
-  constructor(private router:Router) { 
-    this.pageContent=[
-      { "title":"page 1" , "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. " ,"bannerimg":""},
-      { "title":"page 2" , "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry." ,"bannerimg":""},
-      { "title":"page 3" , "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry." ,"bannerimg":""},
-      { "title":"page 4" , "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry." ,"bannerimg":""},
-      { "title":"page 5" , "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry." ,"bannerimg":""}
-    ]
+  constructor(private router:Router , private _pageServ:PageService) { 
+    _pageServ.getAll().subscribe(result=>{
+      console.log(result)
+      this.pageContent=result;
+    })
   }
   ngOnInit() {
   }
   addNewPage(){
     this.router.navigate(['admin/dashboard/page/newpage'])
   }
-
- 
 }
