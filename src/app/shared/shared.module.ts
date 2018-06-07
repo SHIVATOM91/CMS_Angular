@@ -9,6 +9,7 @@ import { PageService } from './services/page.service';
 import { BannerService } from './services/banner.service';
 import { OwlModule } from 'ngx-owl-carousel';
 import { CustomFormsModule } from 'ng2-validation';
+import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { CustomFormsModule } from 'ng2-validation';
     CustomFormsModule,
     Angular2FontawesomeModule
   ],
-  providers: [  BannerService ,PageService, MenuService, FormBuilder]
+  providers: [  BannerService ,PageService, MenuService, FormBuilder,NgbAccordionConfig]
+
 })
 export class SharedModule { }
