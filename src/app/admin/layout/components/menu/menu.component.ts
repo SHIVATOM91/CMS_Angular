@@ -107,6 +107,7 @@ export class MenuComponent implements OnInit {
     if(status){
       this._menuServe.delete(this.menuList[index].id).subscribe(response=>{
         this.menuList.splice(index,1);
+        this.getAllMenu();
       })
 
       return false
