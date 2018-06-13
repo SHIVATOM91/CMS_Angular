@@ -1,63 +1,48 @@
 <form [formGroup]="sectionForm">
-  <div class="row">
+  <div class="row" >
     <div class="col-md-12">
       <button class="btn btn-secondary pull-right" (click)="open(showSection)">
       <i class="fa fa-plus" aria-hidden="true"></i>New Section</button>
     </div>
   </div>
-  <div class="row">
+  <div class="row" formGroupName="sections">
     <div class="col-md-6">
-      <div *ngFor="let section of sections.controls">
-        <div class="card">
-          <div class="card-header">
+        <div class="card" >
+          <div class="card-header"  formArrayName="properties" >
             New Field
           </div>
-          <div class="card-body">
+          <div class="card-body" >
             <div class="form-group">
-              <label for="menutitle">Select Menu Type:</label>
-              <input type="text" class="form-control" />
+              <label for="menutitle">Title:</label>
+              <input type="text"  fomrControlName="title" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="menutitle">key:</label>
+              <input type="text"  fomrControlName="key" class="form-control" />
             </div>
             <div class="form-group">
               <label for="menutitle">Select Menu Type:</label>
-              <select class="form-control" formControlName="menuType">
-                <option value="primary">Primary Menu</option>
-                <option value="secondary">Secondary Menu</option>
-                <option value="sidebar1">Sidebar 1</option>
-                <option value="sidebar2">Sidebar 2</option>
-                <option value="footer1">Footer 1</option>
-                <option value="footer2">Footer 2</option>
-                <option value="footer3">Footer 3</option>
-                <option value="footer4">Footer 4</option>
-                <option value="social">Social Menu</option>
+              <select class="form-control" fomrControlName="type" >
+                <option value="primary">String</option>
+                <option value="secondary">Check box</option>
+                <option value="sidebar1">Button</option>
+                <option value="sidebar2">TextArea</option>
               </select>
             </div>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="form-group">
+              <!-- <div *ngFor="let city of properties.controls; index as i">
+                <input [formControlName]="i" placeholder="City">
+              </div> -->
+            </div>
+            <a  class="btn btn-primary" (click)="addProperty()">Save</a>
           </div>
         </div>
-      </div>
+     
     </div>
   </div>
-
-  <!--- Modal -->
-<ng-template #showSection let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title">Add Section</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="card-body">
-      <div formArrayName="sections">
-        <input class="form-control" fomrControlName="title" placeholder="" >
-      </div>
-      <button [disabled]="sectionForm.invalid" type="submit" class="btn btn-primary pull-right" (click)="addNewSection(); d('Cross click')">
-      <i class="fa fa-plus" aria-hidden="true"></i> Add</button>
-    </div>
-  </div>
-</ng-template>
-
 </form>
+
+
 
 
 {{sectionForm.value | json}}

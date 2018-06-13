@@ -10,26 +10,38 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class SectionsComponent {
 
   sectionForm:FormGroup;
-  closeResult;
-
+  closeResult; 
 
   constructor(private modalService: NgbModal , private fb:FormBuilder) { 
     this.sectionForm = fb.group({
-      sections : fb.array([
-      ])
+      sections : fb.group({
+         title : [''],
+         properties:this.fb.array([])
+      })
     })
-    
+  }
+ 
+
+  addNewSection(title){
+     console.log()
   }
 
-  addNewSection(){
-    this.sections.push( this.fb.group({
-      title:['sd',Validators.required],
-      properties:this.fb.array([])
-    }) );
+  addProperty(){
+    this.properties.push( new FormGroup({
+      name: new FormControl('key', Validators.required),
+      quantity: new FormControl(100)
+    }))
+    console.log(this.properties);
   }
+
+ 
 
   get sections(){
     return this.sectionForm.get('sections') as FormArray;
+  }
+
+  get properties(){
+    return this.sections.get('properties') as FormArray;
   }
 
   open(content) {
