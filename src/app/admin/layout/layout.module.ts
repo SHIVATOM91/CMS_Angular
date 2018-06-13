@@ -19,9 +19,11 @@ import { LayoutComponent } from './layout.component';
 import { InputTemplateComponent } from './templates/input-template/input-template.component';
 import { DecriptionTemplateComponent } from './templates/decription-template/decription-template.component';
 import { ImageTemplateComponent } from './templates/image-template/image-template.component';
+import { SectionsComponent } from './components/Sections/sections.component';
+
 @NgModule({
   
-  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent],
+  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent],
   imports: [
     LayoutRoutingModule,
     NgbModule,

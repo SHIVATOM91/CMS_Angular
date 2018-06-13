@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-md-12">
+        <button class="btn btn-secondary pull-right" (click)="addNewField()"><i class="fa fa-plus" aria-hidden="true"></i>New Field</button>
+        <form [formGroup]="widgetsForm">
+            <div formArrayName="newField">
+                <ng-container *ngFor="let wedget of widgets.controls">
+                    s
+                </ng-container>
+            </div>
+        </form>
+    </div>
+</div>

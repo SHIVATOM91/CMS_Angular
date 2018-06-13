@@ -11,8 +11,7 @@ export class PagesComponent implements OnInit {
 
   pageContent
   constructor(private router:Router , private _pageServ:PageService) { 
-    _pageServ.getAll().subscribe(result=>{
-      console.log(result)
+    _pageServ.get().subscribe(result=>{
       this.pageContent=result;
     })
   }

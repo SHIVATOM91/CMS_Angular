@@ -18,6 +18,11 @@ export class SidebarComponent {
             "icon":"fa fa-file"
         },
         {
+            "name":"Sections",
+            "link":"sections",
+            "icon":"fa fa-suitcase"
+        },
+        {
             "name":"Menu",
             "link":"menu",
             "icon":"fa fa-bars"
