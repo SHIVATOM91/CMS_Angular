@@ -1,0 +1,48 @@
+<form [formGroup]="sectionForm">
+  <div class="row" >
+    <div class="col-md-12">
+      <button class="btn btn-secondary pull-right" (click)="open(showSection)">
+      <i class="fa fa-plus" aria-hidden="true"></i>New Section</button>
+    </div>
+  </div>
+  <div class="row" formGroupName="sections">
+    <div class="col-md-6">
+        <div class="card" >
+          <div class="card-header"  formArrayName="properties" >
+            New Field
+          </div>
+          <div class="card-body" >
+            <div class="form-group">
+              <label for="menutitle">Title:</label>
+              <input type="text"  fomrControlName="title" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="menutitle">key:</label>
+              <input type="text"  fomrControlName="key" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="menutitle">Select Menu Type:</label>
+              <select class="form-control" fomrControlName="type" >
+                <option value="primary">String</option>
+                <option value="secondary">Check box</option>
+                <option value="sidebar1">Button</option>
+                <option value="sidebar2">TextArea</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <!-- <div *ngFor="let city of properties.controls; index as i">
+                <input [formControlName]="i" placeholder="City">
+              </div> -->
+            </div>
+            <a  class="btn btn-primary" (click)="addProperty()">Save</a>
+          </div>
+        </div>
+     
+    </div>
+  </div>
+</form>
+
+
+
+
+{{sectionForm.value | json}}

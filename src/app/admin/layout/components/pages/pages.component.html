@@ -14,21 +14,21 @@
           </thead>
           <tbody>
            <tr *ngFor="let image of pageContent;let i = index">
-             <td>
+              <td>
                   {{image.title}}
-             </td>
-             <td>
+              </td>
+              <td>
                 <small>Published on <b>{{image.updated_at | date }}</b></small>
-             </td>
-             <td>
+              </td>
+              <td>
                 <i class="fa fa-eye" aria-hidden="true"></i>
-             </td>
-             <td class="text-center">
+              </td>
+              <td class="text-center">
                   <button type="button" class="text_btn" (click)="editBanner(image, content) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-             </td>
-             <td class="text-center">
+              </td>
+              <td class="text-center">
                   <button type="button" class="text_btn" (click)="deleteBanner(image)" ><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>                           
-             </td>
+              </td>
            </tr>
           </tbody>
          <!-- <ngb-pagination [collectionSize]="70" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>      -->    
