@@ -1,3 +1,4 @@
+import { BannerPipe } from './components/banner/banner.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutRoutingModule } from './layout-routing.module';
@@ -20,8 +21,8 @@ import { InputTemplateComponent } from './templates/input-template/input-templat
 import { DecriptionTemplateComponent } from './templates/decription-template/decription-template.component';
 import { ImageTemplateComponent } from './templates/image-template/image-template.component';
 @NgModule({
-  
-  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent],
+
+  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, BannerPipe],
   imports: [
     LayoutRoutingModule,
     NgbModule,
@@ -30,6 +31,6 @@ import { ImageTemplateComponent } from './templates/image-template/image-templat
     NgbDropdownModule.forRoot()
   ]
   ,providers:[NgbTabsetConfig,NgbModalStack]
- 
+
 })
 export class LayoutModule { }

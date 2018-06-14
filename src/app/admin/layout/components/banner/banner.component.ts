@@ -1,5 +1,6 @@
+import { BannerTypeService } from './../../../../shared/services/banner-type.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { BannerService } from '../../../../shared/services/banner.service';
 import { environment } from '../../../../../environments/environment';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -11,7 +12,15 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
-  bannerForm:any;
+  /* type initialization */
+  typeForm: FormGroup;
+  bannerTypes;
+  editTypeIndex=null;
+  typeFormState: string =  "new";
+  // end of type var
+
+  selectedBannerId="";
+  bannerForm: FormGroup;
   image;
   errorMsgShow=false;
   errorMsgType='';
@@ -27,30 +36,33 @@ export class BannerComponent implements OnInit {
       "description":"",
       "bannerimg":"",
   }
-  constructor(private _bannerServ:BannerService , private modalService: NgbModal) {
-    _bannerServ.getAllBanner().subscribe(banner=>{
-    this.bannerContent=banner;
-  })
-
-    //  this.bannerContent=[
-    //    { "title":"banner 1" , "description":"banner 1 description" ,"bannerimg":""},
-    //    { "title":"banner 2" , "description":"banner 2 description" ,"bannerimg":""},
-    //    { "title":"banner 3" , "description":"banner 3 description" ,"bannerimg":""},
-    //    { "title":"banner 4" , "description":"banner 4 description" ,"bannerimg":""},
-    //    { "title":"banner 5" , "description":"banner 5 description" ,"bannerimg":""}
-    //  ]
-  }
+  constructor(private _bannerServ:BannerService , private _bannerTypeServ: BannerTypeService, private modalService: NgbModal, private fb: FormBuilder) {}
 
   ngOnInit() {
+    this.getAllBanner();
+    this.getAllBannerTypes();
     this.errorMsgShow=false;
-    this.bannerForm=new FormGroup({
-      title:new FormControl(Validators.required),
-      description:new FormControl(Validators.required)
+
+    this.typeForm = this.fb.group({
+      typeName: ['', [Validators.minLength(2), Validators.required]]
+    });
+
+    this.bannerForm=this.fb.group({
+      banner_types_id: ['', [Validators.required]],
+      title: ['', [Validators.minLength(2), Validators.required]],
+      description: [''],
+      bannerimg: ['', [Validators.required]]
      })
   }
 
   handleFileInput(event){
     this.image=event.target.files[0];
+  }
+
+  getAllBanner(){
+    this._bannerServ.getAllBanner().subscribe(banner=>{
+      this.bannerContent=banner;
+    })
   }
 
   addBanner(content){
@@ -68,7 +80,6 @@ export class BannerComponent implements OnInit {
     this.bannerModal.description=item.description;
 
     //this.bannerModal.bannerimg=this.imgUrl+'/'+item.bannerimg;
-    console.log(this.bannerModal.bannerimg)
     this.modalService.open(content)
   }
 
@@ -127,8 +138,6 @@ export class BannerComponent implements OnInit {
   }
 
   private getDismissReason(reason: any): string {
-
-
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -137,4 +146,67 @@ export class BannerComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
+
+  test(){
+    console.log(this.bannerForm.value);
+
+  }
+
+
+
+  //Banner Type Section
+  getAllBannerTypes(){
+    this._bannerTypeServ.get().subscribe(response=>{
+      this.bannerTypes=response;
+    })
+  }
+
+  addBannerTypes(){
+    if(!(this.typeForm.invalid) && this.editTypeIndex == null){
+      this._bannerTypeServ.create(this.typeForm.value).subscribe(response=>{
+        if(response.success){
+          this.bannerTypes.push(response.data);
+          this.typeForm.reset();
+        }
+      },error=>{
+
+      })
+    }
+  }
+
+  editBannerType(index){
+    this.typeFormState = "edit";
+    this.editTypeIndex = index;
+    this.typeForm.setValue({
+      typeName: this.bannerTypes[index].typeName
+    });
+  }
+
+  updateBannerTypes(){
+    if(!(this.typeForm.invalid)){
+      this._bannerTypeServ.update(this.bannerTypes[this.editTypeIndex].id, this.typeForm.value).subscribe(response=>{
+        if(response.success){
+          this.bannerTypes[this.editTypeIndex]=response.data;
+          this.typeForm.reset();
+          this.editTypeIndex=null;
+          this.typeFormState="new";
+        }
+      },error=>{
+        console.log(error);
+
+      })
+    }
+  }
+
+  deleteBannerTypes(index){
+
+    if(!(confirm("Do you really want to delete? This may contain banners."))){
+      return false;
+    }
+    this._bannerTypeServ.delete(this.bannerTypes[index].id).subscribe(response=>{
+      this.bannerTypes.splice(index,1)
+      this.getAllBanner();
+    })
+  }
+  //end of banner type section
 }

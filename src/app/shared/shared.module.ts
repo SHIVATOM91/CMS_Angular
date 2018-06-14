@@ -1,3 +1,4 @@
+import { BannerTypeService } from './services/banner-type.service';
 import { MenuService } from './services/menu.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -28,7 +29,7 @@ import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
     CustomFormsModule,
     Angular2FontawesomeModule
   ],
-  providers: [  BannerService ,PageService, MenuService, FormBuilder,NgbAccordionConfig]
+  providers: [  BannerService, BannerTypeService, PageService, MenuService, FormBuilder,NgbAccordionConfig]
 
 })
 export class SharedModule { }
