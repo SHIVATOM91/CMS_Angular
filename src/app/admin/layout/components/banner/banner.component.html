@@ -3,8 +3,17 @@
         <ngb-tabset>
             <ngb-tab title="List All">
                 <ng-template ngbTabContent>
+                    <div class="row">
+                      <div class="col-sm-12">
+                          <button *ngIf="selectedBannerId != ''" class="btn btn-secondary pull-right" (click)="addBanner(content); bannerModaltitle='New Banner'"><i class="fa fa-plus" aria-hidden="true"></i> Add new</button>
 
-                    <button class="btn btn-secondary pull-right" (click)="addBanner(content); bannerModaltitle='New Banner'"><i class="fa fa-plus" aria-hidden="true"></i> Add new</button>
+                          <div class="form-group">
+                            <select name="" id="" class="form-control col-sm-3  mt-3" [(ngModel)]="selectedBannerId">
+                              <option *ngFor="let type of bannerTypes; let i = index" [value]="type.id" >{{type.typeName}} {{i==1}}</option>
+                            </select>
+                          </div>
+                      </div>
+                    </div>
                     <table class="table table-bordered">
                         <thead>
                          <tr>
@@ -17,7 +26,7 @@
                         <tr *ngIf="bannerContent== ''">
                             <td colspan="3" class="text-center">No Banner to display</td>
                         </tr>
-                         <tr *ngFor="let image of bannerContent;let i = index">
+                         <tr *ngFor="let image of bannerContent|bfilter: selectedBannerId;let i = index">
                            <td>
                                 {{image.title}}
                            </td>
@@ -63,6 +72,67 @@
                     </div>
                 </ng-template>
             </ngb-tab>
+
+            <ngb-tab>
+                <ng-template ngbTabTitle>Banner Category</ng-template>
+                <ng-template ngbTabContent>
+                    <div class="row">
+                        <div class="col-md-4">
+                          <div class="card clerfix mt-3">
+                              <div class="card-header">
+                                  <ng-container *ngIf="typeFormState == 'edit'">
+                                    Edit category
+                                  </ng-container>
+                                  <ng-container *ngIf="typeFormState == 'new'">
+                                    Add new category
+                                  </ng-container>
+                              </div>
+                              <div class="card-body">
+                                <form [formGroup]="typeForm" >
+                                  <div class="form-group">
+                                    <label for="menutitle">Category name:</label>
+                                    <input type="text" class="form-control" name="menuTittle" formControlName="typeName"  id="menutypeName" aria-describedby="menutypeName"  required>
+                                    <div class="form-control-feedback text-danger" *ngIf="typeForm.get('typeName').errors && (typeForm.get('typeName').dirty || typeForm.get('typeName').touched)">
+                                      <p *ngIf="typeForm.get('typeName').errors.required">Category name is required</p>
+                                      <p *ngIf="typeForm.get('typeName').errors.minlength">Category name must be {{ typeForm.get('typeName').errors.minlength.requiredLength }} characters long</p>
+                                    </div>
+                                  </div>
+                                  <ng-container *ngIf="typeFormState == 'edit'">
+                                    <button type="button" class="btn btn-primary " (click)="updateBannerTypes()">Update</button>
+                                    <button type="button" class="btn btn-danger " (click)="typeFormState='new';typeForm.reset();editTypeIndex=null;">Cancel</button>
+                                  </ng-container>
+                                  <ng-container *ngIf="typeFormState == 'new'">
+                                    <button type="button" class="btn btn-primary " (click)="addBannerTypes()">Add</button>
+                                  </ng-container>
+                                </form>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <table class="table table-bordered mt-3">
+                            <thead>
+                              <tr>
+                                <th>Category name</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let type of bannerTypes;let i = index">
+                                <td>
+                                    {{ type.typeName }}
+                                </td>
+                                <td>
+                                  <button type="button" class="btn btn-primary btn-sm" (click)="editBannerType(i)">Edit</button>
+                                  <button type="button" class="btn btn-danger btn-sm" (click)="deleteBannerTypes(i)">Delete</button>
+                                </td>
+                              </tr>
+                            </tbody>
+                            <!-- <ngb-pagination [collectionSize]="70" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>      -->
+                        </table>
+                      </div>
+                    </div>
+                </ng-template>
+            </ngb-tab>
         </ngb-tabset>
     </div>
 </div>
@@ -75,28 +145,31 @@
       </button>
     </div>
     <div class="modal-body">
-        <form role="form" id="banner" #bannerForm="ngForm" (keyup)="errorMsg=''" novalidate>
+        <form role="form" id="banner" [formGroup]="bannerForm" (keyup)="errorMsg=''" novalidate>
             <div  class="alert" *ngIf="errorMsgShow" [ngClass]="{'alert-danger':errorMsgType=='fail' , 'alert-success':errorMsgType=='success'}">
 
                 <ng-container *ngIf="errorMsgType=='success'">Thank you for getting in touch!.</ng-container>
                 <ng-container *ngIf="errorMsgType=='fail'">Failed to send Your message!</ng-container>
             </div>
-            <fieldset class="form-group">
-                <label>Title</label>
-                <input class="form-control" name="title" [(ngModel)]="bannerModal.title"  #title="ngModel"  placeholder="Enter title" id="log-title" required>
-                <small class="small text-danger" *ngIf="title.invalid && title.touched">Please enter title </small>
-            </fieldset>
-            <fieldset class="form-group">
-                <label>Description</label>
-                <input class="form-control" name="description" [(ngModel)]="bannerModal.description"  #description="ngModel"  placeholder="Enter description" id="log-description" required>
-                <small class="small text-danger" *ngIf="description.invalid && description.touched">Please enter Description </small>
-            </fieldset>
+              <input type="text" class="form-control" name="menuTittle" formControlName="banner_types_id"  id="menutitle" [value]="selectedBannerId">
+              <div class="form-group">
+              <label for="menutitle">Enter banner title:</label>
+              <input type="text" class="form-control" name="menuTittle" formControlName="title"  id="menutitle" aria-describedby="menutitle"  required>
+              <div class="form-control-feedback text-danger" *ngIf="bannerForm.get('title').errors && (bannerForm.get('title').dirty || bannerForm.get('title').touched)">
+                <p *ngIf="bannerForm.get('title').errors.required">Title is required</p>
+                <p *ngIf="bannerForm.get('title').errors.minlength">Title must be {{ bannerForm.get('title').errors.minlength.requiredLength }} characters long</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="menutitle">Description:</label>
+              <textarea formControlName="description" class="form-control" rows="3"></textarea>
+            </div>
             <fieldset class="form-group">
                 <label>Banner image</label>
-                <input class="form-control" name="bannerimg" [(ngModel)]="bannerModal.bannerimg"  #bannerimg="ngModel"   type="file" (change)="handleFileInput($event)"  placeholder="Enter description"  required>
-                <small class="small text-danger" *ngIf="bannerimg.invalid && bannerimg.touched">Please select the image </small>
+                <input class="form-control" name="bannerimg" accept="image/*" formControlName="bannerimg" type="file"  placeholder="Enter description"  required>
+                <p *ngIf="bannerForm.get('bannerimg').errors.required">Banner image required</p>
             </fieldset>
-
+            <button type="button" (click)="test()"></button>
             <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary" (click)="uploadBanner(bannerForm);"  *ngIf="bannerEditMode==false" >Submit</button>
             <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary" (click)="updateBanner(bannerForm);"  *ngIf="bannerEditMode==true" >Edit</button>
         </form>

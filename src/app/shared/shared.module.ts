@@ -1,3 +1,4 @@
+import { BannerTypeService } from './services/banner-type.service';
 import { MenuService } from './services/menu.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -26,7 +27,7 @@ import { SectionsService } from './services/sections.service';
     HttpClientModule,
     Angular2FontawesomeModule
   ],
-  providers: [  BannerService ,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService]
+  providers: [  BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService]
 
 })
 export class SharedModule { }
