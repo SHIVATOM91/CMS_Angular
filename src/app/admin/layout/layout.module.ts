@@ -20,10 +20,12 @@ import { InputTemplateComponent } from './templates/input-template/input-templat
 import { DecriptionTemplateComponent } from './templates/decription-template/decription-template.component';
 import { ImageTemplateComponent } from './templates/image-template/image-template.component';
 import { SectionsComponent } from './components/Sections/sections.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { TestimonialComponent } from './components/testimonial/testimonial.component';
 
 @NgModule({
   
-  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent],
+  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, ProjectsComponent, TestimonialComponent],
   imports: [
     LayoutRoutingModule,
     NgbModule,

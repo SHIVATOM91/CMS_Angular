@@ -57,7 +57,7 @@ export class NewPagesComponent implements OnInit {
 
   publishPage(pageForm){
     console.log(pageForm)
-    pageForm.push({"Properties":this.pagePropertiesData})
+    //pageForm.push({"Properties":this.pagePropertiesData})
     console.log(pageForm)
     this._page.create(pageForm).subscribe(result=>{
       this.ErrorObject.show=true;

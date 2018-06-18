@@ -7,6 +7,8 @@ import { PagesComponent } from './components/pages/pages.component';
 import { NewPagesComponent } from './components/pages/new-pages/new-pages.component';
 import { LayoutComponent } from './layout.component';
 import { SectionsComponent } from './components/Sections/sections.component';
+import { TestimonialComponent } from './components/testimonial/testimonial.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 
 
 const routes: Routes = [
@@ -18,6 +20,8 @@ const routes: Routes = [
       { path: 'banner', component: BannerComponent },
       { path: 'page', component: PagesComponent },
       { path: 'sections', component: SectionsComponent },
+      { path: 'testimonial', component: TestimonialComponent },
+      { path: 'projets', component: ProjectsComponent },
       { path: 'page/newpage', component: NewPagesComponent }
       
     ]

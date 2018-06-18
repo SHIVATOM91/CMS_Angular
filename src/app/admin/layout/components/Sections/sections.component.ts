@@ -1,66 +1,91 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, FormControl, ControlContainer, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SectionsService } from '../../../../shared/services/sections.service';
 
 @Component({
   selector: 'app-sections',
   templateUrl: './sections.component.html',
   styleUrls: ['./sections.component.css']
 })
-export class SectionsComponent {
+export class SectionsComponent  {
+  sectionForm:FormGroup
+  sectionList;
+  constructor(private modalService: NgbModal , private fb:FormBuilder, private _sectionService:SectionsService) {
+    
+    this.sectionForm=fb.group({
+      sections: fb.array([])
+    });
+    
+    _sectionService.get().subscribe(response=>{
+      this.sectionList=response;
+      this.sectionList.forEach((sectionResponse,index) => {
+        this.sections.push(this.initPageSections(sectionResponse.title , sectionResponse.id));
+        let property=this.sections.controls[index].get('properties') as FormArray;
+        sectionResponse.section_properties.forEach(propertyResponse => {
+          property.push(this.initPropertySections(propertyResponse.key, propertyResponse.type , propertyResponse.id  ))
+        })
+      });
+    });
+  }
 
-  sectionForm:FormGroup;
-  closeResult; 
+  addNewSection(){
+    this.sections.push(this.initPageSections());
+  }
 
-  constructor(private modalService: NgbModal , private fb:FormBuilder) { 
-    this.sectionForm = fb.group({
-      sections : fb.group({
-         title : [''],
-         properties:this.fb.array([])
-      })
+  deleteSection(index){
+    let sectionId=this.getSectionId(index).value;
+    this._sectionService.delete(sectionId).subscribe(response=>{
+      this.sections.removeAt(index);
     })
   }
- 
 
-  addNewSection(title){
-     console.log()
+  deleteProperty(sectionIndex, propertyIndex){
+    let property = <FormArray>this.sections.controls[sectionIndex].get('properties');
+    let propertyId = this.getPropertyId(sectionIndex, propertyIndex).value;
+    this._sectionService.deleteProperty(propertyId).subscribe(response=>{
+        property.removeAt(propertyIndex);
+    })
+    
   }
 
-  addProperty(){
-    this.properties.push( new FormGroup({
-      name: new FormControl('key', Validators.required),
-      quantity: new FormControl(100)
-    }))
-    console.log(this.properties);
+  addNewProperty(section){
+    section.get('properties').push(this.initPropertySections()); 
   }
 
- 
+  publishSections(){
+    this._sectionService.create(this.sectionForm.value).subscribe(response=>{
+      console.log(response)
+    })
+  }
+
+  initPropertySections(key? , type? , id?):FormGroup{
+    return this.fb.group({
+      id:[id],
+      key: [key,Validators.required],
+      type: [type,Validators.required]
+    });
+  }
+
+  initPageSections(title? , id?):FormGroup{
+    return this.fb.group({
+      id:[id],
+      title:[title,Validators.required],
+      properties:this.fb.array([])
+    })
+  }
 
   get sections(){
     return this.sectionForm.get('sections') as FormArray;
   }
 
-  get properties(){
-    return this.sections.get('properties') as FormArray;
+  getSectionId(sectionIndex){
+    return this.sections.controls[sectionIndex].get('id');
   }
 
-  open(content) {
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+  getPropertyId(sectionIndex, propertyIndex){
+    let property =this.sections.controls[sectionIndex].get('properties') as FormArray;
+    return property.controls[propertyIndex].get('id')
   }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
-
 }
 

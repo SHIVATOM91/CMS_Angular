@@ -8,15 +8,14 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 import { PageService } from './services/page.service';
 import { BannerService } from './services/banner.service';
 import { OwlModule } from 'ngx-owl-carousel';
-import { CustomFormsModule } from 'ng2-validation';
 import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
+import { SectionsService } from './services/sections.service';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
-    CustomFormsModule
+    ReactiveFormsModule
   ],
   declarations: [],
   exports: [
@@ -25,10 +24,9 @@ import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     OwlModule,
     HttpClientModule,
-    CustomFormsModule,
     Angular2FontawesomeModule
   ],
-  providers: [  BannerService ,PageService, MenuService, FormBuilder,NgbAccordionConfig]
+  providers: [  BannerService ,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService]
 
 })
 export class SharedModule { }

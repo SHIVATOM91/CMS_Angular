@@ -33,6 +33,16 @@ export class SidebarComponent {
             "icon":"fa fa-picture-o"
         },
         {
+            "name":"Projets",
+            "link":"projets",
+            "icon":"fa fa-folder-o"
+        },
+        {
+            "name":"Testimonial",
+            "link":"testimonial",
+            "icon":"fa fa-pencil-square-o"
+        },
+        {
             "name":"Appearance",
             "link":"Appearance",
             "icon":"fa fa-eye"
