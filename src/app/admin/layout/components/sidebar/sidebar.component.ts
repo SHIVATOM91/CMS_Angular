@@ -13,6 +13,11 @@ export class SidebarComponent {
     // need to update
      meniItem=[
         {
+            "name":"Posts",
+            "link":"post",
+            "icon":"fa fa-file"
+        },
+        {
             "name":"Pages",
             "link":"page",
             "icon":"fa fa-file"

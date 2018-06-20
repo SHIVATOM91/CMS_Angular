@@ -41,7 +41,7 @@
     text-decoration: underline;
     cursor: pointer;
     color: #104756;
-    
+
 }
 .closebtn{
     cursor: pointer;
@@ -58,6 +58,9 @@
 }
 
 
+.hidden{
+  display: none;
+}
 
 
 

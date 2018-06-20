@@ -6,13 +6,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MenuService extends DataService{
 
-  constructor(http:HttpClient) {
+  constructor(http: HttpClient) {
       super(http, 'menu');
    }
 
 
-   getPages(){
-     return this.http.get(this.apiUrl+"page/slug",this.token);
+   getPages() {
+     return this.http.get(this.apiUrl + 'page/slug', this.token);
    }
 
 }
