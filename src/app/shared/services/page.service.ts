@@ -12,7 +12,7 @@ export class PageService  extends DataService {
   apiUrl:String =environment.apiUrl;
   
   constructor(http:HttpClient) {
-    super(http, 'page');
+    super(http, 'pages');
   }
 
   getProperties(){

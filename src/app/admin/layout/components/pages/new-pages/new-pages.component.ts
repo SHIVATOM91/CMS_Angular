@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageService } from '../../../../../shared/services/page.service';
 import { SectionsService } from '../../../../../shared/services/sections.service';
 import { DragulaService } from 'ng2-dragula';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 
 
@@ -55,6 +55,7 @@ export class NewPagesComponent implements OnInit {
   private onDropModel(args) {
     let [el, target, source] = args;
     // do something else
+    console.log(args)
   }
 
   private onRemoveModel(args) {
@@ -62,25 +63,31 @@ export class NewPagesComponent implements OnInit {
     // do something else
   }
 
-  initPageSections(section_id? , title? , id?):FormGroup{
+  initPageSections( title? , section_id?, id?):FormGroup{
     return this.fb.group({
-      id:[id],
-      title: [title,Validators.required],
-      section_id: [section_id,Validators.required]
+      id: [id],
+      section_id:[section_id],
+      title: [title,Validators.required]
     });
   }
   
-  publishPage(pageForm){
-    console.log(pageForm)
-    this._page.create(pageForm).subscribe(result=>{
-      this.ErrorObject.show=true;
-      if(result.success){
-        this.ErrorObject.type='success';
-      }else{
-        this.ErrorObject.type='fail';
-        this.ErrorObject.msg =result.toString();
-      }
-    })
+  publishPage(formData){
+    let sections=this.pageForm.get('sections') as FormArray;
+    sections.setValue([]);
+    this.selectedSection.forEach(element => {
+      sections.push(this.initPageSections(element.title, element.id));
+    });
+    console.log(this.pageForm.value);
+    
+    // this._page.create(formData).subscribe(result=>{
+    //   this.ErrorObject.show=true;
+    //   if(result.success){
+    //     this.ErrorObject.type='success';
+    //   }else{
+    //     this.ErrorObject.type='fail';
+    //     this.ErrorObject.msg =result.toString();
+    //   }
+    // })
   }
 }
 
