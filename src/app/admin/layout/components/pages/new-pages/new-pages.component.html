@@ -1,90 +1,90 @@
-<form role="form" id="banner" #pageForm="ngForm"  novalidate>
-<div class="row justify-content-between">
-  <div class="col-md-8">
-        <div  class="alert" *ngIf="ErrorObject.show==true" [ngClass]="{'alert-danger':ErrorObject.type=='fail' , 'alert-success':ErrorObject.type=='success'}">
-            <ng-container *ngIf="ErrorObject.type=='success'">Page has published successfully! </ng-container>
-            <ng-container *ngIf="ErrorObject.type=='fail'">{{ErrorObject.msg}}</ng-container>
-        </div>
-        <fieldset class="form-group">
-            <label>Title</label>
-            <input class="form-control" name="title" [(ngModel)]="pageModal.title"  #title="ngModel"  placeholder="Enter title" id="log-title" required>
-            <small class="small text-danger" *ngIf="title.invalid && title.touched">Please enter title </small>
-        </fieldset>
-        <fieldset class="form-group">
-            <label>Description</label>
-        </fieldset>
-        <ck-editor name="editor1" [(ngModel)]="pageModal.description"  #description="ngModel" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>   
-  </div>
-  <div class="col-md-3" >
-      <button type="submit" [disabled]="!pageForm.valid" class="btn btn-primary float-right "  (click)="publishPage(pageForm.value);"  ><i class="fa fa-floppy-o" aria-hidden="true"></i> Publish</button>
-      <div class="card clerfix">
-          <div class="card-header">
-            Properties
-          </div>
-          <div class="card-body">
-                <div class="taskboard-cards" [dragula]='"task-group"'>
-                    <div class="taskboard-task">
-                        <div class="taskboard-task-title">QA Testing</div>
-                        <small class="card-text text-muted">Etiam porta sem malesuada magna mollis euismod.</small>
-                    </div>
-                    <div class="taskboard-task task-status-danger">
-                        <div class="taskboard-task-title">Layout design</div>
-                        <small class="card-text text-muted">Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</small>
-                    </div>
-                    <div class="taskboard-task task-status-info">
-                        <div class="taskboard-task-title">Fix navigation menu</div>
-                        <small class="card-text text-muted">Donec sed odio dui.</small>
-                    </div>
-                    <div class="taskboard-task">
-                        <div class="taskboard-task-title">Update bootstrap 4</div>
-                        <small class="card-text text-muted">Aenean lacinia bibendum nulla sed consectetur.</small>
-                    </div>
-                    <div class="taskboard-task">
-                        <div class="taskboard-task-title">Run build tools</div>
-                        <small class="card-text text-muted">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</small>
-                    </div>
-                    <div class="taskboard-task task-status-success">
-                        <div class="taskboard-task-title">List article ideas</div>
-                        <small class="card-text text-muted">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</small>
-                    </div>
-                    <div class="taskboard-task">
-                        <div class="taskboard-task-title">Reactjs fixes</div>
-                        <small class="card-text text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
-                    </div>
-                    <div class="taskboard-task task-status-warning">
-                        <div class="taskboard-task-title">Implement SSL</div>
-                        <small class="card-text text-muted">Etiam porta sem malesuada magna mollis euismod.</small>
-                    </div>
-                    <div class="taskboard-task task-status-danger">
-                        <div class="taskboard-task-title">Cleanup code</div>
-                        <small class="card-text text-muted">Sollicitudin</small>
-                    </div>
+<form role="form" id="banner"  [formGroup]="pageForm"  novalidate>
+    <div class="row justify-content-between">
+      <div class="col-md-8">
+            <div  class="alert" *ngIf="ErrorObject.show==true" [ngClass]="{'alert-danger':ErrorObject.type=='fail' , 'alert-success':ErrorObject.type=='success'}">
+                <ng-container *ngIf="ErrorObject.type=='success'">Page has published successfully! </ng-container>
+                <ng-container *ngIf="ErrorObject.type=='fail'">{{ErrorObject.msg}}</ng-container>
+            </div>
+            <fieldset class="form-group">
+                <label>Title</label>
+                <input class="form-control" name="title" formControlName="title"    placeholder="Enter title" id="log-title" >
+                <!-- <small class="small text-danger" *ngIf="title.invalid && title.touched">Please enter title </small> -->
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Description</label>
+            </fieldset>
+            <ck-editor name="editor1" formControlName="description" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor> 
+            
+            <div class="taskboard-wrapper">
+              <div class="taskboard-list">
+                <div class="taskboard-cards" [dragula]='"another-bag"' [dragulaModel]='selectedSection'>
+                  <div class="taskboard-task" *ngFor='let section of selectedSection'> 
+                   
+                    <div class="taskboard-task-title">{{ section.title }}</div>
+                    <!-- <div class="pull-right">
+                      <i class="fa fa-edit "></i>
+                      <i class="fa fa-trash "></i>
+                    </div> -->
+                  </div>
+                  
                 </div>
-            <p class="card-text">Select the new properties to the content.</p>
-            <select class="form-control"   >
-                <option>Select</option>
-                <option value="contactform" *ngFor="let desc of pagePropertiesList" [value]="desc.id">{{desc.propertyKey}}</option>
+              </div>
+            </div>
+      </div>
+      <div class="col-md-3" >
+          <button type="submit" [disabled]="!pageForm.valid" class="btn btn-primary float-right "  (click)="publishPage(pageForm.value);"  ><i class="fa fa-floppy-o" aria-hidden="true"></i> Publish</button>
+          <div class="card clerfix">
+              <div class="card-header">
+                Properties
+              </div>
+              <div class="card-body">
+                <small class="card-text">Select the new properties to the content.</small>
+                
+                <div class="taskboard-wrapper">
+                  <div class="taskboard-list" >
+                    <div class="taskboard-cards"  [dragula]='"another-bag"' [dragulaModel]='pageSectionList'>
+                      <div class="taskboard-task" *ngFor='let section of pageSectionList'> 
+                        <div class="taskboard-task-title">{{ section.title }}</div>
+                        <!-- <div class="pull-right">
+                          <i class="fa fa-edit "></i>
+                          <i class="fa fa-trash "></i>
+                        </div> -->
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
                
-            </select>
-            <button type="button" class="btn btn-primary " (click)="addProperties(Properties)">Add to page</button>
+                <!-- <select class="form-control"   >
+                    <option>Select</option>
+                    <option value="contactform" *ngFor="let desc of pagePropertiesList" [value]="desc.id">{{desc.propertyKey}}</option>
+                </select>
+                <button type="button" class="btn btn-primary " (click)="addProperties(Properties)">Add to page</button> -->
+              </div>
           </div>
       </div>
-  </div>
-</div>
-
-<div class="row">
-    <div class="col-md-8">
-        <!-- <div class="PropertyWrapper" *ngFor="let pageData of pagePropertiesData">
-            <input-template></input-template>
-        </div>
-        <div class="PropertyWrapper">
-            <decription-template >  </decription-template>
-        </div>
-        <div class="PropertyWrapper">
-            <image-template >  </image-template>
-        </div> -->
     </div>
-</div>
-
-</form>
-
+    
+    <div class="row">
+        <div class="col-md-8">
+            <!-- <div class="PropertyWrapper" *ngFor="let pageData of pagePropertiesData">
+                <input-template></input-template>
+            </div>
+            <div class="PropertyWrapper">
+                <decription-template >  </decription-template>
+            </div>
+            <div class="PropertyWrapper">
+                <image-template >  </image-template>
+            </div> -->
+        </div>
+    </div>
+    ---
+    
+    
+    
+    
+    
+      {{ selectedSection | json}}
+    </form>
+    
+    

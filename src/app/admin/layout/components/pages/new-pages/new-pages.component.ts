@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PageService } from '../../../../../shared/services/page.service';
+import { SectionsService } from '../../../../../shared/services/sections.service';
+import { DragulaService } from 'ng2-dragula';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 
@@ -11,53 +14,63 @@ import { PageService } from '../../../../../shared/services/page.service';
 
 export class NewPagesComponent implements OnInit {
    //modal variable
-  image
-
-  pageModal={
-    "title":"",
-    "description":"",
-    "bannerimg":"",
-  }
-
+  image;
+  pageForm:FormGroup;
   ErrorObject = {
     'type': '', 
     'show': false,
     'msg':''
   };
-
-  pagePropertiesList;
-  pagePropertiesData:any[][]=[];
   
-  constructor(private _page:PageService) { 
-    _page.getProperties().subscribe(result=>{
-      this.pagePropertiesList=result;
+  pageSectionList:Array<any> = [];
+  selectedSection:Array<any> =[];
+
+  constructor(private _page:PageService ,  private _sectionService:SectionsService , private dragulaService: DragulaService , private fb:FormBuilder) { 
+    this.pageForm=fb.group({
+      title:['',Validators.required],
+      description:['',Validators.required],
+      sections : fb.array([])
     })
   }
 
-  ngOnInit() {}
+  ngOnInit() {
 
+    this.dragulaService.dropModel.subscribe((value) => {
+      this.onDropModel(value.slice(1));
+    });
+
+    this.dragulaService.removeModel.subscribe((value) => {
+      this.onRemoveModel(value.slice(1));
+    });
+
+    this._sectionService.get().subscribe(result=>{
+      this.pageSectionList=result as SectionObj[];
+    });
+  }
+  
   handleFileInput(event){
     this.image=event.target.files[0];
   }
-
-  addProperties(Properties){
-    
-    this.pagePropertiesData[0]=[];
-    this.pagePropertiesData[0]['propertyId']=Properties;
-    this.pagePropertiesData[0]['propertyValue']="asd sadasd asdsd ";
-    
-    console.log(this.pagePropertiesData);
-    console.log('-------------------');
-    //Properties.push({"properties":this.pagePropertiesData})
-    console.log(Properties);
-    if(Properties=='section'){
-      this.pagePropertiesList.push( {"type":"section" })
-    }
+  
+  private onDropModel(args) {
+    let [el, target, source] = args;
+    // do something else
   }
 
+  private onRemoveModel(args) {
+    let [el, source] = args;
+    // do something else
+  }
+
+  initPageSections(section_id? , title? , id?):FormGroup{
+    return this.fb.group({
+      id:[id],
+      title: [title,Validators.required],
+      section_id: [section_id,Validators.required]
+    });
+  }
+  
   publishPage(pageForm){
-    console.log(pageForm)
-    //pageForm.push({"Properties":this.pagePropertiesData})
     console.log(pageForm)
     this._page.create(pageForm).subscribe(result=>{
       this.ErrorObject.show=true;
@@ -69,4 +82,9 @@ export class NewPagesComponent implements OnInit {
       }
     })
   }
+}
+
+export class SectionObj{
+  id: any;
+  title: any;
 }

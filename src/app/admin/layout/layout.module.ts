@@ -23,15 +23,17 @@ import { ImageTemplateComponent } from './templates/image-template/image-templat
 import { SectionsComponent } from './components/Sections/sections.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { TestimonialComponent } from './components/testimonial/testimonial.component';
+import { DragulaModule } from 'ng2-dragula';
 
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, ProjectsComponent, TestimonialComponent],
+  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, ProjectsComponent, TestimonialComponent , BannerPipe],
 
   imports: [
     LayoutRoutingModule,
     NgbModule,
     SharedModule,
     CKEditorModule,
+    DragulaModule,
     NgbDropdownModule.forRoot()
   ]
   ,providers:[NgbTabsetConfig,NgbModalStack]
