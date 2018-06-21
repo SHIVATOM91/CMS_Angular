@@ -1,6 +1,6 @@
 <h2>Update the category</h2>
 
-<form [formGroup]="updateForm" >
+<form [formGroup]="updateForm">
   <div class="form-group">
     <label for="menutitle">Category name:</label>
     <input type="text" class="form-control" name="menuTittle" formControlName="title"  id="title" autocomplete="off">
@@ -11,7 +11,7 @@
   </div>
   <div class="form-group">
     <label for="menutitle">Category Icon:</label>
-    <input type="file" class="form-control" accept="image/*" (change)="handleFileInput(e)">
+    <input type="file" class="form-control" accept="image/*" formControlName="image">
   </div>
   <button type="button" class="btn btn-primary" (click)="uploadData()">Save</button>
 </form>

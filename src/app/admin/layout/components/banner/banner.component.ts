@@ -149,7 +149,6 @@ export class BannerComponent implements OnInit {
 
   test(){
     console.log(this.bannerForm.value);
-
   }
 
 

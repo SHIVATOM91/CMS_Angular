@@ -1,3 +1,4 @@
+import { PostCategoryService } from '../../../../../../shared/services/post-category.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateComponent implements OnInit {
   public updateForm: FormGroup;
-  constructor(private fb:FormBuilder) {
+  constructor(private _serviceprivate: PostCategoryService,private fb:FormBuilder) {
     this.updateForm = fb.group({
+      id: [''],
       title: ["", Validators.required],
       description: [''],
       image: ['']
@@ -20,11 +22,14 @@ export class UpdateComponent implements OnInit {
   }
 
   handleFileInput(event){
-    this.updateForm.get('image').setValue(event.target.files[0]);
+    this.updateForm.get('image').setValue(event.target.files);
   }
 
   uploadData(){
     console.log(this.updateForm.value);
+    this._serviceprivate.create(this.updateForm.value).subscribe(response =>{
+
+    })
 
   }
 }

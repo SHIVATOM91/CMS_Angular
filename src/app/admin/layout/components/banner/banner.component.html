@@ -151,7 +151,7 @@
                 <ng-container *ngIf="errorMsgType=='success'">Thank you for getting in touch!.</ng-container>
                 <ng-container *ngIf="errorMsgType=='fail'">Failed to send Your message!</ng-container>
             </div>
-              <input type="text" class="form-control" name="menuTittle" formControlName="banner_types_id"  id="menutitle" [value]="selectedBannerId">
+              <input type="text" class="form-control" readonly formControlName="banner_types_id"  [value]="selectedBannerId">
               <div class="form-group">
               <label for="menutitle">Enter banner title:</label>
               <input type="text" class="form-control" name="menuTittle" formControlName="title"  id="menutitle" aria-describedby="menutitle"  required>
@@ -167,9 +167,9 @@
             <fieldset class="form-group">
                 <label>Banner image</label>
                 <input class="form-control" name="bannerimg" accept="image/*" formControlName="bannerimg" type="file"  placeholder="Enter description"  required>
-                <p *ngIf="bannerForm.get('bannerimg').errors.required">Banner image required</p>
+
             </fieldset>
-            <button type="button" (click)="test()"></button>
+            <button type="button" (click)="test()">hhh</button>
             <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary" (click)="uploadBanner(bannerForm);"  *ngIf="bannerEditMode==false" >Submit</button>
             <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary" (click)="updateBanner(bannerForm);"  *ngIf="bannerEditMode==true" >Edit</button>
         </form>
