@@ -17,15 +17,15 @@ export class NewPagesComponent implements OnInit {
   image;
   pageForm:FormGroup;
   ErrorObject = {
-    'type': '', 
+    'type': '',
     'show': false,
     'msg':''
   };
-  
+
   pageSectionList:Array<any> = [];
   selectedSection:Array<any> =[];
 
-  constructor(private _page:PageService ,  private _sectionService:SectionsService , private dragulaService: DragulaService , private fb:FormBuilder) { 
+  constructor(private _page:PageService ,  private _sectionService:SectionsService , private dragulaService: DragulaService , private fb:FormBuilder) {
     this.pageForm=fb.group({
       title:['',Validators.required],
       description:['',Validators.required],
@@ -47,15 +47,20 @@ export class NewPagesComponent implements OnInit {
       this.pageSectionList=result as SectionObj[];
     });
   }
-  
+
   handleFileInput(event){
     this.image=event.target.files[0];
   }
-  
+
   private onDropModel(args) {
     let [el, target, source] = args;
     // do something else
-    console.log(args)
+
+    let sections=this.pageForm.get('sections') as FormArray;
+    sections.controls=[];
+    this.selectedSection.forEach(element => {
+      sections.push(this.initPageSections(element.title, element.id));
+    });
   }
 
   private onRemoveModel(args) {
@@ -70,24 +75,12 @@ export class NewPagesComponent implements OnInit {
       title: [title,Validators.required]
     });
   }
-  
+
   publishPage(formData){
-    let sections=this.pageForm.get('sections') as FormArray;
-    sections.setValue([]);
-    this.selectedSection.forEach(element => {
-      sections.push(this.initPageSections(element.title, element.id));
-    });
-    console.log(this.pageForm.value);
-    
-    // this._page.create(formData).subscribe(result=>{
-    //   this.ErrorObject.show=true;
-    //   if(result.success){
-    //     this.ErrorObject.type='success';
-    //   }else{
-    //     this.ErrorObject.type='fail';
-    //     this.ErrorObject.msg =result.toString();
-    //   }
-    // })
+
+    this._page.create(formData).subscribe(result=>{
+
+    })
   }
 }
 
