@@ -15,9 +15,21 @@ export class PagesComponent implements OnInit {
       this.pageContent=result;
     })
   }
+
   ngOnInit() {
   }
+
   addNewPage(){
-    this.router.navigate(['admin/dashboard/page/newpage'])
+    this.router.navigate(['admin/dashboard/page/newpage'],{skipLocationChange:true})
+  }
+  
+  editPage(pageItem){
+    this.router.navigate(['admin/dashboard/page/updatepage',pageItem.id],{skipLocationChange:true})
+  }
+
+  deletePage(pageItem){
+    this._pageServ.delete(this.pageContent[pageItem].id).subscribe(response=>{
+      this.pageContent.splice(pageItem,1)
+    })
   }
 }

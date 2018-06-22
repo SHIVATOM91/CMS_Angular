@@ -26,4 +26,8 @@ export class DataService {
     return this.http.delete<StatusResponse>(this.apiUrl+this.url+"/"+id);
   }
 
+  getBy(id){
+    return this.http.get(this.apiUrl+this.url+"/"+id,this.token);
+  }
+
 }

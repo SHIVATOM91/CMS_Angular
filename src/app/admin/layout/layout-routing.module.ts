@@ -44,7 +44,8 @@ const routes: Routes = [
       { path: 'sections', component: SectionsComponent },
       { path: 'testimonial', component: TestimonialComponent },
       { path: 'projets', component: ProjectsComponent },
-      { path: 'page/newpage', component: NewPagesComponent }
+      { path: 'page/newpage', component: NewPagesComponent },
+      { path: 'page/updatepage/:pageId', component: NewPagesComponent }
 
     ]
   }
