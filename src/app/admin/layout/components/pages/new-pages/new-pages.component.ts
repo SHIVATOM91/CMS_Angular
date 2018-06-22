@@ -78,9 +78,7 @@ export class NewPagesComponent implements OnInit {
 
   publishPage(formData){
 
-    this._page.create(formData).subscribe(result=>{
-
-    })
+    this._page.create(formData).subscribe(result => {})
   }
 }
 

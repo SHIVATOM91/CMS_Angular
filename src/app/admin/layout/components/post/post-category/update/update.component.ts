@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateComponent implements OnInit {
   public updateForm: FormGroup;
+  public formData: FormData;
   constructor(private _serviceprivate: PostCategoryService,private fb:FormBuilder) {
     this.updateForm = fb.group({
       id: [''],
@@ -22,14 +23,12 @@ export class UpdateComponent implements OnInit {
   }
 
   handleFileInput(event){
-    this.updateForm.get('image').setValue(event.target.files);
+    this.updateForm.get('image').setValue(event.target.files[0]);
   }
 
   uploadData(){
-    console.log(this.updateForm.value);
-    this._serviceprivate.create(this.updateForm.value).subscribe(response =>{
+    this._serviceprivate.create(this._serviceprivate.createFormData(this.updateForm.value)).subscribe(response =>{
 
     })
-
   }
 }

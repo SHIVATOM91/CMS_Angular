@@ -9,5 +9,7 @@
   [headerHeight]="50"
   [footerHeight]="50"
   [rowHeight]="'auto'"
-  [reorderable]="reorderable">
+  [selected]="selected"
+  [selectionType]="'single'"
+  (dblclick)='onRowSelect($event)'>
 </ngx-datatable>
