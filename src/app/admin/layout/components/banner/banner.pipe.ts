@@ -1,16 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
-  name: 'bfilter'
+  name: 'bfilter',
+  pure: false
 })
 export class BannerPipe implements PipeTransform {
 
-  transform(banners: any[], selectedTypeId: string): any[] {
-    if(!banners)
+  transform(bannerList: any[], selectedTypeId: string): any[] {
+    if(!bannerList)
       return [];
     if(!selectedTypeId)
       return [];
 
-    return banners.filter( banner => {
+    return bannerList.filter( banner => {
       if(banner.banner_types.id == selectedTypeId){
         return true;
       }else{

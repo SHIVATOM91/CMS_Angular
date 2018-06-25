@@ -1,5 +1,5 @@
 import { BannerTypeService } from './../../../../shared/services/banner-type.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { BannerService } from '../../../../shared/services/banner.service';
 import { environment } from '../../../../../environments/environment';
@@ -48,19 +48,20 @@ export class BannerComponent implements OnInit {
     });
 
     this.bannerForm=this.fb.group({
-      banner_types_id: ['', [Validators.required]],
-      title: ['', [Validators.minLength(2), Validators.required]],
+      id: [''],
+      banner_types_id: ['', Validators.required],
+      title: ['', Validators.required],
       description: [''],
-      bannerimg: ['', [Validators.required]]
+      bannerimg: ['', Validators.required]
      })
   }
 
   handleFileInput(event){
-    this.image=event.target.files[0];
+    this.bannerForm.get('bannerimg').setValue(event.target.files[0]);
   }
 
   getAllBanner(){
-    this._bannerServ.getAllBanner().subscribe(banner=>{
+    this._bannerServ.get().subscribe(banner=>{
       this.bannerContent=banner;
     })
   }
@@ -68,90 +69,39 @@ export class BannerComponent implements OnInit {
   addBanner(content){
     this.bannerEditMode=false;
     this.errorMsgShow=false;
-    this.bannerModal.title="";
-    this.bannerModal.description="";
-    this.bannerModal.bannerimg="";
+    this.bannerForm.get('bannerimg').setValidators(Validators.required);
+    this.bannerForm.get('banner_types_id').setValue(this.selectedBannerId);
     this.modalService.open(content)
   }
 
-  editBanner(item,content){
+  editBanner(item, content){
     this.bannerEditMode=true;
-    this.bannerModal.title=item.title;
-    this.bannerModal.description=item.description;
-
-    //this.bannerModal.bannerimg=this.imgUrl+'/'+item.bannerimg;
+    this.bannerForm.get('bannerimg').clearValidators();
+    this.bannerForm.get('id').setValue(item.id);
+    this.bannerForm.get('title').setValue(item.title);
+    this.bannerForm.get('description').setValue(item.description);
+    this.bannerForm.get('banner_types_id').setValue(item.banner_types_id);
     this.modalService.open(content)
   }
 
-  deleteBanner(item){
+  deleteBanner(index){
     let success=confirm("Are you sure want to delete this item");
     if(success){
-      this.bannerContent.splice(item,1)
+      this._bannerServ.delete(this.bannerContent[index].id).subscribe(response => {
+        this.bannerContent.splice(index,1)
+      })
     }
   }
 
-  uploadBanner(bannerForm)
+
+  uploadBanner()
   {
-    let frmData=new FormData();
-    frmData.append('title' ,bannerForm.controls.title.value);
-    frmData.append('description' ,bannerForm.controls.description.value);
-    frmData.append('banner_types_id' ,"1");
-    frmData.append('bannerimg' ,this.image);
-    this._bannerServ.postBanner(frmData).subscribe(result=>{
-    this.errorMsgShow=true;
+    this._bannerServ.create(this._bannerServ.createFormData(this.bannerForm.value)).subscribe( response => {
+      console.log("Hello");
 
-      if(result.success){
-          this.errorMsgType="success";
-          this.bannerContent.push({"title":bannerForm.controls.title.value , "description":bannerForm.controls.description.value , "bannerimg":result.img_url})
-      }
-      else{
-        this.errorMsgMessage="fail";
-      }
-    })
-  }
-
-  updateBanner(bannerForm){
-    let frmData=new FormData();
-    frmData.append('title' ,bannerForm.controls.title.value);
-    frmData.append('description' ,bannerForm.controls.description.value);
-    frmData.append('banner_types_id' ,"1");
-    frmData.append('bannerimg' ,this.image);
-    this._bannerServ.updateBanner(frmData).subscribe(result=>{
-    this.errorMsgShow=true;
-      if(result.success){
-          this.errorMsgType="success";
-          this.bannerContent.push({"title":bannerForm.controls.title.value , "description":bannerForm.controls.description.value , "bannerimg":result.img_url})
-      }
-      else{
-        this.errorMsgMessage="fail";
-      }
-    })
-  }
-  open(content) {
-
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+
   }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
-
-  test(){
-    console.log(this.bannerForm.value);
-  }
-
-
 
   //Banner Type Section
   getAllBannerTypes(){

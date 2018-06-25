@@ -5,11 +5,11 @@
                 <ng-template ngbTabContent>
                     <div class="row">
                       <div class="col-sm-12">
-                          <button *ngIf="selectedBannerId != ''" class="btn btn-secondary pull-right" (click)="addBanner(content); bannerModaltitle='New Banner'"><i class="fa fa-plus" aria-hidden="true"></i> Add new</button>
+                          <button *ngIf="selectedBannerId != ''" class="btn btn-secondary pull-right" (click)="addBanner(content);"><i class="fa fa-plus" aria-hidden="true"></i> Add new</button>
 
                           <div class="form-group">
                             <select name="" id="" class="form-control col-sm-3  mt-3" [(ngModel)]="selectedBannerId">
-                              <option *ngFor="let type of bannerTypes; let i = index" [value]="type.id" >{{type.typeName}} {{i==1}}</option>
+                              <option *ngFor="let type of bannerTypes; let i = index" [value]="type.id" >{{type.typeName}}</option>
                             </select>
                           </div>
                       </div>
@@ -23,26 +23,26 @@
                          </tr>
                         </thead>
                         <tbody>
-                        <tr *ngIf="bannerContent== ''">
-                            <td colspan="3" class="text-center">No Banner to display</td>
-                        </tr>
-                         <tr *ngFor="let image of bannerContent|bfilter: selectedBannerId;let i = index">
-                           <td>
-                                {{image.title}}
-                           </td>
-                           <td>
-                                {{image.description}}
-                           </td>
-                           <td>
-                                <div class="thumbnail-image-tb"  [ngStyle]="{'background': 'url('+imgUrl+'/'+image.bannerimg+')no-repeat scroll center center' ,  'height':'30px' , 'transform':'scale(0.8);',  'background-size': 'cover' }" ></div>
-                           </td>
-                           <td class="text-center">
-                                <button type="button" class="text_btn" (click)="editBanner(image, content) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-                           </td>
-                           <td class="text-center">
-                                <button type="button" class="text_btn" (click)="deleteBanner(image)" ><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-                             </td>
-                         </tr>
+                          <tr *ngIf="bannerContent== ''">
+                              <td colspan="3" class="text-center">No Banner to display</td>
+                          </tr>
+                          <tr *ngFor="let image of bannerContent|bfilter: selectedBannerId:pure: true;let i = index">
+                            <td>
+                                  {{image.title}}
+                            </td>
+                            <td>
+                                  {{image.description}}
+                            </td>
+                            <td>
+                                  <div class="thumbnail-image-tb"  [ngStyle]="{'background': 'url('+imgUrl+'/'+image.bannerimg+')no-repeat scroll center center' ,  'height':'30px' , 'transform':'scale(0.8);',  'background-size': 'cover' }" ></div>
+                            </td>
+                            <td class="text-center">
+                                  <button type="button" class="text_btn" (click)="editBanner(image, content) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+                            </td>
+                            <td class="text-center">
+                                  <button type="button" class="text_btn" (click)="deleteBanner(i)" ><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                              </td>
+                          </tr>
                         </tbody>
                        <!-- <ngb-pagination [collectionSize]="70" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>      -->
                        </table>
@@ -60,7 +60,7 @@
                                 [options]="{items: 1, dots: true, navigation: true}"
                                 [items]="bannerContent"
                                 [carouselClasses]="['owl-theme', 'row', 'sliding']">
-                                <div class="item" *ngFor="let image of bannerContent;let i = index">
+                                <div class="item" *ngFor="let image of bannerContent|bfilter: selectedBannerId;let i = index">
                                     <div class="thumbnail-image"  [ngStyle]="{'background': 'url('+imgUrl+'/'+image.bannerimg+')no-repeat scroll center center' ,  'height':'350px' , 'background-size': 'cover' }" >
                                         <h1 class="bannerTitle">{{image.title}}</h1>
                                         <h4 class="bannerDescription">{{image.description}}</h4>
@@ -139,7 +139,6 @@
 <!---Ng Bootstrap Modal -->
 <ng-template #content let-c="close" let-d="dismiss" >
     <div class="modal-header">
-      <h4 class="modal-title">{{bannerModaltitle}}</h4>
       <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -151,13 +150,11 @@
                 <ng-container *ngIf="errorMsgType=='success'">Thank you for getting in touch!.</ng-container>
                 <ng-container *ngIf="errorMsgType=='fail'">Failed to send Your message!</ng-container>
             </div>
-              <input type="text" class="form-control" readonly formControlName="banner_types_id"  [value]="selectedBannerId">
               <div class="form-group">
               <label for="menutitle">Enter banner title:</label>
               <input type="text" class="form-control" name="menuTittle" formControlName="title"  id="menutitle" aria-describedby="menutitle"  required>
               <div class="form-control-feedback text-danger" *ngIf="bannerForm.get('title').errors && (bannerForm.get('title').dirty || bannerForm.get('title').touched)">
                 <p *ngIf="bannerForm.get('title').errors.required">Title is required</p>
-                <p *ngIf="bannerForm.get('title').errors.minlength">Title must be {{ bannerForm.get('title').errors.minlength.requiredLength }} characters long</p>
               </div>
             </div>
             <div class="form-group">
@@ -166,12 +163,10 @@
             </div>
             <fieldset class="form-group">
                 <label>Banner image</label>
-                <input class="form-control" name="bannerimg" accept="image/*" formControlName="bannerimg" type="file"  placeholder="Enter description"  required>
-
+                <input class="form-control" name="bannerimg" accept="image/*" (change)="handleFileInput($event)" type="file"  placeholder="Enter description"  [required]="bannerEditMode==false">
             </fieldset>
-            <button type="button" (click)="test()">hhh</button>
-            <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary" (click)="uploadBanner(bannerForm);"  *ngIf="bannerEditMode==false" >Submit</button>
-            <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary" (click)="updateBanner(bannerForm);"  *ngIf="bannerEditMode==true" >Edit</button>
+            <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary" (click)="uploadBanner();"  *ngIf="bannerEditMode==false" >Add</button>
+            <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary" (click)="uploadBanner();"  *ngIf="bannerEditMode==true" >Update</button>
         </form>
     </div>
 
