@@ -12,6 +12,12 @@
     -ms-flex-direction: row;
     flex-direction: row;
 }
+#no-drop .taskboard-task{
+  cursor: default;
+}
+#no-drop i{
+  cursor: pointer;
+}
 .taskboard-task div:nth-child(1){
   flex: 1;
 }

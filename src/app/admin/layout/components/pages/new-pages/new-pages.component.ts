@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PageService } from '../../../../../shared/services/page.service';
 import { SectionsService } from '../../../../../shared/services/sections.service';
 import { DragulaService } from 'ng2-dragula';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { error } from 'protractor';
 
 
@@ -14,7 +14,7 @@ import { error } from 'protractor';
   styleUrls: ['./new-pages.component.css']
 })
 
-export class NewPagesComponent implements OnInit {
+export class NewPagesComponent implements OnInit , OnDestroy {
    //modal variable
   image;
   pageId;
@@ -33,6 +33,7 @@ export class NewPagesComponent implements OnInit {
     private _sectionService:SectionsService , 
     private dragulaService: DragulaService , 
     private route:ActivatedRoute,
+    private router:Router,
     private fb:FormBuilder) 
     { 
       this.pageId = this.route.snapshot.paramMap.get('pageId');
@@ -47,15 +48,20 @@ export class NewPagesComponent implements OnInit {
     ngOnInit() {
       if(this.pageId){
         this._page.getBy(this.pageId).subscribe(response=>{
-          
           let data=response as PageObj;
           let sectionArray=this.pageForm.get('sections') as FormArray;
           this.pageForm.get('id').setValue(data.id);
           this.pageForm.get('title').setValue(data.title);
           this.pageForm.get('description').setValue(data.description);
           this.selectedSection=data.page_sections as SectionObj[];
-      
           this.updateSectionList();
+        });
+        
+        this.dragulaService.setOptions('another-bag', {
+          copy: true,
+          moves: function (el, container, handle) {
+            return container.id !== 'no-drop';
+          }
         });
       }
 
@@ -69,7 +75,6 @@ export class NewPagesComponent implements OnInit {
 
       this._sectionService.get().subscribe(result=>{
         this.pageSectionList=result as SectionObj[];
-        console.log(this.pageSectionList)
       });
     }
   
@@ -80,7 +85,6 @@ export class NewPagesComponent implements OnInit {
   private onDropModel(args) {
     let [el, target, source] = args;
     // do something else
-    console.log(this.selectedSection)
     this.updateSectionList();
   }
 
@@ -104,7 +108,6 @@ export class NewPagesComponent implements OnInit {
     // do something else
   }
 
-
   initPageSections( title? , section_id?, id?):FormGroup{
     return this.fb.group({
       id: [id],
@@ -113,6 +116,14 @@ export class NewPagesComponent implements OnInit {
     });
   }
   
+  editProprty(section){
+    //console.log(section)
+    this.router.navigate(['admin/dashboard/page/editpage',section.id],{skipLocationChange:true})
+  }
+
+  deleteProprty(section){
+    
+  }
   publishPage(formData){
     console.log(formData)
     this._page.create(formData).subscribe(result=>{
@@ -121,6 +132,9 @@ export class NewPagesComponent implements OnInit {
     error=>{
       console.log("------------")
     })
+  }
+  ngOnDestroy(){
+    this.dragulaService.destroy('another-bag');
   }
 }
 
