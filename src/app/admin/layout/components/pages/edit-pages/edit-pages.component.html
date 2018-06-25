@@ -1,0 +1,18 @@
+
+
+
+<div class="row">
+  <div class="col-md-12" *ngIf="section_details">
+    <div class="card" >
+      <div class="card-header">
+        {{section_details.title}}
+      </div>
+      <div class="card-body">
+          <div *ngFor="let item of section_details.page_section_props
+          ">
+            {{item.section_properties.key    }}
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

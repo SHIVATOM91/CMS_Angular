@@ -14,6 +14,7 @@ import { SectionsComponent } from './components/Sections/sections.component';
 import { TestimonialComponent } from './components/testimonial/testimonial.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { PostCategoryComponent } from './components/post/post-category/post-category.component';
+import { EditPagesComponent } from './components/pages/edit-pages/edit-pages.component';
 
 
 const routes: Routes = [
@@ -45,6 +46,7 @@ const routes: Routes = [
       { path: 'testimonial', component: TestimonialComponent },
       { path: 'projets', component: ProjectsComponent },
       { path: 'page/newpage', component: NewPagesComponent },
+      { path: 'page/editpage/:sectionId', component: EditPagesComponent },
       { path: 'page/updatepage/:pageId', component: NewPagesComponent }
 
     ]

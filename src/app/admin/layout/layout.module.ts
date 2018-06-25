@@ -29,9 +29,10 @@ import { AllPostComponent } from './components/post/all-post/all-post.component'
 import { PostCategoryComponent } from './components/post/post-category/post-category.component';
 import { UpdateComponent } from './components/post/post-category/update/update.component';
 import { ListComponent } from './components/post/post-category/list/list.component';
+import { EditPagesComponent } from './components/pages/edit-pages/edit-pages.component';
 
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, PostComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, ProjectsComponent, TestimonialComponent , BannerPipe, AllPostComponent, PostCategoryComponent, UpdateComponent, ListComponent
+  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, PostComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, ProjectsComponent, TestimonialComponent , BannerPipe, AllPostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent
 
 
 

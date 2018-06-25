@@ -18,6 +18,12 @@ export class PageService  extends DataService {
   getProperties(){
     return this.http.get(this.apiUrl+"page-property", this.token)
   }
+
+  getPageSections(section_id){
+    return this.http.get(this.apiUrl+"page-section/"+section_id, this.token)
+  }
+  
+  
 }
 export interface Page{
   success:boolean,
