@@ -5,9 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent
@@ -16,8 +16,10 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     BrowserModule,
     AppRoutingModule,
+    NoopAnimationsModule,
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [ToastrService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
