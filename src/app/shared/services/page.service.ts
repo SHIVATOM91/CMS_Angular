@@ -22,8 +22,12 @@ export class PageService  extends DataService {
   getPageSections(section_id){
     return this.http.get(this.apiUrl+"page-section/"+section_id, this.token)
   }
-  
-  
+
+  updatePageSection(formData){
+      return this.http.post(this.apiUrl+"page-section" , formData , this.token );
+  }
+
+
 }
 export interface Page{
   success:boolean,

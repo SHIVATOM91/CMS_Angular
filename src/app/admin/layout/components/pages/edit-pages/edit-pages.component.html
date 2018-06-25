@@ -1,18 +1,46 @@
 
 
+<form [formGroup]="propertyForm" >
+  <div class="row" >
+    <div class="col-md-12" *ngIf="section_details">
+      <div class="card" >
+        <div class="card-header">
+          <input type="text" [readonly]="!editMode"  formControlName="page_section_title"  name="file" class="d-inline" [ngClass]="{'form-control':editMode ,'static-text':!editMode}" id="staticEmail" style="width: 150px;"   /> 
+           <i class="fa  d-inline"  [ngClass]="{'fa-pencil-square-o':!editMode ,'fa-floppy-o':editMode}" (click)="editMode=!editMode;" aria-hidden="true"></i>
+          
+        </div>
+        <div class="card-body">
+          <div formArrayName="properties">
+            <div class="form-group row" *ngFor="let item of properties.controls; let i=index;">
+              <label for="staticEmail" class="col-sm-2 col-form-label">{{item.get('key').value}}</label>
+              <div class="col-sm-3"  [formGroupName]='i'>
+                <ng-container *ngIf="item.get('type').value=='text'">
+                  <input type="text" formControlName='value'  class="form-control" id="staticEmail" >
+                </ng-container>
 
-<div class="row">
-  <div class="col-md-12" *ngIf="section_details">
-    <div class="card" >
-      <div class="card-header">
-        {{section_details.title}}
-      </div>
-      <div class="card-body">
-          <div *ngFor="let item of section_details.page_section_props
-          ">
-            {{item.section_properties.key    }}
+                <ng-container *ngIf="item.get('type').value=='file'">
+                <div class="img_wraper">
+                    <label [for]="i" class="img-hover">
+                        <div class="img-prop" *ngIf="!image[i] && item.get('link').value!=null" [ngStyle]="{'background': 'url('+imgUrl+''+item.get('link').value+')'  }"></div>
+                        <div class="img-prop" *ngIf="image[i]" [ngStyle]="{'background': 'url('+this.image[i]+')'  }"></div>
+                        <div class="img-prop" *ngIf="!image[i] && item.get('link').value==null" [ngStyle]="{'background': 'url(https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg)'  }"></div>
+
+                        
+                      </label>
+                </div>
+                <input type="file" accept="image/*" (change)="handleFileInput(item,$event ,i)"   name="file" class="form-control" hidden [id]="i">
+                </ng-container>
+
+                <ng-container *ngIf="item.get('type').value=='string'">
+                  <textarea type="file" name="string"  formControlName='value'  class="form-control" id="staticEmail"> </textarea>
+                </ng-container> 
+
+              </div>
+            </div>
           </div>
+          <button class="btn btn-primary" (click)="saveProperty()" >Save</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</form>
