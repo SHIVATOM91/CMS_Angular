@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -19,6 +20,6 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   providers: [AuthService ,  BannerService]
-  
+
 })
 export class AdminModule { }

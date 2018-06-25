@@ -25,13 +25,13 @@ export class ListComponent implements OnInit {
   getAllCategories(){
     this._service.get().subscribe(response => {
       this.categoryList = response as CategoryObject[];
-      console.log(this.categoryList);
 
     })
   }
 
   onRowSelect(){
-    this.router.navigate(['admin/dashboard/post/category/update'] , { queryParams: { catId: this.selected[0].id } ,skipLocationChange:true})
+    if(this.selected.length > 0)
+      this.router.navigate(['admin/dashboard/post/category/update', this.selected[0].id] , { skipLocationChange:true})
   }
 
 }

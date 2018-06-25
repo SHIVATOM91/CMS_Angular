@@ -37,6 +37,7 @@ const routes: Routes = [
               {path: '', redirectTo: 'list'},
               {path: 'list', component: ListComponent},
               {path: 'update', component: UpdateComponent},
+              {path: 'update/:catId', component: UpdateComponent},
             ]
           },
         ]
