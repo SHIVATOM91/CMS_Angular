@@ -97,8 +97,7 @@ export class BannerComponent implements OnInit {
   uploadBanner()
   {
     this._bannerServ.create(this._bannerServ.createFormData(this.bannerForm.value)).subscribe( response => {
-      console.log("Hello");
-
+      this.getAllBanner();
     });
 
   }

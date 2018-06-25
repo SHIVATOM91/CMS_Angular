@@ -16,6 +16,9 @@ export class MenuComponent implements OnInit {
   pageList;
 
   editIndex;
+
+
+
   constructor( private modalService: NgbModal, private _menuServe: MenuService, private fb: FormBuilder) {
 
     this.form = this.fb.group({
@@ -38,6 +41,8 @@ export class MenuComponent implements OnInit {
   getAllMenu(){
     this._menuServe.get().subscribe(response=>{
        this.menuList = response;
+       console.log(this.menuList);
+
     })
   }
 
@@ -49,26 +54,24 @@ export class MenuComponent implements OnInit {
   }
 
   openModal(content,index = null){
-    if(this.editIndex == null){
-      if(index == null){
-        this.editIndex=null;
-        this.form.reset();
-      }else{
-        this.editIndex=index;
-        let obj=this.menuList[index];
-        let editObj: Object;
-        editObj={
-          title: obj.title,
-          linkType: obj.linkType,
-          customLink: obj.customLink,
-          pageSlug: obj.pageSlug,
-          menuType: obj.menuType,
-          parent_id: obj.parent_id,
-        };
-        this.form.setValue(editObj);
-      }
-      this.open(content);
+    if(index == null){
+      this.editIndex=null;
+      this.form.reset();
+    }else{
+      this.editIndex=index;
+      let obj=this.editIndex;
+      let editObj: Object;
+      editObj={
+        title: obj.title,
+        linkType: obj.linkType,
+        customLink: obj.customLink,
+        pageSlug: obj.pageSlug,
+        menuType: obj.menuType,
+        parent_id: obj.parent_id,
+      };
+      this.form.setValue(editObj);
     }
+    this.open(content);
   }
 
   addNewMenu(){
@@ -87,26 +90,23 @@ export class MenuComponent implements OnInit {
 
   editMenu(){
     if(!(this.form.invalid)){
-      this._menuServe.update(this.menuList[this.editIndex].id, this.form.value).subscribe(response=>{
-        this.menuList[this.editIndex]=response.data;
-        this.editIndex=null;
+      this._menuServe.update(this.editIndex.id, this.form.value).subscribe(response=>{
+        this.editIndex=response.data;
         this.getAllMenu();
-        this.form.reset();
       })
     }
   }
 
   deleteMenu(index){
     let msg="Are you sure want to delete menu";
-    if(isArray(this.menuList[index].children)){
-      if(this.menuList[index].children.length > 0){
+    if(isArray(index.children)){
+      if(index.children.length > 0){
         msg="This menu has sub menu. Are you sure, you want to delete?";
       }
     }
     let status= confirm(msg);
     if(status){
-      this._menuServe.delete(this.menuList[index].id).subscribe(response=>{
-        this.menuList.splice(index,1);
+      this._menuServe.delete(index.id).subscribe(response=>{
         this.getAllMenu();
       })
 
