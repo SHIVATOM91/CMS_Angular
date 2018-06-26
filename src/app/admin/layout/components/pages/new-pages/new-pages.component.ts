@@ -21,26 +21,26 @@ export class NewPagesComponent implements OnInit , OnDestroy {
   pageId;
   pageForm:FormGroup;
   ErrorObject = {
-    'type': '', 
+    'type': '',
     'show': false,
     'msg':''
   };
-  
+
   pageSectionList:Array<any> = [];
   selectedSection:Array<any> =[];
 
-  constructor(  
-    private _page:PageService ,   
-    private _sectionService:SectionsService , 
-    private dragulaService: DragulaService , 
+  constructor(
+    private _page:PageService ,
+    private _sectionService:SectionsService ,
+    private dragulaService: DragulaService ,
     private route:ActivatedRoute,
     private router:Router,
     private toastr: ToastrService,
-    private fb:FormBuilder) 
-    { 
+    private fb:FormBuilder)
+    {
       this.pageId = this.route.snapshot.paramMap.get('pageId');
       this.pageForm=fb.group({
-        id:[],
+        id:[''],
         title:['',Validators.required],
         description:['',Validators.required],
         sections : fb.array([])
@@ -49,23 +49,15 @@ export class NewPagesComponent implements OnInit , OnDestroy {
 
     ngOnInit() {
       if(this.pageId){
-        this._page.getBy(this.pageId).subscribe(response=>{
-          let data=response as PageObj;
-          let sectionArray=this.pageForm.get('sections') as FormArray;
-          this.pageForm.get('id').setValue(data.id);
-          this.pageForm.get('title').setValue(data.title);
-          this.pageForm.get('description').setValue(data.description);
-          this.selectedSection=data.page_sections as SectionObj[];
-          this.updateSectionList();
-        });
-        
-        this.dragulaService.setOptions('another-bag', {
-          copy: true,
-          moves: function (el, container, handle) {
-            return container.id !== 'no-drop';
-          }
-        });
+        this.getPageData();
       }
+
+      this.dragulaService.setOptions('another-bag', {
+        copy: true,
+        moves: function (el, container, handle) {
+          return container.id !== 'no-drop';
+        }
+      });
 
       this.dragulaService.dropModel.subscribe((value) => {
         this.onDropModel(value.slice(1));
@@ -79,15 +71,28 @@ export class NewPagesComponent implements OnInit , OnDestroy {
         this.pageSectionList=result as SectionObj[];
       });
     }
-  
+
+    getPageData(){
+      this._page.getBy(this.pageId).subscribe(response=>{
+        let data=response as PageObj;
+        let sectionArray=this.pageForm.get('sections') as FormArray;
+        this.pageForm.get('id').setValue(data.id);
+        this.pageForm.get('title').setValue(data.title);
+        this.pageForm.get('description').setValue(data.description);
+        this.selectedSection=data.page_sections as SectionObj[];
+        this.updateSectionList();
+      });
+    }
+
   handleFileInput(event){
     this.image=event.target.files[0];
   }
-  
+
   private onDropModel(args) {
     let [el, target, source] = args;
     // do something else
     this.updateSectionList();
+    this.publishPage();
   }
 
   updateSectionList(){
@@ -102,8 +107,7 @@ export class NewPagesComponent implements OnInit , OnDestroy {
       }
       sections.push(this.initPageSections(element.title, section_id, id));
     });
-    
-    //this.publishPage();
+
   }
 
   private onRemoveModel(args) {
@@ -118,22 +122,24 @@ export class NewPagesComponent implements OnInit , OnDestroy {
       title: [title,Validators.required]
     });
   }
-  
+
   editProprty(section){
     //console.log(section)
     this.router.navigate(['admin/dashboard/page/editpage',section.id],{skipLocationChange:true})
   }
 
   deleteProprty(section){
-    
+
   }
   publishPage(){
+
     if(this.pageForm.invalid){
       this.toastr.error('Please check the entered data.');
       return false;
     }
     this._page.create(this._page.createFormData(this.pageForm.value)).subscribe(result=>{
       this.toastr.success('Page is published Successfully.');
+      this.getPageData();
     },
     error=>{
       this.toastr.error('There is some error in creating the page.');
