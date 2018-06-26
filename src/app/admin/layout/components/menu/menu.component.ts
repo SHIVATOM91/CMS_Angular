@@ -3,6 +3,7 @@ import { MenuService } from './../../../../shared/services/menu.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { isArray } from 'util';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-menu',
@@ -19,7 +20,7 @@ export class MenuComponent implements OnInit {
 
 
 
-  constructor( private modalService: NgbModal, private _menuServe: MenuService, private fb: FormBuilder) {
+  constructor( private modalService: NgbModal, private _menuServe: MenuService, private fb: FormBuilder, private toastr: ToastrService,) {
 
     this.form = this.fb.group({
       title: ['', [Validators.minLength(2), Validators.required]],
@@ -83,7 +84,14 @@ export class MenuComponent implements OnInit {
           this.form.reset();
         }else{
           console.log(response);
+          
         }
+        this.toastr.success('Page is published Successfully.');
+      },
+      error=>{
+        this.toastr.error('There is some error in creating the page.');
+      
+
       })
     }
   }
