@@ -5,6 +5,7 @@ import { DragulaService } from 'ng2-dragula';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { error } from 'protractor';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -34,6 +35,7 @@ export class NewPagesComponent implements OnInit , OnDestroy {
     private dragulaService: DragulaService , 
     private route:ActivatedRoute,
     private router:Router,
+    private toastr: ToastrService,
     private fb:FormBuilder) 
     { 
       this.pageId = this.route.snapshot.paramMap.get('pageId');
@@ -127,10 +129,10 @@ export class NewPagesComponent implements OnInit , OnDestroy {
   publishPage(formData){
     console.log(formData)
     this._page.create(formData).subscribe(result=>{
-      console.log(result)
+      this.toastr.success('Hello world!', 'Toastr fun!');
     },
     error=>{
-      console.log("------------")
+      this.toastr.error('Hello world!', 'Toastr fun!');
     })
   }
   ngOnDestroy(){

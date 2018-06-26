@@ -21,12 +21,10 @@
                 <ng-container *ngIf="item.get('type').value=='file'">
                 <div class="img_wraper">
                     <label [for]="i" class="img-hover">
-                        <div class="img-prop" *ngIf="!image[i] && item.get('link').value!=null" [ngStyle]="{'background': 'url('+imgUrl+''+item.get('link').value+')'  }"></div>
-                        <div class="img-prop" *ngIf="image[i]" [ngStyle]="{'background': 'url('+this.image[i]+')'  }"></div>
-                        <div class="img-prop" *ngIf="!image[i] && item.get('link').value==null" [ngStyle]="{'background': 'url(https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg)'  }"></div>
-
-                        
-                      </label>
+                      <div class="img-prop" *ngIf="!image[i] && item.get('link').value!=null" [ngStyle]="{'background': 'url('+imgUrl+''+item.get('link').value+')'  }"></div>
+                      <div class="img-prop" *ngIf="image[i]" [ngStyle]="{'background': 'url('+this.image[i]+')'  }"></div>
+                      <div class="img-prop" *ngIf="!image[i] && item.get('link').value==null" [ngStyle]="{'background': 'url(https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg)'  }"></div>
+                    </label>
                 </div>
                 <input type="file" accept="image/*" (change)="handleFileInput(item,$event ,i)"   name="file" class="form-control" hidden [id]="i">
                 </ng-container>
