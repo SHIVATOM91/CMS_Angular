@@ -93,4 +93,3 @@ export class SectionsComponent  {
     return property.controls[propertyIndex].get('id')
   }
 }
-
