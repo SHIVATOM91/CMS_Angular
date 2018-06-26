@@ -89,6 +89,10 @@ export class NewPostComponent implements OnInit {
   publishPost(){
     this._service.create(this._service.createFormData(this.postForm.value)).subscribe(response=>{
       console.log(response);
+      this.toastr.success('Post is published Successfully.'); 
+    },
+    error=>{
+      this.toastr.error('There is some error in creating the Post.');
     })
   }
 
@@ -100,9 +104,7 @@ export class NewPostComponent implements OnInit {
       this.localImage=myReader.result;
     }
     myReader.readAsDataURL(event.target.files[0]);
-
   }
-
 }
 
 export class CategoryObject{
