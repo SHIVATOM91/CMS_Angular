@@ -1,0 +1,38 @@
+.static-text{
+    border: none;
+    background: transparent;
+}
+
+.img-prop{
+    background-image: url(http://192.168.1.152:52/uploads/section/5b30b5ac8567csect.jpg);
+    width: 378px;
+    height: 171px;
+    background-size: cover !important;
+    border-radius: 5px;
+}
+.img-hover{
+    position: relative;
+    cursor: pointer;
+}
+.img-hover:after{
+    content: '\F0EE';
+    font-family: FontAwesome;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #000;
+    opacity: 0;
+    top: 0px;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    color: #fff;
+    font-size: 63px;
+    text-align: center;
+    padding-top: 40px;
+    border-radius: 5px;
+}
+.img_wraper:hover .img-hover:after {
+    opacity: 0.5;
+    
+
+}
