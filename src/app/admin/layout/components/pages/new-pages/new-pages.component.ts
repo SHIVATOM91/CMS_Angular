@@ -138,7 +138,9 @@ export class NewPagesComponent implements OnInit , OnDestroy {
       return false;
     }
     this._page.create(this._page.createFormData(this.pageForm.value)).subscribe(result=>{
-      this.toastr.success('Page is published Successfully.');
+      if(this.toastr.toasts.length <=0){
+        this.toastr.success('Page is published Successfully.');
+      }
       this.getPageData();
     },
     error=>{
