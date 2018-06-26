@@ -102,7 +102,8 @@ export class NewPagesComponent implements OnInit , OnDestroy {
       }
       sections.push(this.initPageSections(element.title, section_id, id));
     });
-
+    
+    //this.publishPage();
   }
 
   private onRemoveModel(args) {
@@ -126,9 +127,12 @@ export class NewPagesComponent implements OnInit , OnDestroy {
   deleteProprty(section){
     
   }
-  publishPage(formData){
-    console.log(formData)
-    this._page.create(formData).subscribe(result=>{
+  publishPage(){
+    if(this.pageForm.invalid){
+      this.toastr.error('Please check the entered data.');
+      return false;
+    }
+    this._page.create(this._page.createFormData(this.pageForm.value)).subscribe(result=>{
       this.toastr.success('Page is published Successfully.');
     },
     error=>{

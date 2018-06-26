@@ -69,6 +69,7 @@ export class BannerComponent implements OnInit {
 
   addBanner(content){
     this.bannerEditMode=false;
+    this.bannerForm.reset();
     this.errorMsgShow=false;
     this.bannerForm.get('bannerimg').setValidators(Validators.required);
     this.bannerForm.get('banner_types_id').setValue(this.selectedBannerId);
@@ -100,6 +101,9 @@ export class BannerComponent implements OnInit {
   {
     this._bannerServ.create(this._bannerServ.createFormData(this.bannerForm.value)).subscribe( response => {
       this.getAllBanner();
+      if(this.bannerEditMode == false){
+        this.bannerForm.reset();
+      }
       this.toastr.success('Banner Published Successfully.');
     },
     error=>{
