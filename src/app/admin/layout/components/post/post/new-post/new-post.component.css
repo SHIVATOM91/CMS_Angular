@@ -1,0 +1,13 @@
+.card{
+  margin-bottom: 20px;
+}
+
+.card .img_c_width{
+  width: 100% !important;
+  overflow: hidden;
+}
+
+.category_custom_height{
+  max-height: 225px;
+  overflow: auto;
+}

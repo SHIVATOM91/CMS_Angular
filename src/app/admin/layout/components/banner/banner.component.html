@@ -34,7 +34,7 @@
                                   {{image.description}}
                             </td>
                             <td>
-                                  <div class="thumbnail-image-tb"  [ngStyle]="{'background': 'url('+imgUrl+'/'+image.bannerimg+')no-repeat scroll center center' ,  'height':'30px' , 'transform':'scale(0.8);',  'background-size': 'cover' }" ></div>
+                                  <div class="thumbnail-image-tb"  [ngStyle]="{'background': 'url('+imgUrl+image.bannerimg+')no-repeat scroll center center' ,  'height':'30px' , 'transform':'scale(0.8);',  'background-size': 'cover' }" ></div>
                             </td>
                             <td class="text-center">
                                   <button type="button" class="text_btn" (click)="editBanner(image, content) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
@@ -61,7 +61,7 @@
                                 [items]="bannerContent"
                                 [carouselClasses]="['owl-theme', 'row', 'sliding']">
                                 <div class="item" *ngFor="let image of bannerContent|bfilter: selectedBannerId;let i = index">
-                                    <div class="thumbnail-image"  [ngStyle]="{'background': 'url('+imgUrl+'/'+image.bannerimg+')no-repeat scroll center center' ,  'height':'350px' , 'background-size': 'cover' }" >
+                                    <div class="thumbnail-image"  [ngStyle]="{'background': 'url('+imgUrl+image.bannerimg+')no-repeat scroll center center' ,  'height':'350px' , 'background-size': 'cover' }" >
                                         <h1 class="bannerTitle">{{image.title}}</h1>
                                         <h4 class="bannerDescription">{{image.description}}</h4>
                                     </div>

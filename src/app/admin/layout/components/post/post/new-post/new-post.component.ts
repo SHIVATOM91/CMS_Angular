@@ -1,3 +1,4 @@
+import { environment } from './../../../../../../../environments/environment';
 import { category } from './../../post-category/update/update.component';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -14,9 +15,11 @@ import { PostCategoryService } from '../../../../../../shared/services/post-cate
 export class NewPostComponent implements OnInit {
   categoryList: Array<CategoryObject>;
   postForm: FormGroup;
+  localImage;
+  imgUrl= environment.imgUrl;
   constructor(private _service: PostService, private _cat_service: PostCategoryService, private fb:FormBuilder, private router:Router, private route:ActivatedRoute,private toastr: ToastrService) {
     this.postForm = fb.group({
-      id: [],
+      id: [1],
       title: ['', Validators.required],
       description: [],
       image: [],
@@ -36,7 +39,6 @@ export class NewPostComponent implements OnInit {
       this.categoryList.forEach(cat => {
         this.categories.push(this.initCategoryBox(cat.id, cat.title));
       })
-      console.log(this.categories);
 
     })
   }
@@ -53,6 +55,23 @@ export class NewPostComponent implements OnInit {
       title: [name],
       selected: [choice]
     })
+  }
+
+  publishPost(){
+    this._service.create(this._service.createFormData(this.postForm.value)).subscribe(response=>{
+      console.log(response);
+    })
+  }
+
+  handleFileInput(event){
+
+    this.postForm.get('image').setValue(event.target.files[0]);
+    var myReader: FileReader = new FileReader();
+    myReader.onloadend = (e) => {
+      this.localImage=myReader.result;
+    }
+    myReader.readAsDataURL(event.target.files[0]);
+
   }
 
 }
