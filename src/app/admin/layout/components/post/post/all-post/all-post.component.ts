@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { PostService } from './../../../../../../shared/services/post.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,7 +17,7 @@ export class AllPostComponent implements OnInit {
   ];
   postList: Array<PostObject>;
 
-  constructor(private _service: PostService) { }
+  constructor(private _service: PostService, private router: Router) { }
 
 
   ngOnInit() {
@@ -27,6 +28,11 @@ export class AllPostComponent implements OnInit {
     this._service.get().subscribe(response => {
       this.postList = response as PostObject[];
     })
+  }
+
+  onRowSelect(){
+    if(this.selected.length > 0)
+      this.router.navigate(['admin/dashboard/post/latest/update', this.selected[0].id ] , { skipLocationChange:true})
   }
 
 }

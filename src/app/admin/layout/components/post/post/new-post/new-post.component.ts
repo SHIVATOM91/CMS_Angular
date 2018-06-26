@@ -13,16 +13,22 @@ import { PostCategoryService } from '../../../../../../shared/services/post-cate
   styleUrls: ['./new-post.component.css']
 })
 export class NewPostComponent implements OnInit {
-  categoryList: Array<CategoryObject>;
+  postId;
+  categoryList: Array<CategoryObject>=[];
   postForm: FormGroup;
+  currentObj;
+  presentArray=[];
   localImage;
   imgUrl= environment.imgUrl;
   constructor(private _service: PostService, private _cat_service: PostCategoryService, private fb:FormBuilder, private router:Router, private route:ActivatedRoute,private toastr: ToastrService) {
+    this.postId = this.route.snapshot.paramMap.get('postId');
+    if(this.postId != null)
+      this.getPostData();
     this.postForm = fb.group({
-      id: [1],
+      id: [''],
       title: ['', Validators.required],
-      description: [],
-      image: [],
+      description: [''],
+      image: [''],
       categories: fb.array([])
     })
   }
@@ -32,15 +38,36 @@ export class NewPostComponent implements OnInit {
     this.getAllCategories();
   }
 
+  getPostData(){
+    this._service.getBy(this.postId).subscribe( response => {
+      this.currentObj = response as PostObject;
+      console.log(this.currentObj);
+
+      this.postForm.get('id').setValue(this.currentObj.id);
+      this.postForm.get('title').setValue(this.currentObj.title);
+      this.postForm.get('description').setValue(this.currentObj.description);
+      this.postForm.get('image').setValue(this.currentObj.image);
+      for(let i=0;i<this.currentObj.post_categories.length; i++){
+        this.presentArray.push(this.currentObj.post_categories[i].id);
+      }
+      this.initializeCategory();
+    })
+  }
+
+
+
   getAllCategories(){
     this._cat_service.get().subscribe(response => {
       this.categoryList = response as CategoryObject[];
-
-      this.categoryList.forEach(cat => {
-        this.categories.push(this.initCategoryBox(cat.id, cat.title));
-      })
-
+      this.initializeCategory();
     })
+  }
+
+  initializeCategory(){
+    this.categoryList.forEach(cat => {
+      this.categories.push(this.initCategoryBox(cat.id, cat.title));
+    })
+
   }
 
   get categories(){
@@ -49,7 +76,9 @@ export class NewPostComponent implements OnInit {
 
   initCategoryBox(id?, name?){
     let choice=false;
-
+    if(this.presentArray.indexOf(id) >= 0 && id!=''){
+      choice=true;
+    }
     return this.fb.group({
       id: [id],
       title: [name],
@@ -79,4 +108,11 @@ export class NewPostComponent implements OnInit {
 export class CategoryObject{
   id: any;
   title: any;
+}
+export class PostObject{
+  id: any;
+  title: any;
+  description: any;
+  image: any;
+  categories: any;
 }
