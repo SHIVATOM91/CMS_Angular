@@ -29,7 +29,7 @@ export class DataService {
   getBy(id){
     return this.http.get(this.apiUrl+this.url+"/"+id,this.token);
   }
-  
+
   createFormData(object: Object, form?: FormData, namespace?: string): FormData {
       const formData = form || new FormData();
       for (let property in object) {
@@ -47,6 +47,6 @@ export class DataService {
       }
       return formData;
   }
-  
+
 
 }

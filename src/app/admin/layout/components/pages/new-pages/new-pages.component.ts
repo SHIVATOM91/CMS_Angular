@@ -18,6 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 export class NewPagesComponent implements OnInit , OnDestroy {
    //modal variable
   image;
+  autoPublish=false;
   pageId;
   pageForm:FormGroup;
   ErrorObject = {
@@ -93,6 +94,7 @@ export class NewPagesComponent implements OnInit , OnDestroy {
     // do something else
     this.updateSectionList();
     this.publishPage();
+    this.autoPublish=true;
   }
 
   updateSectionList(){
@@ -129,6 +131,10 @@ export class NewPagesComponent implements OnInit , OnDestroy {
   }
 
   deleteProprty(section){
+    let index=this.selectedSection.indexOf(section);
+    this._page.deletePageSection(section.id).subscribe(response => {
+      this.selectedSection.splice(index, 1);
+    })
 
   }
   publishPage(){
@@ -137,10 +143,13 @@ export class NewPagesComponent implements OnInit , OnDestroy {
       this.toastr.error('Please check the entered data.');
       return false;
     }
-    this._page.create(this._page.createFormData(this.pageForm.value)).subscribe(result=>{
-      if(this.toastr.toasts.length <=0){
+    this._page.create(this._page.createFormData(this.pageForm.value)).subscribe(response=>{
+      let page = response.data as PageObj;
+      if(this.autoPublish == false){
+        this.autoPublish=true;
         this.toastr.success('Page is published Successfully.');
       }
+      this.pageId=page.id;
       this.getPageData();
     },
     error=>{

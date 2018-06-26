@@ -10,7 +10,7 @@ import { DataService } from './data.service';
 export class PageService  extends DataService {
 
   apiUrl:String =environment.apiUrl;
-  
+
   constructor(http:HttpClient) {
     super(http, 'pages');
   }
@@ -25,6 +25,10 @@ export class PageService  extends DataService {
 
   updatePageSection(formData){
       return this.http.post(this.apiUrl+"page-section" , formData , this.token );
+  }
+
+  deletePageSection(id){
+      return this.http.delete(this.apiUrl+"pages/section/"+id , this.token );
   }
 
 

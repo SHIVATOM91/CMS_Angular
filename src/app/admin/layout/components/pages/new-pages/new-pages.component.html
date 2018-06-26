@@ -13,16 +13,16 @@
             <fieldset class="form-group">
                 <label>Description</label>
             </fieldset>
-            <ck-editor name="editor1" formControlName="description" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor> 
-            
+            <ck-editor name="editor1" formControlName="description" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>
+
             <div class="taskboard-wrapper">
               <div class="taskboard-list">
                 <div class="taskboard-cards" [dragula]='"another-bag"' id="no-drop" [dragulaModel]='selectedSection'>
-                  <div class="taskboard-task" *ngFor='let section of selectedSection'> 
+                  <div class="taskboard-task" *ngFor='let section of selectedSection'>
                     <div class="taskboard-task-title">{{ section.title }}</div>
                      <div class="pull-right">
                           <i class="fa fa-edit text-primary" (click)="editProprty(section)"></i>
-                          <i class="fa fa-trash text-danger" (click)="deleteProprty(section)"></i>
+                          <i class="fa fa-trash text-danger" (click)="deleteProprty(section)" *ngIf="section.id!=null"></i>
                         </div>
                   </div>
                 </div>
@@ -40,7 +40,7 @@
               <div class="taskboard-wrapper">
                 <div class="taskboard-list" >
                   <div class="taskboard-cards"  [dragula]='"another-bag"' [dragulaModel]='pageSectionList'>
-                    <div class="taskboard-task" *ngFor='let section of pageSectionList'> 
+                    <div class="taskboard-task" *ngFor='let section of pageSectionList'>
                       <div class="taskboard-task-title">{{ section.title }}</div>
                     </div>
                   </div>
@@ -50,7 +50,7 @@
           </div>
         </div>
     </div>
-    
+
     <div class="row">
       <div class="col-md-8">
       </div>
