@@ -9,12 +9,17 @@
             <fieldset class="form-group">
                 <label>Title</label>
                 <input class="form-control" name="title" formControlName="title"    placeholder="Enter title" id="log-title" >
+                <div class="form-control-feedback text-danger" *ngIf="pageForm.get('title').errors && (pageForm.get('title').dirty || pageForm.get('title').touched)">
+                  <p *ngIf="pageForm.get('title').errors.required">Page title is required</p>
+                </div>   
             </fieldset>
             <fieldset class="form-group">
                 <label>Description</label>
             </fieldset>
             <ck-editor name="editor1" formControlName="description" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>
-
+            <div class="form-control-feedback text-danger" *ngIf="pageForm.get('description').errors && (pageForm.get('description').dirty || pageForm.get('description').touched)">
+              <p *ngIf="pageForm.get('description').errors.required">Page Description is required</p>
+            </div> 
             <div class="taskboard-wrapper">
               <div class="taskboard-list">
                 <div class="taskboard-cards" [dragula]='"another-bag"' id="no-drop" [dragulaModel]='selectedSection'>
@@ -31,7 +36,7 @@
       </div>
       <div class="col-md-3" >
           <button type="submit" [disabled]="!pageForm.valid" class="btn btn-primary float-right "  (click)="savePage();"  ><i class="fa fa-floppy-o" aria-hidden="true"></i> Publish</button>
-          <div class="card clerfix">
+          <div class="card clerfix" *ngIf="pageForm.get('id').value != ''">
             <div class="card-header">
               Properties
             </div>

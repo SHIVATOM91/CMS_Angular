@@ -87,12 +87,13 @@ export class NewPostComponent implements OnInit {
   }
 
   publishPost(){
+    this._cat_service.validateAllFormFields(this.postForm);
     this._service.create(this._service.createFormData(this.postForm.value)).subscribe(response=>{
       console.log(response);
       this.toastr.success('Post is published Successfully.'); 
     },
     error=>{
-      this.toastr.error('There is some error in creating the Post.');
+      this.toastr.error('There is some error in creating the Post.'); 
     })
   }
 

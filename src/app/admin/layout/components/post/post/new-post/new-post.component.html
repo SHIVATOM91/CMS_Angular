@@ -4,6 +4,9 @@
         <label for="staticEmail" class="col-sm-12 form-label">Post Title</label>
         <div class="col-sm-12">
             <input type="text"  class="form-control" formControlName="title">
+            <div class="form-control-feedback text-danger" *ngIf="postForm.get('title').errors && (postForm.get('title').dirty || postForm.get('title').touched)">
+              <p *ngIf="postForm.get('title').errors.required">Post title is required</p>
+            </div>
         </div>
       </div>
       <div class="form-group">
