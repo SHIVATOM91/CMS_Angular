@@ -45,7 +45,10 @@ export class UpdateComponent implements OnInit {
   uploadData(){
     this._serviceprivate.create(this._serviceprivate.createFormData(this.updateForm.value)).subscribe(response =>{
 
-      this.toastr.success('Hello world!', 'Toastr fun!');
+      this.toastr.success('Category Published Successfully.');
+    },
+      error=>{
+        this.toastr.error('There is some error in creating the Category');
     })
   }
 }

@@ -129,10 +129,10 @@ export class NewPagesComponent implements OnInit , OnDestroy {
   publishPage(formData){
     console.log(formData)
     this._page.create(formData).subscribe(result=>{
-      this.toastr.success('Hello world!', 'Toastr fun!');
+      this.toastr.success('Page is published Successfully.');
     },
     error=>{
-      this.toastr.error('Hello world!', 'Toastr fun!');
+      this.toastr.error('There is some error in creating the page.');
     })
   }
   ngOnDestroy(){

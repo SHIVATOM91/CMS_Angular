@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, FormControl, ControlContainer, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SectionsService } from '../../../../shared/services/sections.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sections',
@@ -11,7 +12,7 @@ import { SectionsService } from '../../../../shared/services/sections.service';
 export class SectionsComponent  {
   sectionForm:FormGroup
   sectionList;
-  constructor(private modalService: NgbModal , private fb:FormBuilder, private _sectionService:SectionsService) {
+  constructor(private modalService: NgbModal , private fb:FormBuilder, private _sectionService:SectionsService, private toastr: ToastrService,) {
     
     this.sectionForm=fb.group({
       sections: fb.array([])
@@ -55,7 +56,11 @@ export class SectionsComponent  {
 
   publishSections(){
     this._sectionService.create(this.sectionForm.value).subscribe(response=>{
-      console.log(response)
+      this.toastr.success('Section Published Successfully.');
+    },
+    error=>{
+      this.toastr.error('There is some error in creating the section.');
+
     })
   }
 
