@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { BannerService } from '../../../../shared/services/banner.service';
 import { environment } from '../../../../../environments/environment';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -36,7 +37,7 @@ export class BannerComponent implements OnInit {
       "description":"",
       "bannerimg":"",
   }
-  constructor(private _bannerServ:BannerService , private _bannerTypeServ: BannerTypeService, private modalService: NgbModal, private fb: FormBuilder) {}
+  constructor(private _bannerServ:BannerService , private _bannerTypeServ: BannerTypeService, private modalService: NgbModal, private fb: FormBuilder,private toastr: ToastrService,) {}
 
   ngOnInit() {
     this.getAllBanner();
@@ -71,7 +72,8 @@ export class BannerComponent implements OnInit {
     this.errorMsgShow=false;
     this.bannerForm.get('bannerimg').setValidators(Validators.required);
     this.bannerForm.get('banner_types_id').setValue(this.selectedBannerId);
-    this.modalService.open(content)
+    this.modalService.open(content);
+    
   }
 
   editBanner(item, content){
@@ -98,8 +100,11 @@ export class BannerComponent implements OnInit {
   {
     this._bannerServ.create(this._bannerServ.createFormData(this.bannerForm.value)).subscribe( response => {
       this.getAllBanner();
+      this.toastr.success('Banner Published Successfully.');
+    },
+    error=>{
+      this.toastr.error('There is some error in Publishing the Banner.');
     });
-
   }
 
   //Banner Type Section
@@ -116,7 +121,8 @@ export class BannerComponent implements OnInit {
           this.bannerTypes.push(response.data);
           this.typeForm.reset();
         }
-      },error=>{
+      },
+      error=>{
 
       })
     }

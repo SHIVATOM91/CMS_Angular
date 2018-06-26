@@ -86,10 +86,10 @@ export class MenuComponent implements OnInit {
           console.log(response);
           
         }
-        this.toastr.success('Page is published Successfully.');
+        this.toastr.success('Menu published Successfully.');
       },
       error=>{
-        this.toastr.error('There is some error in creating the page.');
+        this.toastr.error('There is some error in creating the Menu.');
       
 
       })
@@ -101,6 +101,10 @@ export class MenuComponent implements OnInit {
       this._menuServe.update(this.editIndex.id, this.form.value).subscribe(response=>{
         this.editIndex=response.data;
         this.getAllMenu();
+        this.toastr.success('Menu Updated Successfully.');
+      },
+      error=>{
+        this.toastr.error('There is some error in Updating the Menu.');
       })
     }
   }
