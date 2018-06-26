@@ -112,6 +112,11 @@ export class NewPagesComponent implements OnInit , OnDestroy {
 
   }
 
+  savePage(){
+    this.autoPublish=false;
+    this.publishPage();
+  }
+
   private onRemoveModel(args) {
     let [el, source] = args;
     // do something else
@@ -134,6 +139,7 @@ export class NewPagesComponent implements OnInit , OnDestroy {
     let index=this.selectedSection.indexOf(section);
     this._page.deletePageSection(section.id).subscribe(response => {
       this.selectedSection.splice(index, 1);
+      this.updateSectionList();
     })
 
   }
