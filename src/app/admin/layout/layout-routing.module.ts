@@ -1,6 +1,7 @@
+import { AllPostComponent } from './components/post/post/all-post/all-post.component';
+import { ManagePostComponent } from './components/post/post/manage-post.component';
 import { UpdateComponent } from './components/post/post-category/update/update.component';
 import { ListComponent } from './components/post/post-category/list/list.component';
-import { AllPostComponent } from './components/post/all-post/all-post.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -15,6 +16,7 @@ import { TestimonialComponent } from './components/testimonial/testimonial.compo
 import { ProjectsComponent } from './components/projects/projects.component';
 import { PostCategoryComponent } from './components/post/post-category/post-category.component';
 import { EditPagesComponent } from './components/pages/edit-pages/edit-pages.component';
+import { NewPostComponent } from './components/post/post/new-post/new-post.component';
 
 
 const routes: Routes = [
@@ -28,8 +30,17 @@ const routes: Routes = [
         path: 'post',
         component: PostComponent,
         children: [
-          {path: '', redirectTo: 'all'},
-          {path: 'all', component: AllPostComponent},
+          {path: '', redirectTo: 'latest'},
+          {
+            path: 'latest',
+            component: ManagePostComponent,
+            children: [
+              {path: '', redirectTo: 'view'},
+              {path: 'view', component: AllPostComponent},
+              {path: 'update', component: NewPostComponent},
+              {path: 'update/:postId', component: NewPostComponent},
+            ]
+          },
           {
             path: 'category',
             component: PostCategoryComponent,
@@ -49,7 +60,6 @@ const routes: Routes = [
       { path: 'page/newpage', component: NewPagesComponent },
       { path: 'page/editpage/:sectionId', component: EditPagesComponent },
       { path: 'page/updatepage/:pageId', component: NewPagesComponent }
-
     ]
   }
 ];

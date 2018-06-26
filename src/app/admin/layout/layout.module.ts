@@ -1,3 +1,4 @@
+import { ManagePostComponent } from './components/post/post/manage-post.component';
 import { PostComponent } from './components/post/post.component';
 import { BannerPipe } from './components/banner/banner.pipe';
 import { NgModule } from '@angular/core';
@@ -25,14 +26,15 @@ import { SectionsComponent } from './components/Sections/sections.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { TestimonialComponent } from './components/testimonial/testimonial.component';
 import { DragulaModule } from 'ng2-dragula';
-import { AllPostComponent } from './components/post/all-post/all-post.component';
 import { PostCategoryComponent } from './components/post/post-category/post-category.component';
 import { UpdateComponent } from './components/post/post-category/update/update.component';
 import { ListComponent } from './components/post/post-category/list/list.component';
 import { EditPagesComponent } from './components/pages/edit-pages/edit-pages.component';
+import { NewPostComponent } from './components/post/post/new-post/new-post.component';
+import { AllPostComponent } from './components/post/post/all-post/all-post.component';
 
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, PostComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, ProjectsComponent, TestimonialComponent , BannerPipe, AllPostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent
+  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, PostComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, ProjectsComponent, TestimonialComponent , BannerPipe, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent
 
 
 

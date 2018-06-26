@@ -83,3 +83,11 @@
 .card-header a{
   color: #000;
 }
+
+/*
+input[type=checkbox]{
+  padding: 91px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+} */

@@ -1,3 +1,4 @@
+import { PostService } from './services/post.service';
 import { PostCategoryService } from './services/post-category.service';
 import { BannerTypeService } from './services/banner-type.service';
 import { MenuService } from './services/menu.service';
@@ -13,6 +14,7 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 import { SectionsService } from './services/sections.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { IcheckDirective } from './directives/icheck.directive';
 
 @NgModule({
   imports: [
@@ -21,7 +23,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     ReactiveFormsModule,
     NgxDatatableModule
   ],
-  declarations: [],
+  declarations: [IcheckDirective],
   exports: [
     CommonModule,
     FormsModule,
@@ -29,9 +31,10 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     OwlModule,
     HttpClientModule,
     Angular2FontawesomeModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    IcheckDirective
   ],
-  providers: [  BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService]
+  providers: [  BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService]
 
 })
 export class SharedModule { }
