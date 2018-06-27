@@ -3,6 +3,7 @@ import { PageService } from '../../../../../shared/services/page.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { environment } from '../../../../../../environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-pages',
@@ -18,7 +19,7 @@ export class EditPagesComponent implements OnInit {
   property_array;
   imgUrl= environment.imgUrl;
   image=[];
-  constructor(private _page:PageService , private route:ActivatedRoute , private fb:FormBuilder ) { 
+  constructor(private _page:PageService , private route:ActivatedRoute , private fb:FormBuilder, private toastr: ToastrService ) { 
     this.section_id= this.route.snapshot.paramMap.get('sectionId');
     this.propertyForm=fb.group({
       page_section_id:[],
@@ -65,6 +66,10 @@ export class EditPagesComponent implements OnInit {
   saveProperty(){
     this._page.updatePageSection(this._page.createFormData(this.propertyForm.value)).subscribe(response=>{
       console.log(response);
+      this.toastr.success('Section is updated Successfully.');    
+    },
+    error=>{
+      this.toastr.error('There is some error in creating the Section.'); 
     })
   }
 
