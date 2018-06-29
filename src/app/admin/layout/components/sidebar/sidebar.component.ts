@@ -13,6 +13,10 @@ export class SidebarComponent {
     // need to update
      meniItem=[
         {
+            "name":"Dashboard",
+            "link":"dashboard",
+            "icon":"fa fa-file"
+        },{
             "name":"Posts",
             "link":"post",
             "icon":"fa fa-file"
@@ -38,8 +42,13 @@ export class SidebarComponent {
             "icon":"fa fa-picture-o"
         },
         {
+            "name":"Services",
+            "link":"service",
+            "icon":"fa fa-folder-o"
+        },
+        {
             "name":"Projets",
-            "link":"projets",
+            "link":"project",
             "icon":"fa fa-folder-o"
         },
         {

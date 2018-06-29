@@ -1,3 +1,9 @@
+import { ProjectComponent } from './components/project/project.component';
+import { AllProjectComponent } from './components/project/project/all-project/all-project.component';
+import { NewProjectComponent } from './components/project/project/new-project/new-project.component';
+import { ListProjectCategoryComponent } from './components/project/project-category/list-project-category/list-project-category.component';
+import { UpdateProjectCategoryComponent } from './components/project/project-category/update-project-category/update-project-category.component';
+import { ProjectCategoryComponent } from './components/project/project-category/project-category.component';
 import { ManagePostComponent } from './components/post/post/manage-post.component';
 import { PostComponent } from './components/post/post.component';
 import { BannerPipe } from './components/banner/banner.pipe';
@@ -23,7 +29,6 @@ import { InputTemplateComponent } from './templates/input-template/input-templat
 import { DecriptionTemplateComponent } from './templates/decription-template/decription-template.component';
 import { ImageTemplateComponent } from './templates/image-template/image-template.component';
 import { SectionsComponent } from './components/Sections/sections.component';
-import { ProjectsComponent } from './components/projects/projects.component';
 import { TestimonialComponent } from './components/testimonial/testimonial.component';
 import { DragulaModule } from 'ng2-dragula';
 import { PostCategoryComponent } from './components/post/post-category/post-category.component';
@@ -32,9 +37,13 @@ import { ListComponent } from './components/post/post-category/list/list.compone
 import { EditPagesComponent } from './components/pages/edit-pages/edit-pages.component';
 import { NewPostComponent } from './components/post/post/new-post/new-post.component';
 import { AllPostComponent } from './components/post/post/all-post/all-post.component';
+import { ManageProjectComponent } from './components/project/project/manage-project.component';
+import { ServicesComponent } from './components/services/services.component';
+import { NewServicesComponent } from './components/services/new-services/new-services.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, PostComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, ProjectsComponent, TestimonialComponent , BannerPipe, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent
+  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent
 
 
 

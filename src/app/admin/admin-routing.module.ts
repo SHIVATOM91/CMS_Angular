@@ -7,7 +7,7 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path:'dashboard',
+    path:'',
     loadChildren: '../../app/admin/layout/layout.module#LayoutModule'
   }
 ];

@@ -1,3 +1,4 @@
+import { ServicesService } from './services/services.service';
 import { PostService } from './services/post.service';
 import { PostCategoryService } from './services/post-category.service';
 import { BannerTypeService } from './services/banner-type.service';
@@ -15,6 +16,8 @@ import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 import { SectionsService } from './services/sections.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { IcheckDirective } from './directives/icheck.directive';
+import { ProjectCategoryService } from './services/project-category.service';
+import { ProjectService } from './services/project.service';
 
 @NgModule({
   imports: [
@@ -34,7 +37,7 @@ import { IcheckDirective } from './directives/icheck.directive';
     NgxDatatableModule,
     IcheckDirective
   ],
-  providers: [  BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService]
+  providers: [  BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService]
 
 })
 export class SharedModule { }

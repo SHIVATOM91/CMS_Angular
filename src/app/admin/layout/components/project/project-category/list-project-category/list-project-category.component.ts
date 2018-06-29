@@ -1,13 +1,13 @@
-import { PostCategoryService } from './../../../../../../shared/services/post-category.service';
+import { ProjectCategoryService } from './../../../../../../shared/services/project-category.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-list-project-category',
+  templateUrl: './list-project-category.component.html',
+  styleUrls: ['./list-project-category.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListProjectCategoryComponent implements OnInit {
   editing = {};
   selected = [];
   columns = [
@@ -16,7 +16,7 @@ export class ListComponent implements OnInit {
     { name: 'Image' }
   ];
   categoryList: Array<CategoryObject>;
-  constructor(private _service: PostCategoryService, private router: Router) { }
+  constructor(private _service: ProjectCategoryService, private router: Router) { }
 
   ngOnInit() {
     this.getAllCategories();
@@ -31,7 +31,7 @@ export class ListComponent implements OnInit {
 
   onRowSelect(){
     if(this.selected.length > 0)
-      this.router.navigate(['admin/post/category/update', this.selected[0].id] , { skipLocationChange:true})
+      this.router.navigate(['admin/project/category/update', this.selected[0].id] , { skipLocationChange:true})
   }
 
 }

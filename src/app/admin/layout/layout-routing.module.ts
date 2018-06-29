@@ -1,3 +1,11 @@
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NewServicesComponent } from './components/services/new-services/new-services.component';
+import { ServicesComponent } from './components/services/services.component';
+import { UpdateProjectCategoryComponent } from './components/project/project-category/update-project-category/update-project-category.component';
+import { ListProjectCategoryComponent } from './components/project/project-category/list-project-category/list-project-category.component';
+import { NewProjectComponent } from './components/project/project/new-project/new-project.component';
+import { ManageProjectComponent } from './components/project/project/manage-project.component';
+import { ProjectComponent } from './components/project/project.component';
 import { AllPostComponent } from './components/post/post/all-post/all-post.component';
 import { ManagePostComponent } from './components/post/post/manage-post.component';
 import { UpdateComponent } from './components/post/post-category/update/update.component';
@@ -13,10 +21,10 @@ import { NewPagesComponent } from './components/pages/new-pages/new-pages.compon
 import { LayoutComponent } from './layout.component';
 import { SectionsComponent } from './components/Sections/sections.component';
 import { TestimonialComponent } from './components/testimonial/testimonial.component';
-import { ProjectsComponent } from './components/projects/projects.component';
 import { PostCategoryComponent } from './components/post/post-category/post-category.component';
 import { EditPagesComponent } from './components/pages/edit-pages/edit-pages.component';
 import { NewPostComponent } from './components/post/post/new-post/new-post.component';
+import { AllProjectComponent } from './components/project/project/all-project/all-project.component';
 
 
 const routes: Routes = [
@@ -24,6 +32,8 @@ const routes: Routes = [
     path:'',
     component: LayoutComponent,
     children: [
+      { path: '', redirectTo: 'dashboard' },
+      { path: 'dashboard', component: DashboardComponent },
       { path: 'menu', component: MenuComponent },
       { path: 'banner', component: BannerComponent },
       {
@@ -53,13 +63,41 @@ const routes: Routes = [
           },
         ]
       },
+      {
+        path: 'project',
+        component: ProjectComponent,
+        children: [
+          {path: '', redirectTo: 'latest'},
+          {
+            path: 'latest',
+            component: ManageProjectComponent,
+            children: [
+              {path: '', redirectTo: 'view'},
+              {path: 'view', component: AllProjectComponent},
+              {path: 'update', component: NewProjectComponent},
+              {path: 'update/:projectId', component: NewProjectComponent},
+            ]
+          },
+          {
+            path: 'category',
+            component: PostCategoryComponent,
+            children: [
+              {path: '', redirectTo: 'list'},
+              {path: 'list', component: ListProjectCategoryComponent},
+              {path: 'update', component: UpdateProjectCategoryComponent},
+              {path: 'update/:catId', component: UpdateProjectCategoryComponent},
+            ]
+          },
+        ]
+      },
       { path: 'page', component: PagesComponent },
       { path: 'sections', component: SectionsComponent },
       { path: 'testimonial', component: TestimonialComponent },
-      { path: 'projets', component: ProjectsComponent },
       { path: 'page/newpage', component: NewPagesComponent },
       { path: 'page/editpage/:sectionId', component: EditPagesComponent },
-      { path: 'page/updatepage/:pageId', component: NewPagesComponent }
+      { path: 'page/updatepage/:pageId', component: NewPagesComponent },
+      { path: 'service', component: ServicesComponent },
+      { path: 'new-service', component: NewServicesComponent },
     ]
   }
 ];

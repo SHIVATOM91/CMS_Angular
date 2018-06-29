@@ -1,0 +1,15 @@
+
+
+<ngx-datatable
+  class="material"
+  [rows]="projectList"
+  [loadingIndicator]="loadingIndicator"
+  [columns]="columns"
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  [rowHeight]="'auto'"
+  [selected]="selected"
+  [selectionType]="'single'"
+  (dblclick)='onRowSelect($event)'>
+</ngx-datatable>

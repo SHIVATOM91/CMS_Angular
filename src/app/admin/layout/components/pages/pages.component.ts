@@ -10,7 +10,7 @@ import { PageService } from '../../../../shared/services/page.service';
 export class PagesComponent implements OnInit {
 
   pageContent
-  constructor(private router:Router , private _pageServ:PageService) { 
+  constructor(private router:Router , private _pageServ:PageService) {
     _pageServ.get().subscribe(result=>{
       this.pageContent=result;
     })
@@ -20,11 +20,11 @@ export class PagesComponent implements OnInit {
   }
 
   addNewPage(){
-    this.router.navigate(['admin/dashboard/page/newpage'],{skipLocationChange:true})
+    this.router.navigate(['admin/page/newpage'],{skipLocationChange:true})
   }
-  
+
   editPage(pageItem){
-    this.router.navigate(['admin/dashboard/page/updatepage',pageItem.id],{skipLocationChange:true})
+    this.router.navigate(['admin/page/updatepage',pageItem.id],{skipLocationChange:true})
   }
 
   deletePage(pageItem){

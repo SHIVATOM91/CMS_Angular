@@ -32,7 +32,7 @@ export class AllPostComponent implements OnInit {
 
   onRowSelect(){
     if(this.selected.length > 0)
-      this.router.navigate(['admin/dashboard/post/latest/update', this.selected[0].id ] , { skipLocationChange:true})
+      this.router.navigate(['admin/post/latest/update', this.selected[0].id ] , { skipLocationChange:true})
   }
 
 }

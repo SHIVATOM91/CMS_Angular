@@ -1,0 +1,17 @@
+<div class="col-sm-12">
+  <button type="button" class="btn btn-primary pull-right" [routerLink]="['/admin/new-service']">Add New</button>
+</div>
+<div class="clearfix"></div>
+<ngx-datatable
+  class="material"
+  [rows]="serviceList"
+  [loadingIndicator]="loadingIndicator"
+  [columns]="columns"
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  [rowHeight]="'auto'"
+  [selected]="selected"
+  [selectionType]="'single'"
+  (dblclick)='onRowSelect($event)'>
+</ngx-datatable>

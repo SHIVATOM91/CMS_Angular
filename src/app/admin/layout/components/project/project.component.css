@@ -1,0 +1,18 @@
+.custom-nav-tabs{
+  background-color: #165c6f !important;
+}
+
+.custom-nav-tabs .btn-custom-nav{
+  display: inline-block;
+  padding: 10px 25px 10px 25px;
+}
+
+.custom-nav-tabs a{
+  color: #fff;
+}
+
+.custom-nav-tabs .active{
+  color: #165c6f;
+  background-color: #fff;
+}
+

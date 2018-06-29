@@ -132,7 +132,7 @@ export class NewPagesComponent implements OnInit , OnDestroy {
 
   editProprty(section){
     //console.log(section)
-    this.router.navigate(['admin/dashboard/page/editpage',section.id],{skipLocationChange:true})
+    this.router.navigate(['admin/page/editpage',section.id],{skipLocationChange:true})
   }
 
   deleteProprty(section){
