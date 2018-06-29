@@ -40,7 +40,7 @@
 }
 .text_btn{
     border: none;
-    background-color: snow;
+    background-color: transparent;
     text-decoration: underline;
     cursor: pointer;
     color: #104756;
