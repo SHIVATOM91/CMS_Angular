@@ -5,7 +5,8 @@ import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.css']
+  styleUrls: ['./layout.component.css'],
+  encapsulation:ViewEncapsulation.None
 })
 export class   LayoutComponent implements OnInit {
  

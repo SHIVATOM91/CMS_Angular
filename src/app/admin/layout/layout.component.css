@@ -11,6 +11,7 @@
     font-family: Roboto, "Helvetica Neue", sans-serif;
     background: #fbfbfb;
     z-index: 1000;
+    height: 100vh;
 }
 .Dashboard-title {
     background-color: #f7f7f7;
@@ -18,6 +19,14 @@
     font-weight: normal;
     padding: 10px;
 }
+
+/* theme config   */
+.btn-primary{
+    background-color: #b7a35e !important;
+    border-color: #a18e4a !important;
+}
+
+
 
 
 @media screen and (max-width: 992px) {
