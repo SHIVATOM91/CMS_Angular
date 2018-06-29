@@ -1,0 +1,57 @@
+<section class="aboutus" *ngIf="about_section_content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 abtimg"> <img [src]="img_url+content('image_main')" class="img-fluid"> </div>
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs">
+            <ul class="list-unstyled askhaed">
+              <li class="media">
+                  <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
+                  <div class="media-body custom-body">
+                    <p class="mb-0">{{content('intro_title')}}</p>
+                    <h2 class="mt-1 mb-0">{{content('main_title')}} </h2>
+                  </div>
+              </li>
+            </ul>
+            <div [innerHTML]="content('main_description')"> </div>
+            <div class="row">
+              <div class="col-lg-4">
+                  <ul class="list-unstyled">
+                    <li class="media">
+                        <img class="mr-3" src="assets/images/aboutus_tick.png" alt="Generic placeholder image">
+                        <div class="media-body">
+                          <h5 class="mt-0 mb-1">{{content('list_title_1')}}</h5>
+                          {{content('list_title_1_dec')}}
+                        </div>
+                    </li>
+                  </ul>
+              </div>
+              <div class="col-lg-4">
+                  <ul class="list-unstyled">
+                    <li class="media">
+                        <img class="mr-3" src="assets/images/aboutus_tick.png" alt="Generic placeholder image">
+                        <div class="media-body">
+                          <h5 class="mt-0 mb-1">{{content('list_title_2')}}</h5>
+                          {{content('list_title_2_dec')}}
+                        </div>
+                    </li>
+                  </ul>
+              </div>
+              <div class="col-lg-4">
+                  <ul class="list-unstyled">
+                    <li class="media">
+                        <img class="mr-3" src="assets/images/aboutus_tick.png" alt="Generic placeholder image">
+                        <div class="media-body">
+                          <h5 class="mt-0 mb-1">{{content('list_title_3')}}</h5>
+                          {{content('list_title_3_dec')}}
+                        </div>
+                    </li>
+                  </ul>
+              </div>
+            </div>
+            <div class="text-left brochsurebtn">
+              <a [href]="content('broucher_link')" class="btn askbuton"> Get Brochure</a>
+            </div>
+        </div>
+      </div>
+    </div>
+ </section>

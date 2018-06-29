@@ -1,0 +1,28 @@
+
+/* about-section*/
+.aboutus{
+    margin-top:2%;
+    margin-bottom:2%;
+}
+.aboutus p{
+    text-align: justify;
+}
+.askhaed .custom-body h2{
+    font-size: 29px;
+    font-weight: 700;
+    color: #000;
+}
+.askhaed .custom-body p{
+    font-size: 16px;
+    font-weight: 500;
+    color: #676565;
+}
+
+.brochsurebtn .askbuton{
+    background-color: #b79d52;
+    color: #fff;
+    outline-style: none !important;
+    box-shadow: none;
+}
+
+/* about-section*/

@@ -1,0 +1,60 @@
+
+/* navbar section */
+
+.asknavbar{
+    color: #fff;
+    z-index: 1;
+    margin-top: 30px;
+    position: absolute;
+    z-index: 99;
+}  
+.navbar-light .navbar-toggler-icon{
+    background-image: url('../../../../assets/images/toggle.png');
+}
+.asknavbar  .navbar-toggler {
+    color: #fff;
+    border-color: #fff;
+    border-radius: 0px;
+}
+.asknavbar .navbar-brand {
+    margin-right: 0px;
+    background: white;
+    padding: 0px;
+    box-shadow: 0 0 5px 1px rgb(88, 80, 80);
+    z-index: 1;
+}        
+.asknavbar .customcolor{
+    background-color: #fff;
+    padding: 25px;
+    box-shadow: 0 0 5px 1px rgb(88, 80, 80);
+}
+
+.asknavbar .customcolor .nav-item {
+    padding-right: 30px;
+    padding-left: 30px;
+    font-size: 15px;
+    word-wrap: break-word;
+    transition: all 1s ease 0s;
+    -webkit-transition: all 1s ease 0s;
+    -moz-transition: all 1s ease 0s;
+    -o-transition: all 1s ease 0s;
+} 
+
+.asknavbar .customcolor .nav-item:hover {
+     background-color: #b9a463;
+    border-radius: 10px;
+} 
+.asknavbar .customcolor .nav-item > a{
+    color: #000;
+}
+.asknavbar .customcolor .nav-item > a:hover{
+    color: #fff;
+}
+.asknavbar .customcolor .nav-item.active {
+    background-color: #b9a463;
+    border-radius: 10px;
+}
+.asknavbar .customcolor .nav-item.active >a {
+   color: #fff;
+}
+

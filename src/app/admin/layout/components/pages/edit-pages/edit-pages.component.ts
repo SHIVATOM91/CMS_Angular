@@ -36,7 +36,7 @@ export class EditPagesComponent implements OnInit {
       let prop = this.propertyForm.get('properties') as FormArray;
       this.section_details.page_section_props.forEach((res,index) => {
         console.log(res)
-        prop.push(this.initPageProperty(res.id , res.type , res.section_properties.key , res.value , res.link  ));
+        prop.push(this.initPageProperty(res.id , res.type , res.key , res.value , res.link  ));
       });
     });
   }

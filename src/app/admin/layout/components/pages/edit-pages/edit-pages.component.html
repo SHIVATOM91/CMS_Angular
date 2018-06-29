@@ -13,9 +13,9 @@
           <div formArrayName="properties">
             <div class="form-group row" *ngFor="let item of properties.controls; let i=index;">
               <label for="staticEmail" class="col-sm-2 col-form-label">{{item.get('key').value}}</label>
-              <div class="col-sm-3"  [formGroupName]='i'>
+              <div class="col-sm-6"  [formGroupName]='i'>
                 <ng-container *ngIf="item.get('type').value=='text'">
-                  <input type="text" formControlName='value'  class="form-control" id="staticEmail" >
+                  <ck-editor name="editor1" formControlName="value" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>
                 </ng-container>
 
                 <ng-container *ngIf="item.get('type').value=='file'">
@@ -29,7 +29,7 @@
                 <input type="file" accept="image/*" (change)="handleFileInput(item,$event ,i)"   name="file" class="form-control" hidden [id]="i">
                 </ng-container>
 
-                <ng-container *ngIf="item.get('type').value=='string'">
+                <ng-container *ngIf="item.get('type').value=='string'  || item.get('type').value=='link' ">
                   <textarea type="file" name="string"  formControlName='value'  class="form-control" id="staticEmail"> </textarea>
                 </ng-container> 
 

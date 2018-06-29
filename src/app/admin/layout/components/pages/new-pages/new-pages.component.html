@@ -24,7 +24,7 @@
               <div class="taskboard-list">
                 <div class="taskboard-cards" [dragula]='"another-bag"' id="no-drop" [dragulaModel]='selectedSection'>
                   <div class="taskboard-task" *ngFor='let section of selectedSection'>
-                    <div class="taskboard-task-title">{{ section.title }}</div>
+                    <div class="taskboard-task-title">{{ section.title }} | {{ section.id }}  </div>
                      <div class="pull-right">
                           <i class="fa fa-edit text-primary" (click)="editProprty(section)"></i>
                           <i class="fa fa-trash text-danger" (click)="deleteProprty(section)" *ngIf="section.id!=null"></i>

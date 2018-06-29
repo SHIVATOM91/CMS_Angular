@@ -1,0 +1,36 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light  asknavbar">
+        <a class="navbar-brand" href="#"><img src="../assets/images/ask_logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav customcolor mr-auto">
+            <li class="nav-item " *ngFor="let list of menuList">
+                <ng-container *ngIf="list.linkType=='page'">
+                    <a class="nav-link" routerLink="/{{list.pageSlug}}" >{{list.title}}</a>
+                </ng-container>
+                <ng-container *ngIf="list.linkType=='custom'">
+                    <a class="nav-link" [href]="list.customLink" >{{list.title}}</a>
+                </ng-container>
+               
+            </li>
+            <!-- <li class="nav-item">
+               <a class="nav-link" href="javascript:void(0);">Uber Uns</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="javascript:void(0);">Dienstleistungen </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="javascript:void(0);">Produkt</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="javascript:void(0);">Projekte</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="javascript:void(0);"> Kontakt  </a>
+            </li> -->
+          </ul>
+        </div>
+      </nav>
+</div>

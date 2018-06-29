@@ -27,6 +27,8 @@ export class SectionsComponent  {
           property.push(this.initPropertySections(propertyResponse.key, propertyResponse.type , propertyResponse.id  ))
         })
       });
+
+      
     });
   }
 

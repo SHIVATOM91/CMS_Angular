@@ -31,6 +31,14 @@ export class PageService  extends DataService {
       return this.http.delete(this.apiUrl+"pages/section/"+id , this.token );
   }
 
+  getData(response:any ,  key){
+    let value;
+    response.forEach(element => {
+      if(element.key==key && element.type!="file" && element.type!="link" ) value=element.value;
+      else if(element.key==key) value=element.link;
+    });
+    return value;
+  }
 
 }
 export interface Page{
