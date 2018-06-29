@@ -8,7 +8,7 @@
     overflow-y: scroll;
     position: relative;
     overflow: hidden;
-    font-family: 'Arimo', sans-serif;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 .Dashboard-title {
     background-color: #f7f7f7;
