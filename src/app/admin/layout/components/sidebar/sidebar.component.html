@@ -1,6 +1,6 @@
 
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
-        <img src="../../assets/images/ask_logo.png" width="100%" height="130px" />
+       
     <div class="list-group">
         <a  *ngFor="let item of meniItem" routerLink="{{item.link}}" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="{{item.icon}}" aria-hidden="true"></i>&nbsp;{{item.name  }}

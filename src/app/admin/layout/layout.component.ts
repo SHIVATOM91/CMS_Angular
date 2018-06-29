@@ -8,7 +8,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./layout.component.css']
 })
 export class   LayoutComponent implements OnInit {
-
+ 
   constructor() {
     //console.log()
 
