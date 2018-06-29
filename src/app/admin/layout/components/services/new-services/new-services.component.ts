@@ -1,3 +1,4 @@
+import { ServicesObject } from './../services.component';
 import { environment } from './../../../../../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -15,10 +16,18 @@ export class NewServicesComponent implements OnInit {
 
   public updateForm: FormGroup;
   localImage="";
+  currentObj;
   imgUrl= environment.imgUrl;
-
+  serviceId=null;
   constructor(private _service: ServicesService, private fb:FormBuilder, private router:Router, private route:ActivatedRoute,private toastr: ToastrService) {
+
+    this.serviceId = this.route.snapshot.paramMap.get('serviceId');
+
+    if(this.serviceId != null)
+      this.getServiceData();
+
     this.updateForm=fb.group({
+      id: [''],
       title: ['', Validators.required],
       description: [''],
       shortDescription: [''],
@@ -43,6 +52,23 @@ export class NewServicesComponent implements OnInit {
     this._service.create(this._service.createFormData(this.updateForm.value)).subscribe(response=>{
       console.log("hiii");
 
+    })
+  }
+
+  getServiceData(){
+    this._service.getBy(this.serviceId).subscribe( response => {
+      this.currentObj = response as ServicesObject;
+      console.log(this.currentObj);
+
+      this.updateForm.get('id').setValue(this.currentObj.id);
+      this.updateForm.get('title').setValue(this.currentObj.title);
+      this.updateForm.get('description').setValue(this.currentObj.description);
+      this.updateForm.get('shortDescription').setValue(this.currentObj.shortDescription);
+      this.updateForm.get('image').setValue(this.currentObj.featuredImage);
+      // for(let i=0;i<this.currentObj.post_categories.length; i++){
+      //   this.presentArray.push(this.currentObj.post_categories[i].id);
+      // }
+      // this.initializeCategory();
     })
   }
 }

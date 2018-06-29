@@ -22,8 +22,10 @@ export class NewPostComponent implements OnInit {
   imgUrl= environment.imgUrl;
   constructor(private _service: PostService, private _cat_service: PostCategoryService, private fb:FormBuilder, private router:Router, private route:ActivatedRoute,private toastr: ToastrService) {
     this.postId = this.route.snapshot.paramMap.get('postId');
+
     if(this.postId != null)
       this.getPostData();
+
     this.postForm = fb.group({
       id: [''],
       title: ['', Validators.required],
@@ -41,7 +43,6 @@ export class NewPostComponent implements OnInit {
   getPostData(){
     this._service.getBy(this.postId).subscribe( response => {
       this.currentObj = response as PostObject;
-      console.log(this.currentObj);
 
       this.postForm.get('id').setValue(this.currentObj.id);
       this.postForm.get('title').setValue(this.currentObj.title);
@@ -90,10 +91,10 @@ export class NewPostComponent implements OnInit {
     this._cat_service.validateAllFormFields(this.postForm);
     this._service.create(this._service.createFormData(this.postForm.value)).subscribe(response=>{
       console.log(response);
-      this.toastr.success('Post is published Successfully.'); 
+      this.toastr.success('Post is published Successfully.');
     },
     error=>{
-      this.toastr.error('There is some error in creating the Post.'); 
+      this.toastr.error('There is some error in creating the Post.');
     })
   }
 

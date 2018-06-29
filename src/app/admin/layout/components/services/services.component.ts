@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ServicesService } from './../../../../shared/services/services.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,7 +17,7 @@ export class ServicesComponent implements OnInit {
   ];
   serviceList: Array<ServicesObject>;
 
-  constructor(private _service: ServicesService) { }
+  constructor(private _service: ServicesService, private router:Router) { }
 
 
   ngOnInit() {
@@ -30,6 +31,12 @@ export class ServicesComponent implements OnInit {
   }
 
 
+
+  onRowSelect(){
+
+    if(this.selected.length > 0)
+      this.router.navigate(['/admin/update-service', this.selected[0].id ] , { skipLocationChange:true})
+  }
 
 }
 

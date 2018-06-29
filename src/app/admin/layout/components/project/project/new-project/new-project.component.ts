@@ -40,12 +40,11 @@ export class NewProjectComponent implements OnInit {
   getProjectData(){
     this._service.getBy(this.projectId).subscribe( response => {
       this.currentObj = response as ProjectObject;
-      console.log(this.currentObj);
-
       this.projectForm.get('id').setValue(this.currentObj.id);
       this.projectForm.get('title').setValue(this.currentObj.title);
       this.projectForm.get('description').setValue(this.currentObj.description);
       this.projectForm.get('image').setValue(this.currentObj.image);
+      this.presentArray=[];
       for(let i=0;i<this.currentObj.project_categories.length; i++){
         this.presentArray.push(this.currentObj.project_categories[i].id);
       }
@@ -56,13 +55,17 @@ export class NewProjectComponent implements OnInit {
 
 
   getAllCategories(){
+    this.categoryList=[];
     this._cat_service.get().subscribe(response => {
       this.categoryList = response as CategoryObject[];
+
       this.initializeCategory();
     })
   }
 
   initializeCategory(){
+    console.log(this.categoryList);
+    this.categories.controls=[];
     this.categoryList.forEach(cat => {
       this.categories.push(this.initCategoryBox(cat.id, cat.title));
     })
@@ -88,7 +91,6 @@ export class NewProjectComponent implements OnInit {
   publishProject(){
     this._cat_service.validateAllFormFields(this.projectForm);
     this._service.create(this._service.createFormData(this.projectForm.value)).subscribe(response=>{
-      console.log(response);
       this.toastr.success('Project is published Successfully.');
     },
     error=>{

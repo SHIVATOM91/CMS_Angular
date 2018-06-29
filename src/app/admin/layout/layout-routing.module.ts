@@ -98,7 +98,7 @@ const routes: Routes = [
       { path: 'page/updatepage/:pageId', component: NewPagesComponent },
       { path: 'service', component: ServicesComponent },
       { path: 'new-service', component: NewServicesComponent },
-      { path: 'update-service/:serviceId', component: NewPagesComponent },
+      { path: 'update-service/:serviceId', component: NewServicesComponent },
     ]
   }
 ];
