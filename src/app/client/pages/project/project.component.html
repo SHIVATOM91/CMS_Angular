@@ -1,3 +1,357 @@
-<p>
-  project works!
-</p>
+<div class="content"  *ngIf="project_section_content">
+   <div class="container">
+      <div class="headdingsection">
+         <ul class="list-unstyled askhaed">
+            <li class="media">
+               <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
+               <div class="media-body custom-body">
+                  <p class="mb-0">{{content('intro_title')}}</p>
+                  <h2 class="mt-1 mb-0">{{content('main_title')}}</h2>
+               </div>
+            </li>
+         </ul>
+      </div>
+      <div class="row">
+         <div class="col-md-12 projecthaed" [innerHTML]="content('mian_description')">
+         </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 projecttabs">
+           <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-one" role="tab" aria-controls="pills-one" aria-selected="true">PROJECT_TYPE</a>
+              </li>
+              <li class="nav-item">
+                 <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-two" role="tab" aria-controls="pills-two" aria-selected="false">PROJECT_TYPE</a>
+              </li>
+              <li class="nav-item">
+                 <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-three" role="tab" aria-controls="pills-three" aria-selected="false">PROJECT_TYPE</a>
+              </li>
+              <li class="nav-item">
+                 <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-four" role="tab" aria-controls="pills-four" aria-selected="false">PROJECT_TYPE</a>
+              </li>
+              <li class="nav-item">
+                 <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-five" role="tab" aria-controls="pills-five" aria-selected="false">PROJECT_TYPE</a>
+              </li>
+           </ul>
+           <div class="tab-content customtabpane" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-one" role="tabpanel" aria-labelledby="pills-home-tab">
+                 <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-1.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title">
+                                <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-2.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-3.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-4.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-5.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-6.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              
+              </div>
+              <div class="tab-pane fade" id="pills-two" role="tabpanel" aria-labelledby="pills-two-tab">
+                 <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-1.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title">
+                                <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-2.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-3.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-4.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-5.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-6.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+             
+              </div>
+              <div class="tab-pane fade" id="pills-three" role="tabpanel" aria-labelledby="pills-three-tab">
+               
+                 <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-1.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title">
+                                <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-2.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-3.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-4.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-5.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-6.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+            
+              </div>
+              <div class="tab-pane fade" id="pills-four" role="tabpanel" aria-labelledby="pills-four-tab">
+                     <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-1.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title">
+                                <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-2.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-3.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-4.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-5.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-6.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="tab-pane fade" id="pills-five" role="tabpanel" aria-labelledby="pills-five-tab">
+                    <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-1.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title">
+                                <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-2.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-3.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-4.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-5.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                       <div class="box">
+                          <img src="./images/img-6.jpg" class="img-fluid">
+                          <div class="box-content">
+                             <span class="post">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                             <div class="title"> <a href="javascript:void(0);" class="btn viewbtn">VIEW</a></div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+          
+           </div>
+              <nav class="customright">
+                    <ul class="pagination">
+                       <li class="page-item "><a class="page-link" href="javascript:void(0);">Previous</a></li>
+                       <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                       <li class="page-item active"><a class="page-link" href="javascript:void(0);">2</a></li>
+                       <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                       <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+                    </ul>
+                 </nav>
+        </div>
+     </div>
+    </div>
+  </div>
