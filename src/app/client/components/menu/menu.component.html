@@ -8,28 +8,12 @@
           <ul class="navbar-nav customcolor mr-auto">
             <li class="nav-item " *ngFor="let list of menuList">
                 <ng-container *ngIf="list.linkType=='page'">
-                    <a class="nav-link" routerLink="/{{list.pageSlug}}" >{{list.title}}</a>
+                    <a class="nav-link"  routerLinkActive="active" routerLink="{{list.pageSlug=='home' ? '' : '/'+list.pageSlug}}"  [routerLinkActiveOptions]="{ exact: true }" >{{list.title}}</a>
                 </ng-container>
                 <ng-container *ngIf="list.linkType=='custom'">
-                    <a class="nav-link" [href]="list.customLink" >{{list.title}}</a>
+                    <a class="nav-link"  routerLinkActive="active" [href]="list.customLink"  target="_blank" >{{list.title}}</a>
                 </ng-container>
-               
             </li>
-            <!-- <li class="nav-item">
-               <a class="nav-link" href="javascript:void(0);">Uber Uns</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0);">Dienstleistungen </a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="javascript:void(0);">Produkt</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="javascript:void(0);">Projekte</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0);"> Kontakt  </a>
-            </li> -->
           </ul>
         </div>
       </nav>

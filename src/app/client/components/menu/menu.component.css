@@ -30,29 +30,29 @@
 }
 
 .asknavbar .customcolor .nav-item {
-    padding-right: 30px;
-    padding-left: 30px;
     font-size: 15px;
     word-wrap: break-word;
-    transition: all 1s ease 0s;
-    -webkit-transition: all 1s ease 0s;
-    -moz-transition: all 1s ease 0s;
-    -o-transition: all 1s ease 0s;
+    min-width: 100px;
+    margin: 0px 15px;
 } 
 
 .asknavbar .customcolor .nav-item:hover {
-     background-color: #b9a463;
-    border-radius: 10px;
+    color: #b9a560;
 } 
 .asknavbar .customcolor .nav-item > a{
+    border-radius: 10px;
+    text-align: center;
+    border-radius: 0px;
     color: #000;
 }
 .asknavbar .customcolor .nav-item > a:hover{
-    color: #fff;
+    border-bottom: #b9a560 solid 3px;
+    color: #b9a560;
 }
-.asknavbar .customcolor .nav-item.active {
-    background-color: #b9a463;
-    border-radius: 10px;
+.asknavbar .customcolor .nav-item a.active {
+    border-bottom: #b9a560 solid 3px;
+    color: #b9a560;
+    width: auto;
 }
 .asknavbar .customcolor .nav-item.active >a {
    color: #fff;
