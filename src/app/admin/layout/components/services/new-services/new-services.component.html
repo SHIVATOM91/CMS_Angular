@@ -1,3 +1,58 @@
-<p>
-  new-services works!
-</p>
+<div class="col-sm-12" [formGroup]="updateForm">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-9">
+                <div class="form-group">
+                  <label for="menutitle">Service name:</label>
+                  <input type="text" class="form-control" name="menuTittle" formControlName="title"  id="title" autocomplete="off">
+                  <div class="form-control-feedback text-danger" *ngIf="updateForm.get('title').errors && (updateForm.get('title').dirty || updateForm.get('title').touched)">
+                    <p *ngIf="updateForm.get('title').errors.required">Service Name is required</p>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <ngb-accordion [closeOthers]="true" id="accordian" [activeIds]="'shortDescription'">
+                      <ngb-panel [id]="'shortDescription'">
+                        <ng-template ngbPanelTitle>
+                          <span><b>Short Description</b></span>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <ck-editor name="editor1" formControlName="shortDescription" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>
+                        </ng-template>
+                      </ngb-panel>
+                      <ngb-panel [id]="'description'">
+                        <ng-template ngbPanelTitle>
+                          <span><b>Description</b></span>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <ck-editor name="editor1" formControlName="description" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>
+                        </ng-template>
+                      </ngb-panel>
+                  </ngb-accordion>
+                </div>
+        </div>
+        <div class="col-md-3">
+          <div class="mb-3 ml-1 mr-1 row">
+            <button class="btn btn-primary form-control" (click)="updateService()">Publish</button>
+          </div>
+          <div class="card">
+              <h6 class="card-header">Featured Image</h6>
+              <div class="card-body">
+                  <div class="form-group">
+                    <div class="img_wraper img_c_width">
+                        <label for="featuredImage" class="img-hover">
+                          <div class="img-prop" *ngIf="localImage!=''" [ngStyle]="{'background': 'url('+localImage+')'  }"></div>
+                          <div class="img-prop" *ngIf="!localImage && updateForm.get('image').value==''" [ngStyle]="{'background': 'url(https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg) top center'  }"></div>
+                          <div class="img-prop" *ngIf="localImage=='' && updateForm.get('image').value != ''" [ngStyle]="{'background': 'url('+imgUrl+''+updateForm.get('image').value+')'  }"></div>
+                        </label>
+                    </div>
+                    <input type="file" accept="image/*" (change)="handleFileInput($event)"   name="file" class="form-control" hidden id="featuredImage">
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
