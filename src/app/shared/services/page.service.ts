@@ -46,4 +46,3 @@ export interface Page{
   img_url,
   title:String
 }
-

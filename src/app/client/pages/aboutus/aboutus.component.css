@@ -1,0 +1,227 @@
+/* aboutus page */
+
+.nopaddingclass{
+    padding: 0;
+    }
+    
+    
+    
+    .banner{
+       /*  background: url('../assets/images/bannerimage.jpg'); */
+        height: 240px;
+        background-size: cover;
+    
+    }
+    
+    .headdingsection{
+        margin-top:15px;
+    }
+    
+     .detail{
+        font-size: 14px ;
+        text-align: justify ;
+    }
+    
+    .nopaddingclass{
+    padding: 0;
+    }
+    
+    .customask-left{
+    float: left;
+    }
+    
+    
+    .about-company p strong{ text-transform:uppercase;}
+    .about-company .img-1{ margin-top:-70px;padding-right:20px; padding-left:20px;}
+    .about-company .img-2{margin-top:20px;padding-right:20px; padding-left:20px;}
+    .about-company .img-3{margin-top:10px;margin-bottom:20px;}
+    .about-company .img-4{margin-top:20px; margin-bottom:40px;}
+    
+    
+    
+    
+    
+    
+    
+    
+    .askumba-point{
+        margin-top:15px;
+        margin-bottom:25px;
+        border-top:1px solid #DDD;
+        }
+    .askumba-point > div{
+        padding:0;
+        }
+    .askumba-point h6{
+       
+        line-height:21px;   
+        }
+    .askumba-point .fa{
+        font-size: 16px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        color: #ffb135;
+        border-radius: 50%;
+        border: 1px solid #ddd;
+        background: #fff;
+        position: relative;
+        margin-top: -15px;
+        display: block;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        transition: all 0.5s ease;  
+        }
+    
+    
+    
+    .askumba-point .fa:hover{
+        background:#ffb135;
+        color: #fff;
+    }
+    
+    
+    
+    
+    .testiomonal{
+        background:url('../../../../assets/images/about_banner.jpg');
+    
+        min-height: 400px;
+        background-size: cover;
+    }
+    
+    
+    .testiomonal .owl-about{
+        text-align: center;
+        margin:0 auto;
+    }
+    .owl-carousel.owl-about .owl-item{
+        margin-top:30px;
+    }
+    
+    .owl-carousel.owl-about .owl-item img{
+    width: 200px !important;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 50%;
+    }
+    .owl-carousel.owl-about .owl-item h2{
+    font-size: 18px;
+        margin: 20px 0px 20px 0px;
+        color: #fff;
+        text-transform: uppercase;
+    }
+    
+    .owl-carousel.owl-about .owl-item p{
+          margin: 20px 0px 20px 0px;
+          text-align: center;
+          color: #fff;
+          font-size: 14px;
+    }
+    .owl-carousel.owl-about .owl-item{
+        margin: 30px 0px 0px 0px;
+    }
+    .owl-carousel.owl-about .owl-item span {
+        background: none repeat scroll 0 0 #869791;
+        border-radius: 20px; 
+        display: block;
+        height: 12px;
+        margin: 5px 7px;
+        opacity: 0.5;
+        width: 12px;
+    }
+    .owl-carousel.owl-about  .owl-dots {
+        padding-bottom: 30px;
+    }
+    .owl-carousel.owl-about  .owl-dots > button{
+           position: relative;
+        -ms-flex: 0 1 auto;
+        flex: 0 1 auto;
+           width: 80px;
+        height: 10px;
+        margin-right: 3px;
+        margin-left: 3px;
+        text-indent: -999px;
+        cursor: pointer;
+        background-color: rgba(255,255,255,1);
+        outline-style: none !important;
+    }
+    
+    .owl-carousel.owl-about  .owl-dots button.owl-dot.active{
+        background-color:rgb(33, 85, 142);
+    }
+    
+    .testiomonal h2{
+    
+         text-align: center;
+        color: #fff;
+        padding-top: 30px;
+    }
+    
+
+    @media(max-width: 1200px)
+{
+/* about us media */
+
+.about-company .img-1{ margin-top:-70px;padding-right:0px; padding-left:0px;}
+.about-company .img-2{margin-top:20px;padding-right:0px; padding-left:0px;}
+.about-company .img-3{margin-top:10px;margin-bottom:20px;    padding-left: 10px;}
+.about-company .img-4{margin-top:20px; margin-bottom:40px;    padding-left: 10px;}
+
+
+/* about us media end */
+
+}
+
+
+@media(max-width: 992px){
+
+/* about us media */
+
+.about-company .img-1 { margin:0 auto; text-align: center; padding: 0;}
+.about-company .img-2{ margin:0 auto; text-align: center;padding: 0;}
+.about-company .img-3{ margin:0 auto; text-align: center;padding: 0;}
+.about-company .img-4{ margin:0 auto; text-align: center;padding: 0; }
+.about-imgs  .customask-left{
+margin: 0 auto;
+float: none;    
+}
+.about-imgs img{margin-bottom: 10px;}
+
+/* about us media end */
+
+}
+
+@media(max-width: 767px)
+{
+/*about us*/
+
+.askumba-point {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    border:none;
+}
+
+.askumba-point .fa{
+    display: inline-block;
+    margin-top: -5px;
+}
+
+.askumba-point h6{
+
+    padding-left: 40px;
+    font-size: 17px;
+
+}
+
+
+
+.askumba-point .commncls{
+    margin-bottom: 15px;
+}
+
+/*about us end*/
+}

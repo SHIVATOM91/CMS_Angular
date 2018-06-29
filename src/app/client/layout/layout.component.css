@@ -1,0 +1,18 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+.headdingsection {
+    margin-top: 15px;
+}
+.askhaed .custom-body p{
+
+    font-size: 16px;
+    font-weight: 500;
+    color: #676565;
+    }
+    .askhaed .custom-body h2 {
+        font-size: 29px;
+        font-weight: 700;
+        color: #000;
+    }
+    
