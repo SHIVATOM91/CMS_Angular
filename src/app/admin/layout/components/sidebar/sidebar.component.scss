@@ -1,17 +1,21 @@
-$topnav-background-color: #222;
+$topnav-background-color: rgb(255, 255, 255);
+$topnav-color:#464545;
+$brand-color: #b6a25d;
 .sidebar {
     border-radius: 0;
     position: fixed;
+    margin-top: 100px;
     z-index: 1000;
     top: 56px;
     left: 235px;
-    width: 235px;
+    width: 246px;
     margin-left: -235px;
     border: none;
     border-radius: 0;
     overflow-y: auto;
     background-color: $topnav-background-color;
     bottom: 0;
+    margin-right: -8px;
     overflow-x: hidden;
     padding-bottom: 40px;
     -webkit-transition: all 0.2s ease-in-out;
@@ -25,19 +29,20 @@ $topnav-background-color: #222;
             background: $topnav-background-color;
             border: 0;
             border-radius: 0;
-            color: #999;
+            color:$topnav-color;
             text-decoration: none;
             .fa {
                 margin-right: 10px;
             }
+            border-left: 4px solid $topnav-background-color;
         }
         a:hover {
-            background: darken($topnav-background-color, 5%);
-            color: #fff;
+            background: darken($topnav-background-color, 6%);
+            border-left-color: $brand-color;
         }
         a.router-link-active {
-            background: darken($topnav-background-color, 5%);
-            color: #fff;
+            background: darken($topnav-background-color, 6%);
+            border-left-color: $brand-color;
         }
         .header-fields {
             padding-top: 10px;
@@ -57,7 +62,7 @@ $topnav-background-color: #222;
             height: 50px;
             margin-bottom: 0;
             a {
-                color: #999;
+                color: $topnav-color;
                 text-decoration: none;
                 font-weight: 400;
                 background: $topnav-background-color;
@@ -87,7 +92,7 @@ $topnav-background-color: #222;
                     background-color: $topnav-background-color;
                     border: 0 solid transparent;
                     a {
-                        color: #999;
+                        color:$topnav-color;
                     }
                     a:hover {
                         color: #fff;

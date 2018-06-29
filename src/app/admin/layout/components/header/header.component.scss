@@ -1,7 +1,8 @@
-$topnav-background-color: #222;
+$topnav-background-color: #fff;
 :host {
     .navbar {
         background-color: $topnav-background-color;
+        box-shadow: 0 0 3px 2px #c3c3c1;
         .navbar-brand {
             color: #fff;
         }
@@ -35,4 +36,17 @@ $topnav-background-color: #222;
             }
         }
     }
+}
+
+.logo{
+    width: 235px;
+    height: 148px;
+    background-size: 78%;
+    background-position: center center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    border-bottom: #ccc solid 1px;
 }
