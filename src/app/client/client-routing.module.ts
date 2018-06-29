@@ -13,7 +13,6 @@ const routes: Routes = [
     path:"" , component:LayoutComponent,
     children:[
       {path:"" , component:HomeComponent},
-      {path:"home" , redirectTo:""},
       {path:"about-us" , component:AboutusComponent},
       {path:"services" , component:ServicesComponent},
       {path:"product" , component:ProductComponent},
