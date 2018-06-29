@@ -11,7 +11,7 @@
 
     <div class="col-md-6">
       <div formArrayName="sections">
-        <ng-container *ngFor="let section of sections.controls; let i = index;">
+      <ng-container *ngFor="let section of sections.controls; let i = index;">
           <div class="card" [formGroupName]='i'>
             <div class="card-header">
               <h5 class="pull-left">Section {{ i + 1 }}</h5>
@@ -25,31 +25,31 @@
                 </div>
               </div>
               <div formArrayName="properties">
-                <button type="button" (click)="addNewProperty(section)" class="btn btn-primary btn-sm pull-right">Add Properties</button>
-                <ng-container *ngFor="let property of section.controls.properties.controls; let j = index;">
-                  <div class="form-group cardGroup clearfix" [formGroupName]='j'>
-                    <h5>Property {{j+1}}</h5>
-                    <button (click)="deleteProperty(i,j)" class="btn btn-danger btn-sm pull-right">Delete</button>
-                    <div class="form-group row clearfix">
-                      <label for="inputPassword" class="col-sm-3 col-form-label">Key Name</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" formControlName="key">
+                  <button type="button" (click)="addNewProperty(section)" class="btn btn-primary btn-sm pull-right">Add Properties</button>
+                  <ng-container *ngFor="let property of section.controls.properties.controls; let j = index;">
+                      <div class="form-group cardGroup clearfix" [formGroupName]='j'>
+                          <h5>Property {{j+1}}</h5>
+                          <button (click)="deleteProperty(i,j)" class="btn btn-danger btn-sm pull-right">Delete</button>
+                          <div class="form-group row clearfix">
+                              <label for="inputPassword" class="col-sm-3 col-form-label">Key Name</label>
+                              <div class="col-sm-9">
+                              <input type="text" class="form-control" formControlName="key">
+                              </div>
+                          </div>
+                          <div class="form-group clearfix row">
+                              <label for="inputPassword" class="col-sm-3 col-form-label">Property</label>
+                              <div class="col-sm-9">
+                                  <select formControlName="type" class="form-control">
+                                      <option value="file"> File</option>
+                                      <option value="text"> Text</option>
+                                      <option value="string"> String</option>
+                                      <option value="number"> Number</option>
+                                      <option value="link">Link</option>
+                                  </select>
+                              </div>
+                          </div>
                       </div>
-                    </div>
-                    <div class="form-group clearfix row">
-                      <label for="inputPassword" class="col-sm-3 col-form-label">Property</label>
-                      <div class="col-sm-9">
-                        <select formControlName="type" class="form-control">
-                          <option value="file"> File</option>
-                          <option value="text"> Text</option>
-                          <option value="string"> String</option>
-                          <option value="number"> Number</option>
-                          <option value="link">Link</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </ng-container>
+                  </ng-container>
               </div>
             </div>
           </div>
