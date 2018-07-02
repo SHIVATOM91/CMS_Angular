@@ -1,3 +1,4 @@
+import { TestimonialsService } from './services/testimonials.service';
 import { ServicesService } from './services/services.service';
 import { PostService } from './services/post.service';
 import { PostCategoryService } from './services/post-category.service';
@@ -18,6 +19,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { IcheckDirective } from './directives/icheck.directive';
 import { ProjectCategoryService } from './services/project-category.service';
 import { ProjectService } from './services/project.service';
+import { ReversePipe } from './pipes/reverse.pipe';
 
 @NgModule({
   imports: [
@@ -26,7 +28,7 @@ import { ProjectService } from './services/project.service';
     ReactiveFormsModule,
     NgxDatatableModule
   ],
-  declarations: [IcheckDirective],
+  declarations: [IcheckDirective, ReversePipe],
   exports: [
     CommonModule,
     FormsModule,
@@ -35,9 +37,10 @@ import { ProjectService } from './services/project.service';
     HttpClientModule,
     Angular2FontawesomeModule,
     NgxDatatableModule,
-    IcheckDirective
+    IcheckDirective,
+    ReversePipe
   ],
-  providers: [  BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService]
+  providers: [ ReversePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService]
 
 })
 export class SharedModule { }

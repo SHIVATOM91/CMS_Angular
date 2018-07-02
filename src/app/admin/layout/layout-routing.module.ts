@@ -1,3 +1,4 @@
+import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewServicesComponent } from './components/services/new-services/new-services.component';
 import { ServicesComponent } from './components/services/services.component';
@@ -20,11 +21,11 @@ import { PostComponent } from './components/post/post.component';
 import { NewPagesComponent } from './components/pages/new-pages/new-pages.component';
 import { LayoutComponent } from './layout.component';
 import { SectionsComponent } from './components/Sections/sections.component';
-import { TestimonialComponent } from './components/testimonial/testimonial.component';
 import { PostCategoryComponent } from './components/post/post-category/post-category.component';
 import { EditPagesComponent } from './components/pages/edit-pages/edit-pages.component';
 import { NewPostComponent } from './components/post/post/new-post/new-post.component';
 import { AllProjectComponent } from './components/project/project/all-project/all-project.component';
+import { NewTestimonialsComponent } from './components/testimonials/new-testimonials/new-testimonials.component';
 
 
 const routes: Routes = [
@@ -92,13 +93,15 @@ const routes: Routes = [
       },
       { path: 'page', component: PagesComponent },
       { path: 'sections', component: SectionsComponent },
-      { path: 'testimonial', component: TestimonialComponent },
       { path: 'page/newpage', component: NewPagesComponent },
       { path: 'page/editpage/:sectionId', component: EditPagesComponent },
       { path: 'page/updatepage/:pageId', component: NewPagesComponent },
       { path: 'service', component: ServicesComponent },
       { path: 'new-service', component: NewServicesComponent },
       { path: 'update-service/:serviceId', component: NewServicesComponent },
+      { path: 'testimonials', component: TestimonialsComponent },
+      { path: 'new-testimonials', component: NewTestimonialsComponent },
+      { path: 'update-testimonials/:testimonialId', component: NewTestimonialsComponent },
     ]
   }
 ];

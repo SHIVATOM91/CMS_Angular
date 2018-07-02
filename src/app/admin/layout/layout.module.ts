@@ -1,3 +1,4 @@
+import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { ProjectComponent } from './components/project/project.component';
 import { AllProjectComponent } from './components/project/project/all-project/all-project.component';
 import { NewProjectComponent } from './components/project/project/new-project/new-project.component';
@@ -29,7 +30,6 @@ import { InputTemplateComponent } from './templates/input-template/input-templat
 import { DecriptionTemplateComponent } from './templates/decription-template/decription-template.component';
 import { ImageTemplateComponent } from './templates/image-template/image-template.component';
 import { SectionsComponent } from './components/Sections/sections.component';
-import { TestimonialComponent } from './components/testimonial/testimonial.component';
 import { DragulaModule } from 'ng2-dragula';
 import { PostCategoryComponent } from './components/post/post-category/post-category.component';
 import { UpdateComponent } from './components/post/post-category/update/update.component';
@@ -41,9 +41,10 @@ import { ManageProjectComponent } from './components/project/project/manage-proj
 import { ServicesComponent } from './components/services/services.component';
 import { NewServicesComponent } from './components/services/new-services/new-services.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NewTestimonialsComponent } from './components/testimonials/new-testimonials/new-testimonials.component';
 
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent
+  declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialsComponent, NewTestimonialsComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent
 
 
 

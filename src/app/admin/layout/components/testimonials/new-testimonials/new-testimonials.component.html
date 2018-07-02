@@ -4,10 +4,10 @@
       <div class="row">
         <div class="col-md-9">
                 <div class="form-group">
-                  <label for="menutitle">Service name:</label>
+                  <label for="menutitle">Testimonial name:</label>
                   <input type="text" class="form-control" name="menuTittle" formControlName="title"  id="title" autocomplete="off">
                   <div class="form-control-feedback text-danger" *ngIf="updateForm.get('title').errors && (updateForm.get('title').dirty || updateForm.get('title').touched)">
-                    <p *ngIf="updateForm.get('title').errors.required">Service Name is required</p>
+                    <p *ngIf="updateForm.get('title').errors.required">Testimonial Name is required</p>
                   </div>
                 </div>
 
@@ -31,30 +31,10 @@
                       </ngb-panel>
                   </ngb-accordion>
                 </div>
-                <div class="clearfix"></div>
-                <div class="row"  formArrayName="gallery">
-                  <div class="form-group">
-                    <div class="img_wraper img_c_width">
-                        <label for="featuredImage" class="img-hover">
-                          <div class="img-prop" [ngStyle]="{'background': 'url(https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg) top center'  }"></div>
-                        </label>
-                    </div>
-                    <input type="file" accept="image/*" (change)="handleGaleryInput($event)"   name="file" class="form-control" hidden id="featuredImage">
-                  </div>
-                  <ng-container *ngFor="let imageForm of updateForm.get('gallery').controls; let i = index;">
-                    <div class="form-group"  [formGroupName]="i">
-                      <div class="img_wraper img_c_width">
-                          <label [for]="i" class="img-hover">
-                            <div class="img-prop" [ngStyle]="{'background': 'url('+imageForm.get('g_image').value+')'  }"></div>
-                          </label>
-                      </div>
-                    </div>
-                  </ng-container>
-                </div>
         </div>
         <div class="col-md-3">
           <div class="mb-3 ml-1 mr-1 row">
-            <button class="btn btn-primary form-control" (click)="updateService()" [disabled]="updateForm.invalid">Publish</button>
+            <button class="btn btn-primary form-control" (click)="updateTestimonial()" [disabled]="updateForm.invalid">Publish</button>
           </div>
           <div class="card">
               <h6 class="card-header">Featured Image</h6>

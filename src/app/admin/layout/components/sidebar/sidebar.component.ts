@@ -53,7 +53,7 @@ export class SidebarComponent {
         },
         {
             "name":"Testimonial",
-            "link":"testimonial",
+            "link":"testimonials",
             "icon":"fa fa-pencil-square-o"
         },
         {
