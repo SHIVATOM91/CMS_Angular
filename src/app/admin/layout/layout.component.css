@@ -11,7 +11,7 @@
     font-family: Roboto, "Helvetica Neue", sans-serif;
     background: #fbfbfb;
     z-index: 1000;
-    height: 100vh;
+    min-height: 100vh;
 }
 .Dashboard-title {
     background-color: #f7f7f7;
@@ -27,8 +27,20 @@
 }
 
 
+.card{
+    border: 1px solid rgb(232, 232, 232) !important;
+    border-radius: 0px !important;
+    box-shadow: 1px 3px 7px 0px #dedede !important;
+}
 
-
+.icon-btn{
+    width: 35px;
+    height: 35px;
+    background-color: #b7a35e;
+    border-radius: 50%;
+    padding: 10px;
+    color: #fff !important;
+}
 @media screen and (max-width: 992px) {
     .main-container {
         margin-left: 0px !important;

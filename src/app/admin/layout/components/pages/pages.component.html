@@ -12,13 +12,13 @@
             [footerHeight]="40"
             [rowHeight]="'auto'"
             [rows]="pageContent">
-            <ngx-datatable-column name="Project Title" prop="title">
+            <ngx-datatable-column name="Project Title" prop="title"   >
                 <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
                 {{value}}
                 </ng-template>
             </ngx-datatable-column>
             
-            <ngx-datatable-column name="Created" prop="created_at">
+            <ngx-datatable-column name="Created" prop="created_at" >
                 <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
                 {{value}}
                 </ng-template>
@@ -30,15 +30,15 @@
                 </ng-template>
             </ngx-datatable-column>
         
-            <ngx-datatable-column name="Edit" >
-                <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                    <button type="button" class="text_btn" (click)="editPage(pageItem) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button>   
+            <ngx-datatable-column name="Edit"  >
+                <ng-template let-value="value"  let-rowIndex="rowIndex" let-row="row"  ngx-datatable-cell-template>
+                    <button type="button" class="text_btn" (click)="editPage(row) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button>   
                 </ng-template>
             </ngx-datatable-column>
         
             <ngx-datatable-column name="Delete" >
-                <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        <button type="button" class="text_btn" (click)="deletePage(i)" ><i class="fa fa-trash" aria-hidden="true"></i> </button>                              
+                <ng-template let-value="value"  let-rowIndex="rowIndex"  let-row="row" ngx-datatable-cell-template>
+                        <button type="button" class="text_btn" (click)="deletePage(rowIndex)" ><i class="fa fa-trash" aria-hidden="true"></i> </button>                              
                 </ng-template>
             </ngx-datatable-column>
         </ngx-datatable>
