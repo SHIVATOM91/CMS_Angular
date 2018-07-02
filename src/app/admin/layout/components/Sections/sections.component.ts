@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, FormControl, ControlContainer, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SectionsService } from '../../../../shared/services/sections.service';
@@ -12,6 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 export class SectionsComponent  {
   sectionForm:FormGroup
   sectionList;
+  @ViewChild('sectionDatatable')  sTable:any;
+
   constructor(private modalService: NgbModal , private fb:FormBuilder, private _sectionService:SectionsService, private toastr: ToastrService,) {
     
     this.sectionForm=fb.group({
@@ -93,5 +95,14 @@ export class SectionsComponent  {
   getPropertyId(sectionIndex, propertyIndex){
     let property =this.sections.controls[sectionIndex].get('properties') as FormArray;
     return property.controls[propertyIndex].get('id')
+  }
+
+  toggleExpandRow(row) {
+    console.log('Toggled Expand Row!', row);
+    this.sTable.rowDetail.toggleExpandRow(row);
+  }
+
+  onDetailToggle(event) {
+    console.log('Detail Toggled', event);
   }
 }

@@ -1,4 +1,6 @@
-
+<div class="card">
+  <div class="card-body">
+    
 <form role="form" id="banner"  [formGroup]="pageForm"  novalidate>
     <div class="row justify-content-between">
       <div class="col-md-8">
@@ -26,8 +28,8 @@
                   <div class="taskboard-task" *ngFor='let section of selectedSection'>
                     <div class="taskboard-task-title">{{ section.title }} | {{ section.id }}  </div>
                      <div class="pull-right">
-                          <i class="fa fa-edit text-primary" (click)="editProprty(section)"></i>
-                          <i class="fa fa-trash text-danger" (click)="deleteProprty(section)" *ngIf="section.id!=null"></i>
+                          <i class="fa fa-edit text-primary icon-btn" (click)="editProprty(section)"></i>
+                          <i class="fa fa-trash text-danger icon-btn" (click)="deleteProprty(section)" *ngIf="section.id!=null"></i>
                         </div>
                   </div>
                 </div>
@@ -61,3 +63,6 @@
       </div>
     </div>
   </form>
+
+  </div>
+</div>

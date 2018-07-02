@@ -30,8 +30,8 @@ export class PagesComponent implements OnInit {
   }
 
   deletePage(pageItem){
-    this._pageServ.delete(this.pageContent[pageItem].id).subscribe(response=>{
-      this.pageContent.splice(pageItem,1)
-    })
+    // this._pageServ.delete(this.pageContent[pageItem].id).subscribe(response=>{
+    //   this.pageContent.splice(pageItem,1)
+    // })
   }
 }
