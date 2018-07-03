@@ -14,12 +14,14 @@ import { ProductComponent } from './pages/product/product.component';
 import { ProjectComponent } from './pages/project/project.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ServicesComponent } from './pages/services/services.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
     ClientRoutingModule,
-    SharedModule
+    SharedModule,
+    NgbModule.forRoot()
   ],
   declarations: [LayoutComponent, HeaderComponent, FooterComponent, SliderComponent, MenuComponent, HomeComponent, AboutusComponent, ProductComponent, ProjectComponent, ContactComponent, ServicesComponent]
 })

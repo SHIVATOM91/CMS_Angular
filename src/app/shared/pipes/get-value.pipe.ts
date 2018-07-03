@@ -10,16 +10,16 @@ export class GetValuePipe implements PipeTransform {
     if(value == null){
       return "";
     }
-   
+
     let retValue="";
     if(!isArray(value)){
       return "";
     }
     console.log(key);
-    value.forEach(element => { 
+    value.forEach(element => {
       if(element.key == key){
         console.log(element.type);
-        
+
       }
       // if(element.key==key && element.type!="file" && element.type!="link" && retValue==''){
       //   retValue=element.value;
