@@ -74,15 +74,18 @@
                    </div>
                 </li>
              </ul>
-             <div class="owl-one owl-carousel owl-theme owl-loaded">
-                <div class="owl-stage-outer">
-                   <div class="owl-stage">
-                      <div class="owl-item"><p>All Projekte<p></div>
-                      <div class="owl-item"><p>Neubau </p></div>
-                      <div class="owl-item"><p>Umbau</p></div>
+             <owl-carousel
+               [options]="{items: 3, dots: false, navigation: true}"
+               [items]="projectCategorySlider"
+               [carouselClasses]="['owl-theme',  'sliding']">
+               <div class="item" *ngFor="let category of projectCategorySlider;let i = index">
+                 <div class="custom-home-item"  style="height: 100px;">
+                   <div class="carousel-caption ">
+                     <p>{{category.title}}</p>
                    </div>
-                </div>
-             </div>
+                 </div>
+               </div>
+             </owl-carousel>
              <div class="cstomrow">
                 <div class="owl-prodcut owl-carousel owl-theme">
                   <div class="item">

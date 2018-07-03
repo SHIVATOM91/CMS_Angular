@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PageService } from '../../../shared/services/page.service';
 import { environment } from '../../../../environments/environment';
 import { ProjectCategoryService } from '../../../shared/services/project-category.service';
@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit {
 
     this._projectcategory.getProjectcategories().subscribe(response=>{
       this.projectCategorySlider=response;
+      console.log(this.projectCategorySlider);
+
     })
   }
 
