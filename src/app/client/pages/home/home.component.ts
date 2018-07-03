@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this._section.getPageSections(this.about_section_id).subscribe(response=>{
       this.about_section_content=response;
+      
     })
 
     this._section.getPageSections(this.project_section_id).subscribe(response=>{

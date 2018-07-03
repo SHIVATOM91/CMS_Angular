@@ -20,11 +20,10 @@ export class AboutusComponent implements OnInit {
     this._section.getPageSections(this.aboutus_section_id).subscribe(response=>{
       console.log(response)
       this.aboutus_section_content=response;
-
-   
     })
     this._testimonials.getTestimonials().subscribe(response=>{
-      console.log(response)
+      console.log(response
+      )
       this.aboutSlider=response;
     })
   }
