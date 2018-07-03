@@ -12,6 +12,7 @@
     background: #fbfbfb;
     z-index: 1000;
     min-height: 100vh;
+    border-left: 1px solid rgb(232, 232, 232) !important;
 }
 .Dashboard-title {
     background-color: #f7f7f7;
@@ -40,6 +41,7 @@
     border-radius: 50%;
     padding: 10px;
     color: #fff !important;
+    cursor: pointer;
 }
 @media screen and (max-width: 992px) {
     .main-container {
