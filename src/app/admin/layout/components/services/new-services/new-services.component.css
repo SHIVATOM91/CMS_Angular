@@ -10,3 +10,24 @@
   width: 100% !important;
   overflow: hidden;
 }
+
+.img_static_wraper{
+  padding-left: 5px;
+  position: relative;
+  width: 378px;
+  height: 171px;
+  overflow: hidden;
+}
+
+.img_static_wraper .close_btn{
+  position: absolute;
+  opacity: 0;
+  top: -10px;
+  right: 0px;
+  border-radius: 19%;
+  transition: all 0.4s linear;
+}
+
+.img_static_wraper:hover .close_btn{
+  opacity: 1;
+}

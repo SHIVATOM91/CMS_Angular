@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray, AbstractControl, FormControl } from '@angular/forms';
 import { ServicesService } from './../../../../../shared/services/services.service';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-new-services',
@@ -18,6 +18,7 @@ export class NewServicesComponent implements OnInit {
   public imageForm: FormGroup;
   localImage="";
   localArray=[];
+  @ViewChild('galleryImage') galleryImage;
   currentObj;
   imgUrl= environment.imgUrl;
   serviceId=null;
@@ -57,15 +58,17 @@ export class NewServicesComponent implements OnInit {
 
 
   handleGaleryInput(event){
-    this.imageForm.get('image').setValue(event.target.files[0]);
 
     var myReader: FileReader = new FileReader();
     myReader.onloadend = (e) => {
       this.imageForm.get('g_image').setValue(myReader.result);
+      let gallery = this.updateForm.get('gallery') as FormArray;
+
+      this.imageForm.get('image').setValue(event.target.files[0]);
+      gallery.push(this.copyFormControl(this.imageForm));
     }
     myReader.readAsDataURL(event.target.files[0]);
-    let gallery = this.updateForm.get('gallery') as FormArray;
-    gallery.controls.push(this.copyFormControl(this.imageForm));
+
     this.imageForm.reset();
   }
 
@@ -86,16 +89,37 @@ export class NewServicesComponent implements OnInit {
       this.updateForm.get('description').setValue(this.currentObj.description);
       this.updateForm.get('shortDescription').setValue(this.currentObj.shortDescription);
       this.updateForm.get('image').setValue(this.currentObj.featuredImage);
+
+      this.currentObj.service_galeries.forEach(image => {
+        let gallery = this.updateForm.get('gallery') as FormArray;
+        gallery.push(this.fb.group({
+          id: [image.id],
+          image: [''],
+          g_image: [this.imgUrl + image.image]
+        }))
+      });
+
     })
+  }
+
+  deleteGalleryImage(index){
+    let gallery = this.updateForm.get('gallery') as FormArray;
+    if(gallery.controls[index].get('id').value == ''){
+      gallery.removeAt(index);
+    }else{
+      this._service.deleteGalery(gallery.controls[index].get('id').value).subscribe(response=>{
+        gallery.removeAt(index);
+      })
+    }
+
   }
 
 
   copyFormControl(control: FormGroup) {
-    console.log(control.get('g_image'));
-
     let myForm = this.fb.group({
+      id: [''],
       image: [control.get('image').value],
-      g_image:[control.get('g_image').value]
+      g_image:[{value: control.get('g_image').value, disabled: true}]
     });
     return myForm;
   }
