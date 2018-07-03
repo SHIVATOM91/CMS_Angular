@@ -77,10 +77,10 @@
              <owl-carousel
                [options]="{items: 3, dots: false, navigation: true}"
                [items]="projectCategorySlider"
-               [carouselClasses]="['owl-theme',  'sliding']">
+               [carouselClasses]="['owl-theme',  'sliding', 'custom-home-item']">
                <div class="item" *ngFor="let category of projectCategorySlider;let i = index">
-                 <div class="custom-home-item"  style="height: 100px;">
-                   <div class="carousel-caption ">
+                 <div class="project-menu-container">
+                   <div class="project-menu-title">
                      <p>{{category.title}}</p>
                    </div>
                  </div>

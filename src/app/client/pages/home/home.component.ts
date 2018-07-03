@@ -18,11 +18,11 @@ export class HomeComponent implements OnInit {
   constructor(private _section:PageService, private _projectcategory:ProjectCategoryService) { }
 
   ngOnInit() {
-    this._section.getPageSections(this.about_section_id).subscribe(response=>{
+    this._section.getOuterPageSections(this.about_section_id).subscribe(response=>{
       this.about_section_content=response as Section;
     })
 
-    this._section.getPageSections(this.project_section_id).subscribe(response=>{
+    this._section.getOuterPageSections(this.project_section_id).subscribe(response=>{
       this.project_section_content=response as Section;
     })
 

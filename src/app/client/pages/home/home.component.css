@@ -158,6 +158,25 @@
   position: absolute;
   width: 100%;
 }
+
+
+
+.custom-home-item .item{
+  background: #000;
+  height: 50px;
+}
+
+.project-menu-container{
+  height: 50px;
+  background-color: #ffffff;
+  outline: 1px solid #ccc;
+}
+
+.project-menu-title p{
+  color: #212529;
+  text-align: center;
+  line-height: 50px;
+}
 /* paralax-section*/
 
 
