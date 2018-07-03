@@ -1,59 +1,17 @@
+
 <form [formGroup]="sectionForm">
   <div class="row">
     <div class="col-md-12">
-      <button class="btn btn-secondary pull-right ml-2" (click)="addNewSection()">
+      <button class="btn btn-primary pull-right ml-2" (click)="addNewSection()">
         <i class="fa fa-plus" aria-hidden="true"></i>New Section
       </button>
-      <button class="btn btn-primary pull-right" [hidden]='sections.controls.length<=0' (click)="publishSections()" [disabled]="sectionForm.invalid">
+      <!-- <button class="btn btn-primary pull-right" [hidden]='sections.controls.length<=0' (click)="publishSections()" [disabled]="sectionForm.invalid">
         <i class="fa fa-plus" aria-hidden="true"></i>Publish
-      </button>
+      </button> -->
     </div>
-
-    <div class="col-md-6">
-      <div formArrayName="sections">
-      <ng-container *ngFor="let section of sections.controls; let i = index;">
-          <div class="card" [formGroupName]='i'>
-            <div class="card-header">
-              <h5 class="pull-left">Section {{ i + 1 }}</h5>
-              <button (click)="deleteSection(i)" class=" pull-right">Delete</button>
-            </div>
-            <div class="card-body">
-              <div class="form-group row">
-                <label for="inputPassword" class="col-sm-3 col-form-label">Section Title</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" formControlName="title">
-                </div>
-              </div>
-              <div formArrayName="properties">
-                  <button type="button" (click)="addNewProperty(section)" class="btn btn-primary btn-sm pull-right">Add Properties</button>
-                  <ng-container *ngFor="let property of section.controls.properties.controls; let j = index;">
-                      <div class="form-group cardGroup clearfix" [formGroupName]='j'>
-                          <h5>Property {{j+1}}</h5>
-                          <button (click)="deleteProperty(i,j)" class="btn btn-danger btn-sm pull-right">Delete</button>
-                          <div class="form-group row clearfix">
-                              <label for="inputPassword" class="col-sm-3 col-form-label">Key Name</label>
-                              <div class="col-sm-9">
-                              <input type="text" class="form-control" formControlName="key">
-                              </div>
-                          </div>
-                          <div class="form-group clearfix row">
-                              <label for="inputPassword" class="col-sm-3 col-form-label">Property</label>
-                              <div class="col-sm-9">
-                                  <select formControlName="type" class="form-control">
-                                      <option value="file"> File</option>
-                                      <option value="text"> Text</option>
-                                      <option value="string"> String</option>
-                                      <option value="number"> Number</option>
-                                      <option value="link">Link</option>
-                                  </select>
-                              </div>
-                          </div>
-                      </div>
-                  </ng-container>
-              </div>
-            </div>
-          </div>
-        </ng-container>
+    <div class="col-md-6"  [hidden]=true>
+      <div >
+      
       </div>
     </div>
   </div>
@@ -61,7 +19,7 @@
 
 
 <div class="row">
-    <div class="container-fluid">
+    <div class="container-fluid" formArrayName="sections">
         <ngx-datatable 
             class="material"
             #sectionDatatable
@@ -71,11 +29,34 @@
             [rowHeight]="'auto'"
             [rows]="sectionList">
             <!-- Row Detail Template -->
-            <ngx-datatable-row-detail [rowHeight]="100" #myDetailRow (toggle)="onDetailToggle($event)">
-              <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+            <ngx-datatable-row-detail [rowHeight]="auto" #myDetailRow (toggle)="onDetailToggle($event)">
+              <ng-template let-row="row"  let-expanded="expanded" ngx-datatable-row-detail-template>
+           
                 <div style="padding-left:35px;">
-                  <div><strong>Address</strong></div>
-                  <div>{{row.properties}}</div>
+                  <div  [formGroupName]="getIdByRow(row)" >
+                    <div formArrayName="properties">
+                        <button type="button" (click)="publishSections()"  [hidden]="sectionForm.invalid || !firstTime" class="btn btn-success btn-sm pull-right "><i _ngcontent-c4="" aria-hidden="true" class="fa fa-save"></i> Save</button>
+                        <button type="button" (click)="addNewProperty(row, getIdByRow(row)); firstTime=true" class="btn btn-primary btn-sm pull-right  mr-1"><i _ngcontent-c4="" aria-hidden="true" class="fa fa-plus"></i> Properties</button>
+                        
+                        <table >
+                          <ng-container *ngFor="let property of sections.controls[getIdByRow(row)].get('properties').controls; let j = index;">
+                             <tr [formGroupName]="j">
+                                <td><input type="text" class="form-control" formControlName="key" required></td>
+                                <td><select formControlName="type" class="form-control" required>
+                                  <option value="file">File</option>
+                                  <option value="text">Text</option>
+                                  <option value="string">String</option>
+                                  <option value="number"> Number</option>
+                                  <option value="link">Link</option>
+                                </select></td>
+                                <td></td>
+                                <td>
+                                  <i class="fa fa-trash text-primary icon-btn" (click)="deleteProperty(getIdByRow(row),j)"></i></td>
+                              </tr>
+                          </ng-container>
+                        </table>
+                    </div>
+                  </div>
                 </div>
               </ng-template>
             </ngx-datatable-row-detail>
@@ -86,19 +67,35 @@
               [sortable]="false"
               [draggable]="false"
               [canAutoResize]="false">
-              <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+
+              <ng-template let-row="row"  let-rowIndex="rowIndex" let-expanded="expanded" ngx-datatable-cell-template>
                 <a
                   href="javascript:void(0)"
                   [class.datatable-icon-right]="!expanded"
                   [class.datatable-icon-down]="expanded"
                   title="Expand/Collapse Row"
-                  (click)="toggleExpandRow(row)">
+                  (click)="toggleExpandRow(row , rowIndex)">
                 </a>
               </ng-template>
             </ngx-datatable-column>
+
             <ngx-datatable-column name="Section Title" prop="title"   >
               <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                {{value}}
+                <span
+                  *ngIf="!editing[rowIndex  + '-title']">
+                  {{value}}
+                </span>
+              
+                <input
+                  class="form-control"
+                  autofocus
+                  *ngIf="editing[rowIndex  + '-title']"
+                  type="text"
+                  #val
+                  (blur)="editing[rowIndex  + '-value']=val.value"
+                  [value]="value"
+                />
+          
               </ng-template>
             </ngx-datatable-column>
             
@@ -108,28 +105,42 @@
               </ng-template>
             </ngx-datatable-column>
             
-            <ngx-datatable-column name="Status" >
-              <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                <i class="fa fa-eye" aria-hidden="true"></i>    
+            <ngx-datatable-column name="Actions" >
+              <ng-template let-value="value" let-row="row"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                <ng-container *ngIf="!editing[rowIndex + '-title']" (click)="rowEditMode(rowIndex,true)">
+                  <i class="fa fa-eye icon-btn" aria-hidden="true"></i>
+                  <i class="fa fa-pencil-square-o icon-btn" aria-hidden="true" (click)="rowEditMode(rowIndex,true)"></i>
+                  <i class="fa fa-trash icon-btn" aria-hidden="true" (click)="deleteSection(rowIndex)"></i>   
+                </ng-container>
+                <div class="row" *ngIf="editing[rowIndex + '-title']">
+                  <button class="btn mr-1 cursor-pointer" (click)="rowEditMode(rowIndex,false)">Cancel</button>
+                  <button class="btn btn-primary cursor-pointer" (click)="updateEditValue(rowIndex )">Save</button>
+                </div>
               </ng-template>
             </ngx-datatable-column>
-        
-            <ngx-datatable-column name="Edit"  >
-              <ng-template let-value="value"  let-rowIndex="rowIndex" let-row="row"  ngx-datatable-cell-template>
-                <button type="button" class="text_btn" (click)="editPage(row) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button>   
-              </ng-template>
-            </ngx-datatable-column>
-        
-            <ngx-datatable-column name="Delete" >
-              <ng-template let-value="value"  let-rowIndex="rowIndex"  let-row="row" ngx-datatable-cell-template>
-                <button type="button" class="text_btn" (click)="deletePage(rowIndex)" ><i class="fa fa-trash" aria-hidden="true"></i> </button>                              
-              </ng-template>
-            </ngx-datatable-column>
-            
+
         </ngx-datatable>
     </div>
 </div>
-
-
-
 </form>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add Section</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="modalForm">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="title" placeholder="Section Name">
+          </div>
+          <button class="btn btn-primary"  (click)="saveSection(modalForm); d('Cross click');" type="button">Save</button>
+        </div>
+      </form>
+    </div>
+  
+  </ng-template>

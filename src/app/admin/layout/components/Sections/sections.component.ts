@@ -10,17 +10,33 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./sections.component.css']
 })
 export class SectionsComponent  {
-  sectionForm:FormGroup
+  sectionForm:FormGroup;
+  modalForm:FormGroup;
   sectionList;
+  editing = {};
+  rowIndex=0;
   @ViewChild('sectionDatatable')  sTable:any;
-
-  constructor(private modalService: NgbModal , private fb:FormBuilder, private _sectionService:SectionsService, private toastr: ToastrService,) {
+  @ViewChild('content')  content:any;
+  
+  constructor(private modalService: NgbModal , private fb:FormBuilder, private _sectionService:SectionsService, private toastr: ToastrService) {
     
     this.sectionForm=fb.group({
       sections: fb.array([])
     });
+
+    this.modalForm=fb.group({
+      id:[],
+      title: [],
+      properties:fb.array([]),
+    });
     
-    _sectionService.get().subscribe(response=>{
+    this.updateList();
+  }
+
+  updateList(){
+    this._sectionService.get().subscribe(response=>{
+      this.sectionList=[];
+      this.sections.controls=[];  
       this.sectionList=response;
       this.sectionList.forEach((sectionResponse,index) => {
         this.sections.push(this.initPageSections(sectionResponse.title , sectionResponse.id));
@@ -29,19 +45,39 @@ export class SectionsComponent  {
           property.push(this.initPropertySections(propertyResponse.key, propertyResponse.type , propertyResponse.id  ))
         })
       });
-
-      
     });
   }
-
   addNewSection(){
-    this.sections.push(this.initPageSections());
+    this.modalService.open(this.content);
+    //
+    //this.sectionList.unshift({id:112 , title:"dsdsd" , created_at: "2018-06-29 10:23:20", updated_at: "2018-06-29 10:23:20"});
+  }
+
+  rowEditMode(index,status){
+    for (var key in this.sectionList) {
+      this.editing[index + '-title']=status;
+    }
+  }
+  updateEditValue(rowIndex , value ){
+    this.editing[rowIndex + '-title']=false;
+    this.sections.controls[rowIndex].get('title').setValue(this.editing[rowIndex + '-value']);
+    console.log(this.sectionForm.value)
+    this.publishSections();
+    this.updateList();
+    
+
+  }
+  saveSection(saveSection){
+    this.sections.push(saveSection);
+    this.publishSections();
+    this.updateList();
+    this.modalForm.reset();
   }
 
   deleteSection(index){
     let sectionId=this.getSectionId(index).value;
     this._sectionService.delete(sectionId).subscribe(response=>{
-      this.sections.removeAt(index);
+      this.updateList();
     })
   }
 
@@ -49,13 +85,13 @@ export class SectionsComponent  {
     let property = <FormArray>this.sections.controls[sectionIndex].get('properties');
     let propertyId = this.getPropertyId(sectionIndex, propertyIndex).value;
     this._sectionService.deleteProperty(propertyId).subscribe(response=>{
-        property.removeAt(propertyIndex);
+      property.removeAt(propertyIndex);
     })
-    
   }
 
-  addNewProperty(section){
-    section.get('properties').push(this.initPropertySections()); 
+  addNewProperty(row , index){
+    let prop=this.sections.controls[index].get('properties') as FormArray;
+    prop.push(this.initPropertySections()); 
   }
 
   publishSections(){
@@ -64,7 +100,6 @@ export class SectionsComponent  {
     },
     error=>{
       this.toastr.error('There is some error in creating the section.');
-
     })
   }
 
@@ -88,6 +123,10 @@ export class SectionsComponent  {
     return this.sectionForm.get('sections') as FormArray;
   }
 
+  getIdByRow(row){
+    return this.sectionList.indexOf(row);
+  }
+
   getSectionId(sectionIndex){
     return this.sections.controls[sectionIndex].get('id');
   }
@@ -97,12 +136,14 @@ export class SectionsComponent  {
     return property.controls[propertyIndex].get('id')
   }
 
-  toggleExpandRow(row) {
-    console.log('Toggled Expand Row!', row);
+  toggleExpandRow(row,index) {
+    //this.rowIndex=index;
+    console.log(this)
     this.sTable.rowDetail.toggleExpandRow(row);
   }
 
   onDetailToggle(event) {
     console.log('Detail Toggled', event);
   }
+
 }
