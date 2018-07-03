@@ -21,6 +21,7 @@ import { ProjectCategoryService } from './services/project-category.service';
 import { ProjectService } from './services/project.service';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { GetValuePipe } from './pipes/get-value.pipe';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,7 @@ import { GetValuePipe } from './pipes/get-value.pipe';
     ReactiveFormsModule,
     NgxDatatableModule
   ],
-  declarations: [IcheckDirective, ReversePipe, GetValuePipe],
+  declarations: [IcheckDirective, ReversePipe, GetValuePipe, AlertComponent],
   exports: [
     CommonModule,
     FormsModule,
@@ -43,6 +44,9 @@ import { GetValuePipe } from './pipes/get-value.pipe';
     GetValuePipe
   ],
   providers: [ ReversePipe, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService]
-
+  ,
+  entryComponents: [
+    AlertComponent
+  ]
 })
 export class SharedModule { }

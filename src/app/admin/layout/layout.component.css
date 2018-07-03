@@ -37,10 +37,10 @@
 .icon-btn{
     width: 35px;
     height: 35px;
-    background-color: #b7a35e;
+    background-color: #f0f0f0;
     border-radius: 50%;
     padding: 10px;
-    color: #fff !important;
+    color: #665921 !important;
     cursor: pointer;
 }
 @media screen and (max-width: 992px) {

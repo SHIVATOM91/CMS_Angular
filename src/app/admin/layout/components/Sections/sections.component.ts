@@ -3,6 +3,7 @@ import { FormBuilder, FormArray, FormGroup, FormControl, ControlContainer, Valid
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SectionsService } from '../../../../shared/services/sections.service';
 import { ToastrService } from 'ngx-toastr';
+import { AlertComponent } from '../../../../shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-sections',
@@ -18,8 +19,11 @@ export class SectionsComponent  {
   @ViewChild('sectionDatatable')  sTable:any;
   @ViewChild('content')  content:any;
   
-  constructor(private modalService: NgbModal , private fb:FormBuilder, private _sectionService:SectionsService, private toastr: ToastrService) {
+  constructor(private modalService: NgbModal ,  private fb:FormBuilder, private _sectionService:SectionsService, private toastr: ToastrService) {
     
+    const modalRef = this.modalService.open(AlertComponent);
+    modalRef.componentInstance.name = 'World';
+
     this.sectionForm=fb.group({
       sections: fb.array([])
     });
