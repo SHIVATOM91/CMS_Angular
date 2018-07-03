@@ -18,7 +18,7 @@
 
       <div class="row">
         <div class="col-md-12 projecttabs">
-           <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+           <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist" *ngFor="let pills of categoryList;let i = index">
               <li class="nav-item">
                  <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-one" role="tab" aria-controls="pills-one" aria-selected="true">PROJECT_TYPE</a>
               </li>
