@@ -9,4 +9,7 @@ export class ServicesService extends DataService {
     super(http,'services')
   }
 
+  deleteGalery(id){
+    return this.http.delete(this.apiUrl+"services/gallery/"+id);
+  }
 }

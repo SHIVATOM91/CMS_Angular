@@ -98,15 +98,16 @@
         text-align: center;
         margin:0 auto;
     }
+    
     .owl-carousel.owl-about .owl-item{
         margin-top:30px;
     }
     
-    .owl-carousel.owl-about .owl-item img{
-    width: 200px !important;
-    height: 200px;
-    margin: 0 auto;
-    border-radius: 50%;
+    .owl-carousel.owl-about .owl-item .img-round{
+        width: 200px !important;
+        height: 200px;
+        margin: 0 auto;
+        border-radius: 50%;
     }
     .owl-carousel.owl-about .owl-item h2{
     font-size: 18px;
@@ -120,6 +121,9 @@
           text-align: center;
           color: #fff;
           font-size: 14px;
+    }
+    .owl-carousel.owl-about  .owl-dot span{
+        display: none !important;
     }
     .owl-carousel.owl-about .owl-item{
         margin: 30px 0px 0px 0px;

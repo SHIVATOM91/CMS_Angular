@@ -67,20 +67,26 @@
        <h2>TESTIMONIALS</h2>
        
 
-       <owl-carousel
-       [options]="{items: 1, dots: true, navigation: true}"
-       [items]="sliderContent"
-       [carouselClasses]="['owl-theme',  'sliding', 'owl-carousel', 'owl-about']">
-       <div class="item" *ngFor="let image of sliderContent;let i = index">
-         <div class="thumbnail-image"  [ngStyle]="{'background': 'url('+imgUrl+image.bannerimg+')no-repeat scroll center center' ,  'height':'600px' , 'background-size': 'cover' }" >
-           <div class="carousel-caption ">
-          <p>{{image.title}}</p>
-          <h2>{{image.description}}
-          </h2>
-           </div>
-         </div>
-       </div>
-     </owl-carousel>
+     
+
+       <section class="aboutSliderCarousel">
+      <owl-carousel
+        [options]="{items: 1, dots: true, navigation: true}"
+        [items]="aboutSlider"
+        [carouselClasses]="['owl-theme',  'sliding', 'owl-about', 'owl-theme']">
+        <div class="item" *ngFor="let image of aboutSlider;let i = index">
+            <div class="imagesec">
+              <div class="img-round"  [ngStyle]="{'background': 'url('+img_url+image.featuredImage+')no-repeat scroll center center' ,  'height':'200px' , 'background-size': 'cover' }" >
+            </div>
+
+            <h2>{{image.title}}</h2>
+
+            <p  [innerHTML]="image.description"></p>
+          
+          </div>
+        </div>
+      </owl-carousel>
+    </section>
 
 
   

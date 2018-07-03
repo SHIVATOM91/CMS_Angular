@@ -20,6 +20,7 @@ import { IcheckDirective } from './directives/icheck.directive';
 import { ProjectCategoryService } from './services/project-category.service';
 import { ProjectService } from './services/project.service';
 import { ReversePipe } from './pipes/reverse.pipe';
+import { GetValuePipe } from './pipes/get-value.pipe';
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import { ReversePipe } from './pipes/reverse.pipe';
     ReactiveFormsModule,
     NgxDatatableModule
   ],
-  declarations: [IcheckDirective, ReversePipe],
+  declarations: [IcheckDirective, ReversePipe, GetValuePipe],
   exports: [
     CommonModule,
     FormsModule,
@@ -38,9 +39,10 @@ import { ReversePipe } from './pipes/reverse.pipe';
     Angular2FontawesomeModule,
     NgxDatatableModule,
     IcheckDirective,
-    ReversePipe
+    ReversePipe,
+    GetValuePipe
   ],
-  providers: [ ReversePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService]
+  providers: [ ReversePipe, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService]
 
 })
 export class SharedModule { }

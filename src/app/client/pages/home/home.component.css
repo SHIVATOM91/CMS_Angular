@@ -26,3 +26,129 @@
 }
 
 /* about-section*/
+
+
+/* paralax-section*/
+
+.colofade{
+    background-color: #edebeb;
+    height: 500px;
+    }
+    
+    
+    .parallax{
+      /*  background-image:url('../images/paralbanner.jpg'); */
+        height: 500px;
+        margin-top:2%;
+        width: 100%;
+        /* Create the parallax scrolling effect */
+       /* background-attachment: fixed;*/
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .customparalasec{
+         margin-top: 15px;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    
+    .owl-stage-outer{
+    cursor: pointer;
+    }
+    .owl-one .owl-item p{
+          margin-top: 13px;
+        /* padding: 10px 10px 0px 62px; */
+        text-align: center;
+    }
+    
+    .owl-item.firstActiveItem{
+        background-color: #1e4464 !important;
+        color: #fff;
+    }
+    
+    
+    
+    .customparalasec  .owl-one  .owl-item{
+        height: 50px;
+        background-color: #ffffff;
+        outline: 1px solid #ccc;
+    }
+    
+    
+    .customparalasec .owl-one .owl-nav{
+        display: block !important;
+        position: absolute;
+        height: 51px;
+        width: 100%;
+        bottom: 0;
+        top: 0%;
+        z-index: 1;
+    }
+    
+    .customparalasec  .owl-one {
+        width: 95%;
+        margin:0 auto;
+    }
+    .customparalasec .owl-one  .owl-stage-outer{
+        z-index: 2;
+    }
+
+    .customparalasec  .owl-one  .owl-nav .owl-next {
+        width: 22px;
+        height: 50px;
+        position: absolute;
+        top: 0%;
+        right: -25px;
+        display: block!IMPORTANT;
+        border: 0px solid black;
+        background-color: #fff;
+        outline-style: none !important;
+    
+    }
+    .customparalasec  .owl-one  .owl-nav .owl-prev {
+     width: 22px;
+        height: 50px;
+        position: absolute;
+        top: 0%;
+        left: -25px;
+        display: block !IMPORTANT;
+        border:0px solid black;
+        background-color: #fff;
+        outline-style: none !important;
+    }
+    
+    
+    .product-sectoon{
+        margin: 0% auto;
+        text-align: center;
+        box-shadow: 2px 2px 1px 0px rgba(140, 140, 140, 0.12);
+       /* background-image: url('../images/home_2.png'); */
+        height:300px;
+        border:1px solid #ccc;
+    }
+    
+    
+    
+    .owl-prodcut .owl-item{
+        background-color: #fff;
+        margin-top: 25px;
+    }
+
+    .owl-prodcut .owl-stage-outer .owl-stage .owl-item .item .product-sectoon img{
+       width: 300px !important;
+       margin:0 auto;
+    }
+    .product-sectoon span{
+        bottom: 0px;
+        background: rgb(183, 157, 82);
+        color: #f1f1f1;
+        padding: 10px;
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+        position: absolute;
+        width: 100%;
+    }
+    /* paralax-section*/    

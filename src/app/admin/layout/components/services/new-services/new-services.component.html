@@ -32,21 +32,25 @@
                   </ngb-accordion>
                 </div>
                 <div class="clearfix"></div>
-                <div class="row"  formArrayName="gallery">
+                <div class="col-md-12 row mt-4">
+                  <h4>Gallery Images</h4>
+                </div>
+                <div class="col-md-12 row"  formArrayName="gallery">
                   <div class="form-group">
                     <div class="img_wraper img_c_width">
-                        <label for="featuredImage" class="img-hover">
+                        <label for="galleryImage" class="img-hover">
                           <div class="img-prop" [ngStyle]="{'background': 'url(https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg) top center'  }"></div>
                         </label>
                     </div>
-                    <input type="file" accept="image/*" (change)="handleGaleryInput($event)"   name="file" class="form-control" hidden id="featuredImage">
+                    <input type="file" accept="image/*" (change)="handleGaleryInput($event)"  (click)="galleryImage.value=''" #galleryImage  name="file" class="form-control" hidden id="galleryImage" #galleryImage>
                   </div>
                   <ng-container *ngFor="let imageForm of updateForm.get('gallery').controls; let i = index;">
                     <div class="form-group"  [formGroupName]="i">
-                      <div class="img_wraper img_c_width">
-                          <label [for]="i" class="img-hover">
+                      <div class="img_static_wraper">
+                          <label [for]="i">
                             <div class="img-prop" [ngStyle]="{'background': 'url('+imageForm.get('g_image').value+')'  }"></div>
                           </label>
+                          <button class="btn btn-danger btn-sm close_btn" (click)="deleteGalleryImage(i)"><i class="fa fa-trash"></i></button>
                       </div>
                     </div>
                   </ng-container>
@@ -63,11 +67,11 @@
                     <div class="img_wraper img_c_width">
                         <label for="featuredImage" class="img-hover">
                           <div class="img-prop" *ngIf="localImage!=''" [ngStyle]="{'background': 'url('+localImage+')'  }"></div>
-                          <div class="img-prop" *ngIf="!localImage && updateForm.get('image').value==''" [ngStyle]="{'background': 'url(https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg) top center'  }"></div>
-                          <div class="img-prop" *ngIf="localImage=='' && updateForm.get('image').value != ''" [ngStyle]="{'background': 'url('+imgUrl+''+updateForm.get('image').value+')'  }"></div>
+                          <div class="img-prop" *ngIf="!localImage && updateForm.get('image').value==null" [ngStyle]="{'background': 'url(https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg) top center'  }"></div>
+                          <div class="img-prop" *ngIf="localImage==undefined && updateForm.get('image').value != null" [ngStyle]="{'background': 'url('+imgUrl+''+updateForm.get('image').value+')'  }"></div>
                         </label>
                     </div>
-                    <input type="file" accept="image/*" (change)="handleFileInput($event)"   name="file" class="form-control" hidden id="featuredImage">
+                    <input type="file" accept="image/*" (change)="handleFileInput($event)"  name="file" class="form-control" hidden id="featuredImage">
                   </div>
               </div>
           </div>
