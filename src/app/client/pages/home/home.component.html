@@ -1,98 +1,103 @@
+
 <section class="aboutus" *ngIf="about_section_content">
-    <div class="container">
-      <div class="row">
-  <div class="col-lg-4 col-md-4 col-sm-12 abtimg"> <img [src]="img_url+ about_section_content?.page_section_props | getValue: 'about_img'" class="img-fluid"> </div> 
-        <div class="col-lg-8 col-md-12 col-sm-12 col-xs">
-            <ul class="list-unstyled askhaed">
-              <li class="media">
-                  <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
-                  <div class="media-body custom-body">
-                    <p class="mb-0">{{ about_section_content?.page_section_props | getValue: "intro_title" }}</p>
-                    <h2 class="mt-1 mb-0">{{ about_section_content?.page_section_props | getValue: "main_title" }} </h2>
-                  </div>
-              </li>
-            </ul>
-         <div [innerHTML]='about_section_content?.page_section_props | getValue: "mian_description"'> </div>
-            <div class="row">
-              <div class="col-lg-4">
-                  <ul class="list-unstyled">
-                    <li class="media">
-                        <img class="mr-3" src="assets/images/aboutus_tick.png" alt="Generic placeholder image">
-                        <div class="media-body">
-                          <h5 class="mt-0 mb-1"></h5>
-                         
-                        </div>
-                    </li>
-                  </ul>
+  <div class="container">
+  <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12 abtimg"> <img [src]="img_url + about_section_content?.properties.main_image" class="img-fluid"> </div>
+      <div class="col-lg-8 col-md-12 col-sm-12 col-xs">
+        <ul class="list-unstyled askhaed">
+            <li class="media">
+              <img class="align-self-end mr-3" src="/assets/images/head_leftimg.jpg" alt="   ">
+              <div class="media-body custom-body">
+                  <p class="mb-0">{{ about_section_content?.properties.intro_title }}</p>
+                  <h2 class="mt-1 mb-0">{{ about_section_content?.properties.main_title }} </h2>
               </div>
-              <div class="col-lg-4">
-                  <ul class="list-unstyled">
-                    <li class="media">
-                        <img class="mr-3" src="assets/images/aboutus_tick.png" alt="Generic placeholder image">
-                        <div class="media-body">
-                          <h5 class="mt-0 mb-1"></h5>
-                      
-                        </div>
-                    </li>
-                  </ul>
-              </div>
-              <div class="col-lg-4">
-                  <ul class="list-unstyled">
-                    <li class="media">
-                        <img class="mr-3" src="assets/images/aboutus_tick.png" alt="Generic placeholder image">
-                        <div class="media-body">
-                          <h5 class="mt-0 mb-1"></h5>
-                         
-                        </div>
-                    </li>
-                  </ul>
-              </div>
+            </li>
+        </ul>
+        <div [innerHTML]="about_section_content?.properties.main_description"></div>
+        <div class="row">
+            <div class="col-lg-4">
+              <ul class="list-unstyled">
+                  <li class="media">
+                    <img class="mr-3" src="/assets/images/aboutus_tick.png" alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">{{about_section_content?.properties.list_title_1}}</h5>
+                        {{about_section_content?.properties.list_title_1_desc}}
+                    </div>
+                  </li>
+              </ul>
             </div>
-            <div class="text-left brochsurebtn">
-            <!--      <a [href]="content('broucher_link')" target="_blank" class="btn askbuton"> Get Brochure</a> -->
+            <div class="col-lg-4">
+              <ul class="list-unstyled">
+                  <li class="media">
+                    <img class="mr-3" src="/assets/images/aboutus_tick.png" alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">{{about_section_content?.properties.list_title_2}}</h5>
+                        {{about_section_content?.properties.list_title_2_desc}}
+                    </div>
+                  </li>
+              </ul>
             </div>
+            <div class="col-lg-4">
+              <ul class="list-unstyled">
+                  <li class="media">
+                    <img class="mr-3" src="/assets/images/aboutus_tick.png" alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">{{about_section_content?.properties.list_title_3}}</h5>
+                        {{about_section_content?.properties.list_title_3_desc}}
+                    </div>
+                  </li>
+              </ul>
+            </div>
+        </div>
+        <div class="text-left brochsurebtn">
+            <a [href]="about_section_content?.properties.button_link" class="btn askbuton"> {{about_section_content?.properties.button_text}}</a>
         </div>
       </div>
+  </div>
+  </div>
+</section>
+
+
+
+
+<section class="parallax">
+    <div class="row">
+       <div class="col-lg-6 csutomgap"> </div>
+       <div class="col-lg-6 colofade">
+          <div class="customparalasec">
+             <ul class="list-unstyled askhaed">
+                <li class="media">
+                   <img class="align-self-end mr-3" src="/assets/images/head_leftimg.jpg" alt="   ">
+                   <div class="media-body custom-body">
+                      <p class="mb-0">Works</p>
+                      <h2 class="mt-1 mb-0">Our Projects</h2>
+                   </div>
+                </li>
+             </ul>
+             <div class="owl-one owl-carousel owl-theme owl-loaded">
+                <div class="owl-stage-outer">
+                   <div class="owl-stage">
+                      <div class="owl-item"><p>All Projekte<p></div>
+                      <div class="owl-item"><p>Neubau </p></div>
+                      <div class="owl-item"><p>Umbau</p></div>
+                   </div>
+                </div>
+             </div>
+             <div class="cstomrow">
+                <div class="owl-prodcut owl-carousel owl-theme">
+                  <div class="item">
+                    <div class="product-sectoon ">
+                      <span class="label">Project-1</span>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="product-sectoon ">
+                      <span class="label">Project-2</span>
+                    </div>
+                  </div>
+                </div>
+             </div>
+          </div>
+       </div>
     </div>
  </section>
-
-<ng-container *ngIf="project_section_content">
- <section class="parallax" >
-  <div class="row">
-     <div class="col-lg-6 csutomgap"> </div>
-     <div class="col-lg-6 colofade">
-        <div class="customparalasec">
-           <ul class="list-unstyled askhaed">
-              <li class="media">
-                 <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
-                 <div class="media-body custom-body">
-                    <p class="mb-0">{{ project | getValue: "intro_title" }}</p>
-                    <h2 class="mt-1 mb-0">{{ project_section_content.title }}</h2>
-                 </div>
-              </li>
-           </ul>
-           <div class="owl-one owl-carousel owl-theme owl-loaded">
-              <div class="owl-stage-outer">
-                 <div class="owl-stage">
-
-                    <!-- <owl-carousel
-                          [options]="{items: 1, dots: true, navigation: true}"
-                          [items]="projectCategorySlide"
-                          [carouselClasses]="['owl-theme',  'sliding', 'owl-about', 'owl-theme']">
-                          <div class="owl-item" *ngFor="let image of projectCategorySlide;let i = index">
-                          <p>
-                  {{ image.title }}
-                          </p>
-                      </div>
-                      </owl-carousel> -->
-              </div>
-           </div>
-          
-    
-        </div>
-     </div>
-  </div>
-  </div>
-  </section>
-</ng-container>
-  
