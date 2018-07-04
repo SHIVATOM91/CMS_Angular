@@ -67,9 +67,9 @@ export class SidebarComponent {
             "icon":"fa fa-pencil-square-o"
         },
         {
-            "name":"Appearance",
-            "link":"Appearance",
-            "icon":"fa fa-eye"
+            "name":"Settings",
+            "link":"app-settings",
+            "icon":"fa fa-wrench"
         }
     ]
     constructor() {

@@ -1,0 +1,26 @@
+.custom-nav-tabs{
+  background-color: #f1f1f1 !important;
+  position: relative;
+  top: -14px;
+}
+
+.custom-nav-tabs .btn-custom-nav{
+  display: inline-block;
+  padding: 10px 25px 10px 25px;
+}
+
+.custom-nav-tabs a{
+  color: rgba(0, 0, 0, 0.87);
+  text-decoration: none;
+}
+
+.custom-nav-tabs .active{
+  color: rgba(0, 0, 0, 0.87);
+  border-bottom: 2px solid #b7a35e;
+}
+
+.img_c_width{
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+

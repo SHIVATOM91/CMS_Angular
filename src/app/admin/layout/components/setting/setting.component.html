@@ -1,0 +1,146 @@
+<div class="row">
+    <div class="custom-nav-tabs col">
+      <a href="javascript:;" class="btn-custom-nav" [class.active]="currentMenu=='general'" (click)="currentMenu='general'">General</a>
+      <a href="javascript:;" class="btn-custom-nav" [class.active]="currentMenu=='social'" (click)="currentMenu='social'">Social</a>
+      <a href="javascript:;" class="btn-custom-nav" [class.active]="currentMenu=='map'" (click)="currentMenu='map'">Other</a>
+    </div>
+  <div class="col-md-12">
+    <div class="clearfix"></div>
+    <div class="card">
+      <div class="card-body">
+        <form role="form"  [formGroup]="settingForm" >
+          <ng-container *ngIf="currentMenu=='general'">
+            <div class="row">
+              <div class="col">
+                <h5 class="text-muted">Company Info.</h5>
+              </div>
+            </div>
+            <hr class="mt-0">
+            <div class="row">
+              <div class="col-md-3">
+                  <div class="form-group">
+                      <label>Company Logo</label>
+                    <div class="img_wraper img_c_width">
+                        <label for="featuredImage" class="img-hover">
+                          <div class="img-prop" *ngIf="localImage==undefined && settingForm.get('logo').value != null" [ngStyle]="{'background': 'url('+img_url+''+settingForm.get('logo').value+')'  }"></div>
+                          <div class="img-prop" *ngIf="localImage" [ngStyle]="{'background': 'url('+localImage+')'  }"></div>
+                          <div class="img-prop" *ngIf="localImage==undefined && settingForm.get('logo').value==null" [ngStyle]="{'background': 'url(https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg) top center'  }"></div>
+                        </label>
+                    </div>
+                    <input type="file" accept="image/*" (change)="handleFileInput($event)"   name="file" class="form-control" hidden id="featuredImage">
+                  </div>
+              </div>
+              <div class="col-md-9">
+                  <fieldset class="form-group">
+                      <label>Company Name</label>
+                      <input class="form-control" name="title" formControlName="companyName"    placeholder="Enter company name">
+                  </fieldset>
+                  <fieldset class="form-group">
+                      <label>Description</label>
+                      <textarea class="form-control" placeholder="Enter the description" formControlName="description" rows="3"></textarea>
+                  </fieldset>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col">
+                <h5 class="text-muted">Contact Info.</h5>
+              </div>
+            </div>
+            <hr class="mt-0">
+            <div class="row">
+              <div class="col">
+                <fieldset class="form-group">
+                  <label for="">Primary Mobile Number</label>
+                  <input type="text" formControlName="primaryPhone" class="form-control"></fieldset>
+              </div>
+              <div class="col">
+                <fieldset class="form-group">
+                  <label for="">Secondary Mobile Number</label>
+                  <input type="text" formControlName="secondaryPhone" class="form-control"></fieldset>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <fieldset class="form-group">
+                  <label for="">Primary Email</label>
+                  <input type="text" formControlName="primaryEmail" class="form-control"></fieldset>
+              </div>
+              <div class="col">
+                <fieldset class="form-group">
+                  <label for="">Secondary Email</label>
+                  <input type="text" formControlName="secondaryEmail" class="form-control"></fieldset>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <fieldset class="form-group">
+                  <label for="">Primary Address</label>
+                  <textarea class="form-control" placeholder="Enter the primary address" formControlName="primaryAddress" rows="3"></textarea>
+                </fieldset>
+              </div>
+              <div class="col">
+                <fieldset class="form-group">
+                  <label for="">Secondary Address</label>
+                  <textarea class="form-control" placeholder="Enter the secondary address" formControlName="secondaryAddress" rows="3"></textarea>
+                </fieldset>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="currentMenu=='social'">
+              <div class="row">
+                <div class="col">
+                  <h5 class="text-muted">Social Links</h5>
+                </div>
+              </div>
+              <hr class="mt-0">
+              <div class="row">
+                <div class="col">
+                    <fieldset class="form-group">
+                        <label>Facebook Link</label>
+                        <input class="form-control" name="title" formControlName="facebookLink"    placeholder="https://www.facebook.com">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label>Google Link</label>
+                        <input class="form-control" name="title" formControlName="googleLink"    placeholder="https://www.google.com">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label>Twitter Link</label>
+                        <input class="form-control" name="title" formControlName="twitterLink"    placeholder="https://twitter.com">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label>Instagram Link</label>
+                        <input class="form-control" name="title" formControlName="instaLink"    placeholder="https://www.instagram.com">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label>Youtube Link</label>
+                        <input class="form-control" name="title" formControlName="youtubeLink"    placeholder="https://youtube.com">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label>Whatsapp Link</label>
+                        <input class="form-control" name="title" formControlName="whatsAppLink"    placeholder="https://web.whatsapp.com/">
+                    </fieldset>
+                </div>
+              </div>
+          </ng-container>
+          <ng-container *ngIf="currentMenu=='map'">
+            <div class="row">
+              <div class="col">
+                  <fieldset class="form-group">
+                      <label>Embed Map</label>
+                      <textarea class="form-control" placeholder="Enter the secondary address" formControlName="embedMap" rows="3"></textarea>
+                  </fieldset>
+                  <fieldset class="form-group">
+                      <label>Footer Text</label>
+                      <input class="form-control" name="title" formControlName="footerMessage"    placeholder="https://web.whatsapp.com/">
+                  </fieldset>
+              </div>
+            </div>
+          </ng-container>
+
+          <div class="clearfix"></div>
+          <button class="btn btn-primary" (click)="updateSettingData()">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

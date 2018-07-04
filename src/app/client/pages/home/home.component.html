@@ -130,3 +130,62 @@
       </div>
   </div>
 </section>
+
+
+
+<section class="partnersection">
+  <div class="container cs">
+     <ul class="list-unstyled askhaed">
+        <li class="media">
+           <img class="align-self-end mr-3" src="/assets/images/head_leftimg_1.png" alt="   ">
+           <div class="media-body custom-body">
+              <p class="mb-0">{{partner_section_content?.properties.intro_title}}
+              </p>
+              <h2 class="mt-1 mb-0">{{partner_section_content?.properties.main_title}}</h2>
+           </div>
+        </li>
+     </ul>
+
+     <owl-carousel
+        [options]="{items: 4, dots: false, autoplay:true, loop: true, nav: false, margin:20, responsive: { '0' : { items:1}, '640': { items: 2}, '768': { items: 4} }}"
+        [items]="partnerArray"
+        [carouselClasses]="['owl-theme',  'sliding']">
+        <ng-container *ngFor="let partner of partnerArray;let i = index">
+            <div class="item">
+              <div class="custom-partner-block"  [ngStyle]="{'background': 'url('+ img_url+partner.featuredImage+') center center no-repeat'}"></div>
+                <!-- <img [src]="img_url + partner.featuredImage" class="img-fluid"> -->
+            </div>
+        </ng-container>
+      </owl-carousel>
+  </div>
+</section>
+
+
+
+<section class="teamsection">
+    <div class="container ">
+       <ul class="list-unstyled askhaed">
+          <li class="media">
+             <img class="align-self-end mr-3" src="/assets/images/head_leftimg_1.png" alt="   ">
+             <div class="media-body custom-body">
+                <p class="mb-0">Hard Work
+                </p>
+                <h2 class="mt-1 mb-0">Our Team</h2>
+             </div>
+          </li>
+       </ul>
+
+       <owl-carousel
+          [options]="{items: 4, dots: false, autoplay:true, loop: true, nav: false, margin:20, responsive: { '0' : { items:1}, '640': { items: 2}, '768': { items: 4} }}"
+          [items]="teamArray"
+          [carouselClasses]="['owl-theme',  'sliding', 'team-owl']">
+          <ng-container *ngFor="let team of teamArray;let i = index">
+              <div class="item custom-team-container">
+                <div class="custom-team-block"  [ngStyle]="{'background': 'url('+ img_url+team.featuredImage+') center center no-repeat'}"></div>
+                  <!-- <img [src]="img_url + team.featuredImage" class="img-fluid"> -->
+                <span class="custom-team-title">{{ team.title }}</span>
+              </div>
+          </ng-container>
+        </owl-carousel>
+    </div>
+ </section>

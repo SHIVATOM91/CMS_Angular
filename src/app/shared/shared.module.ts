@@ -1,3 +1,4 @@
+import { SettingService } from './services/setting.service';
 import { PartnersService } from './services/partners.service';
 import { TeamsService } from './services/teams.service';
 import { TestimonialsService } from './services/testimonials.service';
@@ -46,7 +47,7 @@ import { ImagePopupComponent } from './components/image-popup/image-popup.compon
     ReversePipe,
     GetValuePipe
   ],
-  providers: [ ReversePipe, NgbActiveModal, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService, TeamsService, PartnersService]
+  providers: [ ReversePipe, NgbActiveModal, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService, TeamsService, PartnersService, SettingService]
   ,
   entryComponents: [
     AlertComponent,

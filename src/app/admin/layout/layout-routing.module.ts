@@ -1,3 +1,4 @@
+import { SettingComponent } from './components/setting/setting.component';
 import { NewTeamsComponent } from './components/teams/new-teams/new-teams.component';
 import { TeamsComponent } from './components/teams/teams.component';
 import { NewPartnersComponent } from './components/partners/new-partners/new-partners.component';
@@ -112,6 +113,7 @@ const routes: Routes = [
       { path: 'teams', component: TeamsComponent },
       { path: 'new-teams', component: NewTeamsComponent },
       { path: 'update-teams/:teamId', component: NewTeamsComponent },
+      { path: 'app-settings', component: SettingComponent },
     ]
   }
 ];
