@@ -46,7 +46,7 @@ import { NewTestimonialsComponent } from './components/testimonials/new-testimon
 @NgModule({
   declarations: [LayoutComponent, HeaderComponent,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialsComponent, NewTestimonialsComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent
 
-
+  
 
   ],
 

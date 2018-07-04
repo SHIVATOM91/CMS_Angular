@@ -13,7 +13,6 @@ export class PagesComponent implements OnInit {
 
   constructor(private router:Router , private _pageServ:PageService) {
     _pageServ.get().subscribe(result=>{
-      console.log(result)
       this.pageContent=result;
     })
   }

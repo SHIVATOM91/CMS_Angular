@@ -35,8 +35,8 @@
                 <div style="padding-left:35px;">
                   <div  [formGroupName]="getIdByRow(row)" >
                     <div formArrayName="properties">
-                        <button type="button" (click)="publishSections()"  [hidden]="sectionForm.invalid || !firstTime" class="btn btn-success btn-sm pull-right "><i _ngcontent-c4="" aria-hidden="true" class="fa fa-save"></i> Save</button>
-                        <button type="button" (click)="addNewProperty(row, getIdByRow(row)); firstTime=true" class="btn btn-primary btn-sm pull-right  mr-1"><i _ngcontent-c4="" aria-hidden="true" class="fa fa-plus"></i> Properties</button>
+                        <button type="button" (click)="publishSections()"  [hidden]="sectionForm.invalid || !firstTime" class="btn btn-success btn-sm pull-right "><i aria-hidden="true" class="fa fa-save"></i> Save</button>
+                        <button type="button" (click)="addNewProperty(row, getIdByRow(row)); firstTime=true" class="btn btn-primary btn-sm pull-right  mr-1"><i  aria-hidden="true" class="fa fa-plus"></i> Properties</button>
                         
                         <table >
                           <ng-container *ngFor="let property of sections.controls[getIdByRow(row)].get('properties').controls; let j = index;">
@@ -110,7 +110,7 @@
                 <ng-container *ngIf="!editing[rowIndex + '-title']" (click)="rowEditMode(rowIndex,true)">
                   <i class="fa fa-eye icon-btn" aria-hidden="true"></i>
                   <i class="fa fa-pencil-square-o icon-btn" aria-hidden="true" (click)="rowEditMode(rowIndex,true)"></i>
-                  <i class="fa fa-trash icon-btn" aria-hidden="true" (click)="deleteSection(rowIndex)"></i>   
+                  <button class="fa fa-trash icon-btn" aria-hidden="true" (click)="deleteSection(rowIndex)"></button>   
                 </ng-container>
                 <div class="row" *ngIf="editing[rowIndex + '-title']">
                   <button class="btn mr-1 cursor-pointer" (click)="rowEditMode(rowIndex,false)">Cancel</button>

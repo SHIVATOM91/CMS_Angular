@@ -1,5 +1,7 @@
 .custom-nav-tabs{
-  background-color: #165c6f !important;
+  background-color: #f1f1f1 !important;
+  position: relative;
+  top: -14px;
 }
 
 .custom-nav-tabs .btn-custom-nav{
@@ -8,11 +10,12 @@
 }
 
 .custom-nav-tabs a{
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  text-decoration: none;
 }
 
 .custom-nav-tabs .active{
-  color: #165c6f;
-  background-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  border-bottom: 2px solid #b7a35e;
 }
 
