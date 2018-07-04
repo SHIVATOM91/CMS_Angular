@@ -5,70 +5,69 @@
            <li class="media">
               <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
               <div class="media-body custom-body">
-                 <p class="mb-0">{{content('intro_title')}}</p>
-                 <h2 class="mt-1 mb-0">{{content('main_title')}}</h2>
+                 <p class="mb-0">{{ aboutus_section_content?.properties.intro_title }} </p>
+                 <h2 class="mt-1 mb-0">{{ aboutus_section_content?.properties.main_title }}</h2>
               </div>
            </li>
         </ul>
      </div>
      <div class="row nopaddingclass">
         <div class="col-lg-8 col-md-8 col-sm-12">
-           <div class="detail" [innerHTML]="content('mian_description')">
-             
+         <div class="detail" [innerHTML]="aboutus_section_content?.properties.mian_description">
            </div>
-           <div class="askumba-point hidden-xs">
-              <div class="row">
-                 <div class="col-md-4 col-sm-12 col-xs-12 commncls">
-                    <i class="fa fa-check"></i>
-                    <h6>{{content('list_title_1')}}</h6>
-                 </div>
-                 <div class="col-md-4 col-sm-12 col-xs-12 commncls">
-                    <i class="fa fa-check"></i>
-                    <h6>{{content('list_title_2')}}</h6>
-                 </div>
-                 <div class="col-md-4 col-sm-12 col-xs-12 commncls ">
-                    <i class="fa fa-check"></i>
-                    <h6>{{content('list_title_3')}}</h6>
-                 </div>
-              </div>
+            <div class="askumba-point hidden-xs">
+                <div class="row">
+                   <div class="col-md-4 col-sm-12 col-xs-12 commncls">
+                      <i class="fa fa-check"></i>
+                      <h6>{{ aboutus_section_content?.properties.list_title_1 }}</h6>
+                   </div>
+                   <div class="col-md-4 col-sm-12 col-xs-12 commncls">
+                      <i class="fa fa-check"></i>
+                      <h6>{{ aboutus_section_content?.properties.list_title_2 }}</h6>
+                   </div>
+                   <div class="col-md-4 col-sm-12 col-xs-12 commncls ">
+                      <i class="fa fa-check"></i>
+                      <h6>{{ aboutus_section_content?.properties.list_title_3 }}</h6>
+                   </div>
+                </div>
+             </div>
+       </div>
+    
+
+          <div class="col-lg-4 col-md-4 col-sm-6 about-company">
+             <div class=" about-imgs  d-none d-md-block  ">
+                <div class="row">
+                   <div class=" customask-left">
+                      <div class="img-1">
+                     <img [src]="img_url+aboutus_section_content?.properties.about_img1" class="img-fluid"> 
+                      </div>
+                      <div class="img-2">
+                      <img [src]="img_url+aboutus_section_content?.properties.about_img2" class="img-fluid"> 
+                      </div>
+                   </div>
+                   <div class=" customask-left">
+                      <div class="img-3">
+                     <img [src]="img_url+aboutus_section_content?.properties.about_img3" class="img-fluid"> 
+                      </div>
+                      <div class="img-4">
+                     <img [src]="img_url+aboutus_section_content?.properties.about_img4" class="img-fluid"> 
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+      
+
+
            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 about-company">
-           <div class=" about-imgs  d-none d-md-block  ">
-              <div class="row">
-                 <div class=" customask-left">
-                    <div class="img-1">
-                      <img [src]="img_url+content('about_img1')" class="img-fluid"> 
-                    </div>
-                    <div class="img-2">
-                      <img [src]="img_url+content('about_img2')" class="img-fluid"> 
-                    </div>
-                 </div>
-                 <div class=" customask-left">
-                    <div class="img-3">
-                      <img [src]="img_url+content('about_img3')" class="img-fluid"> 
-                    </div>
-                    <div class="img-4">
-                      <img [src]="img_url+content('about_img4')" class="img-fluid"> 
-                    </div>
-                 </div>
-              </div>
-           </div>
-        </div>
      </div>
   </div>
 
-
-
-  <div class="testiomonal">
+ <div class="testiomonal">
 
 
     <div class="container">
        <h2>TESTIMONIALS</h2>
-       
-
-     
-
        <section class="aboutSliderCarousel">
       <owl-carousel
         [options]="{items: 1, dots: true, navigation: true}"
@@ -87,17 +86,7 @@
         </div>
       </owl-carousel>
     </section>
-
-
-  
-    
     </div>
-    
-    
-    
-    
-    
-    
-                </div>
-    
-       </div>   
+     </div>
+      
+
