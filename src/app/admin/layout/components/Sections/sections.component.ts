@@ -20,9 +20,6 @@ export class SectionsComponent  {
   @ViewChild('content')  content:any;
   
   constructor(private modalService: NgbModal ,  private fb:FormBuilder, private _sectionService:SectionsService, private toastr: ToastrService) {
-    
-    const modalRef = this.modalService.open(AlertComponent);
-    modalRef.componentInstance.name = 'World';
 
     this.sectionForm=fb.group({
       sections: fb.array([])
@@ -79,10 +76,22 @@ export class SectionsComponent  {
   }
 
   deleteSection(index){
-    let sectionId=this.getSectionId(index).value;
-    this._sectionService.delete(sectionId).subscribe(response=>{
-      this.updateList();
-    })
+    const modalRef = this.modalService.open(AlertComponent);
+    modalRef.componentInstance.type = 'danger';
+    modalRef.componentInstance.title = 'Are you sure?';
+    modalRef.componentInstance.description = 'Message from popup aessage from popup ';
+    
+    modalRef.result.then((result) => {
+      if(result){
+        let sectionId=this.getSectionId(index).value;
+        this._sectionService.delete(sectionId).subscribe(response=>{
+          this.updateList();
+        })
+      }
+    }, (reason) => {
+     // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+
   }
 
   deleteProperty(sectionIndex, propertyIndex){

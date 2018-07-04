@@ -60,47 +60,73 @@
 
 
 
-<section class="parallax">
-    <div class="row">
-       <div class="col-lg-6 csutomgap"> </div>
-       <div class="col-lg-6 colofade">
-          <div class="customparalasec">
-             <ul class="list-unstyled askhaed">
-                <li class="media">
-                   <img class="align-self-end mr-3" src="/assets/images/head_leftimg.jpg" alt="   ">
-                   <div class="media-body custom-body">
-                      <p class="mb-0">Works</p>
-                      <h2 class="mt-1 mb-0">Our Projects</h2>
-                   </div>
-                </li>
-             </ul>
-             <owl-carousel
-               [options]="{items: 3, dots: false, navigation: true}"
-               [items]="projectCategorySlider"
-               [carouselClasses]="['owl-theme',  'sliding', 'custom-home-item']">
-               <div class="item" *ngFor="let category of projectCategorySlider;let i = index">
-                 <div class="project-menu-container">
-                   <div class="project-menu-title">
-                     <p>{{category.title}}</p>
-                   </div>
-                 </div>
+<section class="parallax"  [ngStyle]="{'background': 'url('+ img_url+project_section_content?.properties.project_image+') center center no-repeat'}" *ngIf="project_section_content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 csutomgap"> </div>
+            <div class="col-lg-6 colofade">
+               <div class="customparalasec">
+                  <ul class="list-unstyled askhaed">
+                     <li class="media">
+                        <img class="align-self-end mr-3" src="/assets/images/head_leftimg.jpg" alt="   ">
+                        <div class="media-body custom-body">
+                           <p class="mb-0">{{project_section_content?.properties.intro_title}}</p>
+                           <h2 class="mt-1 mb-0">{{project_section_content?.properties.main_title}}</h2>
+                        </div>
+                     </li>
+                  </ul>
+                  <owl-carousel
+                    [options]="{items: 3, dots: false,loop: false, nav: true, margin:10, navText : ['<i class=\'fa fa-caret-left\'></i>','<i class=\'fa fa-caret-right\'></i>'], freeDrag:false, touchDrag:false, mouseDrag:false, responsive: { '0' : { items:1}, '640': { items: 2}, '768': { items: 3} }}"
+                    [items]="projectCategorySlider"
+                    [carouselClasses]="['owl-theme',  'sliding', 'custom-home_slider']">
+                    <div class="item" *ngFor="let category of projectCategorySlider;let i = index">
+                      <div class="project-menu-container"  [class.menuActive]="category.id == currentProjectId" (click)="toggleProjectMenu(category.id, i)">
+                        <div class="project-menu-title">
+                          <p>{{category.title}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </owl-carousel>
+                  <owl-carousel
+                    [options]="{items: 2, dots: false,loop: false, nav: false, margin:20, responsive: { '0' : { items:1}, '100' : { items:1}, '768': { items: 2} }}"
+                    [items]="currentProjectArray"
+                    [carouselClasses]="['owl-theme',  'sliding', 'custom_project_slider']">
+                    <div class="item" *ngFor="let project of currentProjectArray;let j = index">
+                      <div class="project-holder" [ngStyle]="{'background': 'url('+ img_url+project.image+') center center no-repeat'}">
+                         <span class="label">{{ project.title }}</span>
+                      </div>
+                    </div>
+                  </owl-carousel>
                </div>
-             </owl-carousel>
-             <div class="cstomrow">
-                <div class="owl-prodcut owl-carousel owl-theme">
-                  <div class="item">
-                    <div class="product-sectoon ">
-                      <span class="label">Project-1</span>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="product-sectoon ">
-                      <span class="label">Project-2</span>
-                    </div>
-                  </div>
-                </div>
-             </div>
-          </div>
-       </div>
+            </div>
+         </div>
     </div>
  </section>
+
+
+
+
+ <section class="servicesection">
+  <div class="container">
+      <ul class="list-unstyled askhaed">
+        <li class="media">
+            <img class="align-self-end mr-3" src="/assets/images/head_leftimg.jpg" alt="   ">
+            <div class="media-body custom-body">
+              <p class="mb-0">Work Style
+              </p>
+              <h2 class="mt-1 mb-0">Our Services</h2>
+            </div>
+        </li>
+      </ul>
+      <div class="row">
+        <div class="col" *ngFor="let service of servicesArray; let i = index;">
+            <div class="section-s">
+              <img [src]="'/assets/images/service-'+i+'.png'">
+              <h5>{{ service.title }}</h5>
+              <p [innerHTML]="service.shortDescription"></p>
+              <a href="javascript:void(0);" class="btn">More View</a>
+            </div>
+        </div>
+      </div>
+  </div>
+</section>

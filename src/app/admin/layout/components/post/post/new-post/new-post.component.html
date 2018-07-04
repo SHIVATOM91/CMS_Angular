@@ -1,50 +1,55 @@
-<div class="row" [formGroup]="postForm">
-    <div class="col-md-9">
-      <div class="form-group">
-        <label for="staticEmail" class="col-sm-12 form-label">Post Title</label>
-        <div class="col-sm-12">
-            <input type="text"  class="form-control" formControlName="title">
-            <div class="form-control-feedback text-danger" *ngIf="postForm.get('title').errors && (postForm.get('title').dirty || postForm.get('title').touched)">
-              <p *ngIf="postForm.get('title').errors.required">Post title is required</p>
-            </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="staticEmail" class="col-sm-12 form-label">Post Description</label>
-        <div class="col-sm-12">
-          <ck-editor name="editor1" formControlName="description" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>
-        </div>
-      </div>
-
-    </div>
-    <div class="col-md-3">
-      <button class="btn btn-primary form-control p-2" (click)="publishPost()">Publish</button>
-      <div class="card">
-        <h6 class="card-header">Category</h6>
-        <div class="card-body category_custom_height" formArrayName="categories">
-          <div class="col-sm-12" *ngFor="let category of categories?.controls; let i = index;">
-            <div [formGroupName]="i">
-                <input type="checkbox" [checked]="category.get('selected').value" (change)="category.get('selected').setValue(!category.get('selected').value)" [id]="category.get('id').value">
-                <label [for]="category.get('id').value">{{ category.get('title').value }}</label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-          <h6 class="card-header">Featured Image</h6>
-          <div class="card-body">
-              <div class="form-group">
-                <div class="img_wraper img_c_width">
-                    <label for="featuredImage" class="img-hover">
-                      <div class="img-prop" *ngIf="!localImage && postForm.get('image').value != null" [ngStyle]="{'background': 'url('+imgUrl+''+postForm.get('image').value+')'  }"></div>
-                      <div class="img-prop" *ngIf="localImage" [ngStyle]="{'background': 'url('+localImage+')'  }"></div>
-                      <div class="img-prop" *ngIf="!localImage && postForm.get('image').value==null" [ngStyle]="{'background': 'url(https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg) top center'  }"></div>
-                    </label>
-                </div>
-                <input type="file" accept="image/*" (change)="handleFileInput($event)"   name="file" class="form-control" hidden id="featuredImage">
+<div class="card">
+  <div class="card-body">
+      <div class="row" [formGroup]="postForm">
+          <div class="col-md-9">
+            <div class="form-group">
+              <label for="staticEmail" class="col-sm-12 form-label">Post Title</label>
+              <div class="col-sm-12">
+                  <input type="text"  class="form-control" formControlName="title">
+                  <div class="form-control-feedback text-danger" *ngIf="postForm.get('title').errors && (postForm.get('title').dirty || postForm.get('title').touched)">
+                    <p *ngIf="postForm.get('title').errors.required">Post title is required</p>
+                  </div>
               </div>
+            </div>
+            <div class="form-group">
+              <label for="staticEmail" class="col-sm-12 form-label">Post Description</label>
+              <div class="col-sm-12">
+                <ck-editor name="editor1" formControlName="description" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>
+              </div>
+            </div>
+      
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-primary form-control p-2" (click)="publishPost()">Publish</button>
+            <div class="card">
+              <h6 class="card-header">Category</h6>
+              <div class="card-body category_custom_height" formArrayName="categories">
+                <div class="col-sm-12" *ngFor="let category of categories?.controls; let i = index;">
+                  <div [formGroupName]="i">
+                      <input type="checkbox" [checked]="category.get('selected').value" (change)="category.get('selected').setValue(!category.get('selected').value)" [id]="category.get('id').value">
+                      <label [for]="category.get('id').value">{{ category.get('title').value }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            <div class="card">
+                <h6 class="card-header">Featured Image</h6>
+                <div class="card-body">
+                    <div class="form-group">
+                      <div class="img_wraper img_c_width">
+                          <label for="featuredImage" class="img-hover">
+                            <div class="img-prop" *ngIf="!localImage && postForm.get('image').value != null" [ngStyle]="{'background': 'url('+imgUrl+''+postForm.get('image').value+')'  }"></div>
+                            <div class="img-prop" *ngIf="localImage" [ngStyle]="{'background': 'url('+localImage+')'  }"></div>
+                            <div class="img-prop" *ngIf="!localImage && postForm.get('image').value==null" [ngStyle]="{'background': 'url(https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg) top center'  }"></div>
+                          </label>
+                      </div>
+                      <input type="file" accept="image/*" (change)="handleFileInput($event)"   name="file" class="form-control" hidden id="featuredImage">
+                    </div>
+                </div>
+            </div>
           </div>
       </div>
-    </div>
+      
+  </div>
 </div>

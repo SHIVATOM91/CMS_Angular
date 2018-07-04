@@ -101,7 +101,7 @@
 
 
 
-
+/*
 .customparalasec  .owl-one  .owl-nav .owl-next {
   width: 22px;
   height: 50px;
@@ -123,7 +123,7 @@
   border:0px solid black;
   background-color: #fff;
   outline-style: none !important;
-}
+} */
 
 
 .product-sectoon{
@@ -170,13 +170,134 @@
   height: 50px;
   background-color: #ffffff;
   outline: 1px solid #ccc;
+  color: #212529;
+}
+
+.menuActive{
+  background-color: #1e4464 !important;
+  color: #fff !important;
 }
 
 .project-menu-title p{
-  color: #212529;
   text-align: center;
   line-height: 50px;
 }
+
+.custom-home_slider .owl-stage-outer{
+  margin: 0 24px 0 24px;
+}
+
+
+.custom-home_slider .owl-nav button, .custom-home_slider .owl-nav button.disabled{
+  width: 22px;
+  height: 50px;
+  position: absolute;
+  top: 0px;
+  display: block !important;
+  border:none !important;
+  background-color: #fff !important;
+  outline-style: none !important;
+  margin: 0px !important;
+}
+
+.custom-home_slider .owl-nav button:hover{
+  color: #000 !important;
+}
+
+.custom-home_slider .owl-nav .owl-prev, .custom-home_slider .owl-nav .owl-prev{
+  left: 0px;
+}
+
+.custom-home_slider .owl-nav .owl-next, .custom-home_slider .owl-nav .owl-next{
+  right: 0px;
+}
+
+.project-holder{
+  margin: 0% auto;
+  text-align: center;
+  box-shadow: 2px 2px 1px 0px rgba(140, 140, 140, 0.12);
+  background-size: cover !important;
+  height: 300px;
+  border: 1px solid #ccc;
+}
+
+.project-holder span {
+  bottom: 0px;
+  background: rgb(183, 157, 82);
+  color: #f1f1f1;
+  padding: 10px;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  position: absolute;
+  width: 100%;
+}
 /* paralax-section*/
 
+/*services section */
+.section-s {
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.servicesection{
+    margin-top:2%;
+    clear: both;
+    margin-bottom: 2%;
+}
+.section-s h5{
+  text-transform: uppercase;
+    font-weight: 700;
+    color: #1e4464;
+        margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+.section-s a{
+    border-radius: 3px;
+    border:1px solid #b79d52;
+    color:#b79d52;
+    box-shadow: none;
+
+}
+.section-s a:focus{
+
+    box-shadow: none;
+    outline-style: none;
+
+}
+
+.section-s a:hover{
+    background-color: #b79d52;
+    color:#fff;
+}
+
+.servicesection ul > li.nav-item > a.nav-link{
+    background: #b9a463;
+    color: #fff;
+    border-radius: 0px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+}
+
+.servicesection ul > li.nav-item> a.nav-link.active {
+    background: rgb(154, 119, 25);
+    color: #fff;
+    border-radius: 0px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+}
+.servicesection .tab-content{
+    min-height: 500px;
+}
+
+.servicesection  .nav-justified{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+
+.servicesection .servicesce p{
+    text-align: justify;
+    font-size: 14px;
+}
+/* services*/
 

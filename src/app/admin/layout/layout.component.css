@@ -26,22 +26,31 @@
     background-color: #b7a35e !important;
     border-color: #a18e4a !important;
 }
-
-
 .card{
     border: 1px solid rgb(232, 232, 232) !important;
     border-radius: 0px !important;
     box-shadow: 1px 3px 7px 0px #dedede !important;
 }
-
 .icon-btn{
     width: 35px;
     height: 35px;
     background-color: #f0f0f0;
     border-radius: 50%;
     padding: 10px;
+    box-shadow: none;
+    border: none;
     color: #665921 !important;
     cursor: pointer;
+}
+.icon-btn i{ 
+    display: table-cell;
+    vertical-align: middle;
+}
+.icon-btn:focus{
+    outline: none;
+}
+.datatable-body-cell-label a{
+    color: #5b4f24 !important;
 }
 @media screen and (max-width: 992px) {
     .main-container {
