@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
   currentProjectArray=[];
 
   //services section
+  services_section_id=150;
+  services_section_content: Section;
   servicesArray: ServiceObject[];
 
   constructor(private _section:PageService, private _projectcategory:ProjectCategoryService, private _service: ServicesService) { }
@@ -55,6 +57,12 @@ export class HomeComponent implements OnInit {
   }
 
   getServicesDetails(){
+
+    this._section.getOuterPageSections(this.services_section_id).subscribe(response=>{
+      this.services_section_content=response as Section;
+    })
+
+
     this._service.get().subscribe(response => {
       this.servicesArray = response as ServiceObject[];
       this.servicesArray = this.servicesArray.splice(0,4);
