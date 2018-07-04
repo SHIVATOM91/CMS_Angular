@@ -1,6 +1,11 @@
 import { TestimonialsService } from './../../../../shared/services/testimonials.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertComponent } from '../../../../shared/components/alert/alert.component';
+import { environment } from '../../../../../environments/environment';
+import { ImagePopupComponent } from '../../../../shared/components/image-popup/image-popup.component';
 
 @Component({
   selector: 'app-testimonials',
@@ -10,6 +15,7 @@ import { Component, OnInit } from '@angular/core';
 export class TestimonialsComponent implements OnInit {
   editing = {};
   selected = [];
+  imgUrl=environment.imgUrl;
   columns = [
     { prop: 'title' },
     { name: 'Description' },
@@ -17,7 +23,7 @@ export class TestimonialsComponent implements OnInit {
   ];
   testimonialList: Array<TestimonialsObject>;
 
-  constructor(private _service: TestimonialsService, private router:Router) { }
+  constructor(private modalService:NgbModal, private _service: TestimonialsService, private router:Router) { }
 
 
   ngOnInit() {
@@ -30,12 +36,31 @@ export class TestimonialsComponent implements OnInit {
     })
   }
 
+  enlargeImage(value){
+    const modalRef = this.modalService.open(ImagePopupComponent);
+    modalRef.componentInstance.url = value;
+  }
+  
+  onRowSelect(rowIndex){
+      this.router.navigate(['/admin/update-testimonials', rowIndex] , { skipLocationChange:true})
+  }
 
+  deleteSection(rowIndex ,id ){
+    const modalRef = this.modalService.open(AlertComponent);
+    modalRef.componentInstance.type = 'danger';
+    modalRef.componentInstance.title = 'Are you sure?';
+    modalRef.componentInstance.description = 'You want to delete this testimonial';
 
-  onRowSelect(){
-
-    if(this.selected.length > 0)
-      this.router.navigate(['/admin/update-testimonials', this.selected[0].id ] , { skipLocationChange:true})
+    modalRef.result.then((result) => {
+     
+      if(result){
+        this._service.delete(id).subscribe(response=>{
+          this.testimonialList.splice(rowIndex,1);
+        })
+      }
+    }, (reason) => {
+    // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
 }

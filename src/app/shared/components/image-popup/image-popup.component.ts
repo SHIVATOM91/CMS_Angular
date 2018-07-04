@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-image-popup',
@@ -8,7 +9,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class ImagePopupComponent implements OnInit {
   imgUrl=environment.imgUrl;
-  constructor() { }
+  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
   }

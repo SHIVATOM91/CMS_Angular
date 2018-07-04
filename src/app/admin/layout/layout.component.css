@@ -52,6 +52,9 @@
 .datatable-body-cell-label a{
     color: #5b4f24 !important;
 }
+.ngx-datatable.material:not(.cell-selection) .datatable-body-row:hover, .ngx-datatable.material:not(.cell-selection) .datatable-body-row:hover .datatable-row-group {
+    background-color: #dfdddd !important;
+}
 @media screen and (max-width: 992px) {
     .main-container {
         margin-left: 0px !important;
