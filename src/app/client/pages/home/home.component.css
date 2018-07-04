@@ -301,3 +301,75 @@
 }
 /* services*/
 
+
+/* partner-section*/
+
+.partnersection{
+
+  margin-bottom: 2%;
+  background: url('/assets/images/partner.png');
+  min-height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 15px 0px 15px 0px;
+
+}
+
+.cs .askhaed .custom-body p{
+color: #b79d52;
+}
+
+.cs .askhaed .custom-body h2{
+      font-size: 29px;
+  font-weight: 700;
+  color: #b79d52;
+}
+
+
+
+.owl-two .item{
+  background-color: #fff;
+  padding: 25px;
+
+}
+
+.owl-two  .owl-item img{
+      width: auto !important;
+  margin: 0 auto;
+}
+
+/* partner section */
+.custom-partner-block{
+  width: 100%;
+  display: block;
+  height: 180px;
+  background-size: cover !important;
+}
+
+
+/*team section */
+.team-owl{
+  margin-bottom: 20px;
+}
+
+.custom-team-container{
+  height: 200px;
+}
+
+.custom-team-block{
+  width: 100%;
+  display: block;
+  height: 180px;
+  background-size: cover !important;
+}
+
+
+.custom-team-title{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #e4e4e3;
+  text-align: center;
+  padding: 10px;
+  font-weight: 500;
+}

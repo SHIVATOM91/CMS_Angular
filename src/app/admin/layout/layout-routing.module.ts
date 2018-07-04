@@ -1,3 +1,8 @@
+import { SettingComponent } from './components/setting/setting.component';
+import { NewTeamsComponent } from './components/teams/new-teams/new-teams.component';
+import { TeamsComponent } from './components/teams/teams.component';
+import { NewPartnersComponent } from './components/partners/new-partners/new-partners.component';
+import { PartnersComponent } from './components/partners/partners.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewServicesComponent } from './components/services/new-services/new-services.component';
@@ -102,6 +107,13 @@ const routes: Routes = [
       { path: 'testimonials', component: TestimonialsComponent },
       { path: 'new-testimonials', component: NewTestimonialsComponent },
       { path: 'update-testimonials/:testimonialId', component: NewTestimonialsComponent },
+      { path: 'partners', component: PartnersComponent },
+      { path: 'new-partners', component: NewPartnersComponent },
+      { path: 'update-partners/:partnerId', component: NewPartnersComponent },
+      { path: 'teams', component: TeamsComponent },
+      { path: 'new-teams', component: NewTeamsComponent },
+      { path: 'update-teams/:teamId', component: NewTeamsComponent },
+      { path: 'app-settings', component: SettingComponent },
     ]
   }
 ];

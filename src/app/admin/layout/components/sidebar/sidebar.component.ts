@@ -52,14 +52,24 @@ export class SidebarComponent {
             "icon":"fa fa-folder-o"
         },
         {
+            "name":"Partners",
+            "link":"partners",
+            "icon":"fa fa-pencil-square-o"
+        },
+        {
+            "name":"Teams",
+            "link":"teams",
+            "icon":"fa fa-pencil-square-o"
+        },
+        {
             "name":"Testimonial",
             "link":"testimonials",
             "icon":"fa fa-pencil-square-o"
         },
         {
-            "name":"Appearance",
-            "link":"Appearance",
-            "icon":"fa fa-eye"
+            "name":"Settings",
+            "link":"app-settings",
+            "icon":"fa fa-wrench"
         }
     ]
     constructor() {

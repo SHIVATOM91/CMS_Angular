@@ -19,15 +19,22 @@ background-color: #b89e53;
     color: #fff;
     border-radius: 0px;
     border-top: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-   
+    border-bottom: 1px solid #fff; 
     
  }
  .projecttabs ul.nav > li.nav-item >a.active{
 background-color: #1e4566;
  }
 
+ .projecttabs .tab-pane {
+    background: none!important; 
+    padding: 1px !important;
+}
 
+.customtabpane .text-center
+{
+    width: 100%;
+}
 
  .projecttabs > ul.nav > li.nav-item:first-child > a {
     border-bottom-right-radius: 0;
