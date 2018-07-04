@@ -18,6 +18,12 @@
                 </ng-template>
             </ngx-datatable-column>
             
+            <ngx-datatable-column name="Description" prop="description" >
+                <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                    <span [innerHtml]="value"></span>
+                </ng-template>
+            </ngx-datatable-column>
+
             <ngx-datatable-column name="Created" prop="created_at" >
                 <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
                 {{value}}
@@ -32,15 +38,11 @@
         
             <ngx-datatable-column name="Edit"  >
                 <ng-template let-value="value"  let-rowIndex="rowIndex" let-row="row"  ngx-datatable-cell-template>
-                    <button type="button" class="text_btn" (click)="editPage(row) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button>   
+                    <button type="button" class="icon-btn" (click)="editPage(row) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button>   
+                    <button type="button" class="icon-btn" (click)="deletePage(rowIndex)" ><i class="fa fa-trash" aria-hidden="true"></i> </button>       
                 </ng-template>
             </ngx-datatable-column>
         
-            <ngx-datatable-column name="Delete" >
-                <ng-template let-value="value"  let-rowIndex="rowIndex"  let-row="row" ngx-datatable-cell-template>
-                        <button type="button" class="text_btn" (click)="deletePage(rowIndex)" ><i class="fa fa-trash" aria-hidden="true"></i> </button>                              
-                </ng-template>
-            </ngx-datatable-column>
         </ngx-datatable>
     </div>
 </div>

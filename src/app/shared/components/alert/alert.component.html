@@ -1,10 +1,14 @@
 
   <div class="modal-body">
-    <div class="alert-icon">
-        <i class="fa fa-exclamation" aria-hidden="true"></i>
+    <div class="alert-icon " [ngClass]="{'danger-border':type=='danger' , 'success-border':type=='success' , 'warinig-border':type=='warning'}">
+        <i class="fa " [ngClass]="{'fa fa-times text-danger':type=='danger' , 'fa-check text-success':type=='success' , 'fa-exclamation text-warning':type=='warning'}" aria-hidden="true"></i>
     </div>
-    <p>Hello, {{name}}!</p>
+    <h4 class="text-center">{{title}}</h4>
+    <p class="text-center">{{description}} </p>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  <div class="modal-footer ">
+    <div class="m-auto d-inline">
+      <button type="button" class="btn" [ngClass]="{'btn-danger':type=='danger' , 'btn-success':type=='success' , 'btn-warning':type=='warning'}"  (click)="activeModal.close('false')">CANCEL</button>
+      <button type="button" class="btn" [ngClass]="{'btn-danger':type=='danger' , 'btn-success':type=='success' , 'btn-warning':type=='warning'}" (click)="activeModal.close('true')">YES</button>
+    </div>
   </div>

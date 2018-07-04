@@ -1,6 +1,9 @@
 import { Router } from '@angular/router';
 import { PostService } from './../../../../../../shared/services/post.service';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../../../../environments/environment';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ImagePopupComponent } from '../../../../../../shared/components/image-popup/image-popup.component';
 
 @Component({
   selector: 'app-all-post',
@@ -10,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class AllPostComponent implements OnInit {
   editing = {};
   selected = [];
+  imgUrl=environment.imgUrl;
   columns = [
     { prop: 'title' },
     { name: 'Description' },
@@ -17,8 +21,7 @@ export class AllPostComponent implements OnInit {
   ];
   postList: Array<PostObject>;
 
-  constructor(private _service: PostService, private router: Router) { }
-
+  constructor(private modalService:NgbModal , private _service: PostService, private router: Router) { }
 
   ngOnInit() {
     this.getAllPosts();
@@ -30,6 +33,11 @@ export class AllPostComponent implements OnInit {
     })
   }
 
+  enlargeImage(value){
+    const modalRef = this.modalService.open(ImagePopupComponent);
+    modalRef.componentInstance.url = value;
+  }
+    
   onRowSelect(){
     if(this.selected.length > 0)
       this.router.navigate(['admin/post/latest/update', this.selected[0].id ] , { skipLocationChange:true})
@@ -43,3 +51,5 @@ export class PostObject{
   description: any;
   image: any;
 }
+
+

@@ -13,7 +13,7 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 import { PageService } from './services/page.service';
 import { BannerService } from './services/banner.service';
 import { OwlModule } from 'ngx-owl-carousel';
-import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionConfig, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SectionsService } from './services/sections.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { IcheckDirective } from './directives/icheck.directive';
@@ -22,6 +22,7 @@ import { ProjectService } from './services/project.service';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { GetValuePipe } from './pipes/get-value.pipe';
 import { AlertComponent } from './components/alert/alert.component';
+import { ImagePopupComponent } from './components/image-popup/image-popup.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ import { AlertComponent } from './components/alert/alert.component';
     ReactiveFormsModule,
     NgxDatatableModule
   ],
-  declarations: [IcheckDirective, ReversePipe, GetValuePipe, AlertComponent],
+  declarations: [IcheckDirective, ReversePipe, GetValuePipe, AlertComponent, ImagePopupComponent],
   exports: [
     CommonModule,
     FormsModule,
@@ -43,10 +44,11 @@ import { AlertComponent } from './components/alert/alert.component';
     ReversePipe,
     GetValuePipe
   ],
-  providers: [ ReversePipe, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService]
+  providers: [ ReversePipe, NgbActiveModal, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService]
   ,
   entryComponents: [
-    AlertComponent
+    AlertComponent,
+    ImagePopupComponent
   ]
 })
 export class SharedModule { }
