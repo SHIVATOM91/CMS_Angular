@@ -35,7 +35,6 @@ export class ProjectComponent implements OnInit {
   setProjectContent(id, index)
   {
     console.log(id , index);
-    
     this.currentProjectId=id;
     this.projectList=this.categoryList[index].projects;
   
