@@ -15,8 +15,8 @@ export class ProjectComponent implements OnInit {
   project_section_id=139;
   project_section_content: Section;
   categoryList;
-  projectList;
-  activeIndex=0;
+  projectList=[];
+  currentProjectId:undefined;
   constructor(private _section:PageService, private _postcategory:ProjectCategoryService, private _projectservice:ProjectService) { }
 
   ngOnInit() {
@@ -25,25 +25,20 @@ export class ProjectComponent implements OnInit {
     })
     
     this._postcategory.getProjectcategories().subscribe(response=>{
-      this.categoryList=response
-      console.log(response)
+      this.categoryList=response;
+      this.setProjectContent(this.categoryList[0].id, 0)
     }) 
     
-    this._projectservice.getProjects().subscribe(response=>{
-      this. projectList=response
-      console.log(response)
-    }) 
   }
 
 
-  setProjectContent(i)
+  setProjectContent(id, index)
   {
-   console.log( this.activeIndex);
-    return this.activeIndex=i;
-   
-    // this.projectList.array.forEach((i) => {
-    //   i.active=false;
-    // })
+    console.log(id , index);
+    
+    this.currentProjectId=id;
+    this.projectList=this.categoryList[index].projects;
+  
   }
  /* content(value){
     return this._section.getData(this.project_section_content.page_section_props , value)
