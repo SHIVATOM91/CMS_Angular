@@ -1,0 +1,12 @@
+#accordian .card-body{
+  padding: 0px !important;
+}
+
+.cke_chrome{
+  border: none !important;
+}
+
+.card .img_c_width{
+  width: 100% !important;
+  overflow: hidden;
+}

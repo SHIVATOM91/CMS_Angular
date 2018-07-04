@@ -1,3 +1,5 @@
+import { NewTeamsComponent } from './components/teams/new-teams/new-teams.component';
+import { NewPartnersComponent } from './components/partners/new-partners/new-partners.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { ProjectComponent } from './components/project/project.component';
 import { AllProjectComponent } from './components/project/project/all-project/all-project.component';
@@ -43,11 +45,13 @@ import { NewServicesComponent } from './components/services/new-services/new-ser
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewTestimonialsComponent } from './components/testimonials/new-testimonials/new-testimonials.component';
 import { EllipsisPipePipe } from '../../shared/pipes/ellipsis-pipe.pipe';
+import { PartnersComponent } from './components/partners/partners.component';
+import { TeamsComponent } from './components/teams/teams.component';
 
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent, EllipsisPipePipe,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialsComponent, NewTestimonialsComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent
+  declarations: [LayoutComponent, HeaderComponent, EllipsisPipePipe,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialsComponent, NewTestimonialsComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent, PartnersComponent, NewPartnersComponent, TeamsComponent, NewTeamsComponent
 
-  
+
 
   ],
 
