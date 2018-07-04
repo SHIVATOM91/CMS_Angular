@@ -1,4 +1,4 @@
-import { TestimonialsService } from './../../../../shared/services/testimonials.service';
+import { PartnersService } from './../../../../shared/services/partners.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
@@ -8,11 +8,11 @@ import { environment } from '../../../../../environments/environment';
 import { ImagePopupComponent } from '../../../../shared/components/image-popup/image-popup.component';
 
 @Component({
-  selector: 'app-testimonials',
-  templateUrl: './testimonials.component.html',
-  styleUrls: ['./testimonials.component.css']
+  selector: 'app-partners',
+  templateUrl: './partners.component.html',
+  styleUrls: ['./partners.component.css']
 })
-export class TestimonialsComponent implements OnInit {
+export class PartnersComponent implements OnInit {
   editing = {};
   selected = [];
   imgUrl=environment.imgUrl;
@@ -21,18 +21,18 @@ export class TestimonialsComponent implements OnInit {
     { name: 'Description' },
     { name: 'featuredImage' }
   ];
-  testimonialList: Array<TestimonialsObject>;
+  partnerList: Array<PartnersObject>;
 
-  constructor(private modalService:NgbModal, private _service: TestimonialsService, private router:Router) { }
+  constructor(private modalService:NgbModal, private _service: PartnersService, private router:Router) { }
 
 
   ngOnInit() {
-    this.getAllTestimonials();
+    this.getAllPartners();
   }
 
-  getAllTestimonials(){
+  getAllPartners(){
     this._service.get().subscribe(response => {
-      this.testimonialList = response as TestimonialsObject[];
+      this.partnerList = response as PartnersObject[];
     })
   }
 
@@ -40,22 +40,22 @@ export class TestimonialsComponent implements OnInit {
     const modalRef = this.modalService.open(ImagePopupComponent);
     modalRef.componentInstance.url = value;
   }
-  
+
   onRowSelect(rowIndex){
-      this.router.navigate(['/admin/update-testimonials', rowIndex] , { skipLocationChange:true})
+      this.router.navigate(['/admin/update-partners', rowIndex] , { skipLocationChange:true})
   }
 
   deleteSection(rowIndex ,id ){
     const modalRef = this.modalService.open(AlertComponent);
     modalRef.componentInstance.type = 'danger';
     modalRef.componentInstance.title = 'Are you sure?';
-    modalRef.componentInstance.description = 'You want to delete this testimonial';
+    modalRef.componentInstance.description = 'You want to delete this partner';
 
     modalRef.result.then((result) => {
-     
+
       if(result){
         this._service.delete(id).subscribe(response=>{
-          this.testimonialList.splice(rowIndex,1);
+          this.partnerList.splice(rowIndex,1);
         })
       }
     }, (reason) => {
@@ -65,7 +65,7 @@ export class TestimonialsComponent implements OnInit {
 
 }
 
-export class TestimonialsObject{
+export class PartnersObject{
   id: any;
   title: any;
   description: any;

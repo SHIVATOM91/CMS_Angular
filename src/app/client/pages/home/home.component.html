@@ -106,15 +106,15 @@
 
 
 
- <section class="servicesection">
+<section class="servicesection">
   <div class="container">
       <ul class="list-unstyled askhaed">
         <li class="media">
             <img class="align-self-end mr-3" src="/assets/images/head_leftimg.jpg" alt="   ">
             <div class="media-body custom-body">
-              <p class="mb-0">Work Style
+              <p class="mb-0">{{services_section_content?.properties.intro_title}}
               </p>
-              <h2 class="mt-1 mb-0">Our Services</h2>
+              <h2 class="mt-1 mb-0">{{services_section_content?.properties.main_title}}</h2>
             </div>
         </li>
       </ul>
@@ -124,7 +124,7 @@
               <img [src]="'/assets/images/service-'+i+'.png'">
               <h5>{{ service.title }}</h5>
               <p [innerHTML]="service.shortDescription"></p>
-              <a href="javascript:void(0);" class="btn">More View</a>
+              <a [routerLink]="[services_section_content?.properties.btn_link]" class="btn">{{services_section_content?.properties.btn_text}}</a>
             </div>
         </div>
       </div>
