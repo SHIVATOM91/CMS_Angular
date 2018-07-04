@@ -8,7 +8,7 @@
   </div>
   <div class="modal-footer ">
     <div class="m-auto d-inline">
-      <button type="button" class="btn" [ngClass]="{'btn-danger':type=='danger' , 'btn-success':type=='success' , 'btn-warning':type=='warning'}"  (click)="activeModal.close('false')">CANCEL</button>
-      <button type="button" class="btn" [ngClass]="{'btn-danger':type=='danger' , 'btn-success':type=='success' , 'btn-warning':type=='warning'}" (click)="activeModal.close('true')">YES</button>
+      <button type="button" class="btn" [ngClass]="{'btn-danger':type=='danger' , 'btn-success':type=='success' , 'btn-warning':type=='warning'}"  (click)="activeModal.close(false)">CANCEL</button>
+      <button type="button" class="btn" [ngClass]="{'btn-danger':type=='danger' , 'btn-success':type=='success' , 'btn-warning':type=='warning'}" (click)="activeModal.close(true)">YES</button>
     </div>
   </div>

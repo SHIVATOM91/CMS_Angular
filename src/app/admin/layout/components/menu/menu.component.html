@@ -1,15 +1,21 @@
-<div class="col-sm-12">
-  <button class="btn btn-primary pull-right" type="button" (click)="openModal(content); modalTitle='Add Menu'" ><i class="fa fa-plus" aria-hidden="true"></i> Add New</button><div class="card col-sm-12" >
+<div class="row">
+  <div class="col-sm-12">
+    <button class="btn btn-primary pull-right" type="button" (click)="openModal(content); modalTitle='Add Menu'" ><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+  </div>
 </div>
 
+
+<div class="card">
+  <div class="card-body">
+    
 <!-- accordian design -->
-<ngb-accordion [closeOthers]="true">
+<ngb-accordion [closeOthers]="true" [ngClass]="'menu-accordion'">
     <ng-container *ngFor="let menu of menuList; let i = index ">
       <ngb-panel [id]="'static-'+i">
         <ng-template ngbPanelTitle>
-          <span><b>{{menu.title}}</b></span>
-          <button class="text_btn text-danger pull-right" (click)="deleteMenu(menu)"><i class="fa fa-trash" aria-hidden="true"></i></button>
-          <button class="text_btn pull-right"   (click)="openModal(content, menu);modalTitle='Edit Menu'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+            <i class="fa fa-plus" aria-hidden="true"></i> <span>{{menu.title}}</span>
+          <button class="text_btn icon-btn pull-right" (click)="deleteMenu(menu)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          <button class="text_btn icon-btn pull-right mr-2"   (click)="openModal(content, menu);modalTitle='Edit Menu'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button>
         </ng-template>
         <ng-template ngbPanelContent>
           <div class="row">
@@ -137,3 +143,6 @@
   </ng-template>
 
 
+
+  </div>
+</div>

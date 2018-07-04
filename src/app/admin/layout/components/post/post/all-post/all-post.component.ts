@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../../../../../environments/environment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ImagePopupComponent } from '../../../../../../shared/components/image-popup/image-popup.component';
+import { AlertComponent } from '../../../../../../shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-all-post',
@@ -38,9 +39,27 @@ export class AllPostComponent implements OnInit {
     modalRef.componentInstance.url = value;
   }
     
-  onRowSelect(){
-    if(this.selected.length > 0)
-      this.router.navigate(['admin/post/latest/update', this.selected[0].id ] , { skipLocationChange:true})
+  onRowSelect(rowIndex){
+    this.router.navigate(['admin/post/latest/update', rowIndex ] , { skipLocationChange:true})
+  }
+
+  deleteSection(rowIndex ,id ){
+    const modalRef = this.modalService.open(AlertComponent);
+    modalRef.componentInstance.type = 'danger';
+    modalRef.componentInstance.title = 'Are you sure?';
+    modalRef.componentInstance.description = 'You want to delete this post';
+
+    modalRef.result.then((result) => {
+      if(result){
+        this._service.delete(id).subscribe(response=>{
+          this.postList.splice(rowIndex,1);
+          console.log(this.postList)
+        })
+      }
+    }, (reason) => {
+     // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+
   }
 
 }
