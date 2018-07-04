@@ -12,11 +12,11 @@ export class ProjectService extends DataService {
   }
 
   getProjects(){
-    return this.http.get(this.apiUrl+"page-property", this.token)
+    return this.http.get(this.apiUrl+"projects", this.token)
   }
 
   getSinglePosts(section_id){
-    return this.http.get(this.apiUrl+"page-section/"+section_id, this.token)
+    return this.http.get(this.apiUrl+"projects/"+section_id, this.token)
   }
 
 }
