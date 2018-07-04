@@ -1,51 +1,91 @@
 <div class="row">
-    <div class="col-md-12">
-        <ngb-tabset>
+        <ngb-tabset class="w-100 banner-panel">
             <ngb-tab title="List All">
                 <ng-template ngbTabContent>
-                    <div class="row">
-                      <div class="col-sm-12">
-                          <button *ngIf="selectedBannerId != ''" class="btn btn-secondary pull-right" (click)="addBanner(content);"><i class="fa fa-plus" aria-hidden="true"></i> Add new</button>
+                    <div class="card">
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col-sm-12">
+                                  <button *ngIf="selectedBannerId != ''" class="btn btn-secondary pull-right" (click)="addBanner(content);"><i class="fa fa-plus" aria-hidden="true"></i> Add new</button>
+        
+                                  <div class="form-group">
+                                    <select name="" id="" class="form-control col-sm-3  mt-3" >
+                                      <option *ngFor="let type of bannerTypes; let i = index" [value]="type.id" >{{type.typeName}}</option>
+                                    </select>
+                                  </div>
+                              </div>
+                            </div>
+                            
+                          <ngx-datatable 
+                          class="material"
+                          #sectionDatatable
+                          [columnMode]="'force'"
+                          [headerHeight]="40"
+                          [footerHeight]="40"
+                          [rowHeight]="'auto'"
+                          [rows]="bannerContent">
 
-                          <div class="form-group">
-                            <select name="" id="" class="form-control col-sm-3  mt-3" [(ngModel)]="selectedBannerId">
-                              <option *ngFor="let type of bannerTypes; let i = index" [value]="type.id" >{{type.typeName}}</option>
-                            </select>
-                          </div>
+                          <ngx-datatable-column name="Post Title" prop="title"   >
+                            <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                                {{value}}
+                            </ng-template>
+                          </ngx-datatable-column>
+
+                          <ngx-datatable-column name="Description" prop="description" >
+                            <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                              <span [innerHtml]="value"> </span>
+                            </ng-template>
+                          </ngx-datatable-column>
+
+                          <ngx-datatable-column name="image" prop="image" >
+                            <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                                <button class="thumbnail-image-tb img-res" *ngIf="value" (click)="enlargeImage(value)"  [ngStyle]="{'background': 'url('+imgUrl+value+')no-repeat scroll center center' }" ></button>
+                            </ng-template>
+                          </ngx-datatable-column>
+
+                          <ngx-datatable-column name="Actions" >
+                            <ng-template let-value="value" let-row="row"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                              <i class="fa fa-eye icon-btn" aria-hidden="true"></i>
+                              <i class="fa fa-pencil-square-o icon-btn" aria-hidden="true" (click)="onRowSelect(row.id)"></i>
+                              <button class="fa fa-trash icon-btn" aria-hidden="true" (click)="deleteSection(rowIndex , row.id)"></button>   
+                            </ng-template>
+                          </ngx-datatable-column>
+                          </ngx-datatable>
+
+                            <table class="table table-bordered">
+                                <thead>
+                                 <tr>
+                                   <th>Title</th>
+                                   <th>Description</th>
+                                   <th>Banner Image</th>
+                                 </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngIf="bannerContent== ''">
+                                      <td colspan="3" class="text-center">No Banner to display</td>
+                                  </tr>
+                                  <tr *ngFor="let image of bannerContent|bfilter: selectedBannerId:pure: true;let i = index">
+                                    <td>
+                                          {{image.title}}
+                                    </td>
+                                    <td>
+                                          {{image.description}}
+                                    </td>
+                                    <td>
+                                          <div class="thumbnail-image-tb"  [ngStyle]="{'background': 'url('+imgUrl+image.bannerimg+')no-repeat scroll center center' ,  'height':'30px' , 'transform':'scale(0.8);',  'background-size': 'cover' }" ></div>
+                                    </td>
+                                    <td class="text-center">
+                                          <button type="button" class="text_btn" (click)="editBanner(image, content) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+                                    </td>
+                                    <td class="text-center">
+                                          <button type="button" class="text_btn" (click)="deleteBanner(i)" ><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                      </td>
+                                  </tr>
+                                </tbody>
+                               <!-- <ngb-pagination [collectionSize]="70" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>      -->
+                               </table>
                       </div>
                     </div>
-                    <table class="table table-bordered">
-                        <thead>
-                         <tr>
-                           <th>Title</th>
-                           <th>Description</th>
-                           <th>Banner Image</th>
-                         </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngIf="bannerContent== ''">
-                              <td colspan="3" class="text-center">No Banner to display</td>
-                          </tr>
-                          <tr *ngFor="let image of bannerContent|bfilter: selectedBannerId:pure: true;let i = index">
-                            <td>
-                                  {{image.title}}
-                            </td>
-                            <td>
-                                  {{image.description}}
-                            </td>
-                            <td>
-                                  <div class="thumbnail-image-tb"  [ngStyle]="{'background': 'url('+imgUrl+image.bannerimg+')no-repeat scroll center center' ,  'height':'30px' , 'transform':'scale(0.8);',  'background-size': 'cover' }" ></div>
-                            </td>
-                            <td class="text-center">
-                                  <button type="button" class="text_btn" (click)="editBanner(image, content) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-                            </td>
-                            <td class="text-center">
-                                  <button type="button" class="text_btn" (click)="deleteBanner(i)" ><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-                              </td>
-                          </tr>
-                        </tbody>
-                       <!-- <ngb-pagination [collectionSize]="70" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>      -->
-                       </table>
                 </ng-template>
             </ngb-tab>
 
@@ -134,7 +174,7 @@
                 </ng-template>
             </ngb-tab>
         </ngb-tabset>
-    </div>
+
 </div>
 <!---Ng Bootstrap Modal -->
 <ng-template #content let-c="close" let-d="dismiss" >

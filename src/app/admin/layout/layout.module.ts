@@ -43,9 +43,10 @@ import { NewServicesComponent } from './components/services/new-services/new-ser
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewTestimonialsComponent } from './components/testimonials/new-testimonials/new-testimonials.component';
 import { EllipsisPipePipe } from '../../shared/pipes/ellipsis-pipe.pipe';
+import { MenuPipe } from './components/menu/menu.pipe';
 
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent, EllipsisPipePipe,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialsComponent, NewTestimonialsComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent
+  declarations: [LayoutComponent, HeaderComponent, EllipsisPipePipe,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialsComponent, NewTestimonialsComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent, MenuPipe
 
   
 
