@@ -13,7 +13,9 @@ export class ServicesComponent implements OnInit {
   services_section_id=152;
   services_section_content: Section;
   servicesList;
-  currentServiceId:undefined;
+  currentService:undefined;
+  servicesArray: ServiceObject[];
+
   constructor(private _section:PageService, private _sectionservices:ServicesService) { }
 
   ngOnInit() {
@@ -22,17 +24,19 @@ export class ServicesComponent implements OnInit {
     })
     this._sectionservices.getServices().subscribe(response=>{
       this.servicesList=response;
+      if(this.servicesList.length > 0){
+        this.currentService = this.servicesList[0];
+      }
     })  
   }
 
-  setServiceContent(id, index)
+  setServiceContent(service)
   {
-   
-    this.currentServiceId=id;
-    this.servicesList;  
-    console.log( this.servicesList);
+    this.currentService= service;
+    console.log(service);
+    
+    
   }
-
 }
 
 export class Section{
@@ -40,3 +44,8 @@ export class Section{
   properties: any;
 }
 
+export class ServiceObject{
+  title: any;
+  shortDescription: any;
+  featuredImage: any;
+}

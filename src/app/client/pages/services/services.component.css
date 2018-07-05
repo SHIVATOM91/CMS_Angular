@@ -20,7 +20,13 @@
     .servicesection  .nav-justified{
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     }
-    
+    .nav-justified .nav-item {
+        -ms-flex-preferred-size: 0;
+        flex-basis: 1 !important;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        text-align: center;
+    }
     
     .servicesection .servicesce p{
         text-align: justify;
