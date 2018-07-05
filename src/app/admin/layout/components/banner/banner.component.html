@@ -1,179 +1,180 @@
 <div class="row">
-        <ngb-tabset class="w-100 banner-panel">
-            <ngb-tab title="List All">
-                <ng-template ngbTabContent>
-                    <div class="card">
-                      <div class="card-body">
-                          <div class="row">
-                              <div class="col-sm-12">
-                                  <button *ngIf="selectedBannerId != ''" class="btn btn-secondary pull-right" (click)="addBanner(content);"><i class="fa fa-plus" aria-hidden="true"></i> Add new</button>
-        
-                                  <div class="form-group">
-                                    <select name="" id="" class="form-control col-sm-3  mt-3" >
-                                      <option *ngFor="let type of bannerTypes; let i = index" [value]="type.id" >{{type.typeName}}</option>
-                                    </select>
-                                  </div>
-                              </div>
+  <div class="col-md-12">
+    <ngb-tabset class="w-100 banner-panel">
+      <ngb-tab title="List All">
+          <ng-template ngbTabContent>
+              <div class="card col-md-12">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button *ngIf="selectedBannerId != ''" class="btn btn-primary pull-right" (click)="addBanner(content);"><i class="fa fa-plus" aria-hidden="true"></i> Add new</button>
+  
+                            <div class="form-group">
+                              <select name="" id="" class="form-control col-sm-3  mt-3"  (change)="updateFilter($event)">
+                                <option *ngFor="let type of bannerTypes; let i = index" [value]="type.id" >{{type.typeName}}</option>
+                              </select>
                             </div>
-                            
-                          <ngx-datatable 
-                          class="material"
-                          #sectionDatatable
-                          [columnMode]="'force'"
-                          [headerHeight]="40"
-                          [footerHeight]="40"
-                          [rowHeight]="'auto'"
-                          [rows]="bannerContent">
-
-                          <ngx-datatable-column name="Post Title" prop="title"   >
-                            <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                                {{value}}
-                            </ng-template>
-                          </ngx-datatable-column>
-
-                          <ngx-datatable-column name="Description" prop="description" >
-                            <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                              <span [innerHtml]="value"> </span>
-                            </ng-template>
-                          </ngx-datatable-column>
-
-                          <ngx-datatable-column name="image" prop="image" >
-                            <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                                <button class="thumbnail-image-tb img-res" *ngIf="value" (click)="enlargeImage(value)"  [ngStyle]="{'background': 'url('+imgUrl+value+')no-repeat scroll center center' }" ></button>
-                            </ng-template>
-                          </ngx-datatable-column>
-
-                          <ngx-datatable-column name="Actions" >
-                            <ng-template let-value="value" let-row="row"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                              <i class="fa fa-eye icon-btn" aria-hidden="true"></i>
-                              <i class="fa fa-pencil-square-o icon-btn" aria-hidden="true" (click)="onRowSelect(row.id)"></i>
-                              <button class="fa fa-trash icon-btn" aria-hidden="true" (click)="deleteSection(rowIndex , row.id)"></button>   
-                            </ng-template>
-                          </ngx-datatable-column>
-                          </ngx-datatable>
-
-                            <table class="table table-bordered">
-                                <thead>
-                                 <tr>
-                                   <th>Title</th>
-                                   <th>Description</th>
-                                   <th>Banner Image</th>
-                                 </tr>
-                                </thead>
-                                <tbody>
-                                  <tr *ngIf="bannerContent== ''">
-                                      <td colspan="3" class="text-center">No Banner to display</td>
-                                  </tr>
-                                  <tr *ngFor="let image of bannerContent|bfilter: selectedBannerId:pure: true;let i = index">
-                                    <td>
-                                          {{image.title}}
-                                    </td>
-                                    <td>
-                                          {{image.description}}
-                                    </td>
-                                    <td>
-                                          <div class="thumbnail-image-tb"  [ngStyle]="{'background': 'url('+imgUrl+image.bannerimg+')no-repeat scroll center center' ,  'height':'30px' , 'transform':'scale(0.8);',  'background-size': 'cover' }" ></div>
-                                    </td>
-                                    <td class="text-center">
-                                          <button type="button" class="text_btn" (click)="editBanner(image, content) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-                                    </td>
-                                    <td class="text-center">
-                                          <button type="button" class="text_btn" (click)="deleteBanner(i)" ><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-                                      </td>
-                                  </tr>
-                                </tbody>
-                               <!-- <ngb-pagination [collectionSize]="70" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>      -->
-                               </table>
-                      </div>
-                    </div>
-                </ng-template>
-            </ngb-tab>
-
-            <ngb-tab>
-                <ng-template ngbTabTitle>Preview Banner</ng-template>
-                <ng-template ngbTabContent>
-                    <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
-                            <div *ngIf="bannerContent== ''" class="text-center m-1">No Banner to display</div>
-                            <owl-carousel
-                                [options]="{items: 1, dots: true, navigation: true}"
-                                [items]="bannerContent"
-                                [carouselClasses]="['owl-theme', 'row', 'sliding']">
-                                <div class="item" *ngFor="let image of bannerContent|bfilter: selectedBannerId;let i = index">
-                                    <div class="thumbnail-image"  [ngStyle]="{'background': 'url('+imgUrl+image.bannerimg+')no-repeat scroll center center' ,  'height':'350px' , 'background-size': 'cover' }" >
-                                        <h1 class="bannerTitle">{{image.title}}</h1>
-                                        <h4 class="bannerDescription">{{image.description}}</h4>
-                                    </div>
-                                </div>
-                            </owl-carousel>
                         </div>
-                        <div class="col-md-2"></div>
-                    </div>
-                </ng-template>
-            </ngb-tab>
+                      </div>
+                      
+                    <ngx-datatable 
+                    class="material"
+                    #sectionDatatable
+                    [columnMode]="'force'"
+                    [headerHeight]="40"
+                    [footerHeight]="40"
+                    [rowHeight]="'auto'"
+                    [rows]="temp">
 
-            <ngb-tab>
-                <ng-template ngbTabTitle>Banner Category</ng-template>
-                <ng-template ngbTabContent>
-                    <div class="row">
-                        <div class="col-md-4">
-                          <div class="card clerfix mt-3">
-                              <div class="card-header">
-                                  <ng-container *ngIf="typeFormState == 'edit'">
-                                    Edit category
-                                  </ng-container>
-                                  <ng-container *ngIf="typeFormState == 'new'">
-                                    Add new category
-                                  </ng-container>
-                              </div>
-                              <div class="card-body">
-                                <form [formGroup]="typeForm" >
-                                  <div class="form-group">
-                                    <label for="menutitle">Category name:</label>
-                                    <input type="text" class="form-control" name="menuTittle" formControlName="typeName"  id="menutypeName" aria-describedby="menutypeName"  required>
-                                    <div class="form-control-feedback text-danger" *ngIf="typeForm.get('typeName').errors && (typeForm.get('typeName').dirty || typeForm.get('typeName').touched)">
-                                      <p *ngIf="typeForm.get('typeName').errors.required">Category name is required</p>
-                                      <p *ngIf="typeForm.get('typeName').errors.minlength">Category name must be {{ typeForm.get('typeName').errors.minlength.requiredLength }} characters long</p>
-                                    </div>
-                                  </div>
-                                  <ng-container *ngIf="typeFormState == 'edit'">
-                                    <button type="button" class="btn btn-primary " (click)="updateBannerTypes()">Update</button>
-                                    <button type="button" class="btn btn-danger " (click)="typeFormState='new';typeForm.reset();editTypeIndex=null;">Cancel</button>
-                                  </ng-container>
-                                  <ng-container *ngIf="typeFormState == 'new'">
-                                    <button type="button" class="btn btn-primary " (click)="addBannerTypes()">Add</button>
-                                  </ng-container>
-                                </form>
+                    <ngx-datatable-column name="Post Title" prop="title"   >
+                      <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                          {{value}}
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Description" prop="description" >
+                      <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                        <span [innerHtml]="value"> </span>
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="image" prop="bannerimg" >
+                      <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                          <button class="thumbnail-image-tb img-res" *ngIf="value" (click)="enlargeImage(value)"  [ngStyle]="{'background': 'url('+imgUrl+value+')no-repeat scroll center center' }" ></button>
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Actions" >
+                      <ng-template let-value="value" let-row="row"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                       
+                        <button class="fa fa-pencil-square-o icon-btn" aria-hidden="true" (click)="editBanner(row, content)"></button>
+                        <button class="fa fa-trash icon-btn" aria-hidden="true" (click)="deleteBanner(rowIndex )"></button>   
+                      </ng-template>
+                    </ngx-datatable-column>
+                    </ngx-datatable>
+
+                      <!-- <table class="table table-bordered">
+                          <thead>
+                           <tr>
+                             <th>Title</th>
+                             <th>Description</th>
+                             <th>Banner Image</th>
+                           </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngIf="bannerContent== ''">
+                                <td colspan="3" class="text-center">No Banner to display</td>
+                            </tr>
+                            <tr *ngFor="let image of bannerContent|bfilter: selectedBannerId:pure: true;let i = index">
+                              <td>
+                                    {{image.title}}
+                              </td>
+                              <td>
+                                    {{image.description}}
+                              </td>
+                              <td>
+                                    <div class="thumbnail-image-tb"  [ngStyle]="{'background': 'url('+imgUrl+image.bannerimg+')no-repeat scroll center center' ,  'height':'30px' , 'transform':'scale(0.8);',  'background-size': 'cover' }" ></div>
+                              </td>
+                              <td class="text-center">
+                                    <button type="button" class="text_btn" (click)="editBanner(image, content) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+                              </td>
+                              <td class="text-center">
+                                    <button type="button" class="text_btn" (click)="deleteBanner(i)" ><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                </td>
+                            </tr>
+                          </tbody>
+                        
+                         </table> -->
+                </div>
+              </div>
+          </ng-template>
+      </ngb-tab>
+
+      <ngb-tab>
+          <ng-template ngbTabTitle>Preview Banner</ng-template>
+          <ng-template ngbTabContent>
+              <div class="row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-8">
+                      <div *ngIf="bannerContent== ''" class="text-center m-1">No Banner to display</div>
+                      <owl-carousel
+                          [options]="{items: 1, dots: true, navigation: true}"
+                          [items]="bannerContent"
+                          [carouselClasses]="['owl-theme', 'row', 'sliding']">
+                          <div class="item" *ngFor="let image of bannerContent|bfilter: selectedBannerId;let i = index">
+                              <div class="thumbnail-image"  [ngStyle]="{'background': 'url('+imgUrl+image.bannerimg+')no-repeat scroll center center' ,  'height':'350px' , 'background-size': 'cover' }" >
+                                  <h1 class="bannerTitle">{{image.title}}</h1>
+                                  <h4 class="bannerDescription">{{image.description}}</h4>
                               </div>
                           </div>
+                      </owl-carousel>
+                  </div>
+                  <div class="col-md-2"></div>
+              </div>
+          </ng-template>
+      </ngb-tab>
+
+      <ngb-tab>
+          <ng-template ngbTabTitle>Banner Category</ng-template>
+          <ng-template ngbTabContent>
+              <div class="row">
+                  <div class="col-md-5">
+                    <div class="card clerfix ">
+                        <div class="card-header">
+                            <ng-container *ngIf="typeFormState == 'edit'">
+                              Edit category
+                            </ng-container>
+                            <ng-container *ngIf="typeFormState == 'new'">
+                              Add new category
+                            </ng-container>
                         </div>
-                        <div class="col-md-8">
-                          <table class="table table-bordered mt-3">
-                            <thead>
-                              <tr>
-                                <th>Category name</th>
-                                <th>Action</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let type of bannerTypes;let i = index">
-                                <td>
-                                    {{ type.typeName }}
-                                </td>
-                                <td>
-                                  <button type="button" class="btn btn-primary btn-sm" (click)="editBannerType(i)">Edit</button>
-                                  <button type="button" class="btn btn-danger btn-sm" (click)="deleteBannerTypes(i)">Delete</button>
-                                </td>
-                              </tr>
-                            </tbody>
-                            <!-- <ngb-pagination [collectionSize]="70" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>      -->
+                        <div class="card-body">
+                          <form [formGroup]="typeForm" >
+                            <div class="form-group">
+                              <label for="menutitle">Category name:</label>
+                              <input type="text" class="form-control" name="menuTittle" formControlName="typeName"  id="menutypeName" aria-describedby="menutypeName"  required>
+                              <div class="form-control-feedback text-danger" *ngIf="typeForm.get('typeName').errors && (typeForm.get('typeName').dirty || typeForm.get('typeName').touched)">
+                                <p *ngIf="typeForm.get('typeName').errors.required">Category name is required</p>
+                                <p *ngIf="typeForm.get('typeName').errors.minlength">Category name must be {{ typeForm.get('typeName').errors.minlength.requiredLength }} characters long</p>
+                              </div>
+                            </div>
+                            <ng-container *ngIf="typeFormState == 'edit'">
+                              <button type="button" class="btn btn-primary " (click)="updateBannerTypes()">Update</button>
+                              <button type="button" class="btn btn-danger " (click)="typeFormState='new';typeForm.reset();editTypeIndex=null;">Cancel</button>
+                            </ng-container>
+                            <ng-container *ngIf="typeFormState == 'new'">
+                              <button type="button" class="btn btn-primary " (click)="addBannerTypes()">Add</button>
+                            </ng-container>
+                          </form>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="card">
+                      <div class="card-header">
+                          Category name
+                      </div>
+                      <div class="card-body">
+                        <table class="table">
+                          <tr *ngFor="let type of bannerTypes;let i = index">
+                            <td>
+                                {{ type.typeName }}
+                                <div class="pull-right">
+                                  <button type="button" class="fa fa-pencil-square-o icon-btn" (click)="editBannerType(i)"></button>
+                                  <button type="button" class="fa fa-trash icon-btn" (click)="deleteBannerTypes(i)"></button>
+                                </div>
+                            </td>
+                          </tr>
                         </table>
                       </div>
                     </div>
-                </ng-template>
-            </ngb-tab>
-        </ngb-tabset>
+                
+                </div>
+              </div>
+          </ng-template>
+      </ngb-tab>
+  </ngb-tabset>
+  </div>   
 
 </div>
 <!---Ng Bootstrap Modal -->

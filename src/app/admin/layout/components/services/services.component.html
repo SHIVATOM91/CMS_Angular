@@ -2,16 +2,37 @@
   <button type="button" class="btn btn-primary pull-right" [routerLink]="['/admin/new-service']">Add New</button>
 </div>
 <div class="clearfix"></div>
-<ngx-datatable
+
+
+
+
+<ngx-datatable 
   class="material"
-  [rows]="serviceList"
-  [loadingIndicator]="loadingIndicator"
-  [columns]="columns"
+  #sectionDatatable
   [columnMode]="'force'"
-  [headerHeight]="50"
-  [footerHeight]="50"
+  [headerHeight]="40"
+  [footerHeight]="40"
   [rowHeight]="'auto'"
-  [selected]="selected"
-  [selectionType]="'single'"
-  (dblclick)='onRowSelect($event)'>
+  [rows]="serviceList">
+
+  <ngx-datatable-column name="Post Title" prop="title"   >
+    <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+        {{value}}
+    </ng-template>
+  </ngx-datatable-column>
+
+
+  <ngx-datatable-column name="image" prop="featuredImage" >
+    <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+        <button class="thumbnail-image-tb img-res" *ngIf="value" (click)="enlargeImage(value)"  [ngStyle]="{'background': 'url('+imgUrl+value+')no-repeat scroll center center' }" ></button>
+    </ng-template>
+  </ngx-datatable-column>
+  
+  <ngx-datatable-column name="Actions" >
+    <ng-template let-value="value" let-row="row"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+      <i class="fa fa-eye icon-btn" aria-hidden="true"></i>
+      <i class="fa fa-pencil-square-o icon-btn" aria-hidden="true" (click)="onRowSelect(row.id)"></i>
+      <button class="fa fa-trash icon-btn" aria-hidden="true" (click)="deleteSection(rowIndex , row.id)"></button>   
+    </ng-template>
+  </ngx-datatable-column>
 </ngx-datatable>

@@ -1,6 +1,10 @@
 import { ProjectCategoryService } from './../../../../../../shared/services/project-category.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../../../../../../environments/environment';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertComponent } from '../../../../../../shared/components/alert/alert.component';
+import { ImagePopupComponent } from '../../../../../../shared/components/image-popup/image-popup.component';
 
 @Component({
   selector: 'app-list-project-category',
@@ -10,13 +14,14 @@ import { Router } from '@angular/router';
 export class ListProjectCategoryComponent implements OnInit {
   editing = {};
   selected = [];
+  imgUrl= environment.imgUrl;
   columns = [
     { prop: 'title' },
     { name: 'Description' },
     { name: 'Image' }
   ];
   categoryList: Array<CategoryObject>;
-  constructor(private _service: ProjectCategoryService, private router: Router) { }
+  constructor(private _service: ProjectCategoryService, private modalService:NgbModal, private router: Router) { }
 
   ngOnInit() {
     this.getAllCategories();
@@ -29,10 +34,34 @@ export class ListProjectCategoryComponent implements OnInit {
     })
   }
 
-  onRowSelect(){
-    if(this.selected.length > 0)
-      this.router.navigate(['admin/project/category/update', this.selected[0].id] , { skipLocationChange:true})
+  enlargeImage(value){
+    const modalRef = this.modalService.open(ImagePopupComponent);
+    modalRef.componentInstance.url = value;
   }
+  
+  onRowSelect(rowIndex){
+    this.router.navigate(['admin/project/category/update', rowIndex ] , { skipLocationChange:true})
+  }
+
+  deleteSection(rowIndex ,id ){
+    const modalRef = this.modalService.open(AlertComponent);
+    modalRef.componentInstance.type = 'danger';
+    modalRef.componentInstance.title = 'Are you sure?';
+    modalRef.componentInstance.description = 'You want to delete this post';
+
+    modalRef.result.then((result) => {
+      if(result){
+        this._service.delete(id).subscribe(response=>{
+          this.categoryList.splice(rowIndex,1);
+        })
+      }
+    }, (reason) => {
+     // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+
+  }
+
+
 
 }
 
