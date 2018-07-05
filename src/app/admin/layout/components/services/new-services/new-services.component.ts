@@ -49,6 +49,7 @@ export class NewServicesComponent implements OnInit {
 
 
   handleFileInput(event){
+    this.updateForm.get('image').setValue(event.target.files[0]);
     var myReader: FileReader = new FileReader();
     myReader.onloadend = (e) => {
       this.localImage=myReader.result;
