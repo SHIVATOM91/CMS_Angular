@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { PageService } from '../../../shared/services/page.service';
 import { ServicesService } from '../../../shared/services/services.service';
@@ -6,7 +6,8 @@ import { ServicesService } from '../../../shared/services/services.service';
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
-  styleUrls: ['./services.component.css']
+  styleUrls: ['./services.component.css'],
+  encapsulation:ViewEncapsulation.None
 })
 export class ServicesComponent implements OnInit {
   img_url=environment.imgUrl;
