@@ -1,6 +1,10 @@
 import { Router } from '@angular/router';
 import { ServicesService } from './../../../../shared/services/services.service';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../../environments/environment';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ImagePopupComponent } from '../../../../shared/components/image-popup/image-popup.component';
+import { AlertComponent } from '../../../../shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-services',
@@ -10,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
 export class ServicesComponent implements OnInit {
   editing = {};
   selected = [];
+  imgUrl=environment.imgUrl;
   columns = [
     { prop: 'title' },
     { name: 'Description' },
@@ -17,11 +22,16 @@ export class ServicesComponent implements OnInit {
   ];
   serviceList: Array<ServicesObject>;
 
-  constructor(private _service: ServicesService, private router:Router) { }
+  constructor(private _service: ServicesService, private router:Router, private modalService:NgbModal) { }
 
 
   ngOnInit() {
     this.getAllServices();
+  }
+
+  enlargeImage(value){
+    const modalRef = this.modalService.open(ImagePopupComponent);
+    modalRef.componentInstance.url = value;
   }
 
   getAllServices(){
@@ -30,12 +40,26 @@ export class ServicesComponent implements OnInit {
     })
   }
 
+  onRowSelect(rowIndex){
+    this.router.navigate(['/admin/update-service', rowIndex ] , { skipLocationChange:true})
+  }
 
+  deleteSection(rowIndex ,id ){
+    const modalRef = this.modalService.open(AlertComponent);
+    modalRef.componentInstance.type = 'danger';
+    modalRef.componentInstance.title = 'Are you sure?';
+    modalRef.componentInstance.description = 'You want to delete this post';
 
-  onRowSelect(){
+    modalRef.result.then((result) => {
+      if(result){
+        this._service.delete(id).subscribe(response=>{
+          this.serviceList.splice(rowIndex,1);
+        })
+      }
+    }, (reason) => {
+     // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
 
-    if(this.selected.length > 0)
-      this.router.navigate(['/admin/update-service', this.selected[0].id ] , { skipLocationChange:true})
   }
 
 }

@@ -5,6 +5,8 @@ import { BannerService } from '../../../../shared/services/banner.service';
 import { environment } from '../../../../../environments/environment';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { AlertComponent } from '../../../../shared/components/alert/alert.component';
+import { ImagePopupComponent } from '../../../../shared/components/image-popup/image-popup.component';
 
 
 @Component({
@@ -16,18 +18,19 @@ import { ToastrService } from 'ngx-toastr';
 export class BannerComponent implements OnInit {
   /* type initialization */
   typeForm: FormGroup;
+  bannerForm: FormGroup;
+  typeFormState: string =  "new";
+  bannerContent;
+  temp;
   bannerTypes;
   editTypeIndex=null;
-  typeFormState: string =  "new";
+  
   // end of type var
-
   selectedBannerId="";
-  bannerForm: FormGroup;
   image;
   errorMsgShow=false;
   errorMsgType='';
   errorMsgMessage='';
-  bannerContent;
   imgUrl= environment.imgUrl;
   page = 4;
   closeResult;
@@ -55,7 +58,7 @@ export class BannerComponent implements OnInit {
       title: ['', Validators.required],
       description: [''],
       bannerimg: ['', Validators.required]
-     })
+    })
   }
 
   handleFileInput(event){
@@ -65,8 +68,9 @@ export class BannerComponent implements OnInit {
   getAllBanner(){
     this._bannerServ.get().subscribe(banner=>{
       this.bannerContent=banner;
-      console.log(this.bannerContent);
-      this.selectedBannerId=this.bannerContent[0].id;
+      this.temp=this.bannerContent;
+      this.selectedBannerId=this.bannerContent[0].banner_types_id;
+      this.updateFilter();
     })
   }
 
@@ -77,7 +81,6 @@ export class BannerComponent implements OnInit {
     this.bannerForm.get('bannerimg').setValidators(Validators.required);
     this.bannerForm.get('banner_types_id').setValue(this.selectedBannerId);
     this.modalService.open(content);
-    
   }
 
   editBanner(item, content){
@@ -91,28 +94,39 @@ export class BannerComponent implements OnInit {
   }
 
   deleteBanner(index){
-    let success=confirm("Are you sure want to delete this item");
-    if(success){
-      this._bannerServ.delete(this.bannerContent[index].id).subscribe(response => {
-        this.bannerContent.splice(index,1)
-      })
-    }
-  }
+    const modalRef = this.modalService.open(AlertComponent);
+    modalRef.componentInstance.type = 'danger';
+    modalRef.componentInstance.title = 'Are you sure?';
+    modalRef.componentInstance.description = 'You sure want to delete this item';
 
-  updateFilter(event) {
-    //const val = event.target.value.toLowerCase();
-    this.selectedBannerId=event.target.value;
-    alert(this.selectedBannerId)
-    const temp = this.bannerContent.filter(function(d) {
-      return d.id.indexOf(this.selectedBannerId) !== -1;
+    modalRef.result.then((result) => {
+      if(result){
+        this._bannerServ.delete(this.bannerContent[index].id).subscribe(response => {
+          this.bannerContent.splice(index,1)
+        })
+      }
+    }, (reason) => {
+     // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
 
-    this.bannerContent = temp;
   }
 
+  updateFilter(event?,id?) {
+    let _self=this;
+    if(event) this.selectedBannerId=event.target.value;
 
-  uploadBanner()
-  {
+    const temp1 = this.bannerContent.filter(function(d) {
+      return d.banner_types_id==_self.selectedBannerId ;
+    });
+    this.temp = temp1;
+  }
+
+  enlargeImage(value){
+    const modalRef = this.modalService.open(ImagePopupComponent);
+    modalRef.componentInstance.url = value;
+  }
+  
+  uploadBanner(){
     this._bannerServ.create(this._bannerServ.createFormData(this.bannerForm.value)).subscribe( response => {
       this.getAllBanner();
       if(this.bannerEditMode == false){
@@ -140,9 +154,7 @@ export class BannerComponent implements OnInit {
           this.typeForm.reset();
         }
       },
-      error=>{
-
-      })
+      error=>{})
     }
   }
 
@@ -165,13 +177,11 @@ export class BannerComponent implements OnInit {
         }
       },error=>{
         console.log(error);
-
       })
     }
   }
 
   deleteBannerTypes(index){
-
     if(!(confirm("Do you really want to delete? This may contain banners."))){
       return false;
     }
