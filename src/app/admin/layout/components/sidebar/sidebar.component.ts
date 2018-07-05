@@ -15,11 +15,11 @@ export class SidebarComponent {
         {
             "name":"Dashboard",
             "link":"dashboard",
-            "icon":"fa fa-file"
+            "icon":"fa fa-tachometer"
         },{
             "name":"Posts",
             "link":"post",
-            "icon":"fa fa-file"
+            "icon":"fa fa-clipboard"
         },
         {
             "name":"Pages",
@@ -44,7 +44,7 @@ export class SidebarComponent {
         {
             "name":"Services",
             "link":"service",
-            "icon":"fa fa-folder-o"
+            "icon":"fa fa-clipboard"
         },
         {
             "name":"Projets",
@@ -67,9 +67,9 @@ export class SidebarComponent {
             "icon":"fa fa-pencil-square-o"
         },
         {
-            "name":"Appearance",
-            "link":"Appearance",
-            "icon":"fa fa-eye"
+            "name":"Settings",
+            "link":"app-settings",
+            "icon":"fa fa-wrench"
         }
     ]
     constructor() {

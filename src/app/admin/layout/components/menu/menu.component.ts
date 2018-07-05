@@ -16,7 +16,6 @@ export class MenuComponent implements OnInit {
   closeResult: string;
   menuList;
   pageList;
-
   editIndex;
 
 
@@ -32,33 +31,35 @@ export class MenuComponent implements OnInit {
       parent_id: ['']
     });
   }
-
+ 
   ngOnInit() {
     this.editIndex=null;
     this.getAllMenu();
     this.getAllPages();
+  }
 
+  filterMenu(event){
+    this.selectedMenuId=event.target.value;
   }
 
   getAllMenu(){
     this._menuServe.get().subscribe(response=>{
        this.menuList = response;
-       console.log(this.menuList);
-
     })
   }
 
   getAllPages(){
     this._menuServe.getPages().subscribe(response=>{
        this.pageList = response;
-
     })
   }
 
   openModal(content,index = null){
     if(index == null){
       this.editIndex=null;
+      let data=this.selectedMenuId;
       this.form.reset();
+      this.selectedMenuId=data;
     }else{
       this.editIndex=index;
       let obj=this.editIndex;
@@ -82,7 +83,9 @@ export class MenuComponent implements OnInit {
         if(response.success == true){
           this.menuList.push(response.data);
           this.getAllMenu();
+          let data=this.selectedMenuId;
           this.form.reset();
+          this.selectedMenuId=data;
         }else{
           console.log(response);
           
@@ -149,5 +152,13 @@ export class MenuComponent implements OnInit {
     }
   }
   /*  Modal End */
+
+  set selectedMenuId(val){
+    this.form.get('menuType').setValue(val);
+  }
+
+  get selectedMenuId(){
+    return this.form.get('menuType').value;
+  }
 
 }

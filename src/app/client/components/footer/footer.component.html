@@ -1,4 +1,4 @@
-<section class="footer">
+<section class="footer" *ngIf="settingData">
     <div class="links">
       <ng-container *ngFor="let list of menuList" >
         <a   routerLink="/{{list.pageSlug}}" *ngIf="list.linkType=='page'" >{{list.title}}</a>
@@ -13,14 +13,14 @@
                 <img class="align-self-start mr-3" src="assets/images/footer_phone.png">
                 <div class="media-body">
                   <h5 class="mt-4">Call Us</h5>
-                  <p>0123457891, 00123457896</p>
+                  <p>{{ settingData?.primaryPhone }}</p>
                 </div>
             </div>
             <div class="media">
               <img class="align-self-start mr-3" src="assets/images/footer_mail.png">
               <div class="media-body">
                 <h5 class="mt-4">Mail Us</h5>
-                <p>info@askumbau.com</p>
+                <p>{{ settingData?.primaryEmail }}</p>
               </div>
             </div>
           </div>
@@ -32,24 +32,23 @@
               <img class="align-self-start mr-3" src="assets/images/footer_address.png">
               <div class="media-body">
                 <h5 class="mt-4">Address</h5>
-                <p>Switzerland</p>
+                <p>{{ settingData?.primaryAddress }}</p>
               </div>
             </div>
             <div class="media">
               <img class="align-self-start mr-3" src="assets/images/footer_mail.png">
               <div class="media-body custonavsocila">
                 <h5 class="mt-4">Social Media</h5>
-                <a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
-                <a href="javascript:void(0);"><i class="fa fa-twitter "></i></a>
-                <a href="javascript:void(0);"><i class="fa fa-google-plus "></i></a>
-                <a href="javascript:void(0);"><i class="fa fa-envelope "></i></a>
+                <a [href]="settingData?.facebookLink"><i class="fa fa-facebook"></i></a>
+                <a [href]="settingData?.twitterLink"><i class="fa fa-twitter "></i></a>
+                <a [href]="settingData?.googleLink"><i class="fa fa-google-plus "></i></a>
               </div>
             </div>
           </div>
           <div class="col-lg-12 copyright">
-            <p >© 2018 ASK Umbau AG - Developed By : <a href="https://www.bixbytessolutions.com" target="_blank">BixBytes Solutions</a></p>
+            <p >{{ settingData?.footerMessage }} - Developed By : <a href="https://www.bixbytessolutions.com" target="_blank">BixBytes Solutions</a></p>
           </div>
       </div>
      </div>
- 
+
 </section>

@@ -7,30 +7,45 @@
 
 <div class="card">
   <div class="card-body">
-    
+      <div class="d-table mb-2" >
+        <div class="d-table-cell mr-2"><label>Select Menu Type : </label></div>
+        <div class="d-table-cell pl-2">
+            <select class="form-control " (change)="filterMenu($event)" >
+              <option value="primary">Primary Menu</option>
+              <option value="secondary">Secondary Menu</option>
+              <option value="sidebar1">Sidebar 1</option>
+              <option value="sidebar2">Sidebar 2</option>
+              <option value="footer1">Footer 1</option>
+              <option value="footer2">Footer 2</option>
+              <option value="footer3">Footer 3</option>
+              <option value="footer4">Footer 4</option>
+              <option value="social">Social Menu</option>
+            </select>
+        </div>
+      </div>
 <!-- accordian design -->
 <ngb-accordion [closeOthers]="true" [ngClass]="'menu-accordion'">
-    <ng-container *ngFor="let menu of menuList; let i = index ">
+ 
+    <ng-container *ngFor="let menu of menuList|mfilter: selectedMenuId:pure: true; let i = index ">
       <ngb-panel [id]="'static-'+i">
         <ng-template ngbPanelTitle>
             <i class="fa fa-plus" aria-hidden="true"></i> <span>{{menu.title}}</span>
           <button class="text_btn icon-btn pull-right" (click)="deleteMenu(menu)"><i class="fa fa-trash" aria-hidden="true"></i></button>
           <button class="text_btn icon-btn pull-right mr-2"   (click)="openModal(content, menu);modalTitle='Edit Menu'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button>
+          <span class=" pull-right mt-1 mr-2"   ><i class="fa fa-link" aria-hidden="true"></i> 
+            <span *ngIf="menu.linkType == 'custom'">
+                {{menu.customLink}}<small class="text-muted"> (custom)</small>
+            </span>
+            <span *ngIf="menu.linkType == 'page'">
+                {{menu.pageSlug}}<small class="text-muted"> (page)</small>
+            </span>
+          </span>
+       
         </ng-template>
         <ng-template ngbPanelContent>
-          <div class="row">
-              <p class="text-muted"><strong>Link : </strong>
-                <span *ngIf="menu.linkType == 'custom'">
-                    {{menu.customLink}}<small class="text-muted"> (custom)</small>
-                </span>
-                <span *ngIf="menu.linkType == 'page'">
-                    {{menu.pageSlug}}<small class="text-muted"> (page)</small>
-                </span>
-              </p>
-          </div>
-          <div class="row">
-              <caption>Child Menus</caption>
-              <table class="table">
+          <small *ngIf="menu.children.length<=0"> No sub menu</small>
+          <div class="row" *ngIf="menu.children.length>0">
+              <table class="table" >
                 <thead>
                   <tr>
                     <th>Title</th>
@@ -79,7 +94,7 @@
       </button>
     </div>
     <div class="modal-body">
-      <div class="card-body">
+      <div class="card-body">{{form.value | json}}
         <form [formGroup]="form" >
             <div class="form-group">
               <label for="menutitle">Enter menu title:</label>
@@ -114,20 +129,7 @@
                 <p *ngIf="form.get('pageSlug').errors.required">Page slug is required</p>
               </div>
             </div>
-            <div class="form-group">
-              <label for="menutitle">Select Menu Type:</label>
-              <select class="form-control" formControlName="menuType">
-                <option value="primary">Primary Menu</option>
-                <option value="secondary">Secondary Menu</option>
-                <option value="sidebar1">Sidebar 1</option>
-                <option value="sidebar2">Sidebar 2</option>
-                <option value="footer1">Footer 1</option>
-                <option value="footer2">Footer 2</option>
-                <option value="footer3">Footer 3</option>
-                <option value="footer4">Footer 4</option>
-                <option value="social">Social Menu</option>
-              </select>
-            </div>
+   
             <div class="form-group">
               <label for="menutitle">Parent Menu</label>
               <select  formControlName="parent_id" class="form-control">

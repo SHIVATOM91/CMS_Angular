@@ -1,5 +1,5 @@
 import { BannerTypeService } from './../../../../shared/services/banner-type.service';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { BannerService } from '../../../../shared/services/banner.service';
 import { environment } from '../../../../../environments/environment';
@@ -10,7 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-banner',
   templateUrl: './banner.component.html',
-  styleUrls: ['./banner.component.css']
+  styleUrls: ['./banner.component.css'],
+  encapsulation:ViewEncapsulation.None
 })
 export class BannerComponent implements OnInit {
   /* type initialization */
@@ -64,6 +65,8 @@ export class BannerComponent implements OnInit {
   getAllBanner(){
     this._bannerServ.get().subscribe(banner=>{
       this.bannerContent=banner;
+      console.log(this.bannerContent);
+      this.selectedBannerId=this.bannerContent[0].id;
     })
   }
 
@@ -94,6 +97,17 @@ export class BannerComponent implements OnInit {
         this.bannerContent.splice(index,1)
       })
     }
+  }
+
+  updateFilter(event) {
+    //const val = event.target.value.toLowerCase();
+    this.selectedBannerId=event.target.value;
+    alert(this.selectedBannerId)
+    const temp = this.bannerContent.filter(function(d) {
+      return d.id.indexOf(this.selectedBannerId) !== -1;
+    });
+
+    this.bannerContent = temp;
   }
 
 

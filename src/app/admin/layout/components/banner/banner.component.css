@@ -12,3 +12,18 @@
 {
     margin-top: 24px;
 }
+.banner-panel .nav-tabs{
+  background-color: #f1f1f1 !important;
+  position: relative;
+  top: -14px;
+}
+.banner-panel .nav-tabs .nav-link{
+    color: rgba(0, 0, 0, 0.87);
+}
+.banner-panel .nav-tabs .nav-link.active, .nav-tabs .nav-link.active{
+    background-color: #f1f1f1 !important;
+    border-bottom: 2px solid #b7a35e !important;
+    border-right: 0px;
+    border-left: 0px;
+}
+

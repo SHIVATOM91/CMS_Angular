@@ -6,27 +6,6 @@
 @import '~@swimlane/ngx-datatable/release/assets/icons.css';
 
 /*  Nav tab  -*/
-.nav-tabs{
-    background-color: #165c6f !important;
-}
-.nav-tabs .nav-link{
-    color: #fff;
-    text-decoration: none;
-    border-radius: 0px;
-}
-.nav-tabs .nav-link:hover{
-    border-color: #1b6a80 !important;
-    border-bottom: none;
-    background-color: #1b6a80 !important;
-}
-.nav-tabs .nav-link.active , .nav-tabs .nav-link.active:hover{
-    background-color:#f5f5f5 !important;
-    border-color: #f5f5f5 !important;
-}
-.tab-pane{
-    background-color:#f5f5f5 !important;
-    padding: 0px 10px 10px 10px ;
-}
 
 
 /* button  */

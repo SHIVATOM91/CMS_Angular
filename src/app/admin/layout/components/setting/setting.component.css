@@ -19,3 +19,8 @@
   border-bottom: 2px solid #b7a35e;
 }
 
+.img_c_width{
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+

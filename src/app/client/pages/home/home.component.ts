@@ -1,3 +1,5 @@
+import { TeamsService } from './../../../shared/services/teams.service';
+import { PartnersService } from './../../../shared/services/partners.service';
 import { ServicesService } from './../../../shared/services/services.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PageService } from '../../../shared/services/page.service';
@@ -28,12 +30,24 @@ export class HomeComponent implements OnInit {
   services_section_content: Section;
   servicesArray: ServiceObject[];
 
-  constructor(private _section:PageService, private _projectcategory:ProjectCategoryService, private _service: ServicesService) { }
+  //partner section
+  partner_section_id=151;
+  partner_section_content: Section;
+  partnerArray: ServiceObject[];
+
+  //team section
+  team_section_id=151;
+  team_section_content: Section;
+  teamArray: ServiceObject[];
+
+  constructor(private _section:PageService, private _projectcategory:ProjectCategoryService, private _service: ServicesService, private _partner: PartnersService, private _team: TeamsService) { }
 
   ngOnInit() {
     this.getAboutSection();
     this.getProjectDetails();
     this.getServicesDetails();
+    this.getPartnerDetails();
+    this.getTeamDetails();
 
   }
 
@@ -67,6 +81,26 @@ export class HomeComponent implements OnInit {
       this.servicesArray = response as ServiceObject[];
       this.servicesArray = this.servicesArray.splice(0,4);
 
+    })
+  }
+
+  getPartnerDetails(){
+    this._section.getOuterPageSections(this.partner_section_id).subscribe(response=>{
+      this.partner_section_content=response as Section;
+    })
+
+    this._partner.getPartners().subscribe(response=>{
+      this.partnerArray=response as ServiceObject[];
+    })
+  }
+
+  getTeamDetails(){
+    this._section.getOuterPageSections(this.team_section_id).subscribe(response=>{
+      this.team_section_content=response as Section;
+    })
+
+    this._team.getTeams().subscribe(response=>{
+      this.teamArray=response as ServiceObject[];
     })
   }
 
