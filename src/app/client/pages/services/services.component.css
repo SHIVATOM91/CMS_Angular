@@ -1,4 +1,12 @@
 /* services*/
+*{
+padding: 0;
+margin: 0;
+    }
+    .projecthaed p {
+        font-size: 14px;
+        text-align: justify;
+    }
 .servicesection ul > li.nav-item > a.nav-link{
     background: #b9a463;
         color: #fff;
@@ -26,6 +34,7 @@
         -ms-flex-positive: 1;
         flex-grow: 1;
         text-align: center;
+        cursor: pointer;
     }
     
     .servicesection .servicesce p{
@@ -35,7 +44,7 @@
     
     
     .custombulding{
-        background: url('/assets/images/services_bulding.jpg');
+        background: url(/assets/images/services_bulding.jpg);
        min-height: 200px;
     
         background-position: bottom;
@@ -95,7 +104,7 @@
     }
     
     
-    .imagessec_description .custmservice h2{
+    .custmservice h2{
       text-transform: uppercase;
       font-size: 18px;
     }
