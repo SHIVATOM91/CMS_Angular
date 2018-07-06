@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-body">
-    
+
 <form role="form" id="banner"  [formGroup]="pageForm"  novalidate>
     <div class="row justify-content-between">
       <div class="col-md-8">
@@ -13,7 +13,7 @@
                 <input class="form-control" name="title" formControlName="title"    placeholder="Enter title" id="log-title" >
                 <div class="form-control-feedback text-danger" *ngIf="pageForm.get('title').errors && (pageForm.get('title').dirty || pageForm.get('title').touched)">
                   <p *ngIf="pageForm.get('title').errors.required">Page title is required</p>
-                </div>   
+                </div>
             </fieldset>
             <fieldset class="form-group">
                 <label>Description</label>
@@ -21,7 +21,7 @@
             <ck-editor name="editor1" formControlName="description" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>
             <div class="form-control-feedback text-danger" *ngIf="pageForm.get('description').errors && (pageForm.get('description').dirty || pageForm.get('description').touched)">
               <p *ngIf="pageForm.get('description').errors.required">Page Description is required</p>
-            </div> 
+            </div>
             <div class="taskboard-wrapper">
               <div class="taskboard-list">
                 <div class="taskboard-cards" [dragula]='"another-bag"' id="no-drop" [dragulaModel]='selectedSection'>
@@ -35,9 +35,10 @@
                 </div>
               </div>
             </div>
+
       </div>
       <div class="col-md-3" >
-          
+
           <button type="submit" [disabled]="!pageForm.valid" class="btn btn-primary float-right "  (click)="savePage();"  ><i class="fa fa-floppy-o" aria-hidden="true"></i> Publish</button>
           <button type="submit" [routerLink]="['/admin/page']"  class="btn btn-primary float-right mr-1"   > Back to List</button>
           <div class="card clerfix" *ngIf="pageForm.get('id').value != ''">
@@ -64,6 +65,34 @@
       <div class="col-md-8">
       </div>
     </div>
+
+
+    <!-- SEO SECTION -->
+    <div class="clearfix"></div>
+    <div class="row mt-5">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            SEO Section
+          </div>
+          <div class="card-body">
+            <fieldset class="form-group">
+                <label>Meta Title</label>
+                <input class="form-control" name="title" formControlName="metaTitle"    placeholder="Enter meta title" >
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Meta Description</label>
+                <textarea rows="2" formControlName="metaDescription" class="form-control" placeholder="Enter Meta Description"></textarea>
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Canonical Url</label>
+                <input class="form-control" name="title" formControlName="canonicalUrl"    placeholder="Enter canonical url" >
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SEO SECTION -->
   </form>
 
   </div>
