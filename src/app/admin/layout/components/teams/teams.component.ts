@@ -55,7 +55,7 @@ export class TeamsComponent implements OnInit {
 
       if(result){
         this._service.delete(id).subscribe(response=>{
-          this.teamList.splice(rowIndex,1);
+          this.getAllTeams();
         })
       }
     }, (reason) => {

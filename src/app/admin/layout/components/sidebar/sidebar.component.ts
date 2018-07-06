@@ -54,17 +54,17 @@ export class SidebarComponent {
         {
             "name":"Partners",
             "link":"partners",
-            "icon":"fa fa-pencil-square-o"
+            "icon":"fa fa-handshake-o"
         },
         {
             "name":"Teams",
             "link":"teams",
-            "icon":"fa fa-pencil-square-o"
+            "icon":"fa fa-users"
         },
         {
             "name":"Testimonial",
             "link":"testimonials",
-            "icon":"fa fa-pencil-square-o"
+            "icon":"fa fa-pencil"
         },
         {
             "name":"Settings",

@@ -52,39 +52,6 @@
                       </ng-template>
                     </ngx-datatable-column>
                     </ngx-datatable>
-
-                      <!-- <table class="table table-bordered">
-                          <thead>
-                           <tr>
-                             <th>Title</th>
-                             <th>Description</th>
-                             <th>Banner Image</th>
-                           </tr>
-                          </thead>
-                          <tbody>
-                            <tr *ngIf="bannerContent== ''">
-                                <td colspan="3" class="text-center">No Banner to display</td>
-                            </tr>
-                            <tr *ngFor="let image of bannerContent|bfilter: selectedBannerId:pure: true;let i = index">
-                              <td>
-                                    {{image.title}}
-                              </td>
-                              <td>
-                                    {{image.description}}
-                              </td>
-                              <td>
-                                    <div class="thumbnail-image-tb"  [ngStyle]="{'background': 'url('+imgUrl+image.bannerimg+')no-repeat scroll center center' ,  'height':'30px' , 'transform':'scale(0.8);',  'background-size': 'cover' }" ></div>
-                              </td>
-                              <td class="text-center">
-                                    <button type="button" class="text_btn" (click)="editBanner(image, content) ;bannerModaltitle='Edit Banner'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-                              </td>
-                              <td class="text-center">
-                                    <button type="button" class="text_btn" (click)="deleteBanner(i)" ><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-                                </td>
-                            </tr>
-                          </tbody>
-                        
-                         </table> -->
                 </div>
               </div>
           </ng-template>
@@ -206,8 +173,8 @@
                 <label>Banner image</label>
                 <input class="form-control" name="bannerimg" accept="image/*" (change)="handleFileInput($event)" type="file"  placeholder="Enter description"  [required]="bannerEditMode==false">
             </fieldset>
-            <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary" (click)="uploadBanner();"  *ngIf="bannerEditMode==false" >Add</button>
-            <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary" (click)="uploadBanner();"  *ngIf="bannerEditMode==true" >Update</button>
+            <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary pull-right" (click)="uploadBanner();"  *ngIf="bannerEditMode==false" >Add</button>
+            <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary pull-right" (click)="uploadBanner();"  *ngIf="bannerEditMode==true" >Update</button>
         </form>
     </div>
 

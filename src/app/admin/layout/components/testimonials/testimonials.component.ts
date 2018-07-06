@@ -55,7 +55,7 @@ export class TestimonialsComponent implements OnInit {
      
       if(result){
         this._service.delete(id).subscribe(response=>{
-          this.testimonialList.splice(rowIndex,1);
+          this.getAllTestimonials();
         })
       }
     }, (reason) => {
