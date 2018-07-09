@@ -1,3 +1,98 @@
-<p>
-  contact works!
-</p>
+<section  *ngIf="contactus_section_content">
+<div class="container">
+  <div class="headdingsection">
+               <ul class="list-unstyled askhaed">
+                  <li class="media">
+                     <img class="align-self-end mr-3" src="/assets/images/head_leftimg.jpg" alt="   ">
+                     <div class="media-body custom-body">
+                        <p class="mb-0">
+                         {{ contactus_section_content?.properties.intro_title }}
+                        </p>
+                        <h2 class="mt-1 mb-0">{{ contactus_section_content?.properties.main_title }}</h2>
+                     </div>
+                  </li>
+               </ul>
+            </div>
+</div>
+
+
+<div class="container">
+
+  <div class="row">
+  
+  <div class="col-md-6">
+    <div class="contactus">
+  <p [innerHTML]="contactus_section_content?.properties.mian_description">
+  </p>
+  <div class="contactdetail">
+    <div class="contact-1">
+      <button><i class="fa fa-map-marker" aria-hidden="true"></i></button>
+      <h5>{{ contactus_section_content?.properties.Address_desc }}</h5>
+    </div>
+  
+   <div class="contact-1">
+      <button><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
+      <h5>{{ contactus_section_content?.properties.mail }}</h5>
+    </div>
+  
+     <div class="contact-1">
+      <button><i class="fa fa-phone" aria-hidden="true"></i></button>
+      <h5>{{ contactus_section_content?.properties.phone }}</h5>
+    </div>
+  
+  </div>
+  <div class="imagesc">
+    <img [src]="img_url+contactus_section_content?.properties.contact_img" class="img-fluid"> 
+  </div>
+  
+  </div>
+  </div>
+  <div class="col-md-6">
+    <div class="formsec">
+    <p>{{ contactus_section_content?.properties.contact_text }}</p>
+    <form [formGroup]="form" >
+      <div class="alert alert-success" *ngIf="errorMsg == false">Thank you for getting touch with us.</div>
+      <div class="alert alert-success" *ngIf="errorMsg == true">Could not able to connect.</div>
+      <div class="alert alert-info" *ngIf="loading">Sending your request. Please wait....</div>
+
+      <div class="form-group">
+        <input name="firstName"  formControlName="firstName" type="text" class="form-control"  placeholder="Name">
+  <div class="form-control-feedback text-danger" *ngIf="form.get('firstName').errors && (form.get('firstName').dirty || form.get('firstName').touched)">
+  <p *ngIf="form.get('firstName').errors.required">Title is required</p>
+  <p *ngIf="form.get('firstName').errors.minlength">Title must be {{ form.get('firstName').errors.minlength.requiredLength }} characters long</p>
+  </div>
+  </div>
+
+      <div class="form-group">
+      <input name="email" type="email" formControlName="email" class="form-control"  placeholder="Email">
+      <div class="form-control-feedback text-danger" *ngIf="form.get('email').errors && (form.get('email').dirty || form.get('email').touched)">
+      <p *ngIf="form.get('email').errors.required">email is required</p>
+      <p *ngIf="form.get('email').errors.pattern">email pattern is not correct</p>
+      </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="contact" formControlName="contact" class="form-control"  placeholder="Contact">
+      </div>
+
+       <div class="form-group">
+        <textarea placeholder="Message" name="message" formControlName="message"></textarea>
+    </div>
+
+    <div class="submiitsec">
+      <a (click)="sendMail()" class="btn submitbtn" type="button">SUBMIT</a>
+    </div>
+  </form>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+</section>
+<section *ngIf="settingData">
+    <div class="mapseec">
+       <iframe [src]="settingData.embedMap" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+
+    </section>

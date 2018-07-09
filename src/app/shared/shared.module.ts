@@ -28,6 +28,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { ImagePopupComponent } from './components/image-popup/image-popup.component';
 import { HideByRoleDirective } from './directives/hide-by-role.directive';
 import { UserService } from './services/user.service';
+import { ContactService } from './services/contact.service';
 
 @NgModule({
   imports: [
@@ -50,8 +51,7 @@ import { UserService } from './services/user.service';
     HideByRoleDirective,
     GetValuePipe
   ],
-  providers: [ ReversePipe, NgbActiveModal, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService, TeamsService, PartnersService, UserService, SettingService]
-  ,
+  providers: [ ReversePipe, NgbActiveModal, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService, TeamsService, PartnersService, SettingService, ContactService],
   entryComponents: [
     AlertComponent,
     ImagePopupComponent

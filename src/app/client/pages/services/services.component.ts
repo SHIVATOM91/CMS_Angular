@@ -15,7 +15,6 @@ export class ServicesComponent implements OnInit {
   services_section_content: Section;
   servicesList;
   currentService:undefined;
-  servicesArray: ServiceObject[];
 
   constructor(private _section:PageService, private _sectionservices:ServicesService) { }
 
@@ -35,8 +34,6 @@ export class ServicesComponent implements OnInit {
   {
     this.currentService= service;
     console.log(service);
-    
-    
   }
 }
 
@@ -45,8 +42,3 @@ export class Section{
   properties: any;
 }
 
-export class ServiceObject{
-  title: any;
-  shortDescription: any;
-  featuredImage: any;
-}
