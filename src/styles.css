@@ -112,3 +112,15 @@ input[type=checkbox]{
 
 
 
+
+@media screen and (max-width: 992px)
+{
+    .push-right .sidebar {
+        left: 235px !important;
+        z-index: 9999 !important;
+        top: -51px !important;
+    }
+    .sidebar {
+      top: -51px !important;
+    }
+}

@@ -4,7 +4,7 @@
     <div class="list-group">
         <ng-container *ngFor="let item of meniItem" >
             <a  routerLink="{{item.link}}"  *ngIf="item.hide.indexOf(authServ.currentUser.roles)==-1" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                <i class="{{item.icon}}" aria-hidden="true"></i>&nbsp;{{item.name  }}
+                <i class="{{item.icon}}" aria-hidden="true"></i>&nbsp;{{item.name}}
             </a>
         </ng-container>
     </div>
