@@ -50,3 +50,10 @@ $topnav-background-color: #fff;
     background-color: #fff;
     border-bottom: #ccc solid 1px;
 }
+
+@media only screen and (max-width: 995px) {
+    .logo {
+        width: 90px;
+        height: 48px;
+    }
+}

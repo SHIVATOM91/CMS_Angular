@@ -26,9 +26,8 @@
     <div class="item" *ngFor="let image of sliderContent;let i = index">
       <div class="thumbnail-image"  [ngStyle]="{'background': 'url('+imgUrl+image.bannerimg+')no-repeat scroll center center' ,  'height':'600px' , 'background-size': 'cover' }" >
         <div class="carousel-caption ">
-        <p>{{image.title}}</p>
-        <h2>{{image.description}}
-        </h2>
+          <p>{{image.title}}</p>
+          <h2>{{image.description}}</h2>
         </div>
       </div>
     </div>
