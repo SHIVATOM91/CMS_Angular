@@ -44,7 +44,6 @@ import { ServicesComponent } from './components/services/services.component';
 import { NewServicesComponent } from './components/services/new-services/new-services.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewTestimonialsComponent } from './components/testimonials/new-testimonials/new-testimonials.component';
-import { EllipsisPipePipe } from '../../shared/pipes/ellipsis-pipe.pipe';
 import { MenuPipe } from './components/menu/menu.pipe';
 import { PartnersComponent } from './components/partners/partners.component';
 import { TeamsComponent } from './components/teams/teams.component';
@@ -53,7 +52,7 @@ import { SettingComponent } from './components/setting/setting.component';
 
 
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent, EllipsisPipePipe,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialsComponent, NewTestimonialsComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent, MenuPipe,PartnersComponent, NewPartnersComponent, TeamsComponent, NewTeamsComponent, SettingComponent],
+  declarations: [LayoutComponent, HeaderComponent, FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialsComponent, NewTestimonialsComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent, MenuPipe,PartnersComponent, NewPartnersComponent, TeamsComponent, NewTeamsComponent, SettingComponent],
 
   imports: [
     LayoutRoutingModule,

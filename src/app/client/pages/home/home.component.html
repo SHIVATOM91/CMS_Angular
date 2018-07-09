@@ -123,7 +123,7 @@
             <div class="section-s">
               <img [src]="'/assets/images/service-'+i+'.png'">
               <h5>{{ service.title }}</h5>
-              <p [innerHTML]="service.shortDescription"></p>
+              <p [innerHTML]="service.shortDescription | ellipsis:180"></p>
               <a [routerLink]="[services_section_content?.properties.btn_link]" class="btn">{{services_section_content?.properties.btn_text}}</a>
             </div>
         </div>

@@ -15,6 +15,7 @@ export class EllipsisPipePipe implements PipeTransform {
       var result = value.substring(0, count);
       return result + '...';
     }
+    return value;
   }
 
 }

@@ -27,6 +27,8 @@ import { GetValuePipe } from './pipes/get-value.pipe';
 import { AlertComponent } from './components/alert/alert.component';
 import { ImagePopupComponent } from './components/image-popup/image-popup.component';
 import { ContactService } from './services/contact.service';
+import { SafePipe } from './pipes/safe.pipe';
+import { EllipsisPipePipe } from './pipes/ellipsis-pipe.pipe';
 
 @NgModule({
   imports: [
@@ -35,7 +37,7 @@ import { ContactService } from './services/contact.service';
     ReactiveFormsModule,
     NgxDatatableModule
   ],
-  declarations: [IcheckDirective, ReversePipe, GetValuePipe, AlertComponent, ImagePopupComponent],
+  declarations: [IcheckDirective, ReversePipe, GetValuePipe, AlertComponent, ImagePopupComponent, SafePipe, EllipsisPipePipe],
   exports: [
     CommonModule,
     FormsModule,
@@ -46,9 +48,11 @@ import { ContactService } from './services/contact.service';
     NgxDatatableModule,
     IcheckDirective,
     ReversePipe,
-    GetValuePipe
+    GetValuePipe,
+    SafePipe,
+    EllipsisPipePipe,
   ],
-  providers: [ ReversePipe, NgbActiveModal, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService, TeamsService, PartnersService, SettingService, ContactService]
+  providers: [ ReversePipe, EllipsisPipePipe, NgbActiveModal, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService, TeamsService, PartnersService, SettingService, ContactService]
   ,
   entryComponents: [
     AlertComponent,
