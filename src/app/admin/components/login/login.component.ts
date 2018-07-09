@@ -34,6 +34,8 @@ export class LoginComponent implements OnInit {
           this.errorMsg="Invalid Username and Password"
 
         }
+    },error=>{
+      this.errorMsg="Invalid Username and Password"
     })
   }
 }

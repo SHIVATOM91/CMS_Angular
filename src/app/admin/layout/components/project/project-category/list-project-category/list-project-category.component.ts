@@ -52,7 +52,7 @@ export class ListProjectCategoryComponent implements OnInit {
     modalRef.result.then((result) => {
       if(result){
         this._service.delete(id).subscribe(response=>{
-          this.categoryList.splice(rowIndex,1);
+          this.getAllCategories();
         })
       }
     }, (reason) => {

@@ -53,8 +53,7 @@ export class AllProjectComponent implements OnInit {
     modalRef.result.then((result) => {
       if(result){
         this._service.delete(id).subscribe(response=>{
-          this.projectList.splice(rowIndex,1);
-          console.log(this.projectList)
+          this.getAllProjects();
         })
       }
     }, (reason) => {

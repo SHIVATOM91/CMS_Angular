@@ -53,7 +53,7 @@ export class ServicesComponent implements OnInit {
     modalRef.result.then((result) => {
       if(result){
         this._service.delete(id).subscribe(response=>{
-          this.serviceList.splice(rowIndex,1);
+          this.getAllServices();
         })
       }
     }, (reason) => {

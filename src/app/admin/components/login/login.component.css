@@ -1,0 +1,62 @@
+.main_container{
+    height: 100vh;
+    position: relative;
+    background-color: #f1f1f1;
+}
+
+.login-wraper{
+    width: 450px;
+    margin: 0px auto;
+    -webkit-transform: translateY(50%);
+    transform: translateY(50%);
+    top: 50%;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #e8e8e8;
+}
+.login-wraper .header{
+    border-bottom: #675d402b solid 1px;
+    background-color: #fff;
+}
+.login-wraper .body{
+    padding: 30px 20px;
+}
+.login-wraper .footer{
+    padding: 0px 20px 20px 20px;
+    text-align: center;
+}
+.logo{
+    background: url(/assets/images/ask_logo.jpg);
+    width: 125px;
+    height: 111px;
+    border-radius: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0px auto;
+    margin-bottom: 0px;
+    background-color: #fefefe;
+}
+
+.login-wraper input{
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 0px;
+    height: 50px;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: #f2f2f2 !important;
+    background-image: none !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+.login-btn{
+    margin: 0px auto;
+    background-color: #baa35f;
+    color: #fff;
+}
+
+.login-btn:disabled{
+    opacity: 1;
+}

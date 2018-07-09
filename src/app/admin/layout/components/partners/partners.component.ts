@@ -55,7 +55,7 @@ export class PartnersComponent implements OnInit {
 
       if(result){
         this._service.delete(id).subscribe(response=>{
-          this.partnerList.splice(rowIndex,1);
+          this.getAllPartners();
         })
       }
     }, (reason) => {

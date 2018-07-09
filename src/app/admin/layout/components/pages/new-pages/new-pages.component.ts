@@ -44,6 +44,9 @@ export class NewPagesComponent implements OnInit , OnDestroy {
         id:[''],
         title:['',Validators.required],
         description:['',Validators.required],
+        metaTitle:[''],
+        metaDescription:[''],
+        canonicalUrl:[''],
         sections : fb.array([])
       })
     }
@@ -80,6 +83,9 @@ export class NewPagesComponent implements OnInit , OnDestroy {
         this.pageForm.get('id').setValue(data.id);
         this.pageForm.get('title').setValue(data.title);
         this.pageForm.get('description').setValue(data.description);
+        this.pageForm.get('metaTitle').setValue(data.metaTitle);
+        this.pageForm.get('metaDescription').setValue(data.metaDescription);
+        this.pageForm.get('canonicalUrl').setValue(data.canonicalUrl);
         this.selectedSection=data.page_sections as SectionObj[];
         this.updateSectionList();
       });
@@ -177,5 +183,8 @@ export class PageObj{
   id: any;
   title: any;
   description: any;
+  metaTitle: any;
+  metaDescription: any;
+  canonicalUrl: any;
   page_sections: any;
 }

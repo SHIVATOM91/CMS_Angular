@@ -30,7 +30,6 @@ class="material"
 
 <ngx-datatable-column name="Actions" >
   <ng-template let-value="value" let-row="row"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
-    <i class="fa fa-eye icon-btn" aria-hidden="true"></i>
     <i class="fa fa-pencil-square-o icon-btn" aria-hidden="true" (click)="onRowSelect(row.id)"></i>
     <button class="fa fa-trash icon-btn" aria-hidden="true" (click)="deleteSection(rowIndex , row.id)"></button>   
   </ng-template>

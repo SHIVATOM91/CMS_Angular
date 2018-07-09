@@ -10,6 +10,7 @@ import { AuthService } from './services/auth.service';
 import {NgbModule, NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
 import { BannerService } from '../shared/services/banner.service';
 import { SharedModule } from '../shared/shared.module';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [ LoginComponent],
@@ -19,7 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     SharedModule
   ],
-  providers: [AuthService ,  BannerService]
+  providers: [AuthService ,  BannerService , AuthGuardService]
 
 })
 export class AdminModule { }

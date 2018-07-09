@@ -52,8 +52,7 @@ export class AllPostComponent implements OnInit {
     modalRef.result.then((result) => {
       if(result){
         this._service.delete(id).subscribe(response=>{
-          this.postList.splice(rowIndex,1);
-          console.log(this.postList)
+          this.getAllPosts();
         })
       }
     }, (reason) => {
