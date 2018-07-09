@@ -15,7 +15,8 @@ export class ServicesComponent implements OnInit {
   services_section_content: Section;
   servicesList;
   currentService:undefined;
-
+  pageContent;
+  pageId=7;
   constructor(private _section:PageService, private _sectionservices:ServicesService) { }
 
   ngOnInit() {
@@ -28,6 +29,11 @@ export class ServicesComponent implements OnInit {
         this.currentService = this.servicesList[0];
       }
     })  
+
+    this._section.getBy(this.pageId).subscribe(response=>{
+      this.pageContent=response;
+      })
+
   }
 
   setServiceContent(service)
@@ -41,4 +47,3 @@ export class Section{
   title: any;
   properties: any;
 }
-

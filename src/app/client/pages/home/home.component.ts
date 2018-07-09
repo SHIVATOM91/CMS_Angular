@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   about_section_content: Section;
 
   //project section
-  project_section_id=142;
+  project_section_id=154;
   project_section_content: Section;
   projectCategorySlider;
   currentProjectId:undefined;
@@ -40,6 +40,8 @@ export class HomeComponent implements OnInit {
   team_section_id=151;
   team_section_content: Section;
   teamArray: ServiceObject[];
+
+ 
 
   constructor(private _section:PageService, private route:ActivatedRoute, private _projectcategory:ProjectCategoryService, private _service: ServicesService, private _partner: PartnersService, private _team: TeamsService) { }
 
@@ -68,6 +70,8 @@ export class HomeComponent implements OnInit {
         this.toggleProjectMenu(this.projectCategorySlider[0].id, 0);
       }
     })
+ 
+
   }
 
   getServicesDetails(){

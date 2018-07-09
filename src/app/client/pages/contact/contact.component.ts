@@ -20,6 +20,8 @@ export class ContactComponent implements OnInit {
   loading=false;
   form:FormGroup;
   settingData: SettingObj;
+  pageContent;
+  pageId=8;
   constructor(private _section:PageService, private _contactfrmsection:ContactService,private fb: FormBuilder, private _setting: SettingService) {
     this.form = this.fb.group({
       firstName: ['',[Validators.required]],
@@ -36,6 +38,11 @@ export class ContactComponent implements OnInit {
  
     })   
        this.getSettingData();
+
+       this._section.getBy(this.pageId).subscribe(response=>{
+        this.pageContent=response;
+        console.log(this.pageContent);
+        })   
   }
 
   sendMail()

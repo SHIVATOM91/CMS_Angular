@@ -373,3 +373,13 @@ color: #b79d52;
   padding: 10px;
   font-weight: 500;
 }
+
+
+@media (max-width: 767px)
+{
+.section-s {
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 20px;
+}
+}

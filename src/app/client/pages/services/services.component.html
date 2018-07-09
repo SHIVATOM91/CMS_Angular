@@ -6,7 +6,7 @@
                        <img class="align-self-end mr-3" src="/assets/images/head_leftimg.jpg" alt="   ">
                        <div class="media-body custom-body">
                           <p class="mb-0">{{ services_section_content?.properties.intro_title }} </p>
-                          <h2 class="mt-1 mb-0">{{ services_section_content?.properties.main_title }}</h2>
+                          <h2 class="mt-1 mb-0">{{ pageContent?.title }}</h2>
                        </div>
                     </li>
                  </ul>
@@ -15,7 +15,7 @@
 
   <div class="container">
       <div class="row">
-      <div class="col-md-12 projecthaed" [innerHTML]="services_section_content?.properties.mian_description"></div>
+      <div class="col-md-12 projecthaed" [innerHTML]="pageContent?.description"></div>
       </div>
       </div>
     </section>

@@ -119,7 +119,7 @@
         </li>
       </ul>
       <div class="row">
-        <div class="col" *ngFor="let service of servicesArray; let i = index;">
+        <div class="col-lg-3 col-md-3 col-sm-6" *ngFor="let service of servicesArray; let i = index;">
             <div class="section-s">
               <img [src]="'/assets/images/service-'+i+'.png'">
               <h5>{{ service.title }}</h5>

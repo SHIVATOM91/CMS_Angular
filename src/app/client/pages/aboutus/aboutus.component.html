@@ -6,14 +6,14 @@
               <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
               <div class="media-body custom-body">
                  <p class="mb-0">{{ aboutus_section_content?.properties.intro_title }} </p>
-                 <h2 class="mt-1 mb-0">{{ aboutus_section_content.title }}</h2>
+                 <h2 class="mt-1 mb-0">{{ pageContent?.title }}</h2>
               </div>
            </li>
         </ul>
      </div>
      <div class="row nopaddingclass">
         <div class="col-lg-8 col-md-8 col-sm-12">
-         <div class="detail" [innerHTML]="aboutus_section_content.Description">
+         <div class="detail" [innerHTML]="pageContent?.description">
            </div>
             <div class="askumba-point hidden-xs">
                 <div class="row">

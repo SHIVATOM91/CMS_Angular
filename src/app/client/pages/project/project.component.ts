@@ -17,6 +17,8 @@ export class ProjectComponent implements OnInit {
   categoryList;
   projectList=[];
   currentProjectId:undefined;
+  pageContent;
+  pageId=10;
   constructor(private _section:PageService, private _postcategory:ProjectCategoryService, private _projectservice:ProjectService) { }
 
   ngOnInit() {
@@ -28,7 +30,12 @@ export class ProjectComponent implements OnInit {
       this.categoryList=response;
       this.setProjectContent(this.categoryList[0].id, 0)
     }) 
-    
+
+   
+    this._section.getBy(this.pageId).subscribe(response=>{
+      this.pageContent=response;
+      console.log(this.pageContent);
+      })
   }
 
 

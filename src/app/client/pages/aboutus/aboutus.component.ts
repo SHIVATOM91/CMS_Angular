@@ -13,6 +13,8 @@ export class AboutusComponent implements OnInit {
   img_url=environment.imgUrl;
   aboutus_section_id=138;
   aboutus_section_content : Section;
+  pageContent;
+  pageId=5;
   aboutSlider;
   constructor(private _section:PageService, private _testimonials:TestimonialsService) { }
 
@@ -20,6 +22,10 @@ export class AboutusComponent implements OnInit {
 
     this._section.getOuterPageSections(this.aboutus_section_id).subscribe(response=>{
       this.aboutus_section_content=response as Section;
+    })
+
+    this._section.getBy(this.pageId).subscribe(response=>{
+    this.pageContent=response;
     })
 
     this._testimonials.getTestimonials().subscribe(response=>{

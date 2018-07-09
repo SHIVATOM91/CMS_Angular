@@ -8,7 +8,7 @@
                         <p class="mb-0">
                          {{ contactus_section_content?.properties.intro_title }}
                         </p>
-                        <h2 class="mt-1 mb-0">{{ contactus_section_content?.properties.main_title }}</h2>
+                        <h2 class="mt-1 mb-0">{{ pageContent?.title }}</h2>
                      </div>
                   </li>
                </ul>
@@ -22,7 +22,7 @@
   
   <div class="col-md-6">
     <div class="contactus">
-  <p [innerHTML]="contactus_section_content?.properties.mian_description">
+  <p [innerHTML]="pageContent?.description">
   </p>
   <div class="contactdetail">
     <div class="contact-1">
