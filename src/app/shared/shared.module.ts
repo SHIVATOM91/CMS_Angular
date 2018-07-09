@@ -26,6 +26,7 @@ import { ReversePipe } from './pipes/reverse.pipe';
 import { GetValuePipe } from './pipes/get-value.pipe';
 import { AlertComponent } from './components/alert/alert.component';
 import { ImagePopupComponent } from './components/image-popup/image-popup.component';
+import { ContactService } from './services/contact.service';
 
 @NgModule({
   imports: [
@@ -47,7 +48,7 @@ import { ImagePopupComponent } from './components/image-popup/image-popup.compon
     ReversePipe,
     GetValuePipe
   ],
-  providers: [ ReversePipe, NgbActiveModal, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService, TeamsService, PartnersService, SettingService]
+  providers: [ ReversePipe, NgbActiveModal, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService, TeamsService, PartnersService, SettingService, ContactService]
   ,
   entryComponents: [
     AlertComponent,
