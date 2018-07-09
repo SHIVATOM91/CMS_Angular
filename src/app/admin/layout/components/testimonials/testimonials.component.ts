@@ -16,11 +16,6 @@ export class TestimonialsComponent implements OnInit {
   editing = {};
   selected = [];
   imgUrl=environment.imgUrl;
-  columns = [
-    { prop: 'title' },
-    { name: 'Description' },
-    { name: 'featuredImage' }
-  ];
   testimonialList: Array<TestimonialsObject>;
 
   constructor(private modalService:NgbModal, private _service: TestimonialsService, private router:Router) { }

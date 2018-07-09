@@ -16,15 +16,15 @@ export class DataService {
   }
 
   create(formData){
-    return this.http.post<StatusResponse>(this.apiUrl+this.url, formData);
+    return this.http.post<StatusResponse>(this.apiUrl+this.url, formData ,this.token);
   }
 
   update(id,formData){
-    return this.http.put<StatusResponse>(this.apiUrl+this.url+"/"+id, formData);
+    return this.http.put<StatusResponse>(this.apiUrl+this.url+"/"+id, formData ,this.token);
   }
 
   delete(id){
-    return this.http.delete<StatusResponse>(this.apiUrl+this.url+"/"+id);
+    return this.http.delete<StatusResponse>(this.apiUrl+this.url+"/"+id ,this.token);
   }
 
   getBy(id){

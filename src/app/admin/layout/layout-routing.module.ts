@@ -31,6 +31,8 @@ import { EditPagesComponent } from './components/pages/edit-pages/edit-pages.com
 import { NewPostComponent } from './components/post/post/new-post/new-post.component';
 import { AllProjectComponent } from './components/project/project/all-project/all-project.component';
 import { NewTestimonialsComponent } from './components/testimonials/new-testimonials/new-testimonials.component';
+import { UserListComponent } from './components/users/user-list/user-list.component';
+
 
 
 const routes: Routes = [
@@ -114,6 +116,8 @@ const routes: Routes = [
       { path: 'new-teams', component: NewTeamsComponent },
       { path: 'update-teams/:teamId', component: NewTeamsComponent },
       { path: 'app-settings', component: SettingComponent },
+      { path: 'user', component: UserListComponent }
+      
     ]
   }
 ];

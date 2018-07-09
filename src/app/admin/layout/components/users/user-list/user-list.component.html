@@ -1,0 +1,108 @@
+<div class="col-sm-12">
+    <button type="button" class="btn btn-primary pull-right" (click)="addUser(content);">Add New</button>
+  </div>
+  <div class="clearfix"></div>
+  
+  
+  <ngx-datatable 
+    class="material"
+    #sectionDatatable
+    [columnMode]="'force'"
+    [headerHeight]="40"
+    [footerHeight]="40"
+    [rowHeight]="'auto'"
+    [rows]="userList">
+  
+    <ngx-datatable-column name="User Name" prop="name"   >
+      <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+          {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+  
+    <ngx-datatable-column name="Role" prop="roles" >
+      <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+        <span *ngIf="value=='editer'">Editor </span>
+        <span *ngIf="value=='admin'">Admin </span>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Email" prop="email" >
+      <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Actions" >
+      <ng-template let-value="value" let-row="row"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+        <button class="fa fa-pencil-square-o icon-btn" aria-hidden="true" (click)="editUser(rowIndex,content)"></button>
+        <button class="fa fa-trash icon-btn" aria-hidden="true" (click)="deleteSection(rowIndex , row.id)"></button>   
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+
+
+  <!--- Modal -->
+  <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title">{{modalTitle}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body">
+          <div class="alert alert-danger" role="alert" *ngIf="errorResponse">
+            {{errorResponse}}
+          </div>
+          <form [formGroup]="userForm" >
+              <div class="form-group">
+                <label for="menutitle">Enter Username:</label>
+                <input type="text" class="form-control" name="fullName" formControlName="fullName"  id="menutitle" aria-describedby="menutitle"  required>
+                <div class="form-control-feedback text-danger" *ngIf="userForm.get('fullName').errors && (userForm.get('fullName').dirty || userForm.get('fullName').touched)">
+                  <p *ngIf="userForm.get('fullName').errors.required">Username is required</p>
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="menutitle">Select User Role:</label>
+                <select class="form-control" formControlName="roles">
+                  <option value="admin" hideByRole >Admin</option>
+                  <option value="editer">Editor</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Enter Email:</label>
+                <input type="email" class="form-control" name="email" formControlName="email"  id="email" aria-describedby="email"  >
+                <div class="form-control-feedback text-danger" *ngIf="userForm.get('email').errors && (userForm.get('email').dirty || userForm.get('email').touched)">
+                  <p *ngIf="userForm.get('email').errors.required">Email is required</p>
+                  <p *ngIf="userForm.get('email').errors.email">Invalid Emial Id</p>
+                </div>
+              </div>
+
+              <div class="form-group" *ngIf="modalTitle != 'Edit User'">
+                <label for="password">Enter password:</label>
+                <input type="password" class="form-control" name="password" formControlName="password"  id="password" aria-describedby="password"  required>
+                <div class="form-control-feedback text-danger" *ngIf="userForm.get('password').errors && (userForm.get('password').dirty || userForm.get('password').touched)">
+                  <p *ngIf="userForm.get('password').errors.required">Password is required</p>
+                  
+                </div>
+              </div>
+
+              <div class="form-group" *ngIf="modalTitle != 'Edit User'">
+                <label for="password_confirmation">Re-enter password:</label>
+                <input type="password" class="form-control" name="password_confirmation" formControlName="password_confirmation"  id="password_confirmation" aria-describedby="password_confirmation"  required>
+                <div class="form-control-feedback text-danger" *ngIf="userForm.get('password_confirmation').errors && (userForm.get('password_confirmation').dirty || userForm.get('password_confirmation').touched)">
+                  <p *ngIf="userForm.get('password_confirmation').errors.required">Invalid password</p>
+                  <p *ngIf="userForm.get('password_confirmation').errors?.equalTo && userForm.get('password_confirmation').dirty">The password confirmation does not match</p>
+                </div>
+              </div>
+              
+              <button *ngIf="modalTitle == 'Add User'" [disabled]="userForm.invalid" type="submit" class="btn btn-primary pull-right" (click)="updateUser()" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+              <button *ngIf="modalTitle == 'Edit User'" [disabled]="userForm.invalid" type="submit" class="btn btn-primary pull-right" (click)="updateUser()" ><i class="fa fa-plus" aria-hidden="true"></i> Update</button>
+          </form>
+        </div>
+      </div>
+    </ng-template>
+  
+  
