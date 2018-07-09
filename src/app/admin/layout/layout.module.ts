@@ -63,7 +63,7 @@ import { UserListComponent } from './components/users/user-list/user-list.compon
     DragulaModule,
     NgbDropdownModule.forRoot()
   ]
-  ,providers:[NgbTabsetConfig,NgbModalStack]
+  ,providers:[NgbTabsetConfig,NgbModalStack,UserListComponent]
 
 })
 export class LayoutModule { }
