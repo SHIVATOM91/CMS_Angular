@@ -53,11 +53,7 @@ import { UserListComponent } from './components/users/user-list/user-list.compon
 
 
 @NgModule({
-<<<<<<< HEAD
   declarations: [LayoutComponent, HeaderComponent, FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialsComponent, NewTestimonialsComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent, MenuPipe,PartnersComponent, NewPartnersComponent, TeamsComponent, NewTeamsComponent, SettingComponent],
-=======
-  declarations: [LayoutComponent, HeaderComponent,UserListComponent, EllipsisPipePipe,FooterComponent,SidebarComponent,  BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialsComponent, NewTestimonialsComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent, MenuPipe,PartnersComponent, NewPartnersComponent, TeamsComponent, NewTeamsComponent, SettingComponent],
->>>>>>> b254fe2008fe526d3de0bdeb7716667f77fa418e
 
   imports: [
     LayoutRoutingModule,

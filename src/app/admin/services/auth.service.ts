@@ -57,14 +57,4 @@ export class AuthService {
     this.router.navigate(['admin/login']);
   }
  
-<<<<<<< HEAD
-logout()
-{
-  localStorage.removeItem('token');
-  this.router.navigate(['admin/login']);
 }
-
-}
-=======
-}
->>>>>>> b254fe2008fe526d3de0bdeb7716667f77fa418e
