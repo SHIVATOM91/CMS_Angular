@@ -49,11 +49,12 @@ import { MenuPipe } from './components/menu/menu.pipe';
 import { PartnersComponent } from './components/partners/partners.component';
 import { TeamsComponent } from './components/teams/teams.component';
 import { SettingComponent } from './components/setting/setting.component';
+import { UserListComponent } from './components/users/user-list/user-list.component';
 
 
 
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent, EllipsisPipePipe,FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialsComponent, NewTestimonialsComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent, MenuPipe,PartnersComponent, NewPartnersComponent, TeamsComponent, NewTeamsComponent, SettingComponent],
+  declarations: [LayoutComponent, HeaderComponent,UserListComponent, EllipsisPipePipe,FooterComponent,SidebarComponent,  BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialsComponent, NewTestimonialsComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent, MenuPipe,PartnersComponent, NewPartnersComponent, TeamsComponent, NewTeamsComponent, SettingComponent],
 
   imports: [
     LayoutRoutingModule,

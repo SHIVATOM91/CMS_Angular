@@ -18,8 +18,6 @@ export class LoginComponent implements OnInit {
      if(this.authService.isloggedin()){
       this.router.navigate(['admin/dashboard'])
      }
-
-
      this.loginFrom=new FormGroup({
       email:new FormControl(Validators.required),
       password:new FormControl(Validators.required)

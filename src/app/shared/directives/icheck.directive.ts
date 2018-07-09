@@ -8,8 +8,5 @@ export class IcheckDirective {
   appIcheck: string;
   constructor(private el: ElementRef) {
       el.nativeElement.classList.add("mystyle");
-      console.log(el.nativeElement);
-
-
   }
 }

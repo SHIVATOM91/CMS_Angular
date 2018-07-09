@@ -28,9 +28,9 @@
                   <div class="taskboard-task" *ngFor='let section of selectedSection'>
                     <div class="taskboard-task-title">{{ section.title }} | {{ section.id }}  </div>
                      <div class="pull-right">
-                          <i class="fa fa-edit text-primary icon-btn" (click)="editProprty(section)"></i>
-                          <i class="fa fa-trash text-danger icon-btn" (click)="deleteProprty(section)" *ngIf="section.id!=null"></i>
-                        </div>
+                        <i class="fa fa-edit text-primary icon-btn" (click)="editProprty(section)"></i>
+                        <i  class="fa fa-trash text-danger icon-btn" hideByRole (click)="deleteProprty(section)" *ngIf="section.id!=null"></i>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -65,6 +65,5 @@
       </div>
     </div>
   </form>
-
   </div>
 </div>
