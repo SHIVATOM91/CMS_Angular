@@ -5,6 +5,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PageService } from '../../../shared/services/page.service';
 import { environment } from '../../../../environments/environment';
 import { ProjectCategoryService } from '../../../shared/services/project-category.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -40,7 +41,7 @@ export class HomeComponent implements OnInit {
   team_section_content: Section;
   teamArray: ServiceObject[];
 
-  constructor(private _section:PageService, private _projectcategory:ProjectCategoryService, private _service: ServicesService, private _partner: PartnersService, private _team: TeamsService) { }
+  constructor(private _section:PageService, private route:ActivatedRoute, private _projectcategory:ProjectCategoryService, private _service: ServicesService, private _partner: PartnersService, private _team: TeamsService) { }
 
   ngOnInit() {
     this.getAboutSection();
@@ -48,7 +49,6 @@ export class HomeComponent implements OnInit {
     this.getServicesDetails();
     this.getPartnerDetails();
     this.getTeamDetails();
-
   }
 
   getAboutSection(){

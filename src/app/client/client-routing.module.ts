@@ -12,12 +12,12 @@ const routes: Routes = [
   {
     path:"" , component:LayoutComponent,
     children:[
-      {path:"" , component:HomeComponent},
-      {path:"about-us" , component:AboutusComponent},
-      {path:"services" , component:ServicesComponent},
-      {path:"product" , component:ProductComponent},
-      {path:"project" , component:ProjectComponent},
-      {path:"contact" , component:ContactComponent},
+      {path:"" , component:HomeComponent, data:{bannerType:'homeBanner'}},
+      {path:"about-us" , component:AboutusComponent, data:{bannerType:'aboutBanner'}},
+      {path:"services" , component:ServicesComponent, data:{bannerType:'servicesBanner'}},
+      {path:"product" , component:ProductComponent, data:{bannerType:'productBanner'}},
+      {path:"project" , component:ProjectComponent, data:{bannerType:'projectBanner'}},
+      {path:"contact" , component:ContactComponent , data:{bannerType:'contactBanner'}},
     ]
 }
   

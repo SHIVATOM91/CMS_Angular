@@ -53,7 +53,7 @@ import { UserListComponent } from './components/users/user-list/user-list.compon
 
 
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent, FooterComponent,SidebarComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialsComponent, NewTestimonialsComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent, MenuPipe,PartnersComponent, NewPartnersComponent, TeamsComponent, NewTeamsComponent, SettingComponent],
+  declarations: [LayoutComponent, HeaderComponent, FooterComponent,SidebarComponent, UserListComponent, BannerComponent, MenuComponent, PagesComponent, NewPagesComponent,  InputTemplateComponent, DecriptionTemplateComponent, ImageTemplateComponent, SectionsComponent, TestimonialsComponent, NewTestimonialsComponent , BannerPipe, PostComponent, ManagePostComponent, PostCategoryComponent, UpdateComponent, ListComponent, EditPagesComponent, NewPostComponent, AllPostComponent, ProjectComponent, ProjectCategoryComponent, UpdateProjectCategoryComponent, ListProjectCategoryComponent, ManageProjectComponent, NewProjectComponent, AllProjectComponent, ServicesComponent, NewServicesComponent, DashboardComponent, MenuPipe,PartnersComponent, NewPartnersComponent, TeamsComponent, NewTeamsComponent, SettingComponent],
 
   imports: [
     LayoutRoutingModule,
