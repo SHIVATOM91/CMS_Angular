@@ -20,7 +20,7 @@
             
             <ngx-datatable-column name="Description" prop="description" >
                 <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                    <span [innerHtml]="value"></span>
+                    <span [innerHtml]="value | ellipsis:150"></span>
                 </ng-template>
             </ngx-datatable-column>
 
