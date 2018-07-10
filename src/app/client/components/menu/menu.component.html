@@ -1,17 +1,17 @@
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light  asknavbar">
         <a class="navbar-brand" href="#"><img src="../assets/images/ask_logo.png"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" (click)="toggle()" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class=" navbar-collapse" id="navbarSupportedContent" [ngClass]="{'collapse':toggleMenu}">
           <ul class="navbar-nav customcolor mr-auto">
             <li class="nav-item " *ngFor="let list of menuList">
                 <ng-container *ngIf="list.linkType=='page'">
-                    <a class="nav-link"  routerLinkActive="active" routerLink="{{list.pageSlug=='home' ? '' : '/'+list.pageSlug}}"  [routerLinkActiveOptions]="{ exact: true }" >{{list.title}}</a>
+                    <a class="nav-link"  routerLinkActive="active" (click)="toggle()"  routerLink="{{list.pageSlug=='home' ? '' : '/'+list.pageSlug}}"  [routerLinkActiveOptions]="{ exact: true }" >{{list.title}}</a>
                 </ng-container>
                 <ng-container *ngIf="list.linkType=='custom'">
-                    <a class="nav-link"  routerLinkActive="active" [href]="list.customLink"  target="_blank" >{{list.title}}</a>
+                    <a class="nav-link"  routerLinkActive="active" (click)="toggle()"  [href]="list.customLink"  target="_blank" >{{list.title}}</a>
                 </ng-container>
             </li>
           </ul>

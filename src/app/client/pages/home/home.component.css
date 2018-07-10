@@ -375,6 +375,13 @@ color: #b79d52;
 }
 
 
+@media (max-width: 992px)
+{
+.partnersection {
+    min-height: auto;
+}
+}
+
 @media (max-width: 767px)
 {
 .section-s {

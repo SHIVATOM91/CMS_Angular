@@ -9,11 +9,15 @@ import { MenuService } from '../../../shared/services/menu.service';
 export class MenuComponent implements OnInit {
 
   menuList;
+  toggleMenu=true;
   constructor(private _menuServe:MenuService) { }
   ngOnInit() {
     this._menuServe.getBy('primary').subscribe(response=>{
       this.menuList=response;
     })
+  }
+  toggle(){
+    this.toggleMenu=!this.toggleMenu;
   }
 
 }
