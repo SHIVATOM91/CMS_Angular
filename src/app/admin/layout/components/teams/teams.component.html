@@ -19,11 +19,7 @@
     </ng-template>
   </ngx-datatable-column>
 
-  <ngx-datatable-column name="Description" prop="description" >
-    <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
-      <span [innerHtml]="value | ellipsis:80"> </span>
-    </ng-template>
-  </ngx-datatable-column>
+
 
   <ngx-datatable-column name="Featured Image" prop="featuredImage" >
     <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>

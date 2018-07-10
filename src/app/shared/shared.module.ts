@@ -55,7 +55,7 @@ import { EllipsisPipePipe } from './pipes/ellipsis-pipe.pipe';
     EllipsisPipePipe,
     HideByRoleDirective,
   ],
-  providers: [ ReversePipe, EllipsisPipePipe, NgbActiveModal, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService, TeamsService, PartnersService, SettingService, ContactService, SafePipe], 
+  providers: [ ReversePipe, UserService, EllipsisPipePipe, NgbActiveModal, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService, TeamsService, PartnersService, SettingService, ContactService, SafePipe], 
   entryComponents: [
     AlertComponent,
     ImagePopupComponent
