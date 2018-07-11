@@ -124,3 +124,27 @@ margin: 0;
         font-size: 14px;
     }
     
+    @media(max-width: 767px)
+    {
+        .servicesection .nav-justified .nav-item {
+        float: none;
+        flex-basis: 100%;
+    }
+    .imagessec_description {
+        right: 0;
+    }
+}
+
+@media(max-width: 992px)
+{
+    .imagessec_description {
+        right: 0;
+    }
+}
+
+@media(max-width: 1200px)
+{
+    .imagessec_description {
+        right: 0;
+    }
+}
