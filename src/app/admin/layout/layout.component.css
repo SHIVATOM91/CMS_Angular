@@ -26,6 +26,15 @@
     background-color: #b7a35e !important;
     border-color: #a18e4a !important;
 }
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+ }
+.btn-primary:focus{
+    border-color: #a18e4a !important;
+    box-shadow:none;
+    outline: none;
+}
 .card{
     border: 1px solid rgb(232, 232, 232) !important;
     border-radius: 0px !important;

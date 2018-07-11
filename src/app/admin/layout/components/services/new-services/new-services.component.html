@@ -67,8 +67,8 @@
                     <div class="img_wraper img_c_width">
                         <label for="featuredImage" class="img-hover">
                           <div class="img-prop" *ngIf="localImage!=''" [ngStyle]="{'background': 'url('+localImage+')'  }"></div>
-                          <div class="img-prop" *ngIf="!localImage && updateForm.get('image').value==null" [ngStyle]="{'background': 'url(https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg) top center'  }"></div>
-                          <div class="img-prop" *ngIf="localImage==undefined && updateForm.get('image').value != null" [ngStyle]="{'background': 'url('+imgUrl+''+updateForm.get('image').value+')'  }"></div>
+                          <div class="img-prop" *ngIf="!localImage && updateForm.get('image').value==''" [ngStyle]="{'background': 'url(assets/images/Placeholder.jpg) top center'  }"></div>
+                          <div class="img-prop" *ngIf="!localImage && updateForm.get('image').value != null" [ngStyle]="{'background': 'url('+imgUrl+''+updateForm.get('image').value+')'  }"></div>
                         </label>
                     </div>
                     <input type="file" accept="image/*" (change)="handleFileInput($event)"  name="file" class="form-control" hidden id="featuredImage">
