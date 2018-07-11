@@ -197,6 +197,7 @@ float: none;
 
 /* about us media end */
 
+
 }
 
 @media(max-width: 767px)
@@ -228,4 +229,9 @@ float: none;
 }
 
 /*about us end*/
+.askumba-point .fa {
+display: inline-block;
+    float: left;
+    margin-top: -5px;
+}
 }
