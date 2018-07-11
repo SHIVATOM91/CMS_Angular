@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { PostService } from './../../../../../../shared/services/post.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { environment } from '../../../../../../../environments/environment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ImagePopupComponent } from '../../../../../../shared/components/image-popup/image-popup.component';
@@ -9,7 +9,8 @@ import { AlertComponent } from '../../../../../../shared/components/alert/alert.
 @Component({
   selector: 'app-all-post',
   templateUrl: './all-post.component.html',
-  styleUrls: ['./all-post.component.css']
+  styleUrls: ['./all-post.component.css'],
+  encapsulation:ViewEncapsulation.None
 })
 export class AllPostComponent implements OnInit {
   editing = {};
@@ -31,6 +32,8 @@ export class AllPostComponent implements OnInit {
   getAllPosts(){
     this._service.get().subscribe(response => {
       this.postList = response as PostObject[];
+      console.log(this.postList);
+      
     })
   }
 
@@ -44,6 +47,7 @@ export class AllPostComponent implements OnInit {
   }
 
   deleteSection(rowIndex ,id ){
+
     const modalRef = this.modalService.open(AlertComponent);
     modalRef.componentInstance.type = 'danger';
     modalRef.componentInstance.title = 'Are you sure?';

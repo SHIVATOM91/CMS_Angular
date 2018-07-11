@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  view="login";
   loginFrom:any;
   errorMsg;
   constructor(private authService:AuthService , private router:Router) { }

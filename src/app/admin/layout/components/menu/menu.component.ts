@@ -1,4 +1,4 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { MenuService } from './../../../../shared/services/menu.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit {
   pageList;
   editIndex;
 
-
+  
 
   constructor( private modalService: NgbModal, private _menuServe: MenuService, private fb: FormBuilder, private toastr: ToastrService,) {
 
@@ -31,7 +31,7 @@ export class MenuComponent implements OnInit {
       parent_id: ['']
     });
   }
- 
+  
   ngOnInit() {
     this.editIndex=null;
     this.getAllMenu();
@@ -88,14 +88,11 @@ export class MenuComponent implements OnInit {
           this.selectedMenuId=data;
         }else{
           console.log(response);
-          
         }
         this.toastr.success('Menu published Successfully.');
       },
       error=>{
         this.toastr.error('There is some error in creating the Menu.');
-      
-
       })
     }
   }
@@ -125,13 +122,16 @@ export class MenuComponent implements OnInit {
       this._menuServe.delete(index.id).subscribe(response=>{
         this.getAllMenu();
       })
-
       return false
     }
     else
       return false;
   }
-
+  
+  checkForValidation(){
+    return (this.form.invalid  ||  ((this.form.get('linkType').value=='custom')?this.form.get('customLink').value==null:this.form.get('pageSlug').value==null) )
+     // return true;
+  }
 
   /*  Modal */
   open(content) {
@@ -141,7 +141,7 @@ export class MenuComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-
+  
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

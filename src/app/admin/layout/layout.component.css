@@ -8,7 +8,7 @@
     overflow-y: scroll;
     position: relative;
     overflow: hidden;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: 'Roboto', sans-serif;
     background: #fbfbfb;
     z-index: 1000;
     min-height: 100vh;
@@ -25,6 +25,15 @@
 .btn-primary{
     background-color: #b7a35e !important;
     border-color: #a18e4a !important;
+}
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+ }
+.btn-primary:focus{
+    border-color: #a18e4a !important;
+    box-shadow:none;
+    outline: none;
 }
 .card{
     border: 1px solid rgb(232, 232, 232) !important;

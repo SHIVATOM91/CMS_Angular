@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PageService } from '../../../../shared/services/page.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertComponent } from '../../../../shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-pages',
@@ -11,15 +13,18 @@ export class PagesComponent implements OnInit {
 
   pageContent;
 
-  constructor(private router:Router , private _pageServ:PageService) {
-    _pageServ.get().subscribe(result=>{
-      this.pageContent=result;
-    })
+  constructor(private router:Router , private modalService:NgbModal, private _pageServ:PageService) {
+    this.getAllPageList();
   }
 
   ngOnInit() {
   }
 
+  getAllPageList(){
+    this._pageServ.get().subscribe(result=>{
+      this.pageContent=result;
+    })
+  }
   addNewPage(){
     this.router.navigate(['admin/page/newpage'],{skipLocationChange:true})
   }
@@ -29,8 +34,21 @@ export class PagesComponent implements OnInit {
   }
 
   deletePage(pageItem){
-    // this._pageServ.delete(this.pageContent[pageItem].id).subscribe(response=>{
-    //   this.pageContent.splice(pageItem,1)
-    // })
+    const modalRef = this.modalService.open(AlertComponent);
+    modalRef.componentInstance.type = 'danger';
+    modalRef.componentInstance.title = 'Are you sure?';
+    modalRef.componentInstance.description = 'You want to delete this page';
+
+    modalRef.result.then((result) => {
+      if(result){
+        this._pageServ.delete(this.pageContent[pageItem].id).subscribe(response=>{
+          this.getAllPageList();
+        })
+      }
+    }, (reason) => {
+     // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+
+    
   }
 }

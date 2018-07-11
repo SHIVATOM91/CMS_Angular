@@ -21,7 +21,11 @@
       <span [innerHtml]="value"> </span>
     </ng-template>
   </ngx-datatable-column>
-
+  <ngx-datatable-column name="Category" prop="post_categories" >
+    <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+      <ng-container *ngFor="let item of value"> <span  [innerHtml]="item.title" class="tag"> </span> </ng-container>
+    </ng-template>
+  </ngx-datatable-column>
   <ngx-datatable-column name="image" prop="image" >
     <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
         <button class="thumbnail-image-tb img-res" *ngIf="value" (click)="enlargeImage(value)"  [ngStyle]="{'background': 'url('+imgUrl+value+')no-repeat scroll center center' }" ></button>

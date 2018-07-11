@@ -53,8 +53,8 @@ export class UserListComponent implements OnInit {
       fullName:this.userList[rowIndex].name,
       roles:this.userList[rowIndex].roles,
       email:this.userList[rowIndex].email,
-      password:'123',
-      password_confirmation:'123'
+      password:'123123',
+      password_confirmation:'123123'
     });
     this.modalTitle="Edit User";
     this.modalReference=this.modalService.open(content)

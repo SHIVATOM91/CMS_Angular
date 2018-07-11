@@ -2,40 +2,44 @@
     height: 100vh;
     position: relative;
     background-color: #f1f1f1;
+    font-family: 'Roboto', sans-serif;
+    background: url(/assets/images/DSCN0216.JPG);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .login-wraper{
-    width: 450px;
+    width: 390px;
     margin: 0px auto;
-    -webkit-transform: translateY(50%);
-    transform: translateY(50%);
-    top: 50%;
     background-color: #fff;
-    padding: 20px;
     border: 1px solid #e8e8e8;
+    padding: 0px;
+    -webkit-box-shadow: 2px 3px 9px 1px #00000017;
+    box-shadow: 2px 3px 9px 1px #00000017;
+    min-height: 466px;
 }
 .login-wraper .header{
     border-bottom: #675d402b solid 1px;
     background-color: #fff;
 }
 .login-wraper .body{
-    padding: 30px 20px;
+    padding: 30px 20px 10px 20px;
+    text-align: center;
 }
 .login-wraper .footer{
     padding: 0px 20px 20px 20px;
     text-align: center;
 }
 .logo{
-    background: url(/assets/images/ask_logo.jpg);
-    width: 125px;
+    background: url(/assets/images/FRONT.jpg);
+    width: 114px;
     height: 111px;
     border-radius: 50%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
-    margin: 0px auto;
-    margin-bottom: 0px;
-    background-color: #fefefe;
+    margin: 14px auto;
+    background-color: #bba45e;
 }
 
 .login-wraper input{
@@ -55,8 +59,17 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     margin: 0px auto;
     background-color: #baa35f;
     color: #fff;
+    width: 100%;
+    cursor: pointer;
 }
 
 .login-btn:disabled{
     opacity: 1;
+}
+
+.forgot_password{
+    margin-top: 10px;
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
 }

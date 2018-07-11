@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-12">
-    <button class="btn btn-primary pull-right" type="button" (click)="openModal(content); modalTitle='Add Menu'" ><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+    <button class="btn btn-primary pull-right mt-0" type="button" (click)="openModal(content); modalTitle='Add Menu'" ><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
   </div>
 </div>
 
@@ -100,6 +100,7 @@
               <label for="menutitle">Enter menu title:</label>
               <input type="text" class="form-control" name="menuTittle" formControlName="title"  id="menutitle" aria-describedby="menutitle"  required>
               <div class="form-control-feedback text-danger" *ngIf="form.get('title').errors && (form.get('title').dirty || form.get('title').touched)">
+               
                 <p *ngIf="form.get('title').errors.required">Title is required</p>
                 <p *ngIf="form.get('title').errors.minlength">Title must be {{ form.get('title').errors.minlength.requiredLength }} characters long</p>
               </div>
@@ -112,16 +113,18 @@
                 <option value="page">Page Link</option>
               </select>
             </div>
+            
             <div class="form-group" [hidden]="!(form.get('linkType').value == 'custom')">
               <label for="menutitle">Enter custom link:</label>
-              <input type="text" class="form-control" name="menuTittle"  [required]="form.get('linkType').value == 'custom'" formControlName="customLink" >
+              <input type="text" class="form-control" name="menuTittle"   formControlName="customLink" >
               <div class="form-control-feedback text-danger" *ngIf="form.get('customLink').errors && (form.get('customLink').dirty || form.get('customLink').touched)">
                 <p *ngIf="form.get('customLink').errors.required">Custom link is required</p>
               </div>
             </div>
+
             <div class="form-group" [hidden]="!(form.get('linkType').value == 'page')">
               <label for="menutitle">Select the page:</label>
-              <select  formControlName="pageSlug" class="form-control" [required]="form.get('linkType').value == 'page'">
+              <select  formControlName="pageSlug" class="form-control" >
                 <option value="">Select a page</option>
                 <option *ngFor="let page of pageList" [value]="page.slug">{{ page.title }}</option>
               </select>
@@ -137,7 +140,8 @@
                 <option *ngFor="let menu of menuList" [value]="menu.id">{{ menu.title }}</option>
               </select>
             </div>
-            <button *ngIf="modalTitle == 'Add Menu'" [disabled]="form.invalid" type="submit" class="btn btn-primary pull-right" (click)="addNewMenu()" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+
+            <button *ngIf="modalTitle == 'Add Menu'" [disabled]="checkForValidation()" type="submit" class="btn btn-primary pull-right" (click)="addNewMenu()" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
             <button *ngIf="modalTitle == 'Edit Menu'" [disabled]="form.invalid" type="submit" class="btn btn-primary pull-right" (click)="editMenu()" ><i class="fa fa-plus" aria-hidden="true"></i> Update</button>
         </form>
       </div>
