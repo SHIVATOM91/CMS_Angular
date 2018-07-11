@@ -144,8 +144,10 @@ export class NewPagesComponent implements OnInit , OnDestroy {
   deleteProprty(section){
     let index=this.selectedSection.indexOf(section);
     this._page.deletePageSection(section.id).subscribe(response => {
-      this.selectedSection.splice(index, 1);
-      this.updateSectionList();
+      //this.selectedSection.splice(index, 1);
+      let sections=this.pageForm.get('sections') as FormArray;
+      sections.removeAt(index) ;   
+      this.getPageData();
     })
 
   }

@@ -1,7 +1,6 @@
 <button type="submit" [disabled]="!pageForm.valid" class="btn btn-primary float-right "  (click)="savePage();"  ><i class="fa fa-floppy-o" aria-hidden="true"></i> Publish</button>
 <button type="submit" [routerLink]="['/admin/page']"  class="btn btn-primary float-right mr-1"   > Back to List</button>
 <div class="clearfix"></div>
-{{pageForm.value | json}}
 <div class="card">
   <div class="card-body">
 
@@ -62,7 +61,6 @@
           </div>
         </div>
     </div>
-
     <div class="row">
       <div class="col-md-8">
       </div>
