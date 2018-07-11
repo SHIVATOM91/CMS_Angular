@@ -97,3 +97,7 @@ font-size:14px;
 .cntbg {
     background-color: #f7f7f7;
 }
+
+button, html [type="button"], [type="reset"], [type="submit"] {
+    -webkit-appearance: none !important;
+}
