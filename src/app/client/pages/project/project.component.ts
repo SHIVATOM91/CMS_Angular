@@ -3,6 +3,8 @@ import { environment } from '../../../../environments/environment';
 import { PageService } from '../../../shared/services/page.service';
 import { ProjectCategoryService } from '../../../shared/services/project-category.service';
 import { ProjectService } from '../../../shared/services/project.service';
+import { SeoService } from '../../../shared/services/seo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project',
@@ -19,7 +21,7 @@ export class ProjectComponent implements OnInit {
   currentProjectId:undefined;
   pageContent;
   pageId=10;
-  constructor(private _section:PageService, private _postcategory:ProjectCategoryService, private _projectservice:ProjectService) { }
+  constructor(private _section:PageService, private _postcategory:ProjectCategoryService, private _projectservice:ProjectService, private seo:SeoService, private router:Router) { }
 
   ngOnInit() {
     this._section.getOuterPageSections(this.project_section_id).subscribe(response=>{
@@ -34,6 +36,13 @@ export class ProjectComponent implements OnInit {
    
     this._section.getBy(this.pageId).subscribe(response=>{
       this.pageContent=response;
+
+      this.seo.generateTags({
+        title: this.pageContent.metaTitle, 
+        description: this.pageContent.metaDescription, 
+        image: this.pageContent.canonicalUrl,
+        slug: this.router.url.split('/')[1]
+      })
       console.log(this.pageContent);
       })
   }
