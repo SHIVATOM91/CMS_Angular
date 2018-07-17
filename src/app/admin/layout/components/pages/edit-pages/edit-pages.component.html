@@ -6,8 +6,9 @@
       <div class="col-md-12" *ngIf="section_details">
         <div class="card" >
           <div class="card-header">
+              <i class="fa  d-inline"  [ngClass]="{'fa-pencil-square-o':!editMode ,'fa-floppy-o':editMode}" (click)="editMode=!editMode;" aria-hidden="true"></i>
             <input type="text" [readonly]="!editMode"  formControlName="page_section_title"  name="file" class="d-inline" [ngClass]="{'form-control':editMode ,'static-text':!editMode}" id="staticEmail" style="width: 150px;"   /> 
-             <i class="fa  d-inline"  [ngClass]="{'fa-pencil-square-o':!editMode ,'fa-floppy-o':editMode}" (click)="editMode=!editMode;" aria-hidden="true"></i>
+             
           </div>
           <div class="card-body">
             <div formArrayName="properties">

@@ -23,6 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SharedModule,
     NgbModule.forRoot()
   ],
-  declarations: [LayoutComponent, HeaderComponent, FooterComponent, SliderComponent, MenuComponent, HomeComponent, AboutusComponent, ProductComponent, ProjectComponent, ContactComponent, ServicesComponent]
+  declarations: [LayoutComponent, HeaderComponent, FooterComponent, SliderComponent, MenuComponent, HomeComponent, AboutusComponent, ProductComponent, ProjectComponent, ContactComponent, ServicesComponent],
+
 })
 export class ClientModule { }

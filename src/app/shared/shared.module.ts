@@ -31,6 +31,7 @@ import { UserService } from './services/user.service';
 import { ContactService } from './services/contact.service';
 import { SafePipe } from './pipes/safe.pipe';
 import { EllipsisPipePipe } from './pipes/ellipsis-pipe.pipe';
+import { CustomFormsModule } from 'ng2-validation';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { EllipsisPipePipe } from './pipes/ellipsis-pipe.pipe';
     IcheckDirective,
     ReversePipe,
     GetValuePipe,
+    CustomFormsModule,
     SafePipe,
     EllipsisPipePipe,
     HideByRoleDirective,

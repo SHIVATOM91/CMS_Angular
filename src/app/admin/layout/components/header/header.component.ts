@@ -9,7 +9,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   pushRightClass: string = 'push-right';
-  constructor( private authServ:AuthService) { }
+  constructor(public authServ:AuthService) { }
 
   ngOnInit() {
   }

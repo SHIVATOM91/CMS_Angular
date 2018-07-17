@@ -6,7 +6,7 @@
       <div class="col-lg-8 col-md-12 col-sm-12 col-xs">
         <ul class="list-unstyled askhaed">
             <li class="media">
-              <img class="align-self-end mr-3" src="/assets/images/head_leftimg.jpg" alt="   ">
+              <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
               <div class="media-body custom-body">
                   <p class="mb-0">{{ about_section_content?.properties.intro_title }}</p>
                   <h2 class="mt-1 mb-0">{{ about_section_content?.properties.main_title }} </h2>
@@ -18,7 +18,7 @@
             <div class="col-lg-4">
               <ul class="list-unstyled">
                   <li class="media">
-                    <img class="mr-3" src="/assets/images/aboutus_tick.png" alt="Generic placeholder image">
+                    <img class="mr-3" src="assets/images/aboutus_tick.png" alt="Generic placeholder image">
                     <div class="media-body">
                         <h5 class="mt-0 mb-1">{{about_section_content?.properties.list_title_1}}</h5>
                         {{about_section_content?.properties.list_title_1_desc}}
@@ -29,7 +29,7 @@
             <div class="col-lg-4">
               <ul class="list-unstyled">
                   <li class="media">
-                    <img class="mr-3" src="/assets/images/aboutus_tick.png" alt="Generic placeholder image">
+                    <img class="mr-3" src="assets/images/aboutus_tick.png" alt="Generic placeholder image">
                     <div class="media-body">
                         <h5 class="mt-0 mb-1">{{about_section_content?.properties.list_title_2}}</h5>
                         {{about_section_content?.properties.list_title_2_desc}}
@@ -40,7 +40,7 @@
             <div class="col-lg-4">
               <ul class="list-unstyled">
                   <li class="media">
-                    <img class="mr-3" src="/assets/images/aboutus_tick.png" alt="Generic placeholder image">
+                    <img class="mr-3" src="assets/images/aboutus_tick.png" alt="Generic placeholder image">
                     <div class="media-body">
                         <h5 class="mt-0 mb-1">{{about_section_content?.properties.list_title_3}}</h5>
                         {{about_section_content?.properties.list_title_3_desc}}
@@ -68,7 +68,7 @@
                <div class="customparalasec">
                   <ul class="list-unstyled askhaed">
                      <li class="media">
-                        <img class="align-self-end mr-3" src="/assets/images/head_leftimg.jpg" alt="   ">
+                        <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
                         <div class="media-body custom-body">
                            <p class="mb-0">{{project_section_content?.properties.intro_title}}</p>
                            <h2 class="mt-1 mb-0">{{project_section_content?.properties.main_title}}</h2>
@@ -76,7 +76,7 @@
                      </li>
                   </ul>
                   <owl-carousel
-                    [options]="{items: 3, dots: false,loop: false, nav: true, margin:10, navText : ['<i class=\'fa fa-caret-left\'></i>','<i class=\'fa fa-caret-right\'></i>'], freeDrag:false, touchDrag:false, mouseDrag:false, responsive: { '0' : { items:1}, '640': { items: 2}, '768': { items: 3} }}"
+                    [options]="{items: 3, dots: false,loop: false, nav: true,  navText : ['<i class=\'fa fa-caret-left\'></i>','<i class=\'fa fa-caret-right\'></i>'], freeDrag:false, touchDrag:false, mouseDrag:false, responsive: { '0' : { items:1}, '640': { items: 2}, '768': { items: 3} }}"
                     [items]="projectCategorySlider"
                     [carouselClasses]="['owl-theme',  'sliding', 'custom-home_slider']">
                     <div class="item" *ngFor="let category of projectCategorySlider;let i = index">
@@ -110,7 +110,7 @@
   <div class="container">
       <ul class="list-unstyled askhaed">
         <li class="media">
-            <img class="align-self-end mr-3" src="/assets/images/head_leftimg.jpg" alt="   ">
+            <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
             <div class="media-body custom-body">
               <p class="mb-0">{{services_section_content?.properties.intro_title}}
               </p>
@@ -121,7 +121,7 @@
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-6" *ngFor="let service of servicesArray; let i = index;">
             <div class="section-s">
-              <img [src]="'/assets/images/service-'+i+'.png'">
+              <img [src]="'assets/images/service-'+i+'.png'">
               <h5>{{ service.title }}</h5>
               <p [innerHTML]="service.shortDescription | ellipsis:180"></p>
               <a [routerLink]="[services_section_content?.properties.btn_link]" class="btn">{{services_section_content?.properties.btn_text}}</a>
@@ -137,7 +137,7 @@
   <div class="container cs">
      <ul class="list-unstyled askhaed">
         <li class="media">
-           <img class="align-self-end mr-3" src="/assets/images/head_leftimg_1.png" alt="   ">
+           <img class="align-self-end mr-3" src="assets/images/head_leftimg_1.png" alt="   ">
            <div class="media-body custom-body">
               <p class="mb-0">{{partner_section_content?.properties.intro_title}}
               </p>
@@ -166,7 +166,7 @@
     <div class="container ">
        <ul class="list-unstyled askhaed">
           <li class="media">
-             <img class="align-self-end mr-3" src="/assets/images/head_leftimg_1.png" alt="   ">
+             <img class="align-self-end mr-3" src="assets/images/head_leftimg_1.png" alt="   ">
              <div class="media-body custom-body">
                 <p class="mb-0">Hard Work
                 </p>

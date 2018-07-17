@@ -12,7 +12,7 @@ import { AlertComponent } from '../../../../shared/components/alert/alert.compon
 export class PagesComponent implements OnInit {
 
   pageContent;
-
+  bannerModaltitle;
   constructor(private router:Router , private modalService:NgbModal, private _pageServ:PageService) {
     this.getAllPageList();
   }

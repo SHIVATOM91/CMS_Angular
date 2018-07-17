@@ -11,16 +11,18 @@ import {NgbModule, NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
 import { BannerService } from '../shared/services/banner.service';
 import { SharedModule } from '../shared/shared.module';
 import { AuthGuardService } from './services/auth-guard.service';
+import { ForgotComponent } from './components/forgot/forgot.component';
+import { ForgotService } from '../shared/services/forgot.service';
 
 @NgModule({
-  declarations: [ LoginComponent],
+  declarations: [ LoginComponent, ForgotComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
     SharedModule
   ],
-  providers: [AuthService ,  BannerService , AuthGuardService]
+  providers: [AuthService ,  BannerService , AuthGuardService,ForgotService]
 
 })
 export class AdminModule { }

@@ -6,33 +6,30 @@
 }
 
 .projecttabs ul.nav{
-   
    text-align: center;
    margin:0 auto;
    box-shadow: 0 0 3px 0px rgba(0, 0, 0, 0.5);
-    }
-
+}
 
  .projecttabs > ul.nav > li.nav-item > a{
-
-background-color: #b89e53;
+    background-color: #b89e53;
     color: #fff;
     border-radius: 0px;
     border-top: 1px solid #fff;
     border-bottom: 1px solid #fff; 
     cursor: pointer;
  }
- .projecttabs ul.nav > li.nav-item >a.active{
-background-color: #1e4566;
- }
 
- .projecttabs .tab-pane {
+.projecttabs ul.nav > li.nav-item >a.active{
+    background-color: #1e4566;
+}
+
+.projecttabs .tab-pane {
     background: none!important; 
     padding: 1px !important;
 }
 
-.customtabpane .text-center
-{
+.customtabpane .text-center{
     width: 100%;
 }
 
@@ -45,14 +42,14 @@ background-color: #1e4566;
 
  
 
- .projecttabs > ul.nav > li.nav-item> a.active:after {
+ .projecttabs > ul.nav > li.nav-item > a.active:after {
     content: " ";
     display: block;
     width: 0;
     height: 0;
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
-    border-left: 15px solid #1e4566;
+    border-left: 15px solid #1e4566 !important;
     position: absolute;
     top: 50%;
     margin-top: -19px;
@@ -125,21 +122,6 @@ content: " ";
     margin-left: 1px;
     z-index: 3;
  }
-.projecttabs ul.nav > li.nav-item:before {
- content: " ";
-    display: block;
-    width: 0;
-    height: 0;
-    border-top: 17px solid transparent;
-    border-bottom: 17px solid transparent;
-    border-left: 10px solid rgb(173, 173, 173);
-    position: absolute;
-    top: 50%;
-    margin-top: -17px;
-    margin-left: 1px;
-    left: 100%;
-    z-index: 3;
-}
 
 
 .projecttabs ul.nav > li.nav-item:after {
@@ -149,7 +131,7 @@ content: " ";
     height: 0;
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
-border-left: 15px solid #b89e53;
+    border-left: 15px solid #b89e53;
     position: absolute;
     top: 50%;
     margin-top: -20px;
@@ -302,7 +284,6 @@ min-height: 700px;
 .projecttabs > ul.nav > li.nav-item {
     position: relative;
     display: block;
-    vertical-align: middle;
     border-radius: 0px;
 }
 

@@ -183,10 +183,6 @@
   line-height: 50px;
 }
 
-.custom-home_slider .owl-stage-outer{
-  margin: 0 24px 0 24px;
-}
-
 
 .custom-home_slider .owl-nav button, .custom-home_slider .owl-nav button.disabled{
   width: 22px;
@@ -205,11 +201,14 @@
 }
 
 .custom-home_slider .owl-nav .owl-prev, .custom-home_slider .owl-nav .owl-prev{
-  left: 0px;
+  left: -22px;
 }
 
 .custom-home_slider .owl-nav .owl-next, .custom-home_slider .owl-nav .owl-next{
-  right: 0px;
+  right: -22px;
+}
+.custom-home_slider {
+  margin-left: 18px;
 }
 
 .project-holder{

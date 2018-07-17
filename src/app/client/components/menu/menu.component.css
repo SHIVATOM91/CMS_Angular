@@ -8,6 +8,10 @@
     position: absolute;
     z-index: 99;
 }  
+.asknavbar .navbar-nav{
+    min-width: 740px;
+    min-height: 91px;
+}
 .navbar-light .navbar-toggler-icon{
     background-image: url('../../../../assets/images/toggle.png');
 }

@@ -1,6 +1,9 @@
     
 
 /* slider section */
+    .carouseldiv{
+        min-height: 600px;
+    }
     .carouseldiv .owl-item img{
         height: 600px;
         width: auto;
@@ -48,15 +51,14 @@
         position: relative;
         z-index: 9999;
     }
-    
+  
   /* slider section */
 
   .banner{
-    background: url('/assets/images/bannerimage.jpg');
-    height: 240px;
-    background-size: cover;
-
-}
+        background: url('/assets/images/bannerimage.jpg');
+        height: 240px;
+        background-size: cover;
+    }
 
 
 @media(max-width: 1200px)

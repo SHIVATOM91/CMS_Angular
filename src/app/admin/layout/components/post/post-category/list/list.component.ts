@@ -29,7 +29,7 @@ export class ListComponent implements OnInit {
     })
   }
 
-  onRowSelect(){
+  onRowSelect(event){
     if(this.selected.length > 0)
       this.router.navigate(['admin/post/category/update', this.selected[0].id] , { skipLocationChange:true})
   }

@@ -1,7 +1,7 @@
 
 <app-menu></app-menu>
 <section class="carouseldiv" *ngIf="page==''">
-  <owl-carousel
+  <owl-carousel  
     [options]="{items: 1, dots: true, navigation: true}"
     [items]="sliderContent"
     [carouselClasses]="['owl-theme',  'sliding']">
@@ -18,7 +18,7 @@
 </section>
 
 <!--- Static Banner -->
-<section class="carouseldiv" *ngIf="page!=''">
+<section class="" *ngIf="page!=''">
   <div class="banner">
       <div class="container">
 

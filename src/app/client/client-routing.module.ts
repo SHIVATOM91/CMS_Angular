@@ -19,9 +19,7 @@ const routes: Routes = [
       {path:"project" , component:ProjectComponent, data:{bannerType:'projectBanner'}},
       {path:"contact" , component:ContactComponent , data:{bannerType:'contactBanner'}},
     ]
-}
-  
-  
+  }
 ];
 
 @NgModule({

@@ -26,7 +26,7 @@
 <!-- accordian design -->
 <ngb-accordion [closeOthers]="true" [ngClass]="'menu-accordion'">
  
-    <ng-container *ngFor="let menu of menuList|mfilter: selectedMenuId:pure: true; let i = index ">
+    <ng-container *ngFor="let menu of menuList|mfilter: selectedMenuId; let i = index ">
       <ngb-panel [id]="'static-'+i">
         <ng-template ngbPanelTitle>
             <i class="fa fa-plus" aria-hidden="true"></i> <span>{{menu.title}}</span>

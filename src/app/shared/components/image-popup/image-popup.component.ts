@@ -9,6 +9,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ImagePopupComponent implements OnInit {
   imgUrl=environment.imgUrl;
+  url;
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {

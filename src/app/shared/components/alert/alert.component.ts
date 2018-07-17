@@ -7,7 +7,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./alert.component.css']
 })
 export class AlertComponent implements OnInit {
-
+  type;
+  title;
+  description;
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {

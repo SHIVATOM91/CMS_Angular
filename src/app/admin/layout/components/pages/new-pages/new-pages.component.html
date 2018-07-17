@@ -5,7 +5,7 @@
   <div class="card-body">
 
 <form role="form" id="banner"  [formGroup]="pageForm"  novalidate>
-    <div class="row justify-content-between">
+    <div class="row justify-content-between mb-2">
       <div class="col-md-8">
             <div  class="alert" *ngIf="ErrorObject.show==true" [ngClass]="{'alert-danger':ErrorObject.type=='fail' , 'alert-success':ErrorObject.type=='success'}">
                 <ng-container *ngIf="ErrorObject.type=='success'">Page has published successfully! </ng-container>
@@ -40,59 +40,72 @@
             </div>
 
       </div>
-      <div class="col-md-3" >
+      <div class="col-md-4"  >
+        <ng-container *ngIf="auth.currentUser.roles!='admin' then seoSection; else propertySection" >
+      
+        </ng-container>
+      </div>
+    </div>
+    
 
-          <div class="card clerfix" *ngIf="pageForm.get('id').value != ''">
-            <div class="card-header">
-              Properties
-            </div>
-            <div class="card-body">
-              <small class="card-text">Select the new properties to the content.</small>
-              <div class="taskboard-wrapper">
-                <div class="taskboard-list" >
-                  <div class="taskboard-cards"  [dragula]='"another-bag"' [dragulaModel]='pageSectionList'>
-                    <div class="taskboard-task" *ngFor='let section of pageSectionList'>
-                      <div class="taskboard-task-title">{{ section.title }}</div>
-                    </div>
+
+    <!-- SEO SECTION -->
+    <div class="clearfix"></div>
+    <!--  -->
+    <ng-container *ngIf="auth.currentUser.roles=='admin' then seoSection;" >
+      
+    </ng-container>
+    <!-- SEO SECTION -->
+
+    <!--- Template -->
+      <ng-template #propertySection>
+        <div class="card clerfix" *ngIf="pageForm.get('id').value != ''">
+          <div class="card-header">
+            Properties
+          </div>
+          <div class="card-body">
+            <small class="card-text">Select the new properties to the content.</small>
+            <div class="taskboard-wrapper">
+              <div class="taskboard-list" >
+                <div class="taskboard-cards"  [dragula]='"another-bag"' [dragulaModel]='pageSectionList'>
+                  <div class="taskboard-task" *ngFor='let section of pageSectionList'>
+                    <div class="taskboard-task-title">{{ section.title }}</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8">
-      </div>
-    </div>
+      </ng-template>
 
-
-    <!-- SEO SECTION -->
-    <div class="clearfix"></div>
-    <div class="row mt-5">
-      <div class="col-sm-8">
-        <div class="card">
-          <div class="card-header">
-            SEO Section
-          </div>
-          <div class="card-body">
-            <fieldset class="form-group">
-                <label>Meta Title</label>
-                <input class="form-control" name="title" formControlName="metaTitle"    placeholder="Enter meta title" >
-            </fieldset>
-            <fieldset class="form-group">
-                <label>Meta Description</label>
-                <textarea rows="2" formControlName="metaDescription" class="form-control" placeholder="Enter Meta Description"></textarea>
-            </fieldset>
-            <fieldset class="form-group">
-                <label>Canonical Url</label>
-                <input class="form-control" name="title" formControlName="canonicalUrl"    placeholder="Enter canonical url" >
-            </fieldset>
+      <ng-template #seoSection>
+        <div class="row mt-1">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                SEO Section
+              </div>
+              <div class="card-body">
+                <fieldset class="form-group">
+                    <label>Meta Title</label>
+                    <input class="form-control" name="title" formControlName="metaTitle"    placeholder="Enter meta title" >
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Meta Description</label>
+                    <textarea rows="2" formControlName="metaDescription" class="form-control" placeholder="Enter Meta Description"></textarea>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Canonical Url</label>
+                    <input class="form-control" name="title" formControlName="canonicalUrl"    placeholder="Enter canonical url" >
+                </fieldset>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <!-- SEO SECTION -->
+      </ng-template>
   </form>
   </div>
 </div>
+
+
+

@@ -124,4 +124,6 @@ export class NewServicesComponent implements OnInit {
     });
     return myForm;
   }
+
+  get formData(){ return this.updateForm.get('gallery') as FormArray; }
 }

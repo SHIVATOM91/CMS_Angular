@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { error } from 'protractor';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../../../services/auth.service';
 
 
 
@@ -36,6 +37,7 @@ export class NewPagesComponent implements OnInit , OnDestroy {
     private dragulaService: DragulaService ,
     private route:ActivatedRoute,
     private router:Router,
+    public auth:AuthService,
     private toastr: ToastrService,
     private fb:FormBuilder)
     {

@@ -15,10 +15,9 @@ export class MenuComponent implements OnInit {
   form: FormGroup;
   closeResult: string;
   menuList;
+  modalTitle;
   pageList;
   editIndex;
-
-  
 
   constructor( private modalService: NgbModal, private _menuServe: MenuService, private fb: FormBuilder, private toastr: ToastrService,) {
 
