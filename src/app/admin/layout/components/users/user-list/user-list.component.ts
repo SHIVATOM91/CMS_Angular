@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CustomValidators } from 'ng2-validation';
 import { ToastrService } from 'ngx-toastr';
+import { AlertComponent } from '../../../../../shared/components/alert/alert.component';
+import { AuthService } from '../../../../services/auth.service';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -18,7 +20,7 @@ export class UserListComponent implements OnInit {
   errorResponse;
   modalReference;
   userForm:FormGroup;
-  constructor( private userService: UserService , private fb:FormBuilder, private router:Router, private modalService:NgbModal,private toastr: ToastrService) { 
+  constructor( private userService: UserService , private auth:AuthService, private fb:FormBuilder, private router:Router, private modalService:NgbModal,private toastr: ToastrService) { 
     let password = new FormControl('', Validators.required);
     let certainPassword = new FormControl('', CustomValidators.equalTo(password));
     this.userForm= this.fb.group({
@@ -38,6 +40,7 @@ export class UserListComponent implements OnInit {
   getAllUsers(){
     this.userService.get().subscribe(response=>{
       this.userList=response;
+      if(this.auth.currentUser.roles!="admin")
       this.filterUser('editer');
     })
   }
@@ -60,7 +63,23 @@ export class UserListComponent implements OnInit {
     this.modalTitle="Edit User";
     this.modalReference=this.modalService.open(content)
   }
-  
+  deleteUser(index,id){
+    const modalRef = this.modalService.open(AlertComponent);
+    modalRef.componentInstance.type = 'danger';
+    modalRef.componentInstance.title = 'Are you sure?';
+    modalRef.componentInstance.description = 'You want to delete this user';
+    
+    modalRef.result.then((result) => {
+      if(result){
+        this.userService.delete(id).subscribe(response=>{
+          this.getAllUsers();
+        })
+      }
+    }, (reason) => {
+     // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+
+  }
 
   updateUser(){
     this.userService.create(this.userForm.value).subscribe(response=>{
