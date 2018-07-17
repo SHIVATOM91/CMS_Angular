@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, FormControl, ControlContainer, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SectionsService } from '../../../../shared/services/sections.service';
@@ -8,7 +8,8 @@ import { AlertComponent } from '../../../../shared/components/alert/alert.compon
 @Component({
   selector: 'app-sections',
   templateUrl: './sections.component.html',
-  styleUrls: ['./sections.component.css']
+  styleUrls: ['./sections.component.css'],
+  encapsulation:ViewEncapsulation.None
 })
 export class SectionsComponent  {
   sectionForm:FormGroup;
