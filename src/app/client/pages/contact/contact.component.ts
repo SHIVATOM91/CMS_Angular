@@ -4,6 +4,8 @@ import { PageService } from '../../../shared/services/page.service';
 import { ContactService } from '../../../shared/services/contact.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SettingService } from '../../../shared/services/setting.service';
+import { SeoService } from '../../../shared/services/seo.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -22,7 +24,7 @@ export class ContactComponent implements OnInit {
   settingData: SettingObj;
   pageContent;
   pageId=8;
-  constructor(private _section:PageService, private _contactfrmsection:ContactService,private fb: FormBuilder, private _setting: SettingService) {
+  constructor(private _section:PageService, private router:Router, private _contactfrmsection:ContactService,private fb: FormBuilder, private _setting: SettingService, private seo:SeoService) {
     this.form = this.fb.group({
       firstName: ['',[Validators.required]],
       email: ['',[Validators.required, Validators.pattern(/\S+@\S+\.\S+/)]],
@@ -34,15 +36,23 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
     this._section.getOuterPageSections(this.contactus_section_id).subscribe(response=>{
       this.contactus_section_content=response as Section;
-      console.log(this.contactus_section_content);
- 
     })   
-       this.getSettingData();
 
-       this._section.getBy(this.pageId).subscribe(response=>{
-        this.pageContent=response;
-        console.log(this.pageContent);
-        })   
+    this.getSettingData();
+
+    this._section.getBy(this.pageId).subscribe(response=>{
+      this.pageContent=response;
+      this.seo.generateTags({
+        title: this.pageContent.metaTitle, 
+        description: this.pageContent.metaDescription, 
+        image: this.pageContent.canonicalUrl,
+        slug: this.router.url.split('/')[1]
+      })
+    })  
+
+    // this.seo.getPageMeta(this.pageId).subscribe(response=>{
+    //  this.pageContent=response;
+    // })
   }
 
   sendMail()
@@ -63,7 +73,6 @@ export class ContactComponent implements OnInit {
   getSettingData(){
     this._setting.get().subscribe( response => {
       this.settingData=response as SettingObj;
-      console.log(response);
     })
   }
 }

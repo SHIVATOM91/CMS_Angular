@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { SeoService } from './shared/services/seo.service';
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +20,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
     NoopAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [ToastrService],
+  providers: [ToastrService, SeoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
