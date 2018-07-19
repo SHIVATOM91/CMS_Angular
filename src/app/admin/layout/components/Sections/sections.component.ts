@@ -80,7 +80,7 @@ export class SectionsComponent  {
     const modalRef = this.modalService.open(AlertComponent);
     modalRef.componentInstance.type = 'danger';
     modalRef.componentInstance.title = 'Are you sure?';
-    modalRef.componentInstance.description = 'Message from popup aessage from popup ';
+    modalRef.componentInstance.description = 'You want to delete this Section';
     
     modalRef.result.then((result) => {
       if(result){

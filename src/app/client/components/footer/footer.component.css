@@ -79,6 +79,11 @@
     padding-left: 7px;
 }
 
+.mail-color a
+{
+    color: rgb(109, 116, 123);
+    text-decoration: none;  
+}
 
 @media (max-width: 767px)
 {

@@ -25,6 +25,9 @@
     box-shadow: none;
 }
 
+.service_block{
+  min-height: 120px;
+}
 /* about-section*/
 
 

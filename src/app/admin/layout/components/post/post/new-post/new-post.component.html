@@ -27,7 +27,7 @@
                 <div class="col-sm-12" *ngFor="let category of categories?.controls; let i = index;">
                   <div [formGroupName]="i" class="d-flex">
                       <input type="checkbox" class="pt-6 position-relative" [checked]="category.get('selected').value" (change)="category.get('selected').setValue(!category.get('selected').value)" [id]="category.get('id').value">
-                      <label [for]="category.get('id').value">{{ category.get('title').value }}</label>
+                      <label class="cat-label" [for]="category.get('id').value">{{ category.get('title').value }}</label>
                   </div>
                 </div>
               </div>

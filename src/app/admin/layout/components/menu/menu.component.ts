@@ -4,6 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { isArray } from 'util';
 import { ToastrService } from 'ngx-toastr';
+import { AlertComponent } from '../../../../shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-menu',
@@ -19,7 +20,7 @@ export class MenuComponent implements OnInit {
   pageList;
   editIndex;
 
-  constructor( private modalService: NgbModal, private _menuServe: MenuService, private fb: FormBuilder, private toastr: ToastrService,) {
+  constructor( private modalService: NgbModal, private _menuServe: MenuService, private fb: FormBuilder, private toastr: ToastrService, ) {
 
     this.form = this.fb.group({
       title: ['', [Validators.minLength(2), Validators.required]],
@@ -109,22 +110,37 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  deleteMenu(index){
-    let msg="Are you sure want to delete menu";
-    if(isArray(index.children)){
-      if(index.children.length > 0){
-        msg="This menu has sub menu. Are you sure, you want to delete?";
+  deleteMenu(index)
+  {
+    // let msg="Are you sure want to delete menu";
+    // if(isArray(index.children)){
+    //   if(index.children.length > 0){
+    //     msg="This menu has sub menu. Are you sure, you want to delete?";
+    //   }
+    // }
+    // let status= confirm(msg);
+    // if(status){
+    //   this._menuServe.delete(index.id).subscribe(response=>{
+    //     this.getAllMenu();
+    //   })
+    //   return false
+    // }
+    // else
+    //   return false;
+
+    const modalRef = this.modalService.open(AlertComponent);
+    modalRef.componentInstance.type = 'danger';
+    modalRef.componentInstance.title = 'Are you sure?';
+    modalRef.componentInstance.description = 'You want to delete this menu';
+    modalRef.result.then((result) => {
+      if(result){
+        this._menuServe.delete(index.id).subscribe(response=>{
+          this.getAllMenu();
+        })
       }
-    }
-    let status= confirm(msg);
-    if(status){
-      this._menuServe.delete(index.id).subscribe(response=>{
-        this.getAllMenu();
-      })
-      return false
-    }
-    else
-      return false;
+    }, (reason) => {
+     // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
   
   checkForValidation(){

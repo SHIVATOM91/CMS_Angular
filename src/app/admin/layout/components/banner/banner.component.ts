@@ -97,7 +97,7 @@ export class BannerComponent implements OnInit {
     const modalRef = this.modalService.open(AlertComponent);
     modalRef.componentInstance.type = 'danger';
     modalRef.componentInstance.title = 'Are you sure?';
-    modalRef.componentInstance.description = 'You sure want to delete this item';
+    modalRef.componentInstance.description = 'You want to delete this Banner';
 
     modalRef.result.then((result) => {
       if(result){

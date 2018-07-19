@@ -47,7 +47,7 @@ export class ListProjectCategoryComponent implements OnInit {
     const modalRef = this.modalService.open(AlertComponent);
     modalRef.componentInstance.type = 'danger';
     modalRef.componentInstance.title = 'Are you sure?';
-    modalRef.componentInstance.description = 'You want to delete this post';
+    modalRef.componentInstance.description = 'You want to delete this category';
 
     modalRef.result.then((result) => {
       if(result){

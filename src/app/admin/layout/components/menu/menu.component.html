@@ -137,7 +137,7 @@
               <label for="menutitle">Parent Menu</label>
               <select  formControlName="parent_id" class="form-control">
                 <option value="">None</option>
-                <option *ngFor="let menu of menuList" [value]="menu.id">{{ menu.title }}</option>
+                <option *ngFor="let menu of menuList |mfilter: selectedMenuId; " [value]="menu.id">{{ menu.title }}</option>
               </select>
             </div>
 

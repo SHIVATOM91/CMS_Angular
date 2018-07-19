@@ -11,3 +11,9 @@
   max-height: 225px;
   overflow: auto;
 }
+.cat-label
+{
+  line-height: 16px;
+  padding-left: 8px;
+  margin-top: 0px;
+}
