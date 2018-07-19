@@ -140,7 +140,9 @@ content: " ";
 }
 
 
-
+.projecttabs ul.nav > li.nav-item a.active:after {
+    border-left: 15px solid #1e4566;
+}
  .projecttabs ul.nav > li.nav-item >a:not(:last-child):after {
   border-left: 10px solid #fff;
 }
@@ -276,7 +278,21 @@ min-height: 700px;
     margin-right: 2px;
     margin-top: 1px;
 }
-
+.projecttabs > ul.nav > li.nav-item> a.active:after {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 15px solid #1e4566;
+    position: absolute;
+    top: 50%;
+    margin-top: -19px;
+    left: 100%;
+    z-index: 4;
+    margin-left: 0px;
+}
 @media(max-width: 992px){
 /*project start*/
 
