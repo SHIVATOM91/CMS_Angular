@@ -43,9 +43,13 @@ export class HomeComponent implements OnInit {
 
  
 
-  constructor(private _section:PageService, private route:ActivatedRoute, private _projectcategory:ProjectCategoryService, private _service: ServicesService, private _partner: PartnersService, private _team: TeamsService) { }
+  constructor(private _section:PageService, private route:ActivatedRoute, private _projectcategory:ProjectCategoryService, private _service: ServicesService, private _partner: PartnersService, private _team: TeamsService) {
+    
+   }
 
   ngOnInit() {
+    console.log("nandi");
+    
     this.getAboutSection();
     this.getProjectDetails();
     this.getServicesDetails();
@@ -83,7 +87,6 @@ export class HomeComponent implements OnInit {
 
     this._service.get().subscribe(response => {
       this.servicesArray = response as ServiceObject[];
-      this.servicesArray = this.servicesArray.splice(0,4);
 
     })
   }

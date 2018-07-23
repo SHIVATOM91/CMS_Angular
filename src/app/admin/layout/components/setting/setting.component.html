@@ -51,24 +51,36 @@
               <div class="col">
                 <fieldset class="form-group">
                   <label for="">Primary Mobile Number</label>
-                  <input type="text" formControlName="primaryPhone" class="form-control"></fieldset>
+                  <input type="text" formControlName="primaryPhone" name="primaryPhone" class="form-control">
+                </fieldset>
               </div>
               <div class="col">
                 <fieldset class="form-group">
                   <label for="">Secondary Mobile Number</label>
-                  <input type="text" formControlName="secondaryPhone" class="form-control"></fieldset>
+                  <input type="text" formControlName="secondaryPhone" name="secondaryPhone" class="form-control">
+                </fieldset>
               </div>
             </div>
             <div class="row">
               <div class="col">
                 <fieldset class="form-group">
                   <label for="">Primary Email</label>
-                  <input type="text" formControlName="primaryEmail" class="form-control"></fieldset>
+                  <input type="mail" formControlName="primaryEmail" class="form-control">
+                  <div class="form-control-feedback text-danger" *ngIf="settingForm.get('primaryEmail').errors && (settingForm.get('primaryEmail').dirty || settingForm.get('primaryEmail').touched)">
+                    <p *ngIf="settingForm.get('primaryEmail').errors.required">Email is required</p>
+                    <p *ngIf="settingForm.get('primaryEmail').errors.pattern">The email address must contain at least the @ character</p>
+                  </div>
+                </fieldset>
               </div>
               <div class="col">
                 <fieldset class="form-group">
                   <label for="">Secondary Email</label>
-                  <input type="text" formControlName="secondaryEmail" class="form-control"></fieldset>
+                  <input type="email" formControlName="secondaryEmail" name="secondaryEmail" class="form-control">
+                  <div class="form-control-feedback text-danger" *ngIf="settingForm.get('secondaryEmail').errors && (settingForm.get('secondaryEmail').dirty || settingForm.get('secondaryEmail').touched)">
+                    <p *ngIf="settingForm.get('secondaryEmail').errors.required">Email is required</p>
+                    <p *ngIf="settingForm.get('secondaryEmail').errors.pattern">The email address must contain at least the @ character</p>
+                  </div>
+                </fieldset>
               </div>
             </div>
             <div class="row">

@@ -118,17 +118,20 @@
             </div>
         </li>
       </ul>
-      <div class="row">
-        
-        <div class="col-lg-3 col-md-3 col-sm-6" *ngFor="let service of servicesArray; let i = index;">
-            <div class="section-s">
-              <img [src]="'assets/images/service-'+i+'.png'">
-              <h5>{{ service.title }}</h5>
-              <div class="service_block" [innerHTML]="service.shortDescription | ellipsis:180"></div>
-              <a [routerLink]="[services_section_content?.properties.btn_link]" class="btn">{{services_section_content?.properties.btn_text}}</a>
-            </div>
-        </div>
-      </div>
+
+      <owl-carousel
+         [options]="{items: 4, dots: false, autoplay:true, loop: true, nav: false, margin:20, responsive: { '0' : { items:1}, '640': { items: 2}, '768': { items: 4} }}"
+         [items]="servicesArray"
+         [carouselClasses]="['owl-theme',  'sliding']">
+         <ng-container *ngFor="let service of servicesArray;let i = index">
+            <div class="section-s section-service">
+                <img [src]="'assets/images/service-'+i+'.png'">
+                <h5>{{ service.title }}</h5>
+                <div class="service_block"  [innerHTML]="service.shortDescription | ellipsis:180"></div>
+                <a [routerLink]="services_section_content?.properties.btn_link" class="btn">{{services_section_content?.properties.btn_text}}</a>
+              </div>
+         </ng-container>
+       </owl-carousel>
   </div>
 </section>
 

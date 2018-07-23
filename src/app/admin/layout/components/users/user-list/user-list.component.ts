@@ -27,7 +27,7 @@ export class UserListComponent implements OnInit {
         id:[''],
         fullName:['',Validators.required],
         roles:['',Validators.required],
-        email:['',[Validators.required, CustomValidators.email]],
+        email:['',[Validators.required, CustomValidators.email, Validators.pattern("[^ @]*@[^ @]*")]],
         password:password,
         password_confirmation:certainPassword
     })
@@ -73,6 +73,7 @@ export class UserListComponent implements OnInit {
       if(result){
         this.userService.delete(id).subscribe(response=>{
           this.getAllUsers();
+          console.log(this.getAllUsers())
         })
       }
     }, (reason) => {

@@ -28,6 +28,11 @@
 .service_block{
   min-height: 120px;
 }
+
+.section-service img{
+  width: auto !important;
+  margin: 0 auto;
+}
 /* about-section*/
 
 

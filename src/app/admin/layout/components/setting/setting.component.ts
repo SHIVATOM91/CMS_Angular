@@ -1,8 +1,9 @@
 import { environment } from './../../../../../environments/environment';
 import { SettingService } from './../../../../shared/services/setting.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { CustomValidators } from 'ng2-validation';
 
 @Component({
   selector: 'app-setting',
@@ -22,8 +23,8 @@ export class SettingComponent implements OnInit {
       description: [''],
       primaryPhone: [''],
       secondaryPhone: [''],
-      primaryEmail: [''],
-      secondaryEmail: [''],
+      primaryEmail: ['',[Validators.required, CustomValidators.email, Validators.pattern("[^ @]*@[^ @]*")]],
+      secondaryEmail: ['',[Validators.required, CustomValidators.email, Validators.pattern("[^ @]*@[^ @]*")]],
       primaryAddress: [''],
       secondaryAddress: [''],
       facebookLink: [''],
@@ -64,6 +65,7 @@ export class SettingComponent implements OnInit {
   }
 
   updateSettingData(){
+    this._service.validateAllFormFields(this.settingForm);
     this._service.create(this._service.createFormData(this.settingForm.value)).subscribe(response => {
       this.toastr.success('Settings Updated Successfully.');
     })

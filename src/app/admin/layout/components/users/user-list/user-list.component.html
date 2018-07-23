@@ -76,7 +76,7 @@
                 <input type="email" class="form-control" name="email" formControlName="email"  id="email" aria-describedby="email"  >
                 <div class="form-control-feedback text-danger" *ngIf="userForm.get('email').errors && (userForm.get('email').dirty || userForm.get('email').touched)">
                   <p *ngIf="userForm.get('email').errors.required">Email is required</p>
-                  <p *ngIf="userForm.get('email').errors.email">Invalid Emial Id</p>
+                  <p *ngIf="userForm.get('email').errors.pattern">The email address must contain at least the @ character</p>
                 </div>
               </div>
 
