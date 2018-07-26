@@ -15,6 +15,7 @@ export class ListProjectCategoryComponent implements OnInit {
   editing = {};
   selected = [];
   imgUrl= environment.imgUrl;
+  categoryFlag=false;
   columns = [
     { prop: 'title' },
     { name: 'Description' },
@@ -30,7 +31,7 @@ export class ListProjectCategoryComponent implements OnInit {
   getAllCategories(){
     this._service.get().subscribe(response => {
       this.categoryList = response as CategoryObject[];
-
+      this.categoryFlag=true;
     })
   }
 

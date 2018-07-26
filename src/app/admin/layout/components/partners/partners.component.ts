@@ -16,6 +16,7 @@ export class PartnersComponent implements OnInit {
   editing = {};
   selected = [];
   imgUrl=environment.imgUrl;
+  partnerFlag=false;
   columns = [
     { prop: 'title' },
     { name: 'Description' },
@@ -33,6 +34,7 @@ export class PartnersComponent implements OnInit {
   getAllPartners(){
     this._service.get().subscribe(response => {
       this.partnerList = response as PartnersObject[];
+      this.partnerFlag=true;
     })
   }
 

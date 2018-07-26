@@ -16,7 +16,7 @@
                             </div>
                         </div>
                       </div>
-                      
+                    <ng-container  *ngIf="bannerFlag">
                     <ngx-datatable 
                     class="material"
                     #sectionDatatable
@@ -52,6 +52,7 @@
                       </ng-template>
                     </ngx-datatable-column>
                     </ngx-datatable>
+                    </ng-container>
                 </div>
               </div>
           </ng-template>

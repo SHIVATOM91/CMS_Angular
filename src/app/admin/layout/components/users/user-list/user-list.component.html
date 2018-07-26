@@ -3,7 +3,7 @@
   </div>
   <div class="clearfix"></div>
   
-  
+  <ng-container *ngIf="userFlag">
   <ngx-datatable 
     class="material"
     #sectionDatatable
@@ -39,7 +39,7 @@
       </ng-template>
     </ngx-datatable-column>
   </ngx-datatable>
-
+</ng-container>
 
   <!--- Modal -->
   <ng-template #content let-c="close" let-d="dismiss">

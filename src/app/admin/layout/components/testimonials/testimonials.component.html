@@ -3,7 +3,7 @@
 </div>
 <div class="clearfix"></div>
 
-
+<ng-container *ngIf="testinomialFlag">
 <ngx-datatable 
   class="material"
   #sectionDatatable
@@ -38,3 +38,4 @@
     </ng-template>
   </ngx-datatable-column>
 </ngx-datatable>
+</ng-container>

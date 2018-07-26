@@ -21,7 +21,6 @@ export class SeoService extends DataService {
     console.log( config.title);
     
     this.meta.updateTag({ name: 'description', content: config.description });
-
     this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
     this.meta.updateTag({ name: 'twitter:site', content: '@angularfirebase' });
     this.meta.updateTag({ name: 'twitter:title', content: config.title });

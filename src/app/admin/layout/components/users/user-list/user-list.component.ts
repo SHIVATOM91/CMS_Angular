@@ -19,6 +19,7 @@ export class UserListComponent implements OnInit {
   modalTitle;
   errorResponse;
   modalReference;
+  userFlag=false;
   userForm:FormGroup;
   constructor( private userService: UserService , private auth:AuthService, private fb:FormBuilder, private router:Router, private modalService:NgbModal,private toastr: ToastrService) { 
     let password = new FormControl('', Validators.required);
@@ -42,6 +43,7 @@ export class UserListComponent implements OnInit {
       this.userList=response;
       if(this.auth.currentUser.roles!="admin")
       this.filterUser('editer');
+      this.userFlag=true;
     })
   }
 

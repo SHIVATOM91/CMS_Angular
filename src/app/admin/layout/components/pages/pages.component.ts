@@ -13,6 +13,7 @@ export class PagesComponent implements OnInit {
 
   pageContent;
   bannerModaltitle;
+  pagesFlag=false;
   constructor(private router:Router , private modalService:NgbModal, private _pageServ:PageService) {
     this.getAllPageList();
   }
@@ -23,6 +24,7 @@ export class PagesComponent implements OnInit {
   getAllPageList(){
     this._pageServ.get().subscribe(result=>{
       this.pageContent=result;
+      this.pagesFlag=true;
     })
   }
   addNewPage(){

@@ -16,6 +16,7 @@ export class AllPostComponent implements OnInit {
   editing = {};
   selected = [];
   imgUrl=environment.imgUrl;
+  postFlag=false;
   columns = [
     { prop: 'title' },
     { name: 'Description' },
@@ -32,6 +33,7 @@ export class AllPostComponent implements OnInit {
   getAllPosts(){
     this._service.get().subscribe(response => {
       this.postList = response as PostObject[];
+      this.postFlag=true;
       console.log(this.postList);
       
     })

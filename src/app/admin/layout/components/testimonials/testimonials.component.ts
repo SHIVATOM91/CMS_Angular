@@ -16,6 +16,7 @@ export class TestimonialsComponent implements OnInit {
   editing = {};
   selected = [];
   imgUrl=environment.imgUrl;
+  testinomialFlag=false;
   testimonialList: Array<TestimonialsObject>;
 
   constructor(private modalService:NgbModal, private _service: TestimonialsService, private router:Router) { }
@@ -28,6 +29,7 @@ export class TestimonialsComponent implements OnInit {
   getAllTestimonials(){
     this._service.get().subscribe(response => {
       this.testimonialList = response as TestimonialsObject[];
+      this.testinomialFlag=true;
     })
   }
 

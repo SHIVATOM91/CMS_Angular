@@ -5,6 +5,7 @@
 </div>
 <div class="row">
     <div class="container-fluid">
+        <ng-container  *ngIf="pagesFlag">
         <ngx-datatable 
             class="material"
             [columnMode]="'force'"
@@ -39,6 +40,7 @@
             </ngx-datatable-column>
         
         </ngx-datatable>
+    </ng-container>
     </div>
 </div>
 

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class ListComponent implements OnInit {
   editing = {};
   selected = [];
+  categoryFlag=false;
   columns = [
     { prop: 'title' },
     { name: 'Description' },
@@ -25,7 +26,7 @@ export class ListComponent implements OnInit {
   getAllCategories(){
     this._service.get().subscribe(response => {
       this.categoryList = response as CategoryObject[];
-
+  this.categoryFlag=true;
     })
   }
 

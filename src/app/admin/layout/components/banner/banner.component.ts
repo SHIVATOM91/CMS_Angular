@@ -21,6 +21,7 @@ export class BannerComponent implements OnInit {
   bannerForm: FormGroup;
   typeFormState: string =  "new";
   bannerContent;
+  bannerFlag=false;
   temp;
   bannerTypes;
   editTypeIndex=null;
@@ -44,6 +45,7 @@ export class BannerComponent implements OnInit {
   constructor(private _bannerServ:BannerService , private _bannerTypeServ: BannerTypeService, private modalService: NgbModal, private fb: FormBuilder,private toastr: ToastrService,) {}
 
   ngOnInit() {
+    // this.bannerForm= [];
     this.getAllBanner();
     this.getAllBannerTypes();
     this.errorMsgShow=false;
@@ -69,6 +71,7 @@ export class BannerComponent implements OnInit {
     this._bannerServ.get().subscribe(banner=>{
       this.bannerContent=banner;
       this.temp=this.bannerContent;
+      this.bannerFlag=true;
       this.selectedBannerId=this.bannerContent[0].banner_types_id;
       this.updateFilter();
     })

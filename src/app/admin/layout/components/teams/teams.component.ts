@@ -16,6 +16,7 @@ export class TeamsComponent implements OnInit {
   editing = {};
   selected = [];
   imgUrl=environment.imgUrl;
+  teamFlag=false;
   columns = [
     { prop: 'title' },
     { name: 'Description' },
@@ -33,6 +34,7 @@ export class TeamsComponent implements OnInit {
   getAllTeams(){
     this._service.get().subscribe(response => {
       this.teamList = response as TeamsObject[];
+      this.teamFlag=true;
     })
   }
 
@@ -49,7 +51,7 @@ export class TeamsComponent implements OnInit {
     const modalRef = this.modalService.open(AlertComponent);
     modalRef.componentInstance.type = 'danger';
     modalRef.componentInstance.title = 'Are you sure?';
-    modalRef.componentInstance.description = 'You want to delete this team';
+    modalRef.componentInstance.description = 'You want to delete this team member';
 
     modalRef.result.then((result) => {
 

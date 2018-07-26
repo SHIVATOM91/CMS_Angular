@@ -15,6 +15,7 @@ export class ServicesComponent implements OnInit {
   editing = {};
   selected = [];
   imgUrl=environment.imgUrl;
+  serviceFlag=false;
   columns = [
     { prop: 'title' },
     { name: 'Description' },
@@ -37,6 +38,7 @@ export class ServicesComponent implements OnInit {
   getAllServices(){
     this._service.get().subscribe(response => {
       this.serviceList = response as ServicesObject[];
+      this.serviceFlag=true;
     })
   }
 

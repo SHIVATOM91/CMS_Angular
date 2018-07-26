@@ -17,6 +17,7 @@ export class SectionsComponent  {
   sectionList;
   editing = {};
   rowIndex=0;
+  sectionFlag=false;
   @ViewChild('sectionDatatable')  sTable:any;
   @ViewChild('content')  content:any;
   
@@ -47,6 +48,8 @@ export class SectionsComponent  {
           property.push(this.initPropertySections(propertyResponse.key, propertyResponse.type , propertyResponse.id  ))
         })
       });
+
+      this.sectionFlag=true;
     });
   }
   addNewSection(){
@@ -135,6 +138,7 @@ export class SectionsComponent  {
 
   get sections(){
     return this.sectionForm.get('sections') as FormArray;
+   
   }
 
   getIdByRow(row){

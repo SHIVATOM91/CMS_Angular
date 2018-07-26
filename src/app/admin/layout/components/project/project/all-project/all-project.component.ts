@@ -15,6 +15,7 @@ export class AllProjectComponent implements OnInit {
   editing = {};
   selected = [];
   imgUrl=environment.imgUrl;
+  projectFlag=false;
   columns = [
     { prop: 'title' },
     { name: 'Description' },
@@ -32,6 +33,7 @@ export class AllProjectComponent implements OnInit {
   getAllProjects(){
     this._service.get().subscribe(response => {
       this.projectList = response as ProjectObject[];
+      this.projectFlag=true;
     })
   }
 
