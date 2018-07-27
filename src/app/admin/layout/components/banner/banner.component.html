@@ -174,7 +174,7 @@
                 <label>Banner image</label>
                 <input class="form-control" name="bannerimg" accept="image/*" (change)="handleFileInput($event)" type="file"  placeholder="Enter description"  [required]="bannerEditMode==false">
             </fieldset>
-            <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary pull-right" (click)="uploadBanner();"  *ngIf="bannerEditMode==false" >Add</button>
+            <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary pull-right" (click)="uploadBanner();"  *ngIf="bannerEditMode==false">Add</button>
             <button type="submit" [disabled]="!bannerForm.valid" class="btn btn-primary pull-right" (click)="uploadBanner();"  *ngIf="bannerEditMode==true" >Update</button>
         </form>
     </div>

@@ -28,7 +28,7 @@ export class UserListComponent implements OnInit {
         id:[''],
         fullName:['',Validators.required],
         roles:['',Validators.required],
-        email:['',[Validators.required, CustomValidators.email, Validators.pattern("[^ @]*@[^ @]*")]],
+        email:['',[Validators.required, CustomValidators.email]],
         password:password,
         password_confirmation:certainPassword
     })

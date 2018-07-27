@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   errorMsg;
   successMsg;
   ferrorMsg;
+  capsLockEnabled:any;
+  capMsg;
   constructor(private authService:AuthService , private router:Router, private forgot:ForgotService) { }
   ngOnInit() {
      if(this.authService.isloggedin()){
@@ -52,4 +54,19 @@ export class LoginComponent implements OnInit {
       this.ferrorMsg=response.error.email; 
     })
   }
+
+  eventHandler(event) {
+    let str = String.fromCharCode(event.which);
+    this.capsLockEnabled = (str.toLowerCase() === str && event.shiftKey) || (str.toUpperCase() === str && !event.shiftKey);
+        // console.log("Keypress. CapsLock enabled: " + this.capsLockEnabled.toString());
+        if(this.capsLockEnabled==true)
+       {
+        this.capMsg="cap lock is on"
+       }
+       else{
+        this.capMsg=""
+       } 
+        // console.log(event, event.keyCode, event.keyIdentifier);
+     } 
+
 }

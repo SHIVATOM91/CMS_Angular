@@ -3,7 +3,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { BannerService } from '../../../../shared/services/banner.service';
 import { environment } from '../../../../../environments/environment';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { AlertComponent } from '../../../../shared/components/alert/alert.component';
 import { ImagePopupComponent } from '../../../../shared/components/image-popup/image-popup.component';
@@ -16,6 +16,7 @@ import { ImagePopupComponent } from '../../../../shared/components/image-popup/i
   encapsulation:ViewEncapsulation.None
 })
 export class BannerComponent implements OnInit {
+  activeModal: any;
   /* type initialization */
   typeForm: FormGroup;
   bannerForm: FormGroup;
@@ -35,6 +36,7 @@ export class BannerComponent implements OnInit {
   imgUrl= environment.imgUrl;
   page = 4;
   closeResult;
+  modalReference;
   bannerEditMode=false;
   //modal variable
   bannerModal={
@@ -83,7 +85,7 @@ export class BannerComponent implements OnInit {
     this.errorMsgShow=false;
     this.bannerForm.get('bannerimg').setValidators(Validators.required);
     this.bannerForm.get('banner_types_id').setValue(this.selectedBannerId);
-    this.modalService.open(content);
+    this.modalReference = this.modalService.open(content);
   }
 
   editBanner(item, content){
@@ -93,7 +95,7 @@ export class BannerComponent implements OnInit {
     this.bannerForm.get('title').setValue(item.title);
     this.bannerForm.get('description').setValue(item.description);
     this.bannerForm.get('banner_types_id').setValue(item.banner_types_id);
-    this.modalService.open(content)
+    this.modalReference = this.modalService.open(content)
   }
 
   deleteBanner(index){
@@ -135,6 +137,12 @@ export class BannerComponent implements OnInit {
       if(this.bannerEditMode == false){
         this.bannerForm.reset();
       }
+      // this.modalReference.result.then((result) => {
+      //   this.closeResult = `Closed with: ${result}`;
+      // }, (reason) => {
+      //   this.closeResult = `Dismissed `;
+      // });
+      this.modalReference.close();
       this.toastr.success('Banner Published Successfully.');
     },
     error=>{
@@ -155,6 +163,7 @@ export class BannerComponent implements OnInit {
         if(response.success){
           this.bannerTypes.push(response.data);
           this.typeForm.reset();
+        
         }
       },
       error=>{})
@@ -177,6 +186,7 @@ export class BannerComponent implements OnInit {
           this.typeForm.reset();
           this.editTypeIndex=null;
           this.typeFormState="new";
+         
         }
       },error=>{
         console.log(error);

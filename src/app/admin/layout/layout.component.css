@@ -64,6 +64,11 @@
 .ngx-datatable.material:not(.cell-selection) .datatable-body-row:hover, .ngx-datatable.material:not(.cell-selection) .datatable-body-row:hover .datatable-row-group {
     background-color: #dfdddd !important;
 }
+.ngx-datatable .datatable-header .datatable-header-cell .datatable-header-cell-template-wrap {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: #404040 !important;
+}
 @media screen and (max-width: 992px) {
     .main-container {
         margin-left: 0px !important;
