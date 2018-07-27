@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { environment } from '../../../../../../environments/environment';
 import { UserService } from '../../../../../shared/services/user.service';
 import { Router } from '@angular/router';
@@ -11,7 +11,8 @@ import { AuthService } from '../../../../services/auth.service';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css']
+  styleUrls: ['./user-list.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class UserListComponent implements OnInit {
   imgUrl=environment.imgUrl;
@@ -21,7 +22,7 @@ export class UserListComponent implements OnInit {
   modalReference;
   userFlag=false;
   userForm:FormGroup;
-  constructor( private userService: UserService , private auth:AuthService, private fb:FormBuilder, private router:Router, private modalService:NgbModal,private toastr: ToastrService) { 
+  constructor( private userService: UserService , private auth:AuthService, private fb:FormBuilder, private router:Router, private modalService:NgbModal,private toastr: ToastrService) {
     let password = new FormControl('', Validators.required);
     let certainPassword = new FormControl('', CustomValidators.equalTo(password));
     this.userForm= this.fb.group({
@@ -70,7 +71,7 @@ export class UserListComponent implements OnInit {
     modalRef.componentInstance.type = 'danger';
     modalRef.componentInstance.title = 'Are you sure?';
     modalRef.componentInstance.description = 'You want to delete this user';
-    
+
     modalRef.result.then((result) => {
       if(result){
         this.userService.delete(id).subscribe(response=>{
@@ -86,7 +87,10 @@ export class UserListComponent implements OnInit {
 
   updateUser(){
     this.userService.create(this.userForm.value).subscribe(response=>{
-      this.toastr.success('User created Successfully.');
+      if(this.modalTitle == 'Edit User')
+        this.toastr.success('User updated Successfully.');
+      else
+        this.toastr.success('User updated Successfully.');
       this.userForm.reset();
       this.modalReference.close();
       this.getAllUsers();

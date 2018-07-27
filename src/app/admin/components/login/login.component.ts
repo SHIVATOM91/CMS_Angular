@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { CustomValidators } from 'ng2-validation';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
@@ -8,11 +9,12 @@ import { ForgotService } from '../../../shared/services/forgot.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
   view="login";
-  loginFrom:any;
+  loginForm;
   errorMsg;
   successMsg;
   ferrorMsg;
@@ -23,14 +25,14 @@ export class LoginComponent implements OnInit {
      if(this.authService.isloggedin()){
       this.router.navigate(['admin/dashboard'])
      }
-     this.loginFrom=new FormGroup({
-      email:new FormControl(Validators.required),
-      password:new FormControl(Validators.required)
+     this.loginForm=new FormGroup({
+        email:new FormControl('',[Validators.required, CustomValidators.email]),
+        password:new FormControl('',Validators.required)
      })
   }
 
-  login(form){
-    this.authService.login(form).subscribe(res=>{
+  login(){
+    this.authService.login(this.loginForm.value).subscribe(res=>{
         if(res){
           this.router.navigate(['admin/dashboard'])
         }else{
@@ -45,13 +47,13 @@ export class LoginComponent implements OnInit {
     console.log(formData);
     this.forgot.create(formData).subscribe(response=>{
       console.log(response);
-      
-      this.successMsg="A reset email has been sent! Please check your email."; 
+
+      this.successMsg="A reset email has been sent! Please check your email.";
       this.ferrorMsg=""
     },response=>{
       console.log(response);
-      
-      this.ferrorMsg=response.error.email; 
+
+      this.ferrorMsg=response.error.email;
     })
   }
 
@@ -65,8 +67,8 @@ export class LoginComponent implements OnInit {
        }
        else{
         this.capMsg=""
-       } 
+       }
         // console.log(event, event.keyCode, event.keyIdentifier);
-     } 
+     }
 
 }

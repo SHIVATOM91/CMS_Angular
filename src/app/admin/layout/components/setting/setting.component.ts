@@ -1,14 +1,15 @@
 import { environment } from './../../../../../environments/environment';
 import { SettingService } from './../../../../shared/services/setting.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidators } from 'ng2-validation';
 
 @Component({
   selector: 'app-setting',
   templateUrl: './setting.component.html',
-  styleUrls: ['./setting.component.css']
+  styleUrls: ['./setting.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SettingComponent implements OnInit {
   img_url= environment.imgUrl;
@@ -23,8 +24,8 @@ export class SettingComponent implements OnInit {
       description: [''],
       primaryPhone: [''],
       secondaryPhone: [''],
-      primaryEmail: ['',[Validators.required, CustomValidators.email, Validators.pattern("[^ @]*@[^ @]*")]],
-      secondaryEmail: ['',[Validators.required, CustomValidators.email, Validators.pattern("[^ @]*@[^ @]*")]],
+      primaryEmail: ['',[Validators.required, CustomValidators.email]],
+      secondaryEmail: ['',[Validators.required, CustomValidators.email]],
       primaryAddress: [''],
       secondaryAddress: [''],
       facebookLink: [''],

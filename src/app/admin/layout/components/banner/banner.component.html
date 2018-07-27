@@ -1,14 +1,17 @@
 <div class="row">
   <div class="col-md-12">
     <ngb-tabset class="w-100 banner-panel">
-      <ngb-tab title="List All">
+      <ngb-tab>
+          <ng-template ngbTabTitle>
+            <div (click)="typeForm.reset()">List All</div>
+          </ng-template>
           <ng-template ngbTabContent>
               <div class="card col-md-12">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-12">
                             <button *ngIf="selectedBannerId != ''" class="btn btn-primary pull-right" (click)="addBanner(content);"><i class="fa fa-plus" aria-hidden="true"></i> Add new</button>
-  
+
                             <div class="form-group">
                               <select name="" id="" class="form-control col-sm-3  mt-3"  (change)="updateFilter($event)">
                                 <option *ngFor="let type of bannerTypes; let i = index" [value]="type.id" >{{type.typeName}}</option>
@@ -17,7 +20,7 @@
                         </div>
                       </div>
                     <ng-container  *ngIf="bannerFlag">
-                    <ngx-datatable 
+                    <ngx-datatable
                     class="material"
                     #sectionDatatable
                     [columnMode]="'force'"
@@ -46,9 +49,9 @@
 
                     <ngx-datatable-column name="Actions" >
                       <ng-template let-value="value" let-row="row"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                       
+
                         <button class="fa fa-pencil-square-o icon-btn" aria-hidden="true" (click)="editBanner(row, content)"></button>
-                        <button class="fa fa-trash icon-btn" aria-hidden="true" (click)="deleteBanner(rowIndex )"></button>   
+                        <button class="fa fa-trash icon-btn" aria-hidden="true" (click)="deleteBanner(rowIndex )"></button>
                       </ng-template>
                     </ngx-datatable-column>
                     </ngx-datatable>
@@ -101,7 +104,7 @@
                             <div class="form-group">
                               <label for="menutitle">Category name:</label>
                               <input type="text" class="form-control" name="menuTittle" formControlName="typeName"  id="menutypeName" aria-describedby="menutypeName"  required>
-                              <div class="form-control-feedback text-danger" *ngIf="typeForm.get('typeName').errors && (typeForm.get('typeName').dirty || typeForm.get('typeName').touched)">
+                              <div class="form-control-feedback text-danger" *ngIf="typeForm.get('typeName').errors &&  typeForm.get('typeName').touched">
                                 <p *ngIf="typeForm.get('typeName').errors.required">Category name is required</p>
                                 <p *ngIf="typeForm.get('typeName').errors.minlength">Category name must be {{ typeForm.get('typeName').errors.minlength.requiredLength }} characters long</p>
                               </div>
@@ -136,13 +139,13 @@
                         </table>
                       </div>
                     </div>
-                
+
                 </div>
               </div>
           </ng-template>
       </ngb-tab>
   </ngb-tabset>
-  </div>   
+  </div>
 
 </div>
 <!---Ng Bootstrap Modal -->
@@ -162,7 +165,7 @@
               <div class="form-group">
               <label for="menutitle">Enter banner title:</label>
               <input type="text" class="form-control" name="menuTittle" formControlName="title"  id="menutitle" aria-describedby="menutitle"  required>
-              <div class="form-control-feedback text-danger" *ngIf="bannerForm.get('title').errors && (bannerForm.get('title').dirty || bannerForm.get('title').touched)">
+              <div class="form-control-feedback text-danger" *ngIf="bannerForm.get('title').errors && bannerForm.get('title').touched">
                 <p *ngIf="bannerForm.get('title').errors.required">Title is required</p>
               </div>
             </div>

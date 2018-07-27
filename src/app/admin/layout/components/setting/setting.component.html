@@ -66,9 +66,9 @@
                 <fieldset class="form-group">
                   <label for="">Primary Email</label>
                   <input type="mail" formControlName="primaryEmail" class="form-control">
-                  <div class="form-control-feedback text-danger" *ngIf="settingForm.get('primaryEmail').errors && (settingForm.get('primaryEmail').dirty || settingForm.get('primaryEmail').touched)">
-                    <p *ngIf="settingForm.get('primaryEmail').errors.required">Email is required</p>
-                    <p *ngIf="settingForm.get('primaryEmail').errors.pattern">The email address must contain at least the @ character</p>
+                  <div class="form-control-feedback text-danger" *ngIf="settingForm.get('primaryEmail').errors && settingForm.get('primaryEmail').touched">
+                    <p *ngIf="settingForm.get('primaryEmail').errors.required" class="mb-0">Email is required</p>
+                    <p *ngIf="settingForm.get('primaryEmail').errors?.email " class="mb-0">Please enter valid email</p>
                   </div>
                 </fieldset>
               </div>
@@ -76,9 +76,9 @@
                 <fieldset class="form-group">
                   <label for="">Secondary Email</label>
                   <input type="email" formControlName="secondaryEmail" name="secondaryEmail" class="form-control">
-                  <div class="form-control-feedback text-danger" *ngIf="settingForm.get('secondaryEmail').errors && (settingForm.get('secondaryEmail').dirty || settingForm.get('secondaryEmail').touched)">
-                    <p *ngIf="settingForm.get('secondaryEmail').errors.required">Email is required</p>
-                    <p *ngIf="settingForm.get('secondaryEmail').errors.pattern">The email address must contain at least the @ character</p>
+                  <div class="form-control-feedback text-danger" *ngIf="settingForm.get('secondaryEmail').errors && settingForm.get('secondaryEmail').touched">
+                    <p *ngIf="settingForm.get('secondaryEmail').errors.required" class="mb-0">Email is required</p>
+                    <p *ngIf="settingForm.get('secondaryEmail').errors?.email" class="mb-0">Please enter valid email</p>
                   </div>
                 </fieldset>
               </div>
@@ -150,7 +150,7 @@
           </ng-container>
 
           <div class="clearfix"></div>
-          <button class="btn btn-primary" (click)="updateSettingData()">Save</button>
+          <button class="btn btn-primary" type="button" [disabled]="settingForm.invalid" (click)="updateSettingData()">Save</button>
         </form>
       </div>
     </div>

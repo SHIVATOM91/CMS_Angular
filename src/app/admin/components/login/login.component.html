@@ -3,28 +3,26 @@
         <div class="header">
             <div class="logo"> </div>
         </div>
-        
+
         <div class="body">
-            <form action="" *ngIf="view=='login'" class="tab-pane active" id="signin"  role="tabpanel" aria-labelledby="signin-tab"  #f="ngForm" (ngSubmit)="login(f.value)" (keyup)="errorMsg=''" novalidate>
+            <form action="" *ngIf="view=='login'" class="tab-pane active" id="signin"  role="tabpanel" aria-labelledby="signin-tab"  [formGroup]="loginForm" (ngSubmit)="login()" (keyup)="errorMsg=''">
                 <div class="alert alert-danger" *ngIf="errorMsg">
                 {{errorMsg}}
                 </div>
                 <div class="form-group">
-        
-                 
-              <input type="email" name="email"  ngModel   #email="ngModel" placeholder="Email address"  class="form-control" id="log-email" email required>
-                    <small class="small text-danger d-block  text-left" *ngIf="email.invalid  && (email.dirty || email.touched)">
-                        <div *ngIf="email.errors.required">email is required</div>
-                        <div *ngIf="email.dirty  && email.errors?.email">Invalid email id</div>
-                    </small>
-                    
+                  <input type="email" name="email" formControlName="email" placeholder="Email address"  class="form-control" id="log-email">
+                  <small class="small text-danger d-block  text-left" *ngIf="loginForm.get('email').errors  && loginForm.get('email').touched">
+                      <div *ngIf="loginForm.get('email').errors.required">email is required</div>
+                      <div *ngIf="loginForm?.get('email').errors?.email">Invalid email id</div>
+                  </small>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="password" ngModel  placeholder="Password"  #password="ngModel" class="form-control" id="log-pwd" (keypress)="eventHandler($event)"  required>
-                    <small class="small text-danger d-block text-left" *ngIf="password.invalid && password.touched">Please enter your password </small>
-                    <!-- <small class="small text-danger d-block text-left caps-lock-alert">{{capMsg}}</small> -->
+                    <input type="password" name="password" formControlName="password"  placeholder="Password"  class="form-control" id="log-pwd" (keypress)="eventHandler($event)">
+                    <small class="small text-danger d-block  text-left" *ngIf="loginForm.get('password').errors  && loginForm.get('password').touched">
+                        <div *ngIf="loginForm.get('password').errors.required">Password is required</div>
+                    </small>
                 </div>
-                <div class="text-center" *ngIf="view=='login'" ><button type="submit" class="btn -btn-primary login-btn" [disabled]="!f.valid" (click)="login(f.value)" >Login</button></div>
+                <div class="text-center" *ngIf="view=='login'" ><button type="submit" class="btn -btn-primary login-btn" [disabled]="!loginForm.valid">Login</button></div>
             </form>
             <form #forgotForm="ngForm" *ngIf="view!='login'">
                 <div class="alert alert-danger" *ngIf="ferrorMsg">
@@ -35,12 +33,12 @@
                 </div>
                 <div class="form-group">
                     <input type="email" name="email"  ngModel (focus)="ferrorMsg=''"   #email="ngModel" placeholder="Email Address"  class="form-control" email id="log-email" required>
-                    <small class="small text-danger" *ngIf="email.invalid && email.touched">Please enter your first name </small>
+                    <small class="small text-danger" *ngIf="email.invalid && email.touched">Please enter email </small>
                 </div>
                 <div class="text-center" *ngIf="view!='login'"><button type="submit" class="btn -btn-primary login-btn" [disabled]="!forgotForm.valid" (click)="getNewPass(forgotForm.value)" >Get New Pasword</button></div>
             </form>
         </div>
-            
+
         <div class="footer">
             <p *ngIf="view=='login'" class="text-right text-secondary forgot_password" (click)="view='forgot'">Forgot password?</p>
             <p *ngIf="view!='login'" class="text-right text-secondary forgot_password" (click)="view='login'">Back to login</p>

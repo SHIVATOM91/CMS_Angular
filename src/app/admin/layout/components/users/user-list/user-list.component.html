@@ -2,9 +2,9 @@
     <button type="button" class="btn btn-primary pull-right mt-0" (click)="addUser(content);">Add New</button>
   </div>
   <div class="clearfix"></div>
-  
+
   <ng-container *ngIf="userFlag">
-  <ngx-datatable 
+  <ngx-datatable
     class="material"
     #sectionDatatable
     [columnMode]="'force'"
@@ -12,13 +12,13 @@
     [footerHeight]="40"
     [rowHeight]="'auto'"
     [rows]="userList">
-  
+
     <ngx-datatable-column name="User Name" prop="name"   >
       <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
           {{value}}
       </ng-template>
     </ngx-datatable-column>
-  
+
     <ngx-datatable-column name="Role" prop="roles" >
       <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
         <span *ngIf="value=='editer'">Editor </span>
@@ -35,7 +35,7 @@
     <ngx-datatable-column name="Actions" >
       <ng-template let-value="value" let-row="row"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
         <button class="fa fa-pencil-square-o icon-btn" aria-hidden="true" (click)="editUser(rowIndex,content)"></button>
-        <button class="fa fa-trash icon-btn" aria-hidden="true" (click)="deleteUser(rowIndex , row.id)"></button>   
+        <button class="fa fa-trash icon-btn" aria-hidden="true" (click)="deleteUser(rowIndex , row.id)"></button>
       </ng-template>
     </ngx-datatable-column>
   </ngx-datatable>
@@ -58,11 +58,11 @@
               <div class="form-group">
                 <label for="menutitle">Enter Username:</label>
                 <input type="text" class="form-control" name="fullName" formControlName="fullName"  id="menutitle" aria-describedby="menutitle"  required>
-                <div class="form-control-feedback text-danger" *ngIf="userForm.get('fullName').errors && (userForm.get('fullName').dirty || userForm.get('fullName').touched)">
-                  <p *ngIf="userForm.get('fullName').errors.required">Username is required</p>
+                <div class="form-control-feedback text-danger" *ngIf="userForm.get('fullName').errors && userForm.get('fullName').touched">
+                  <small *ngIf="userForm.get('fullName').errors.required">Username is required</small>
                 </div>
               </div>
-  
+
               <div class="form-group">
                 <label for="menutitle">Select User Role:</label>
                 <select class="form-control" formControlName="roles">
@@ -74,35 +74,34 @@
               <div class="form-group">
                 <label for="email">Enter Email:</label>
                 <input type="email" class="form-control" name="email" formControlName="email"  id="email" aria-describedby="email"  >
-                <div class="form-control-feedback text-danger" *ngIf="userForm.get('email').errors && (userForm.get('email').dirty || userForm.get('email').touched)">
-                  <p *ngIf="userForm.get('email').errors.required">Email is required</p>
-                  <p *ngIf="userForm.get('email').errors?.email  && (userForm.get('email').touched)">Please enter valid email</p>
+                <div class="form-control-feedback text-danger" *ngIf="userForm.get('email').errors && userForm.get('email').touched">
+                  <small *ngIf="userForm.get('email').errors.required">Email is required</small>
+                  <small *ngIf="userForm.get('email').errors?.email">Please enter valid email</small>
                 </div>
               </div>
 
               <div class="form-group" *ngIf="modalTitle != 'Edit User'">
                 <label for="password">Enter password:</label>
                 <input type="password" class="form-control" name="password" formControlName="password"  id="password" aria-describedby="password"  required>
-                <div class="form-control-feedback text-danger" *ngIf="userForm.get('password').errors && (userForm.get('password').dirty || userForm.get('password').touched)">
-                  <p *ngIf="userForm.get('password').errors.required">Password is required</p>
-                  
+                <div class="form-control-feedback text-danger" *ngIf="userForm.get('password').errors && userForm.get('password').touched">
+                  <small *ngIf="userForm.get('password').errors.required">Password is required</small>
+
                 </div>
               </div>
 
               <div class="form-group" *ngIf="modalTitle != 'Edit User'">
                 <label for="password_confirmation">Re-enter password:</label>
                 <input type="password" class="form-control" name="password_confirmation" formControlName="password_confirmation"  id="password_confirmation" aria-describedby="password_confirmation"  required>
-                <div class="form-control-feedback text-danger" *ngIf="userForm.get('password_confirmation').errors && (userForm.get('password_confirmation').dirty || userForm.get('password_confirmation').touched)">
-                  <p *ngIf="userForm.get('password_confirmation').errors.required">Invalid password</p>
-                  <p *ngIf="userForm.get('password_confirmation').errors?.equalTo && userForm.get('password_confirmation').dirty">The password confirmation does not match</p>
+                <div class="form-control-feedback text-danger" *ngIf="userForm.get('password_confirmation').errors && userForm.get('password_confirmation').touched">
+                  <small *ngIf="userForm.get('password_confirmation').errors.required">Password confirmation required</small>
+                  <small *ngIf="userForm.get('password_confirmation').errors?.equalTo">The password confirmation does not match</small>
                 </div>
               </div>
-              
+
               <button *ngIf="modalTitle == 'Add User'" [disabled]="userForm.invalid" type="submit" class="btn btn-primary pull-right" (click)="updateUser()" ><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
               <button *ngIf="modalTitle == 'Edit User'" [disabled]="userForm.invalid" type="submit" class="btn btn-primary pull-right" (click)="updateUser()" ><i class="fa fa-plus" aria-hidden="true"></i> Update</button>
           </form>
         </div>
       </div>
     </ng-template>
-  
-  
+

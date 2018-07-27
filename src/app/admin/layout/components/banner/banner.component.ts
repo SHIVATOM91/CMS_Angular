@@ -26,7 +26,7 @@ export class BannerComponent implements OnInit {
   temp;
   bannerTypes;
   editTypeIndex=null;
-  
+
   // end of type var
   selectedBannerId="";
   image;
@@ -107,7 +107,7 @@ export class BannerComponent implements OnInit {
     modalRef.result.then((result) => {
       if(result){
         this._bannerServ.delete(this.bannerContent[index].id).subscribe(response => {
-          this.bannerContent.splice(index,1)
+          this.getAllBanner();
         })
       }
     }, (reason) => {
@@ -130,7 +130,7 @@ export class BannerComponent implements OnInit {
     const modalRef = this.modalService.open(ImagePopupComponent);
     modalRef.componentInstance.url = value;
   }
-  
+
   uploadBanner(){
     this._bannerServ.create(this._bannerServ.createFormData(this.bannerForm.value)).subscribe( response => {
       this.getAllBanner();
@@ -163,7 +163,7 @@ export class BannerComponent implements OnInit {
         if(response.success){
           this.bannerTypes.push(response.data);
           this.typeForm.reset();
-        
+
         }
       },
       error=>{})
@@ -186,7 +186,7 @@ export class BannerComponent implements OnInit {
           this.typeForm.reset();
           this.editTypeIndex=null;
           this.typeFormState="new";
-         
+
         }
       },error=>{
         console.log(error);
@@ -199,7 +199,7 @@ export class BannerComponent implements OnInit {
       return false;
     }
     this._bannerTypeServ.delete(this.bannerTypes[index].id).subscribe(response=>{
-      this.bannerTypes.splice(index,1)
+      this.getAllBannerTypes();
       this.getAllBanner();
     })
   }

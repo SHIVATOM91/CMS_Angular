@@ -24,3 +24,12 @@
   overflow: hidden !important;
 }
 
+/*to adjust error height*/
+fieldset{
+  min-height: 93px;
+}
+
+.form-group{
+  margin-bottom: 0.3rem;
+}
+

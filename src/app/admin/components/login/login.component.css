@@ -76,3 +76,8 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     display: inline;
     float: right;
 }
+
+.form-group{
+  min-height: 68px;
+  margin-bottom: 0.2rem;
+}
