@@ -22,6 +22,7 @@ export class ServicesComponent implements OnInit {
   constructor(private _section:PageService, private _sectionservices:ServicesService,private seo:SeoService, private router:Router) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this._section.getOuterPageSections(this.services_section_id).subscribe(response=>{
       this.services_section_content=response as Section;
     })
@@ -30,15 +31,15 @@ export class ServicesComponent implements OnInit {
       if(this.servicesList.length > 0){
         this.currentService = this.servicesList[0];
       }
-    })  
+    })
 
     this._section.getBy(this.pageId).subscribe(response=>{
       this.pageContent=response;
 
-           
+
       this.seo.generateTags({
-        title: this.pageContent.metaTitle, 
-        description: this.pageContent.metaDescription, 
+        title: this.pageContent.metaTitle,
+        description: this.pageContent.metaDescription,
         image: this.pageContent.canonicalUrl,
         slug: this.router.url.split('/')[1]
       })

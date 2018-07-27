@@ -27,6 +27,10 @@ export class PageService  extends DataService {
     return this.http.get(this.apiUrl+"page-section/outer/"+section_id, this.token)
   }
 
+  getArraySections(arrayObj){
+    return this.http.post(this.apiUrl+"page-section/outer/array",{sectionsArray :arrayObj}, this.token)
+  }
+
   updatePageSection(formData){
       return this.http.post(this.apiUrl+"page-section" , formData , this.token );
   }

@@ -1,7 +1,7 @@
 <section class="footer" *ngIf="settingData">
     <div class="links">
       <ng-container *ngFor="let list of menuList" >
-        <a   routerLink="/{{list.pageSlug}}" *ngIf="list.linkType=='page'" >{{list.title}}</a>
+        <a  routerLink="/{{list.pageSlug=='home' ? '' : '/'+list.pageSlug}}" *ngIf="list.linkType=='page'" >{{list.title}}</a>
         <a  [href]="list.customLink" *ngIf="list.linkType=='custom'"  target="_blank">{{list.title}}</a>
       </ng-container>
     </div>
@@ -32,7 +32,7 @@
               <img class="align-self-start mr-3" src="assets/images/footer_address.png">
               <div class="media-body">
                 <h5 class="mt-4">Address</h5>
-                <p>{{ settingData?.primaryAddress }}</p>
+                <p><a [href]="'mailto:'+settingData?.primaryAddress">{{ settingData?.primaryAddress }}</a></p>
               </div>
             </div>
             <div class="media">
@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="col-lg-12 copyright">
-            <p >{{ settingData?.footerMessage }} - Developed By : <a href="https://www.bixbytessolutions.com" target="_blank">BixBytes Solutions</a></p>
+            <p >{{ settingData?.footerMessage }} - Developed By: <a href="https://www.bixbytessolutions.com" target="_blank">BixBytes Solutions</a></p>
           </div>
       </div>
      </div>

@@ -1,4 +1,4 @@
-
+<div class="height-wrapper">
 <section class="aboutus" *ngIf="about_section_content">
   <div class="container">
   <div class="row">
@@ -106,7 +106,7 @@
 
 
 
-<section class="servicesection">
+<section class="servicesection"   *ngIf="servicesArray">
   <div class="container">
       <ul class="list-unstyled askhaed">
         <li class="media">
@@ -137,7 +137,7 @@
 
 
 
-<section class="partnersection">
+<section class="partnersection"  *ngIf="partnerArray">
   <div class="container cs">
      <ul class="list-unstyled askhaed">
         <li class="media">
@@ -166,7 +166,7 @@
 
 
 
-<section class="teamsection">
+<section class="teamsection" *ngIf="teamArray">
     <div class="container ">
        <ul class="list-unstyled askhaed">
           <li class="media">
@@ -193,3 +193,4 @@
         </owl-carousel>
     </div>
  </section>
+</div>

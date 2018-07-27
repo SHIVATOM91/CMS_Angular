@@ -1,7 +1,7 @@
 import { TeamsService } from './../../../shared/services/teams.service';
 import { PartnersService } from './../../../shared/services/partners.service';
 import { ServicesService } from './../../../shared/services/services.service';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { PageService } from '../../../shared/services/page.service';
 import { environment } from '../../../../environments/environment';
 import { ProjectCategoryService } from '../../../shared/services/project-category.service';
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./home.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,  OnDestroy {
   img_url=environment.imgUrl;
   about_section_id=149;
   about_section_content: Section;
@@ -41,32 +41,50 @@ export class HomeComponent implements OnInit {
   team_section_content: Section;
   teamArray: ServiceObject[];
 
- 
+  //array of sections
+  arraySectObj=[
+    {
+      key: 'about_section_content',
+      id: 149
+    },
+    {
+      key: 'project_section_content',
+      id: 154
+    },
+    {
+      key: 'services_section_content',
+      id: 150
+    },
+    {
+      key: 'partner_section_content',
+      id: 151
+    }
+  ]
 
   constructor(private _section:PageService, private route:ActivatedRoute, private _projectcategory:ProjectCategoryService, private _service: ServicesService, private _partner: PartnersService, private _team: TeamsService) {
-    
+
    }
 
   ngOnInit() {
-    console.log("nandi");
-    
-    this.getAboutSection();
+    window.scrollTo(0, 0);
+    this._section.getArraySections(this.arraySectObj).subscribe(response=>{
+      let arraySect = response as Section[];
+      this.about_section_content=arraySect['about_section_content'];
+      this.project_section_content=arraySect['project_section_content'];
+      this.services_section_content=arraySect['services_section_content'];
+      this.partner_section_content=arraySect['partner_section_content'];
+    })
+
     this.getProjectDetails();
     this.getServicesDetails();
     this.getPartnerDetails();
     this.getTeamDetails();
   }
 
-  getAboutSection(){
-    this._section.getOuterPageSections(this.about_section_id).subscribe(response=>{
-      this.about_section_content=response as Section;
-    })
+  ngOnDestroy() {
   }
 
   getProjectDetails(){
-    this._section.getOuterPageSections(this.project_section_id).subscribe(response=>{
-      this.project_section_content=response as Section;
-    })
 
     this._projectcategory.getProjectcategories().subscribe(response=>{
       this.projectCategorySlider=response;
@@ -74,16 +92,11 @@ export class HomeComponent implements OnInit {
         this.toggleProjectMenu(this.projectCategorySlider[0].id, 0);
       }
     })
- 
+
 
   }
 
   getServicesDetails(){
-
-    this._section.getOuterPageSections(this.services_section_id).subscribe(response=>{
-      this.services_section_content=response as Section;
-    })
-
 
     this._service.get().subscribe(response => {
       this.servicesArray = response as ServiceObject[];
@@ -92,9 +105,6 @@ export class HomeComponent implements OnInit {
   }
 
   getPartnerDetails(){
-    this._section.getOuterPageSections(this.partner_section_id).subscribe(response=>{
-      this.partner_section_content=response as Section;
-    })
 
     this._partner.getPartners().subscribe(response=>{
       this.partnerArray=response as ServiceObject[];
@@ -102,9 +112,6 @@ export class HomeComponent implements OnInit {
   }
 
   getTeamDetails(){
-    this._section.getOuterPageSections(this.team_section_id).subscribe(response=>{
-      this.team_section_content=response as Section;
-    })
 
     this._team.getTeams().subscribe(response=>{
       this.teamArray=response as ServiceObject[];

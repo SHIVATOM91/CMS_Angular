@@ -28,27 +28,28 @@ export class ContactComponent implements OnInit {
     this.form = this.fb.group({
       firstName: ['',[Validators.required]],
       email: ['',[Validators.required, Validators.pattern(/\S+@\S+\.\S+/)]],
-      contact: ['', [Validators.required]],
+      contact: ['', [Validators.required, Validators.pattern(/^[+]?[0-9 ]{10,}$/)]],
       message: ['']
     });
    }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this._section.getOuterPageSections(this.contactus_section_id).subscribe(response=>{
       this.contactus_section_content=response as Section;
-    })   
+    })
 
     this.getSettingData();
 
     this._section.getBy(this.pageId).subscribe(response=>{
       this.pageContent=response;
       this.seo.generateTags({
-        title: this.pageContent.metaTitle, 
-        description: this.pageContent.metaDescription, 
+        title: this.pageContent.metaTitle,
+        description: this.pageContent.metaDescription,
         image: this.pageContent.canonicalUrl,
         slug: this.router.url.split('/')[1]
       })
-    })  
+    })
 
     // this.seo.getPageMeta(this.pageId).subscribe(response=>{
     //  this.pageContent=response;
@@ -67,7 +68,7 @@ export class ContactComponent implements OnInit {
           this.errorMsg=true;
           this.loading=false;
         })
-      } 
+      }
   }
 
   getSettingData(){

@@ -21,22 +21,27 @@ export class AboutusComponent implements OnInit {
   constructor(private _section:PageService, private _testimonials:TestimonialsService, private seo:SeoService, private router:Router) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
+    this._section.getBy(this.pageId).subscribe(response=>{
+      this.pageContent=response;
 
+      this.seo.generateTags({
+        title: this.pageContent.metaTitle,
+        description: this.pageContent.metaDescription,
+        image: this.pageContent.canonicalUrl,
+        slug: this.router.url.split('/')[1]
+      })
+      this.getPageSection();
+    })
+
+  }
+  getPageSection(){
     this._section.getOuterPageSections(this.aboutus_section_id).subscribe(response=>{
       this.aboutus_section_content=response as Section;
+      this.getAboutSlider();
     })
-
-    this._section.getBy(this.pageId).subscribe(response=>{
-    this.pageContent=response;
-          
-    this.seo.generateTags({
-      title: this.pageContent.metaTitle, 
-      description: this.pageContent.metaDescription, 
-      image: this.pageContent.canonicalUrl,
-      slug: this.router.url.split('/')[1]
-    })
-    })
-
+  }
+  getAboutSlider(){
     this._testimonials.getTestimonials().subscribe(response=>{
       this.aboutSlider=response;
     })

@@ -13,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ForgotComponent } from './components/forgot/forgot.component';
 import { ForgotService } from '../shared/services/forgot.service';
+import { NoopAnimationsModule } from '../../../node_modules/@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [ LoginComponent, ForgotComponent],

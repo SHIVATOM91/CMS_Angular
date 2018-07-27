@@ -16,7 +16,7 @@
          </div>
       </div>
       </div>
-    
+
       <div class="container">
       <div class="row">
         <div class="col-md-12 projecttabs">
@@ -26,18 +26,18 @@
                     <a  class="nav-link" [class.active]="category.id == currentProjectId" id="pills-home-tab" data-toggle="pill"  (click)="setProjectContent(category.id, i)" role="tab" aria-controls="pills-one" aria-selected="true"> {{category.title}}</a>
                 </li>
               </ng-container>
-          
+
            </ul>
            <div class="tab-content customtabpane" id="pills-tabContent">
-           
+
               <div  class="tab-pane fade show" class="active"  id="pills-one"  role="tabpanel" aria-labelledby="pills-home-tab" >
-                
-                <div class="row">
-                  
-                    <p class="text-center d-block" *ngIf="projectList.length<=0">No Projects Found.</p>
+
+                <div class="row" *ngIf="projectList != undefined">
+
+                    <p class="text-center d-block" *ngIf="projectList.length==0">No Projects Found.</p>
                     <ng-container  *ngFor="let project of projectList; let i=index">
                     <div class="col-md-4 col-sm-6" >
-                     
+
                        <div class="box">
                           <img [src]="img_url + project.image" class="img-fluid">
                           <div class="box-content">
@@ -47,13 +47,13 @@
                              </div>
                           </div>
                        </div>
-                      
+
                     </div>
-                  </ng-container>  
-                 </div>  
-                 
+                  </ng-container>
+                 </div>
+
               </div>
-      
+
            </div>
         </div>
      </div>

@@ -17,47 +17,49 @@ export class ProjectComponent implements OnInit {
   project_section_id=139;
   project_section_content: Section;
   categoryList;
-  projectList=[];
+  projectList=undefined;
   currentProjectId:undefined;
   pageContent;
   pageId=10;
   constructor(private _section:PageService, private _postcategory:ProjectCategoryService, private _projectservice:ProjectService, private seo:SeoService, private router:Router) { }
 
   ngOnInit() {
-    this._section.getOuterPageSections(this.project_section_id).subscribe(response=>{
-      this.project_section_content=response as Section;
-    })
-    
-    this._postcategory.getProjectcategories().subscribe(response=>{
-      this.categoryList=response;
-      this.setProjectContent(this.categoryList[0].id, 0)
-    }) 
+      window.scrollTo(0, 0);
 
-   
+
+
     this._section.getBy(this.pageId).subscribe(response=>{
       this.pageContent=response;
-
+      this.getSectionDetails();
       this.seo.generateTags({
-        title: this.pageContent.metaTitle, 
-        description: this.pageContent.metaDescription, 
+        title: this.pageContent.metaTitle,
+        description: this.pageContent.metaDescription,
         image: this.pageContent.canonicalUrl,
         slug: this.router.url.split('/')[1]
       })
-      console.log(this.pageContent);
       })
+  }
+
+  getProjects(){
+    this._postcategory.getProjectcategories().subscribe(response=>{
+      this.categoryList=response;
+      this.setProjectContent(this.categoryList[0].id, 0)
+    })
+  }
+
+  getSectionDetails(){
+    this._section.getOuterPageSections(this.project_section_id).subscribe(response=>{
+      this.project_section_content=response as Section;
+      this.getProjects();
+    })
   }
 
 
   setProjectContent(id, index)
   {
-    console.log(id , index);
     this.currentProjectId=id;
     this.projectList=this.categoryList[index].projects;
-  
   }
- /* content(value){
-    return this._section.getData(this.project_section_content.page_section_props , value)
-  } */
 
 }
 

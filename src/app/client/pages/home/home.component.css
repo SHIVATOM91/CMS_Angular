@@ -397,3 +397,9 @@ color: #b79d52;
     margin-bottom: 20px;
 }
 }
+
+
+.height-wrapper{
+  min-height: 700px;
+  background-color: #fff;
+}

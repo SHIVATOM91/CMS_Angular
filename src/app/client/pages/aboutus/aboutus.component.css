@@ -3,47 +3,51 @@
 .nopaddingclass{
     padding: 0;
     }
-    
-    
-    
+
+
+
     .banner{
        /*  background: url('../assets/images/bannerimage.jpg'); */
         height: 240px;
         background-size: cover;
-    
+
     }
-    
+
     .headdingsection{
         margin-top:15px;
     }
-    
+
      .detail{
         font-size: 14px ;
         text-align: justify ;
     }
-    
+
     .nopaddingclass{
     padding: 0;
     }
-    
+
     .customask-left{
     float: left;
     }
-    
-    
+
+
     .about-company p strong{ text-transform:uppercase;}
     .about-company .img-1{ margin-top:-70px;padding-right:20px; padding-left:20px;}
     .about-company .img-2{margin-top:20px;padding-right:20px; padding-left:20px;}
     .about-company .img-3{margin-top:10px;margin-bottom:20px;}
     .about-company .img-4{margin-top:20px; margin-bottom:40px;}
-    
-    
-    
-    
-    
-    
-    
-    
+
+    .height-wrapper{
+      min-height: 700px;
+      background-color: #fff;
+    }
+
+
+
+
+
+
+
     .askumba-point{
         margin-top:15px;
         margin-bottom:25px;
@@ -53,8 +57,8 @@
         padding:0;
         }
     .askumba-point h6{
-       
-        line-height:21px;   
+
+        line-height:21px;
         }
     .askumba-point .fa{
         font-size: 16px;
@@ -73,36 +77,36 @@
         -moz-transition: all 0.5s ease;
         -o-transition: all 0.5s ease;
         -ms-transition: all 0.5s ease;
-        transition: all 0.5s ease;  
+        transition: all 0.5s ease;
         }
-    
-    
-    
+
+
+
     .askumba-point .fa:hover{
         background:#ffb135;
         color: #fff;
     }
-    
-    
-    
-    
+
+
+
+
     .testiomonal{
         background:url('../../../../assets/images/about_banner.jpg');
-    
+
         min-height: 400px;
         background-size: cover;
     }
-    
-    
+
+
     .testiomonal .owl-about{
         text-align: center;
         margin:0 auto;
     }
-    
+
     .owl-carousel.owl-about .owl-item{
         margin-top:30px;
     }
-    
+
     .owl-carousel.owl-about .owl-item .img-round{
         width: 200px !important;
         height: 200px;
@@ -115,7 +119,7 @@
         color: #fff;
         text-transform: uppercase;
     }
-    
+
     .owl-carousel.owl-about .owl-item p{
           margin: 20px 0px 20px 0px;
           text-align: center;
@@ -130,7 +134,7 @@
     }
     .owl-carousel.owl-about .owl-item span {
         background: none repeat scroll 0 0 #869791;
-        border-radius: 20px; 
+        border-radius: 20px;
         display: block;
         height: 12px;
         margin: 5px 7px;
@@ -153,18 +157,18 @@
         background-color: rgba(255,255,255,1);
         outline-style: none !important;
     }
-    
+
     .owl-carousel.owl-about  .owl-dots button.owl-dot.active{
         background-color:rgb(33, 85, 142);
     }
-    
+
     .testiomonal h2{
-    
+
          text-align: center;
         color: #fff;
         padding-top: 30px;
     }
-    
+
 
     @media(max-width: 1200px)
 {
@@ -191,7 +195,7 @@
 .about-company .img-4{ margin:0 auto; text-align: center;padding: 0; }
 .about-imgs  .customask-left{
 margin: 0 auto;
-float: none;    
+float: none;
 }
 .about-imgs img{margin-bottom: 10px;}
 

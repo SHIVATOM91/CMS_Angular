@@ -1,3 +1,5 @@
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { animation } from '@angular/animations';
 import { SettingService } from './services/setting.service';
 import { PartnersService } from './services/partners.service';
 import { TeamsService } from './services/teams.service';
@@ -57,7 +59,7 @@ import { CustomFormsModule } from 'ng2-validation';
     EllipsisPipePipe,
     HideByRoleDirective,
   ],
-  providers: [ ReversePipe, UserService, EllipsisPipePipe, NgbActiveModal, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService, TeamsService, PartnersService, SettingService, ContactService, SafePipe], 
+  providers: [ ReversePipe, UserService, EllipsisPipePipe, NgbActiveModal, GetValuePipe, BannerService , BannerTypeService,PageService, MenuService, FormBuilder,NgbAccordionConfig ,SectionsService, PostCategoryService, PostService, ProjectCategoryService, ProjectService,ServicesService, TestimonialsService, TeamsService, PartnersService, SettingService, ContactService, SafePipe],
   entryComponents: [
     AlertComponent,
     ImagePopupComponent

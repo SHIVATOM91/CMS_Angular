@@ -52,12 +52,19 @@
                 <fieldset class="form-group">
                   <label for="">Primary Mobile Number</label>
                   <input type="text" formControlName="primaryPhone" name="primaryPhone" class="form-control">
+                  <div class="form-control-feedback text-danger" *ngIf="settingForm.get('primaryPhone').errors && settingForm.get('primaryPhone').touched">
+                    <p *ngIf="settingForm.get('primaryPhone').errors.required" class="mb-0">Mobile number is required</p>
+                    <p *ngIf="settingForm.get('primaryPhone').errors?.pattern " class="mb-0">Please enter valid mobile number</p>
+                  </div>
                 </fieldset>
               </div>
               <div class="col">
                 <fieldset class="form-group">
                   <label for="">Secondary Mobile Number</label>
                   <input type="text" formControlName="secondaryPhone" name="secondaryPhone" class="form-control">
+                  <div class="form-control-feedback text-danger" *ngIf="settingForm.get('secondaryPhone').errors && settingForm.get('secondaryPhone').touched">
+                    <p *ngIf="settingForm.get('secondaryPhone').errors?.pattern " class="mb-0">Please enter valid mobile number</p>
+                  </div>
                 </fieldset>
               </div>
             </div>

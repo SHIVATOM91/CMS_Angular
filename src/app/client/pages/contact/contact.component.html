@@ -19,7 +19,7 @@
 <div class="container">
 
   <div class="row">
-  
+
   <div class="col-md-6">
     <div class="contactus">
   <p [innerHTML]="pageContent?.description">
@@ -29,22 +29,22 @@
       <button><i class="fa fa-map-marker" aria-hidden="true"></i></button>
       <h5>{{ contactus_section_content?.properties.Address_desc }}</h5>
     </div>
-  
+
    <div class="contact-1">
       <button><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
-      <h5>{{ contactus_section_content?.properties.mail }}</h5>
+      <h5><a [href]="'mailto:'+contactus_section_content?.properties.mail">{{ contactus_section_content?.properties.mail }}</a></h5>
     </div>
-  
+
      <div class="contact-1">
       <button><i class="fa fa-phone" aria-hidden="true"></i></button>
       <h5>{{ contactus_section_content?.properties.phone }}</h5>
     </div>
-  
+
   </div>
   <div class="imagesc">
-    <img [src]="img_url+contactus_section_content?.properties.contact_img" class="img-fluid"> 
+    <img [src]="img_url+contactus_section_content?.properties.contact_img" class="img-fluid">
   </div>
-  
+
   </div>
   </div>
   <div class="col-md-6">
@@ -52,37 +52,41 @@
     <p>{{ contactus_section_content?.properties.contact_text }}</p>
     <form [formGroup]="form" >
       <div class="alert alert-success" *ngIf="errorMsg == false">Thank you for getting touch with us.</div>
-      <div class="alert alert-success" *ngIf="errorMsg == true">Could not able to connect.</div>
+      <div class="alert alert-danger" *ngIf="errorMsg == true">Could not able to connect. Please try again.</div>
       <div class="alert alert-info" *ngIf="loading">Sending your request. Please wait....</div>
 
       <div class="form-group">
         <input name="firstName"  formControlName="firstName" type="text" class="form-control"  placeholder="Name">
-  <div class="form-control-feedback text-danger" *ngIf="form.get('firstName').errors && (form.get('firstName').dirty || form.get('firstName').touched)">
-  <p *ngIf="form.get('firstName').errors.required">Title is required</p>
-  <p *ngIf="form.get('firstName').errors.minlength">Title must be {{ form.get('firstName').errors.minlength.requiredLength }} characters long</p>
-  </div>
-  </div>
+        <div class="form-control-feedback text-danger" *ngIf="form.get('firstName').errors && form.get('firstName').touched">
+          <p *ngIf="form.get('firstName').errors.required">Name is required</p>
+          <p *ngIf="form.get('firstName').errors.minlength">Name must be {{ form.get('firstName').errors.minlength.requiredLength }} characters long</p>
+        </div>
+      </div>
 
       <div class="form-group">
-      <input name="email" type="email" formControlName="email" class="form-control"  placeholder="Email">
-      <div class="form-control-feedback text-danger" *ngIf="form.get('email').errors && (form.get('email').dirty || form.get('email').touched)">
-      <p *ngIf="form.get('email').errors.required">email is required</p>
-      <p *ngIf="form.get('email').errors.pattern">email pattern is not correct</p>
-      </div>
+        <input name="email" type="email" formControlName="email" class="form-control"  placeholder="Email">
+        <div class="form-control-feedback text-danger" *ngIf="form.get('email').errors && form.get('email').touched">
+          <p *ngIf="form.get('email').errors.required">Email is required</p>
+          <p *ngIf="form.get('email').errors.pattern">Email pattern is not correct</p>
+        </div>
       </div>
 
       <div class="form-group">
         <input type="text" name="contact" formControlName="contact" class="form-control"  placeholder="Contact">
+        <div class="form-control-feedback text-danger" *ngIf="form.get('contact').errors && form.get('contact').touched">
+            <p *ngIf="form.get('contact').errors.required">Contact number required</p>
+            <p *ngIf="form.get('contact').errors?.pattern">Please enter valid phone number</p>
+          </div>
       </div>
 
        <div class="form-group">
-        <textarea placeholder="Message" name="message" formControlName="message"></textarea>
-    </div>
+          <textarea placeholder="Message" name="message" formControlName="message"></textarea>
+      </div>
 
-    <div class="submiitsec">
-      <a (click)="sendMail()" class="btn submitbtn" type="button">SUBMIT</a>
-    </div>
-  </form>
+      <div class="submiitsec">
+        <button (click)="sendMail()" [disabled]="!form.valid" type="button" class="btn submitbtn">SUBMIT</button>
+      </div>
+    </form>
   </div>
   </div>
   </div>
