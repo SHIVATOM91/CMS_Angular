@@ -49,7 +49,9 @@ export class UserListComponent implements OnInit {
   }
 
   addUser(content){
+
     this.userForm.reset();
+    this.errorResponse='';
     this.modalTitle="Add User";
     this.modalReference=this.modalService.open(content)
   }

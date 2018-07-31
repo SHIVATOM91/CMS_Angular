@@ -82,7 +82,7 @@
 
               <div class="form-group" *ngIf="modalTitle != 'Edit User'">
                 <label for="password">Enter password:</label>
-                <input type="password" class="form-control" name="password" formControlName="password"  id="password" aria-describedby="password"  required>
+                <input type="password" class="form-control" name="password" formControlName="password"  id="password" aria-describedby="password" app-user-list  required>
                 <div class="form-control-feedback text-danger" *ngIf="userForm.get('password').errors && userForm.get('password').touched">
                   <small *ngIf="userForm.get('password').errors.required">Password is required</small>
 
@@ -104,4 +104,3 @@
         </div>
       </div>
     </ng-template>
-

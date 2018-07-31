@@ -12,15 +12,18 @@
                 <div class="form-group">
                   <input type="email" name="email" formControlName="email" placeholder="Email address"  class="form-control" id="log-email">
                   <small class="small text-danger d-block  text-left" *ngIf="loginForm.get('email').errors  && loginForm.get('email').touched">
-                      <div *ngIf="loginForm.get('email').errors.required">email is required</div>
+                      <div *ngIf="loginForm.get('email').errors.required">Email is required</div>
                       <div *ngIf="loginForm?.get('email').errors?.email">Invalid email id</div>
                   </small>
                 </div>
-                <div class="form-group">
-                    <input type="password" name="password" formControlName="password"  placeholder="Password"  class="form-control" id="log-pwd" (keypress)="eventHandler($event)">
+                <div class="form-group position-relative">
+                    <i class="eye fa  " [ngClass]="{'fa-eye':!showPassword,'fa-eye-slash':showPassword}" aria-hidden="true" (click)="togglePassword()"></i>
+                    <input  [type]="!showPassword ? 'password' : 'text'"  name="password" formControlName="password"  placeholder="Password"  class="form-control" id="log-pwd" (keypress)="eventHandler($event)" oncopy="return false" onpaste="return false">
                     <small class="small text-danger d-block  text-left" *ngIf="loginForm.get('password').errors  && loginForm.get('password').touched">
-                        <div *ngIf="loginForm.get('password').errors.required">Password is required</div>
+                     <div *ngIf="loginForm.get('password').errors.required">Password is required</div>
+                     
                     </small>
+                    <div class="small text-danger text-left caps-lock-alert"  [hidden]="!capsLockEnabled"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Caps lock is on</div>
                 </div>
                 <div class="text-center" *ngIf="view=='login'" ><button type="submit" class="btn -btn-primary login-btn" [disabled]="!loginForm.valid">Login</button></div>
             </form>

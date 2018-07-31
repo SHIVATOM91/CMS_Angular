@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   view="login";
   loginForm;
   errorMsg;
+  showPassword=false;
   successMsg;
   ferrorMsg;
   capsLockEnabled:any;
@@ -52,23 +53,21 @@ export class LoginComponent implements OnInit {
       this.ferrorMsg=""
     },response=>{
       console.log(response);
-
+      this.successMsg="";
       this.ferrorMsg=response.error.email;
     })
   }
 
+  togglePassword(){
+    this.showPassword=!this.showPassword;
+  }
   eventHandler(event) {
-    let str = String.fromCharCode(event.which);
-    this.capsLockEnabled = (str.toLowerCase() === str && event.shiftKey) || (str.toUpperCase() === str && !event.shiftKey);
-        // console.log("Keypress. CapsLock enabled: " + this.capsLockEnabled.toString());
-        if(this.capsLockEnabled==true)
-       {
-        this.capMsg="cap lock is on"
-       }
-       else{
-        this.capMsg=""
-       }
-        // console.log(event, event.keyCode, event.keyIdentifier);
-     }
+        this.capsLockEnabled=this.isCapsLockOn(event);
+  }
 
+  isCapsLockOn(e) {
+    var keyCode = e.keyCode ? e.keyCode : e.which;
+    var shiftKey = e.shiftKey ? e.shiftKey : ((keyCode == 16) ? true : false);
+    return (((keyCode >= 65 && keyCode <= 90) && !shiftKey) || ((keyCode >= 97 && keyCode <= 122) && shiftKey))
+  }
 }

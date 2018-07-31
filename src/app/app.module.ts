@@ -15,7 +15,9 @@ import { NoopAnimationsModule } from '../../node_modules/@angular/platform-brows
     SharedModule,
     NoopAnimationsModule,
     AppRoutingModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      preventDuplicates: true
+    })
   ],
   providers: [ToastrService, SeoService],
   bootstrap: [AppComponent]

@@ -8,6 +8,12 @@
     background-repeat: no-repeat;
 }
 
+.eye{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
 .login-wraper{
     width: 390px;
     margin: 0px auto;
@@ -80,4 +86,31 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 .form-group{
   min-height: 68px;
   margin-bottom: 0.2rem;
+}
+
+.caps-lock-alert
+{
+background-color: #020202;
+display: inline ;
+padding: 5px 10px;
+color: #fff !important;
+border-radius: 4px;
+position: absolute;
+top: -34px;
+left: 0px;
+}
+
+
+
+.caps-lock-alert:after{
+    z-index: 1;
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: solid 7px #020202;
+    border-left: solid 8px transparent;
+    border-right: solid 2px transparent;
+    left: 7px;
+    bottom: -7px;
 }
