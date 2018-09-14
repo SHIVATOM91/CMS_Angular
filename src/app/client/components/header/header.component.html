@@ -3,7 +3,7 @@
 <section class="home-slider carouseldiv" *ngIf="page==''" style="background-color:#e2e2e2;margin-bottom:0px;">
   <ng-container *ngIf="sliderContent">
     <owl-carousel
-      [options]="{items: 1, dots: true, navigation: true}"
+      [options]="{items: 1, dots: true,autoplayHoverPause: true, navigation: true}"
       [items]="sliderContent"
       [carouselClasses]="['owl-theme',  'sliding']">
       <div class="item" *ngFor="let image of sliderContent;let i = index">

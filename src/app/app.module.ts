@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { SeoService } from './shared/services/seo.service';
-import { NoopAnimationsModule } from '../../node_modules/@angular/platform-browser/animations';
+import { NoopAnimationsModule, BrowserAnimationsModule } from '../../node_modules/@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent
@@ -15,6 +15,8 @@ import { NoopAnimationsModule } from '../../node_modules/@angular/platform-brows
     SharedModule,
     NoopAnimationsModule,
     AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot({
       preventDuplicates: true
     })

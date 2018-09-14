@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  apiUrl:"http://127.0.0.1:8000/api/",
-  imgUrl:"http://127.0.0.1:8000"
+  apiUrl:"http://api.ask-umbau.ch/api/",
+  imgUrl:"http://api.ask-umbau.ch"
 };

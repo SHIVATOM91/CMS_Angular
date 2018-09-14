@@ -10,7 +10,6 @@ import { SharedModule } from '../shared/shared.module';
 import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutusComponent } from './pages/aboutus/aboutus.component';
-import { ProductComponent } from './pages/product/product.component';
 import { ProjectComponent } from './pages/project/project.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ServicesComponent } from './pages/services/services.component';
@@ -23,7 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SharedModule,
     NgbModule.forRoot()
   ],
-  declarations: [LayoutComponent, HeaderComponent, FooterComponent, SliderComponent, MenuComponent, HomeComponent, AboutusComponent, ProductComponent, ProjectComponent, ContactComponent, ServicesComponent],
+  declarations: [LayoutComponent, HeaderComponent, FooterComponent, SliderComponent, MenuComponent, HomeComponent, AboutusComponent, ProjectComponent, ContactComponent, ServicesComponent],
 
 })
 export class ClientModule { }

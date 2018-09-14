@@ -114,3 +114,8 @@ left: 0px;
     left: 7px;
     bottom: -7px;
 }
+
+input::-ms-clear,
+input::-ms-reveal {
+  display: none;
+}

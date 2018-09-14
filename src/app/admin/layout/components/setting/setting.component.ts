@@ -15,14 +15,14 @@ export class SettingComponent implements OnInit {
   img_url= environment.imgUrl;
   settingForm: FormGroup;
   currentMenu='general';
-  localImage: undefined;
-
+  localImage;
+  // ,[Validators.required, Validators.pattern(/^[+]?[0-9 ]{10,}$/)]
   constructor(private fb:FormBuilder, private _service: SettingService, private toastr: ToastrService) {
     this.settingForm = fb.group({
       id: [''],
       companyName: [''],
       description: [''],
-      primaryPhone: ['',[Validators.required, Validators.pattern(/^[+]?[0-9 ]{10,}$/)]],
+      primaryPhone: [''],
       secondaryPhone: ['',[Validators.pattern(/^[+]?[0-9 ]{10,}$/)]],
       primaryEmail: ['',[Validators.required, CustomValidators.email]],
       secondaryEmail: ['',[Validators.required, CustomValidators.email]],

@@ -9,7 +9,7 @@
     z-index: 99;
 }  
 .asknavbar .navbar-nav{
-    min-width: 740px;
+    min-width: 100%;
     min-height: 91px;
 }
 .navbar-light .navbar-toggler-icon{
@@ -63,3 +63,10 @@
    color: #fff;
 }
 
+
+@media(max-width: 1200px)
+{
+    .asknavbar .customcolor .nav-item {
+        margin: 0px 0px;
+    }
+}

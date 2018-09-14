@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { PageService } from '../../../shared/services/page.service';
 import { ContactService } from '../../../shared/services/contact.service';
@@ -6,11 +6,16 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SettingService } from '../../../shared/services/setting.service';
 import { SeoService } from '../../../shared/services/seo.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { fade } from '../../../shared/animations/animation';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['./contact.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  animations :[
+    fade
+  ]
 })
 export class ContactComponent implements OnInit {
   img_url=environment.imgUrl;
@@ -24,6 +29,7 @@ export class ContactComponent implements OnInit {
   settingData: SettingObj;
   pageContent;
   pageId=8;
+  loginAlertMessage=false;
   constructor(private _section:PageService, private router:Router, private _contactfrmsection:ContactService,private fb: FormBuilder, private _setting: SettingService, private seo:SeoService) {
     this.form = this.fb.group({
       firstName: ['',[Validators.required]],
@@ -64,6 +70,9 @@ export class ContactComponent implements OnInit {
           this.errorMsg=false;
           this.loading=false;
           this.form.reset();
+          setTimeout(() => {
+            this.errorMsg=null;
+          }, 5000);
         }, response =>{
           this.errorMsg=true;
           this.loading=false;

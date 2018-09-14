@@ -6,6 +6,7 @@ import { PageService } from '../../../shared/services/page.service';
 import { environment } from '../../../../environments/environment';
 import { ProjectCategoryService } from '../../../shared/services/project-category.service';
 import { ActivatedRoute } from '@angular/router';
+import { ProjectService } from '../../../shared/services/project.service';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,9 @@ export class HomeComponent implements OnInit,  OnDestroy {
   img_url=environment.imgUrl;
   about_section_id=149;
   about_section_content: Section;
+
+  arbeitsgattungen_section_id=156;
+  arbeitsgattungen_section_content: Section;
 
   //project section
   project_section_id=154;
@@ -37,7 +41,7 @@ export class HomeComponent implements OnInit,  OnDestroy {
   partnerArray: ServiceObject[];
 
   //team section
-  team_section_id=151;
+  team_section_id=165;
   team_section_content: Section;
   teamArray: ServiceObject[];
 
@@ -46,6 +50,10 @@ export class HomeComponent implements OnInit,  OnDestroy {
     {
       key: 'about_section_content',
       id: 149
+    },
+    {
+      key: 'arbeitsgattungen_section_content',
+      id: 156
     },
     {
       key: 'project_section_content',
@@ -58,10 +66,14 @@ export class HomeComponent implements OnInit,  OnDestroy {
     {
       key: 'partner_section_content',
       id: 151
+    },
+    {
+      key: 'team_section_content',
+      id: 165
     }
   ]
 
-  constructor(private _section:PageService, private route:ActivatedRoute, private _projectcategory:ProjectCategoryService, private _service: ServicesService, private _partner: PartnersService, private _team: TeamsService) {
+  constructor(private _section:PageService, private route:ActivatedRoute, private _projects:ProjectService, private _projectcategory:ProjectCategoryService, private _service: ServicesService, private _partner: PartnersService, private _team: TeamsService) {
 
    }
 
@@ -71,8 +83,10 @@ export class HomeComponent implements OnInit,  OnDestroy {
       let arraySect = response as Section[];
       this.about_section_content=arraySect['about_section_content'];
       this.project_section_content=arraySect['project_section_content'];
+      this.arbeitsgattungen_section_content=arraySect['arbeitsgattungen_section_content'];
       this.services_section_content=arraySect['services_section_content'];
       this.partner_section_content=arraySect['partner_section_content'];
+      this.team_section_content=arraySect['team_section_content'];
     })
 
     this.getProjectDetails();
@@ -86,7 +100,7 @@ export class HomeComponent implements OnInit,  OnDestroy {
 
   getProjectDetails(){
 
-    this._projectcategory.getProjectcategories().subscribe(response=>{
+    this._projects.getProjects().subscribe(response=>{
       this.projectCategorySlider=response;
       if(this.projectCategorySlider.length > 0){
         this.toggleProjectMenu(this.projectCategorySlider[0].id, 0);

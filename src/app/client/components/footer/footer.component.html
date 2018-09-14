@@ -1,8 +1,8 @@
 <section class="footer" *ngIf="settingData">
     <div class="links">
       <ng-container *ngFor="let list of menuList" >
-        <a  routerLink="/{{list.pageSlug=='home' ? '' : '/'+list.pageSlug}}" *ngIf="list.linkType=='page'" >{{list.title}}</a>
-        <a  [href]="list.customLink" *ngIf="list.linkType=='custom'"  target="_blank">{{list.title}}</a>
+        <a  routerLink="/{{list.pageSlug=='home' ? '' : '/'+list.pageSlug}}"  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" *ngIf="list.linkType=='page'" >{{list.title}}</a>
+        <a  [href]="list.customLink" *ngIf="list.linkType=='custom'"   target="_blank">{{list.title}}</a>
       </ng-container>
     </div>
     <span class="line"></span>
@@ -12,14 +12,15 @@
             <div class="media">
                 <img class="align-self-start mr-3" src="assets/images/footer_phone.png">
                 <div class="media-body">
-                  <h5 class="mt-4">Call Us</h5>
-                  <p>{{ settingData?.primaryPhone }}</p>
+                  <h5 class="mt-4"> Kontakt </h5>
+                  <p  [innerHTML]="settingData?.primaryPhone"></p>
                 </div>
             </div>
             <div class="media">
               <img class="align-self-start mr-3" src="assets/images/footer_mail.png">
               <div class="media-body">
-                <h5 class="mt-4">Mail Us</h5>
+                <h5 class="mt-4">
+                    E-Mail</h5>
                 <p class="mail-color"> <a  href="mailto:info@askumbau.com">{{ settingData?.primaryEmail }}</a></p>
               </div>
             </div>
@@ -31,14 +32,14 @@
             <div class="media">
               <img class="align-self-start mr-3" src="assets/images/footer_address.png">
               <div class="media-body">
-                <h5 class="mt-4">Address</h5>
-                <p>{{ settingData?.primaryAddress }}</p>
+                <h5 class="mt-4">Adresse</h5>
+                <p  [innerHTML]="settingData?.primaryAddress"></p>
               </div>
             </div>
             <div class="media">
               <img class="align-self-start mr-3" src="assets/images/footer_mail.png">
               <div class="media-body custonavsocila">
-                <h5 class="mt-4">Social Media</h5>
+                <h5 class="mt-4">Sozialen Medien</h5>
                 <a [href]="settingData?.facebookLink"><i class="fa fa-facebook"></i></a>
                 <a [href]="settingData?.twitterLink"><i class="fa fa-twitter "></i></a>
                 <a [href]="settingData?.googleLink"><i class="fa fa-google-plus "></i></a>
@@ -46,7 +47,9 @@
             </div>
           </div>
           <div class="col-lg-12 copyright">
-            <p >{{ settingData?.footerMessage }} - Developed By: <a href="https://www.bixbytessolutions.com" target="_blank">BixBytes Solutions</a></p>
+            <p >{{ settingData?.footerMessage }} 
+              <!-- - Developed By: <a href="https://www.bixbytessolutions.com" target="_blank">BixBytes Solutions</a> -->
+            </p>
           </div>
       </div>
      </div>

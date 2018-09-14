@@ -7,137 +7,120 @@
         <ul class="list-unstyled askhaed">
             <li class="media">
               <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
-              <div class="media-body custom-body">
-                  <p class="mb-0">{{ about_section_content?.properties.intro_title }}</p>
+              <div class="media-body custom-body align-self-center">
+                  <p class="mb-0">
+                    <!-- {{ about_section_content?.properties.intro_title }} -->
+                  </p>
                   <h2 class="mt-1 mb-0">{{ about_section_content?.properties.main_title }} </h2>
               </div>
             </li>
         </ul>
         <div [innerHTML]="about_section_content?.properties.main_description"></div>
-        <div class="row">
-            <div class="col-lg-4">
-              <ul class="list-unstyled">
-                  <li class="media">
-                    <img class="mr-3" src="assets/images/aboutus_tick.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">{{about_section_content?.properties.list_title_1}}</h5>
-                        {{about_section_content?.properties.list_title_1_desc}}
-                    </div>
-                  </li>
-              </ul>
-            </div>
-            <div class="col-lg-4">
-              <ul class="list-unstyled">
-                  <li class="media">
-                    <img class="mr-3" src="assets/images/aboutus_tick.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">{{about_section_content?.properties.list_title_2}}</h5>
-                        {{about_section_content?.properties.list_title_2_desc}}
-                    </div>
-                  </li>
-              </ul>
-            </div>
-            <div class="col-lg-4">
-              <ul class="list-unstyled">
-                  <li class="media">
-                    <img class="mr-3" src="assets/images/aboutus_tick.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">{{about_section_content?.properties.list_title_3}}</h5>
-                        {{about_section_content?.properties.list_title_3_desc}}
-                    </div>
-                  </li>
-              </ul>
-            </div>
-        </div>
         <div class="text-left brochsurebtn">
-            <a [href]="about_section_content?.properties.button_link" target="_blank" class="btn askbuton"> {{about_section_content?.properties.button_text}}</a>
+            <a routerLink="/about-us" class="btn askbuton"> Weiterlesen</a>
         </div>
       </div>
   </div>
   </div>
 </section>
 
-
-
-
 <section class="parallax"  [ngStyle]="{'background': 'url('+ img_url+project_section_content?.properties.project_image+') center center no-repeat'}" *ngIf="project_section_content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6 csutomgap"> </div>
-            <div class="col-lg-6 colofade">
+            <div class="col-lg-7 csutomgap"> </div>
+            <div class="col-lg-5 colofade">
                <div class="customparalasec">
                   <ul class="list-unstyled askhaed">
                      <li class="media">
                         <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
-                        <div class="media-body custom-body">
+                        <div class="media-body custom-body reference-list">
                            <p class="mb-0">{{project_section_content?.properties.intro_title}}</p>
                            <h2 class="mt-1 mb-0">{{project_section_content?.properties.main_title}}</h2>
                         </div>
                      </li>
                   </ul>
                   <owl-carousel
-                    [options]="{items: 3, dots: false,loop: false, nav: true,  navText : ['<i class=\'fa fa-caret-left\'></i>','<i class=\'fa fa-caret-right\'></i>'], freeDrag:false, touchDrag:false, mouseDrag:false, responsive: { '0' : { items:1}, '640': { items: 2}, '768': { items: 3} }}"
+                    [options]="{items: 2, dots: false,loop: false, nav: true, autoplayHoverPause: true,  navText : ['<i class=\'fa fa-caret-left\'></i>','<i class=\'fa fa-caret-right\'></i>'], freeDrag:false, touchDrag:false, mouseDrag:false, responsive: { '0' : { items:1}, '640': { items: 2}, '768': { items: 2} }}"
                     [items]="projectCategorySlider"
-                    [carouselClasses]="['owl-theme',  'sliding', 'custom-home_slider']">
+                    [carouselClasses]="['owl-theme',  'sliding', 'custom-home_slider', 'custom_project_slider']">
                     <div class="item" *ngFor="let category of projectCategorySlider;let i = index">
-                      <div class="project-menu-container"  [class.menuActive]="category.id == currentProjectId" (click)="toggleProjectMenu(category.id, i)">
+                      <div class="project-menu-container">
                         <div class="project-menu-title">
                           <p>{{category.title}}</p>
                         </div>
                       </div>
+                      <div class="project-holder " [ngStyle]="{'background': 'url('+ img_url+category.image+') center center no-repeat'}">
+                          <!-- <h5 [innerHTML]="category.description">
+                      
+                      </h5> -->
+                       </div>
                     </div>
                   </owl-carousel>
-                  <owl-carousel
-                    [options]="{items: 2, dots: false,loop: false, nav: false, margin:20, responsive: { '0' : { items:1}, '100' : { items:1}, '768': { items: 2} }}"
-                    [items]="currentProjectArray"
+                  <!-- <owl-carousel
+                    [options]="{items: 1, dots: false,loop: false, nav: false, margin:0, responsive: { '0' : { items:1}, '100' : { items:1}, '768': { items: 1} }}"
+                    [items]="projectCategorySlider"
                     [carouselClasses]="['owl-theme',  'sliding', 'custom_project_slider']">
-                    <div class="item" *ngFor="let project of currentProjectArray;let j = index">
-                      <div class="project-holder" [ngStyle]="{'background': 'url('+ img_url+project.image+') center center no-repeat'}">
-                         <span class="label">{{ project.title }}</span>
-                      </div>
-                    </div>
-                  </owl-carousel>
+                    
+                     
+                   
+                  </owl-carousel> -->
                </div>
             </div>
          </div>
     </div>
  </section>
 
+ <section class="aboutus" *ngIf="arbeitsgattungen_section_content">
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs">
+            <ul class="list-unstyled askhaed">
+                <li class="media">
+                  <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
+                  <div class="media-body custom-body align-self-center">
+                      <!-- <p class="mb-0">{{ arbeitsgattungen_section_content?.properties.intro_title }}</p> -->
+                      <h2 class="mt-1 mb-0">{{ arbeitsgattungen_section_content?.properties.main_title }} </h2>
+                  </div>
+                </li>
+            </ul>
+            <div [innerHTML]="arbeitsgattungen_section_content?.properties.main_description"></div>
+          </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 abtimg"> <img [src]="img_url + arbeitsgattungen_section_content?.properties.main_image" class="img-fluid"> </div>
+    </div>
+    </div>
+  </section>
 
 
-
-<section class="servicesection"   *ngIf="servicesArray">
+<section class="servicesection"   *ngIf="services_section_content">
   <div class="container">
-      <ul class="list-unstyled askhaed">
-        <li class="media">
-            <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
-            <div class="media-body custom-body">
-              <p class="mb-0">{{services_section_content?.properties.intro_title}}
-              </p>
-              <h2 class="mt-1 mb-0">{{services_section_content?.properties.main_title}}</h2>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 abtimg" > 
+            <div class="serviceimg" [ngStyle]="{'background': 'url('+ img_url+ services_section_content?.properties.main_image+')  no-repeat'}"></div>
             </div>
-        </li>
-      </ul>
-
-      <owl-carousel
-         [options]="{items: 4, dots: false, autoplay:true, loop: true, nav: false, margin:20, responsive: { '0' : { items:1}, '640': { items: 2}, '768': { items: 4} }}"
-         [items]="servicesArray"
-         [carouselClasses]="['owl-theme',  'sliding']">
-         <ng-container *ngFor="let service of servicesArray;let i = index">
-            <div class="section-s section-service">
-                <img [src]="'assets/images/service-'+i+'.png'">
-                <h5>{{ service.title }}</h5>
-                <div class="service_block"  [innerHTML]="service.shortDescription | ellipsis:180"></div>
-                <a [routerLink]="services_section_content?.properties.btn_link" class="btn">{{services_section_content?.properties.btn_text}}</a>
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs">
+              <ul class="list-unstyled askhaed">
+                  <li class="media">
+                    <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
+                    <div class="media-body custom-body align-self-center">
+                        <!-- <p class="mb-0">{{ services_section_content?.properties.intro_title }}</p> -->
+                        <h2 class="mt-1 mb-0">{{ services_section_content?.properties.main_title }} </h2>
+                    </div>
+                  </li>
+              </ul>
+              <div id="service-descptn" [innerHTML]="services_section_content?.properties.main_description"></div>
+              <div class="text-left servicesbtn">
+                  <a routerLink="/services" class="btn askbuton"> Weiterlesen</a>
               </div>
-         </ng-container>
-       </owl-carousel>
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs">
+                <div id="service-descptn-second" [innerHTML]="services_section_content?.properties.desc_sec"></div>
+              </div>
+        </div>
   </div>
 </section>
 
 
-
-<section class="partnersection"  *ngIf="partnerArray">
+<!-- <section class="partnersection"  *ngIf="partnerArray">
   <div class="container cs">
      <ul class="list-unstyled askhaed">
         <li class="media">
@@ -157,12 +140,12 @@
         <ng-container *ngFor="let partner of partnerArray;let i = index">
             <div class="item">
               <div class="custom-partner-block"  [ngStyle]="{'background': 'url('+ img_url+partner.featuredImage+') center center no-repeat'}"></div>
-                <!-- <img [src]="img_url + partner.featuredImage" class="img-fluid"> -->
+                <img [src]="img_url + partner.featuredImage" class="img-fluid">
             </div>
         </ng-container>
       </owl-carousel>
   </div>
-</section>
+</section> -->
 
 
 
@@ -172,15 +155,15 @@
           <li class="media">
              <img class="align-self-end mr-3" src="assets/images/head_leftimg_1.png" alt="   ">
              <div class="media-body custom-body">
-                <p class="mb-0">Hard Work
+                <p class="mb-0">{{team_section_content?.properties.intro_title}}
                 </p>
-                <h2 class="mt-1 mb-0">Our Team</h2>
+                <h2 class="mt-1 mb-0"> {{team_section_content?.properties.main_title}}</h2>
              </div>
           </li>
        </ul>
 
        <owl-carousel
-          [options]="{items: 4, dots: false, autoplay:true, loop: true, nav: false, margin:20, responsive: { '0' : { items:1}, '640': { items: 2}, '768': { items: 4} }}"
+          [options]="{items: 3, dots: false, autoplay:true, loop: true,autoplayHoverPause: true, nav: false, margin:20, responsive: { '0' : { items:1}, '640': { items: 2}, '768': { items: 3} }}"
           [items]="teamArray"
           [carouselClasses]="['owl-theme',  'sliding', 'team-owl']">
           <ng-container *ngFor="let team of teamArray;let i = index">

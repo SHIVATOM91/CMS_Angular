@@ -22,9 +22,9 @@
                       <label>Company Logo</label>
                     <div class="img_wraper img_c_width">
                         <label for="featuredImage" class="img-hover">
-                          <div class="img-prop" *ngIf="localImage==undefined && settingForm.get('logo').value != null" [ngStyle]="{'background': 'url('+img_url+''+settingForm.get('logo').value+')'  }"></div>
-                          <div class="img-prop" *ngIf="localImage" [ngStyle]="{'background': 'url('+localImage+')'  }"></div>
-                          <div class="img-prop" *ngIf="localImage==undefined && settingForm.get('logo').value==null" [ngStyle]="{'background': 'url(https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg) top center'  }"></div>
+                          <div class="img-prop-new" *ngIf="localImage==undefined && settingForm.get('logo').value != null" [ngStyle]="{'background': 'url('+img_url+''+settingForm.get('logo').value+')'  }"></div>
+                          <div class="img-prop-new" *ngIf="localImage" [ngStyle]="{'background': 'url('+localImage+')'  }"></div>
+                          <div class="img-prop-new" *ngIf="localImage==undefined && settingForm.get('logo').value==null" [ngStyle]="{'background': 'url(https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg) top center'  }"></div>
                         </label>
                     </div>
                     <input type="file" accept="image/*" (change)="handleFileInput($event)"   name="file" class="form-control" hidden id="featuredImage">
@@ -51,10 +51,11 @@
               <div class="col">
                 <fieldset class="form-group">
                   <label for="">Primary Mobile Number</label>
-                  <input type="text" formControlName="primaryPhone" name="primaryPhone" class="form-control">
+                  <!-- <input type="text" formControlName="primaryPhone" name="primaryPhone" class="form-control"> -->
+                  <textarea class="form-control" placeholder="Primary Mobile Number" formControlName="primaryPhone" rows="2"></textarea>
                   <div class="form-control-feedback text-danger" *ngIf="settingForm.get('primaryPhone').errors && settingForm.get('primaryPhone').touched">
                     <p *ngIf="settingForm.get('primaryPhone').errors.required" class="mb-0">Mobile number is required</p>
-                    <p *ngIf="settingForm.get('primaryPhone').errors?.pattern " class="mb-0">Please enter valid mobile number</p>
+                    <!-- <p *ngIf="settingForm.get('primaryPhone').errors?.pattern " class="mb-0">Please enter valid mobile number</p> -->
                   </div>
                 </fieldset>
               </div>
