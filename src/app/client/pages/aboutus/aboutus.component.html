@@ -5,8 +5,8 @@
           <ul class="list-unstyled askhaed">
             <li class="media">
                 <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
-                <div class="media-body custom-body">
-                  <p class="mb-0">{{ aboutus_section_content?.properties.intro_title }} </p>
+                <div class="media-body custom-body align-self-center">
+                  <!-- <p class="mb-0">{{ aboutus_section_content?.properties.intro_title }} </p> -->
                   <h2 class="mt-1 mb-0">{{ pageContent?.title }}</h2>
                 </div>
             </li>
@@ -16,24 +16,7 @@
           <div class="col-lg-8 col-md-8 col-sm-12">
           <div class="detail" [innerHTML]="pageContent?.description">
             </div>
-              <div class="askumba-point hidden-xs">
-                  <div class="row">
-                    <div class="col-md-4 col-sm-12 col-xs-12 commncls">
-                        <i class="fa fa-check"></i>
-                        <h6>{{ aboutus_section_content?.properties.list_title_1 }}</h6>
-                    </div>
-                    <div class="col-md-4 col-sm-12 col-xs-12 commncls">
-                        <i class="fa fa-check"></i>
-                        <h6>{{ aboutus_section_content?.properties.list_title_2 }}</h6>
-                    </div>
-                    <div class="col-md-4 col-sm-12 col-xs-12 commncls ">
-                        <i class="fa fa-check"></i>
-                        <h6>{{ aboutus_section_content?.properties.list_title_3 }}</h6>
-                    </div>
-                  </div>
-              </div>
         </div>
-
 
             <div class="col-lg-4 col-md-4 col-sm-6 about-company">
               <div class=" about-imgs  d-none d-md-block  ">
@@ -60,30 +43,4 @@
           </div>
       </div>
     </div>
-
-  <div class="testiomonal" *ngIf="aboutSlider">
-    <div class="container">
-        <h2>TESTIMONIALS</h2>
-        <section class="aboutSliderCarousel">
-        <owl-carousel
-          [options]="{items: 1, dots: true, navigation: true}"
-          [items]="aboutSlider"
-          [carouselClasses]="['owl-theme',  'sliding', 'owl-about', 'owl-theme']">
-          <div class="item" *ngFor="let image of aboutSlider;let i = index">
-              <div class="imagesec">
-                <div class="img-round"  [ngStyle]="{'background': 'url('+img_url+image.featuredImage+')no-repeat scroll center center' ,  'height':'200px' , 'background-size': 'cover' }" >
-              </div>
-
-              <h2>{{image.title}}</h2>
-
-              <p  [innerHTML]="image.description"></p>
-
-            </div>
-          </div>
-        </owl-carousel>
-      </section>
-    </div>
-  </div>
 </div>
-
-

@@ -9,6 +9,7 @@
    text-align: center;
    margin:0 auto;
    box-shadow: 0 0 3px 0px rgba(0, 0, 0, 0.5);
+   filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.1))
 }
 
  .projecttabs > ul.nav > li.nav-item > a{
@@ -293,6 +294,49 @@ min-height: 700px;
     z-index: 4;
     margin-left: 0px;
 }
+.description{
+    background-image: url(/assets/images/tile.png);
+    background-repeat: repeat;
+    min-height: 50px;
+    padding: 15px;
+    border-radius: 15px;
+       
+margin-bottom: 15px;
+    }
+    .left h3 img   {
+    float: left;
+    transition: All .5s ease;
+    -webkit-transition: All .5s ease;
+    -moz-transition: All .5s ease;
+    -o-transition: All .5s ease;
+    }
+    .left h3 span {
+    padding-left: 12px;
+    padding-left: 12px;
+      font-size: 17px;
+      word-break: break-all;
+    }
+
+    .right h3 span{
+       color: #715a00;
+       font-size: 14px;
+    }
+
+    .left h5 span{
+       color: #000;
+       font-weight: 400;
+       font-size: 14px;
+       margin-left: 7.5%;
+    }
+    .left > h5 > p {
+        font-size: 14px;
+        margin-left: 7.5%;
+    }
+
+    .reference-list h2
+    {
+     margin-top: 14px !important;    
+    }
 @media(max-width: 992px){
 /*project start*/
 

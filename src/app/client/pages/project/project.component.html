@@ -1,11 +1,12 @@
+<div class="height-wrapper">
 <div class="content"  *ngIf="project_section_content">
    <div class="container">
       <div class="headdingsection">
          <ul class="list-unstyled askhaed">
             <li class="media">
                <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
-               <div class="media-body custom-body">
-                  <p class="mb-0">{{ project_section_content?.properties.intro_title }}</p>
+               <div class="media-body custom-body align-self-center">
+                  <!-- <p class="mb-0">{{ project_section_content?.properties.intro_title }}</p> -->
                   <h2 class="mt-1 mb-0">{{ pageContent?.title }}</h2>
                </div>
             </li>
@@ -19,7 +20,7 @@
 
       <div class="container">
       <div class="row">
-        <div class="col-md-12 projecttabs">
+        <!-- <div class="col-md-12 projecttabs">
            <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist" >
               <ng-container *ngFor="let category of categoryList; let i = index">
                 <li class="nav-item" >
@@ -55,6 +56,45 @@
               </div>
 
            </div>
-        </div>
+        </div> -->
+
+     
+        <ng-container  *ngFor="let project of projectList; let i=index">
+        
+        <div class="col-md-12">
+           
+            <div class="description">
+                    <div class="row">
+                        
+               <div class="col-md-6">
+                
+                  <div class="left">
+                   <h3>
+                        <img alt="askumbau" src="/client/assets/images/i1.png" class="img-fluid">
+                        <span > {{project.title}} </span>
+
+                     </h3>
+                     <h5 [innerHTML]="project.description">
+                     
+                     </h5>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="right">
+                       <h3>
+                     <img alt="askumbau" src="/client/assets/images/maps.png" class="img-fluid">
+                     <span > {{project.address}}  </span></h3>
+                  </div>
+               </div>
+             
+            </div>
+         </div>
+          
+      </div>
+    </ng-container> 
+
+ 
+
+  </div>
      </div>
     </div>

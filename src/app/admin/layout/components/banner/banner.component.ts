@@ -76,7 +76,13 @@ export class BannerComponent implements OnInit {
       this.bannerFlag=true;
       this.selectedBannerId=this.bannerContent[0].banner_types_id;
       this.updateFilter();
+    
     })
+  }
+ 
+  bannerClick()
+  {
+    this.typeForm.reset();
   }
 
   addBanner(content){
@@ -152,8 +158,10 @@ export class BannerComponent implements OnInit {
 
   //Banner Type Section
   getAllBannerTypes(){
+  
     this._bannerTypeServ.get().subscribe(response=>{
       this.bannerTypes=response;
+     
     })
   }
 
@@ -163,7 +171,6 @@ export class BannerComponent implements OnInit {
         if(response.success){
           this.bannerTypes.push(response.data);
           this.typeForm.reset();
-
         }
       },
       error=>{})

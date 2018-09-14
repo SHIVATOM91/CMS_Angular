@@ -21,7 +21,11 @@ export class ProjectComponent implements OnInit {
   currentProjectId:undefined;
   pageContent;
   pageId=10;
-  constructor(private _section:PageService, private _postcategory:ProjectCategoryService, private _projectservice:ProjectService, private seo:SeoService, private router:Router) { }
+  currentProject:undefined;
+  constructor(private _section:PageService, private _postcategory:ProjectCategoryService, private _projectservice:ProjectService, private seo:SeoService, private router:Router) { 
+
+ 
+  }
 
   ngOnInit() {
       window.scrollTo(0, 0);
@@ -38,12 +42,16 @@ export class ProjectComponent implements OnInit {
         slug: this.router.url.split('/')[1]
       })
       })
+
+     
   }
 
   getProjects(){
     this._postcategory.getProjectcategories().subscribe(response=>{
       this.categoryList=response;
-      this.setProjectContent(this.categoryList[0].id, 0)
+    })
+    this._projectservice.getProjects().subscribe(response=>{
+      this.projectList=response;
     })
   }
 
@@ -55,11 +63,7 @@ export class ProjectComponent implements OnInit {
   }
 
 
-  setProjectContent(id, index)
-  {
-    this.currentProjectId=id;
-    this.projectList=this.categoryList[index].projects;
-  }
+  
 
 }
 

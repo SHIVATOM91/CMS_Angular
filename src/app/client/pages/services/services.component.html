@@ -1,28 +1,23 @@
+<div class="height-wrapper">
 <section *ngIf="services_section_content">
 <div class="container">
     <div class="headdingsection">
                  <ul class="list-unstyled askhaed">
                     <li class="media">
                        <img class="align-self-end mr-3" src="assets/images/head_leftimg.jpg" alt="   ">
-                       <div class="media-body custom-body">
-                          <p class="mb-0">{{ services_section_content?.properties.intro_title }} </p>
+                       <div class="media-body custom-body align-self-center">
+                          <!-- <p class="mb-0">{{ services_section_content?.properties.intro_title }} </p> -->
                           <h2 class="mt-1 mb-0">{{ pageContent?.title }}</h2>
                        </div>
                     </li>
                  </ul>
               </div>          
   </div>
-
-  <div class="container">
-      <div class="row">
-      <div class="col-md-12 projecthaed" [innerHTML]="pageContent?.description"></div>
-      </div>
-      </div>
     </section>
 
     <div class="container">
 
-        <div class="servicesection">
+        <!-- <div class="servicesection">
         
         
         <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
@@ -49,6 +44,21 @@
             </div>
           </div>
         </div>
-      </div> 
+      </div>  -->
+<div class="row">
+    <ng-container *ngFor="let service of servicesList; let i = index">
+      <div class="col-md-3">
+        <div class="wrap">
+          <div class="text-center"><img [src]="img_url + service?.featuredImage" class="img-fluid"></div>
+        <ul class="benefits-ul">
+                                <li id="li1" [innerHTML]="service?.shortDescription"></li> 
+         </ul>
+        
+        </div>
+        </div>
+      </ng-container>
+      </div>
+
     </div>   
     <div class="custombulding"></div>    
+  </div>

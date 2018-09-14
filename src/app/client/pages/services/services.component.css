@@ -1,8 +1,5 @@
 /* services*/
-*{
-padding: 0;
-margin: 0;
-    }
+
     .projecthaed p {
         font-size: 14px;
         text-align: justify;
@@ -44,7 +41,7 @@ margin: 0;
     
     
     .custombulding{
-        background: url(/assets/images/services_bulding.jpg);
+        background: url(/assets/images/services_bulding.png);
        min-height: 200px;
     
         background-position: bottom;
@@ -124,6 +121,48 @@ margin: 0;
         font-size: 14px;
     }
     
+    .projecthaed ul {
+        margin-left: 16px;
+    }
+
+    .projecthaed li 
+    {
+    line-height: 26px;
+    font-size: 15px;
+    }
+    .projecthaed strong
+    {
+    font-size: 20px;
+    }
+    .benefits-ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+             .benefits-ul > li >p {
+        background: url(/assets/images/b-li.png) no-repeat 5px 15px;
+        padding: 12px 0;
+        padding-left: 30px;
+        transition: All.5s ease;
+        -webkit-transition: All .5s ease;
+        -moz-transition: All .5s ease;
+        -o-transition: All .5s ease;
+        margin-bottom: 5px;
+    }
+
+  
+    
+    .wrap{
+      border: 5px solid #f1f1f1;
+      padding: 15px;
+      min-height: 376px;
+      margin-bottom: 38px;
+      margin-top: 8px;
+    }
+    #li1 > p, #li1 > p > p
+    {
+        word-wrap: break-word;   
+    }
     @media(max-width: 767px)
     {
         .servicesection .nav-justified .nav-item {

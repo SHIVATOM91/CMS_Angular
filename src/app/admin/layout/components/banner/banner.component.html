@@ -61,8 +61,10 @@
           </ng-template>
       </ngb-tab>
 
-      <ngb-tab>
-          <ng-template ngbTabTitle>Preview Banner</ng-template>
+      <ng-container>
+      <ngb-tab  >
+          <ng-template ngbTabTitle ><div (click)="bannerClick()">Preview Banner</div></ng-template>
+    
           <ng-template ngbTabContent>
               <div class="row">
                   <div class="col-md-2"></div>
@@ -84,9 +86,12 @@
               </div>
           </ng-template>
       </ngb-tab>
+</ng-container>
 
-      <ngb-tab>
+      <ngb-tab >
+        
           <ng-template ngbTabTitle>Banner Category</ng-template>
+    
           <ng-template ngbTabContent>
               <div class="row">
                   <div class="col-md-5">
@@ -105,7 +110,7 @@
                               <label for="menutitle">Category name:</label>
                               <input type="text" class="form-control" name="menuTittle" formControlName="typeName"  id="menutypeName" aria-describedby="menutypeName"  required>
                               <div class="form-control-feedback text-danger" *ngIf="typeForm.get('typeName').errors &&  typeForm.get('typeName').touched">
-                                <p *ngIf="typeForm.get('typeName').errors.required">Category name is required</p>
+                                <p *ngIf="typeForm.get('typeName').errors.required ">Category name is required</p>
                                 <p *ngIf="typeForm.get('typeName').errors.minlength">Category name must be {{ typeForm.get('typeName').errors.minlength.requiredLength }} characters long</p>
                               </div>
                             </div>

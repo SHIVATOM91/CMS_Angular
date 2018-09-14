@@ -7,7 +7,10 @@ import { AuthService } from '../../admin/services/auth.service';
 export class HideByRoleDirective {
 
   constructor(private el: ElementRef,private auth:AuthService) { 
-    if(auth.currentUser.roles!="admin")  el.nativeElement.style.display = "none"
+    if(auth.currentUser.roles!="admin"){
+      el.nativeElement.style.display = "none";
+      el.nativeElement.disabled = true;
+    }  
   }
 
 }

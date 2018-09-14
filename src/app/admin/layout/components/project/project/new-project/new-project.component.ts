@@ -27,6 +27,7 @@ export class NewProjectComponent implements OnInit {
       id: [''],
       title: ['', Validators.required],
       description: [''],
+      address: [''],
       image: [''],
       categories: fb.array([])
     })
@@ -43,6 +44,7 @@ export class NewProjectComponent implements OnInit {
       this.projectForm.get('id').setValue(this.currentObj.id);
       this.projectForm.get('title').setValue(this.currentObj.title);
       this.projectForm.get('description').setValue(this.currentObj.description);
+      this.projectForm.get('address').setValue(this.currentObj.address);
       this.projectForm.get('image').setValue(this.currentObj.image);
       this.presentArray=[];
       for(let i=0;i<this.currentObj.project_categories.length; i++){
@@ -118,5 +120,6 @@ export class ProjectObject{
   title: any;
   description: any;
   image: any;
+  address: any;
   categories: any;
 }

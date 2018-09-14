@@ -8,7 +8,7 @@
     text-align: justify;
 }
 .askhaed .custom-body h2{
-    font-size: 29px;
+    font-size: 25px;
     font-weight: 700;
     color: #000;
 }
@@ -45,29 +45,28 @@
 
 .colofade{
   background-color: #edebeb;
-  height: 500px;
+  height: 430px;
 }
 
 .parallax{
   background-image:url('/assets/images/paralbanner.jpg');
-  height: 500px;
-  margin-top:2%;
-  width: 100%;
-
-
-  /* Create the parallax scrolling effect */
-  /* background-attachment: fixed;*/
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 430px;
+    margin-top: 2%;
+    width: 100%;
+    background-position: top 62% left 306% !important;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .customparalasec{
-  margin-top: 15px;
+  margin-top: 25px;
   margin-left: 25px;
   margin-right: 25px;
 }
-
+.owl-theme .owl-nav [class*='owl-']
+{
+  border-radius: 0px !important;
+}
 .owl-stage-outer{
   cursor: pointer;
 }
@@ -174,29 +173,17 @@
   height: 50px;
 }
 
-.project-menu-container{
-  height: 50px;
-  background-color: #ffffff;
-  outline: 1px solid #ccc;
-  color: #212529;
-}
 
 .menuActive{
   background-color: #1e4464 !important;
   color: #fff !important;
 }
 
-.project-menu-title p{
-  text-align: center;
-  line-height: 50px;
-}
-
-
 .custom-home_slider .owl-nav button, .custom-home_slider .owl-nav button.disabled{
   width: 22px;
   height: 50px;
   position: absolute;
-  top: 0px;
+  top: 40%;
   display: block !important;
   border:none !important;
   background-color: #fff !important;
@@ -209,11 +196,13 @@
 }
 
 .custom-home_slider .owl-nav .owl-prev, .custom-home_slider .owl-nav .owl-prev{
-  left: -22px;
+  left: 0px;
+  top: 40%;
 }
 
 .custom-home_slider .owl-nav .owl-next, .custom-home_slider .owl-nav .owl-next{
-  right: -22px;
+  right:0px;
+  top: 40%;
 }
 .custom-home_slider {
   margin-left: 18px;
@@ -228,7 +217,7 @@
   border: 1px solid #ccc;
 }
 
-.project-holder span {
+.project-holder h5 {
   bottom: 0px;
   background: rgb(183, 157, 82);
   color: #f1f1f1;
@@ -238,7 +227,17 @@
   margin: 0 auto;
   position: absolute;
   width: 100%;
+  font-size: 15px;
 }
+.project-holder  p
+{
+position: relative;
+bottom: -5px;
+}
+.reference-list h2
+    {
+     margin-top: 14px !important;    
+    }
 /* paralax-section*/
 
 /*services section */
@@ -248,10 +247,42 @@
   margin-bottom: 20px;
 }
 
+
+.serviceimg {
+  height: 377px;
+  margin-top: 0%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .servicesection{
-    margin-top:2%;
+    margin-top:3%;
     clear: both;
     margin-bottom: 2%;
+}
+#service-descptn > p, #service-descptn > p > p
+{
+  line-height: 28px;
+  position: relative;
+}
+#service-descptn-second > p, #service-descptn-second > p > p
+{
+  line-height: 28px;
+  position: relative;
+}
+#service-descptn  img 
+{
+  position: absolute;
+  left: -21px;
+  top: 6px;
+}
+#service-descptn-second img
+{
+  position: absolute;
+  left: -21px;
+  top: 6px;
 }
 .section-s h5{
   text-transform: uppercase;
@@ -327,7 +358,7 @@ color: #b79d52;
 }
 
 .cs .askhaed .custom-body h2{
-      font-size: 29px;
+      font-size: 25px;
   font-weight: 700;
   color: #b79d52;
 }
@@ -380,7 +411,45 @@ color: #b79d52;
   padding: 10px;
   font-weight: 500;
 }
+.project-menu-container {
+  height: 65px;
+  background-color: rgba(25, 25, 25, 0.82);
+  color: #212529;
+  display: table;
+  width: 100%;
+  bottom: 0px;
+  position: absolute;
+  color: #fff;
+}
 
+
+
+
+
+.project-menu-title {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+}
+
+
+
+
+
+.project-menu-title p {
+  text-align: center;
+  /* line-height: 0; */
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+
+@media (max-width: 990px)
+{
+.parallax {
+background:none !important;
+}
+}
 
 @media (max-width: 992px)
 {
@@ -402,4 +471,26 @@ color: #b79d52;
 .height-wrapper{
   min-height: 700px;
   background-color: #fff;
+}
+
+
+.customparalasec .owl-carousel {
+  text-align: center;
+  margin: 0 auto;
+}
+
+#service-descptn-second
+{
+  margin-top: 77px;  
+}
+.brochsurebtn
+{
+  margin-top: -16px; 
+}
+.servicesbtn .askbuton {
+  background-color: #b79d52;
+  color: #fff;
+  outline-style: none !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }

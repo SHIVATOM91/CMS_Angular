@@ -25,6 +25,9 @@
     -moz-transition: all 1s ease 0s;
     -o-transition: all 1s ease 0s;
 }
+.footer .active{
+    color: #baa75b !important;
+}
 .footer .links a:hover{
     color: rgb(109, 116, 123);
     text-decoration: none;
@@ -77,6 +80,10 @@
     color: #b8babb;
     font-size: 20px;
     padding-left: 7px;
+}
+.footercustom .mt-4
+{
+    padding-top: 7px;   
 }
 
 .mail-color a
