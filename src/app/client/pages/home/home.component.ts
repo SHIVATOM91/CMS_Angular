@@ -15,6 +15,7 @@ import { ProjectService } from '../../../shared/services/project.service';
   encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit,  OnDestroy {
+  total_project_count=4;
   img_url=environment.imgUrl;
   about_section_id=149;
   about_section_content: Section;
@@ -102,12 +103,22 @@ export class HomeComponent implements OnInit,  OnDestroy {
 
     this._projects.getProjects().subscribe(response=>{
       this.projectCategorySlider=response;
-      if(this.projectCategorySlider.length > 0){
-        this.toggleProjectMenu(this.projectCategorySlider[0].id, 0);
-      }
+      this.projectCategorySlider=this.splitArrayIntoChunks(this.projectCategorySlider,this.total_project_count);
+      // if(this.projectCategorySlider.length > 0){
+      //   this.toggleProjectMenu(this.projectCategorySlider[0].id, 0);
+      // }
     })
 
 
+  }
+
+  splitArrayIntoChunks(arr, chunkLen){
+      var chunkList = []
+      var chunkCount = Math.ceil(arr.length/chunkLen)
+      for(var i = 0; i < chunkCount; i++){
+          chunkList.push(arr.splice(0, chunkLen))
+      }
+      return chunkList
   }
 
   getServicesDetails(){

@@ -11,7 +11,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./edit-pages.component.css']
 })
 export class EditPagesComponent implements OnInit {
-  
   section_id;
   editMode=false;
   section_details:any=[];
@@ -19,6 +18,7 @@ export class EditPagesComponent implements OnInit {
   property_array;
   imgUrl= environment.imgUrl;
   image=[];
+
   constructor(private _page:PageService , private route:ActivatedRoute , private fb:FormBuilder, private toastr: ToastrService ) { 
     this.section_id= this.route.snapshot.paramMap.get('sectionId');
     this.propertyForm=fb.group({
@@ -27,7 +27,7 @@ export class EditPagesComponent implements OnInit {
       properties:fb.array([])
     })
   }
-
+  
   ngOnInit() {
     this._page.getPageSections(this.section_id).subscribe(response=>{
       this.section_details=response;
@@ -53,14 +53,12 @@ export class EditPagesComponent implements OnInit {
   }
 
   handleFileInput(item,event ,index){
-
     item.get('image_file').setValue(event.target.files[0]);
     var myReader: FileReader = new FileReader();
     myReader.onloadend = (e) => {
       this.image[index]=myReader.result;
     }
     myReader.readAsDataURL(event.target.files[0]);
-    
   }
 
   saveProperty(){
@@ -76,4 +74,5 @@ export class EditPagesComponent implements OnInit {
   get properties(){
     return this.propertyForm.get('properties') as FormArray;
   }
+
 }

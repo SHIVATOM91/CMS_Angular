@@ -40,8 +40,16 @@
     border-left: 1px solid #fff;
  }
 
-
- 
+ .proj-description h3{
+     position: relative;
+ }
+ .proj-description img{
+    position: absolute;
+    left: -15px;
+ }
+ .proj-description h3 span{
+    display: block;
+  }
 
  .projecttabs > ul.nav > li.nav-item > a.active:after {
     content: " ";
@@ -311,15 +319,15 @@ margin-bottom: 15px;
     -o-transition: All .5s ease;
     }
     .left h3 span {
-    padding-left: 12px;
-    padding-left: 12px;
+      padding-left: 25px;
       font-size: 17px;
-      word-break: break-all;
+      word-break: normal;
     }
 
     .right h3 span{
        color: #715a00;
        font-size: 14px;
+       padding-left: 25px;
     }
 
     .left h5 span{
@@ -330,7 +338,7 @@ margin-bottom: 15px;
     }
     .left > h5 > p {
         font-size: 14px;
-        margin-left: 7.5%;
+        padding-left: 25px;
     }
 
     .reference-list h2

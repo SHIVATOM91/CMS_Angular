@@ -19,6 +19,9 @@
     color: #fff;
     border-color: #fff;
     border-radius: 0px;
+    position: absolute;
+    top: 113px;
+    right: 16px;
 }
 .asknavbar .navbar-brand {
     margin-right: 0px;
@@ -31,13 +34,14 @@
     background-color: #fff;
     padding: 25px;
     box-shadow: 0 0 5px 1px rgb(88, 80, 80);
+    margin-top: 5px;
 }
 
 .asknavbar .customcolor .nav-item {
     font-size: 15px;
     word-wrap: break-word;
-    min-width: 100px;
-    margin: 0px 15px;
+    margin: 0px 10px;
+    padding: 0px 20px;
 } 
 
 .asknavbar .customcolor .nav-item:hover {

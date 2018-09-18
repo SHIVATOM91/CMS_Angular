@@ -92,7 +92,6 @@
 
     .testiomonal{
         background:url('../../../../assets/images/about_banner.jpg');
-
         min-height: 400px;
         background-size: cover;
     }

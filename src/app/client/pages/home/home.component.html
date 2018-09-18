@@ -2,7 +2,7 @@
 <section class="aboutus" *ngIf="about_section_content">
   <div class="container">
   <div class="row">
-      <div class="col-lg-4 col-md-4 col-sm-12 abtimg"> <img [src]="img_url + about_section_content?.properties.main_image" class="img-fluid"> </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 abtimg"> <img [src]="img_url + about_section_content?.properties.main_image" class="img-fluid mb-2"> </div>
       <div class="col-lg-8 col-md-12 col-sm-12 col-xs">
         <ul class="list-unstyled askhaed">
             <li class="media">
@@ -40,37 +40,27 @@
                      </li>
                   </ul>
                   <owl-carousel
-                    [options]="{items: 2, dots: false,loop: false, nav: true, autoplayHoverPause: true,  navText : ['<i class=\'fa fa-caret-left\'></i>','<i class=\'fa fa-caret-right\'></i>'], freeDrag:false, touchDrag:false, mouseDrag:false, responsive: { '0' : { items:1}, '640': { items: 2}, '768': { items: 2} }}"
+                    [options]="{items: 1, dots: false,loop: false, nav: true, autoplayHoverPause: true, smartSpeed : 1000, autoplay:true,  navText : ['<i class=\'fa fa-caret-left\'></i>','<i class=\'fa fa-caret-right\'></i>'], freeDrag:false, touchDrag:false, mouseDrag:false, responsive: { '0' : { items:1}, '640': { items: 1}, '768': { items: 1} }}"
                     [items]="projectCategorySlider"
                     [carouselClasses]="['owl-theme',  'sliding', 'custom-home_slider', 'custom_project_slider']">
                     <div class="item" *ngFor="let category of projectCategorySlider;let i = index">
                       <div class="project-menu-container">
-                        <div class="project-menu-title">
-                          <p>{{category.title}}</p>
+                        <div class="project-menu-title" *ngFor="let item of category; let j = index">
+                          <p>{{item.title}}</p>
+                          <p [innerHtml]="item.description"></p>
                         </div>
                       </div>
-                      <div class="project-holder " [ngStyle]="{'background': 'url('+ img_url+category.image+') center center no-repeat'}">
-                          <!-- <h5 [innerHTML]="category.description">
-                      
-                      </h5> -->
-                       </div>
+                      <!-- <div class="project-holder " [ngStyle]="{'background': 'url('+ img_url+category.image+') center center no-repeat'}"></div> -->
                     </div>
                   </owl-carousel>
-                  <!-- <owl-carousel
-                    [options]="{items: 1, dots: false,loop: false, nav: false, margin:0, responsive: { '0' : { items:1}, '100' : { items:1}, '768': { items: 1} }}"
-                    [items]="projectCategorySlider"
-                    [carouselClasses]="['owl-theme',  'sliding', 'custom_project_slider']">
-                    
-                     
-                   
-                  </owl-carousel> -->
+               
                </div>
             </div>
          </div>
     </div>
  </section>
 
- <section class="aboutus" *ngIf="arbeitsgattungen_section_content">
+<section class="aboutus" *ngIf="arbeitsgattungen_section_content">
     <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-12 col-sm-12 col-xs">
@@ -88,8 +78,7 @@
         <div class="col-lg-4 col-md-4 col-sm-12 abtimg"> <img [src]="img_url + arbeitsgattungen_section_content?.properties.main_image" class="img-fluid"> </div>
     </div>
     </div>
-  </section>
-
+</section>
 
 <section class="servicesection"   *ngIf="services_section_content">
   <div class="container">
@@ -113,8 +102,8 @@
               </div>
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs">
-                <div id="service-descptn-second" [innerHTML]="services_section_content?.properties.desc_sec"></div>
-              </div>
+              <div id="service-descptn-second" [innerHTML]="services_section_content?.properties.desc_sec"></div>
+            </div>
         </div>
   </div>
 </section>

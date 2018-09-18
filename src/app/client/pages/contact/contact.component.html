@@ -37,26 +37,32 @@
 
       <div class="form-group">
         <input name="firstName"  formControlName="firstName" type="text" class="form-control"  placeholder="Vorname Nachname">
-        <div class="form-control-feedback text-danger" *ngIf="form.get('firstName').errors && form.get('firstName').touched">
-          <p *ngIf="form.get('firstName').errors.required">Bitte geben Sie Vorname ein</p>
-          <p *ngIf="form.get('firstName').errors.minlength">Name muss sein {{ form.get('firstName').errors.minlength.requiredLength }} Zeichen lang</p>
+        <div class="form-control-feedback text-danger">
+          <ng-container  *ngIf="form.get('firstName').errors && form.get('firstName').touched">
+            <small *ngIf="form.get('firstName').errors.required">Bitte geben Sie Vorname ein</small>
+            <small *ngIf="form.get('firstName').errors.minlength">Name muss sein {{ form.get('firstName').errors.minlength.requiredLength }} Zeichen lang</small>
+          </ng-container>
         </div>
       </div>
 
       <div class="form-group">
         <input name="email" type="email" formControlName="email" class="form-control"  placeholder="Email">
-        <div class="form-control-feedback text-danger" *ngIf="form.get('email').errors && form.get('email').touched">
-          <p *ngIf="form.get('email').errors.required">Bitte geben Sie eine Email ein!</p>
-          <p *ngIf="form.get('email').errors.pattern">E-Mail-Muster ist nicht korrekt</p>
+        <div class="form-control-feedback text-danger">
+          <ng-container  *ngIf="form.get('email').errors && form.get('email').touched">
+            <small *ngIf="form.get('email').errors.required">Bitte geben Sie eine Email ein!</small>
+            <small *ngIf="form.get('email').errors.pattern">E-Mail-Muster ist nicht korrekt</small>
+          </ng-container>
         </div>
       </div>
 
       <div class="form-group">
         <input type="text" name="contact" formControlName="contact" class="form-control"  placeholder="Kontakt">
-        <div class="form-control-feedback text-danger" *ngIf="form.get('contact').errors && form.get('contact').touched">
-            <p *ngIf="form.get('contact').errors.required">Kontaktnummer erforderlich </p>
-            <p *ngIf="form.get('contact').errors?.pattern">Bitte geben Sie eine gültige Telefonnummer ein</p>
-          </div>
+        <div class="form-control-feedback text-danger"  >
+          <ng-container *ngIf="form.get('contact').errors && form.get('contact').touched">
+            <small *ngIf="form.get('contact').errors.required">Kontaktnummer erforderlich </small>
+            <small *ngIf="form.get('contact').errors?.pattern">Bitte geben Sie eine gültige Telefonnummer ein</small>
+          </ng-container>
+        </div>
       </div>
 
        <div class="form-group">

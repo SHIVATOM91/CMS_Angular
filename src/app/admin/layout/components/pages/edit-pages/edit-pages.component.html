@@ -31,7 +31,7 @@
                     </div>
                     <input type="file" accept="image/*" (change)="handleFileInput(item,$event ,i)"   name="file" class="form-control" hidden [id]="i">
                   </ng-container>
-  
+                  
                   <ng-container *ngIf="item.get('type').value=='string'  || item.get('type').value=='link' ">
                     <textarea type="file" name="string"  formControlName='value'  class="form-control" id="staticEmail"> </textarea>
                   </ng-container> 

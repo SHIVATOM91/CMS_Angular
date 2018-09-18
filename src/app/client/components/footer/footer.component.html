@@ -9,44 +9,48 @@
     <div class="container">
       <div class="row">
           <div class="col-lg-4 col-md-4 footercustom">
-            <div class="media">
+            <div class="media" style="min-height: 145px;">
                 <img class="align-self-start mr-3" src="assets/images/footer_phone.png">
                 <div class="media-body">
-                  <h5 class="mt-4"> Kontakt </h5>
+                  <h5 class="mt-1"> Kontakt </h5>
                   <p  [innerHTML]="settingData?.primaryPhone"></p>
                 </div>
             </div>
-            <div class="media">
+            <div class="media" style="min-height: 97px;">
               <img class="align-self-start mr-3" src="assets/images/footer_mail.png">
               <div class="media-body">
-                <h5 class="mt-4">
-                    E-Mail</h5>
+                <h5 class="mt-1">E-Mail</h5>
                 <p class="mail-color"> <a  href="mailto:info@askumbau.com">{{ settingData?.primaryEmail }}</a></p>
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-4 footerworld">
             <img src="assets/images/footer.png" class="img-fluid">
+            <div class="col-lg-12 copyright copy-desk" >
+              <p >{{ settingData?.footerMessage }}</p>
+            </div>
           </div>
+
           <div class="col-lg-4 col-md-4 footercustom_right">
             <div class="media">
               <img class="align-self-start mr-3" src="assets/images/footer_address.png">
               <div class="media-body">
-                <h5 class="mt-4">Adresse</h5>
-                <p  [innerHTML]="settingData?.primaryAddress"></p>
+                <h5 class="mt-1">Adresse</h5>
+                <p  [innerHTML]="settingData?.primaryAddress" style="    white-space: nowrap;"></p>
               </div>
             </div>
-            <div class="media">
+            <div class="media" style="min-height: 97px;">
               <img class="align-self-start mr-3" src="assets/images/footer_mail.png">
               <div class="media-body custonavsocila">
-                <h5 class="mt-4">Sozialen Medien</h5>
+                <h5 class="mt-1">Sozialen Medien</h5>
                 <a [href]="settingData?.facebookLink"><i class="fa fa-facebook"></i></a>
                 <a [href]="settingData?.twitterLink"><i class="fa fa-twitter "></i></a>
                 <a [href]="settingData?.googleLink"><i class="fa fa-google-plus "></i></a>
               </div>
             </div>
           </div>
-          <div class="col-lg-12 copyright">
+          <div class="col-lg-12 copyright copy-mobile">
             <p >{{ settingData?.footerMessage }} 
               <!-- - Developed By: <a href="https://www.bixbytessolutions.com" target="_blank">BixBytes Solutions</a> -->
             </p>
