@@ -67,7 +67,7 @@
   /* slider section */
 
   .banner{
-        background: url('/assets/images/bannerimage.jpg');
+        background: url('../../../../assets/images/bannerimage.jpg');
         height: 240px;
         background-size: cover;
     }

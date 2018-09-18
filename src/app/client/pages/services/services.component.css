@@ -41,7 +41,7 @@
 }
 
 .custombulding{
-    background: url(/assets/images/services_bulding.png);
+    background: url('../../../../assets/images/services_bulding.png');
     min-height: 200px;
     background-position: bottom;
     background-repeat: no-repeat;  
